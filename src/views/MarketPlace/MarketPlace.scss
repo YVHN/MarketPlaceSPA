@@ -1,4 +1,5 @@
 @import '@/views/MarketPlace/Assets/Styles/Variables.scss';
+@import '@/views/MarketPlace/Assets/Styles/Global.scss';
 
 .marketPlace {
   width: 100%;
@@ -9,6 +10,7 @@
   background-repeat: no-repeat;
   position: relative;
   padding: 3.704vmin 2.963vmin 4.537vmin 4.907vmin;
+  
 
   &-background-triangles {
     position: absolute;

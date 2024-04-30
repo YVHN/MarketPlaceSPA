@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import '@/views/MarketPlace/Assets/Styles/Global.scss';
+import '@/views/MarketPlace/Assets/Fonts/PFDinDisplayPro/PFDinDisplayPro.scss';
 
 import './functions/multilanguage'
 // import "./functions/camera"

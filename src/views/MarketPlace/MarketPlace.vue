@@ -43,4 +43,4 @@ export default {
 };
 </script>
 
-<style lang="scss" src="./MarketPlace.scss" scoped></style>
+<style lang="scss" src="./MarketPlace.scss"></style>
