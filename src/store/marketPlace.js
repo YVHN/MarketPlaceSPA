@@ -27,7 +27,7 @@ const marketPlace = {
           views: 200,
           likes: 100,
           isLiked: false,
-          isFavorite: false,
+          isFavorite: true,
           endTime: '15.04.2024 18:55',
           created: '11.04.2024 13:53',
           sellData: {

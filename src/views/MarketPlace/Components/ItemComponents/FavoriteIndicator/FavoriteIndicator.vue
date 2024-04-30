@@ -1,7 +1,7 @@
 <template>
   <favorite
     class="favorite"
-    @click.stop="update"
+    @click.native="update"
     :class="[{ active: getFavoriteStatus }, size]"
   />
 </template>

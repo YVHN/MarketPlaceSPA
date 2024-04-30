@@ -3,7 +3,7 @@
     <!-- Список предметов -->
     <div class="itemsList-list-wrapper">
       <div class="itemsList-list" v-if="listData.length">
-        <Item v-for="item in listData" @handleItemClick="handleItemClick" @unloadItem="unloadItem" :item="item"
+        <Item v-for="item in listData" @unloadItem="unloadItem" @click.native="handleItemClick(item)" :item="item" @test="test"
           :key="item.id" />
         <AddLot :data="shortItemData" v-if="isAddLot" @toggleIsAddStatus="toggleIsAddStatus" />
       </div>
@@ -77,6 +77,9 @@ export default {
     });
   },
   methods: {
+    test() {
+      console.log('хуй');
+    },
     goToPage(page) {
       this.currentPage = page;
       events.callServer(
