@@ -1,0 +1,133 @@
+.buyItem {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.51);
+
+  &-body {
+    border-radius: 1.481vmin;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #101114;
+    padding: 3.704vmin 4.63vmin;
+
+    &-title {
+      font-weight: 700;
+      font-size: 1.852vmin;
+      color: #fff;
+      margin-bottom: 2.13vw;
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2.685vmin;
+
+      .info-wrapper {
+        display: flex;
+        gap: 1.6vmin;
+        align-items: center;
+        margin-bottom: 2.685vmin;
+      }
+
+      &-unit {
+        &-title {
+          font-weight: 400;
+          font-size: 1.296vmin;
+          margin-bottom: 0.37vmin;
+          color: rgba(255, 255, 255, 0.55);
+        }
+
+        &-value {
+          font-weight: 600;
+          font-size: 1.481vmin;
+          color: #fff;
+
+          & > span {
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.36);
+          }
+        }
+      }
+    }
+
+    &-price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1vmin;
+
+      .cost {
+        font-weight: 600;
+        font-size: 1.481vmin;
+        color: #0f6;
+      }
+    }
+
+    &-payMethod {
+      display: flex;
+      gap: 1.111vmin;
+      width: 100%;
+      margin-top: 3.056vmin;
+      margin-bottom: 1.111vmin;
+
+      &-unit {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 5.926vmin;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 0.278vmin;
+        font-weight: 600;
+        font-size: 1.296vmin;
+        text-align: center;
+        color: #fff;
+        width: 100%;
+        cursor: pointer;
+        transition:
+          transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+          background 0.3s ease;
+
+        &:hover {
+          transform: scale(1.02);
+          box-shadow: 0 0 2.407vmin 0 rgba(91, 197, 88, 0.13);
+          background: #5bc558;
+        }
+
+        &:active {
+          transform: scale(1.04);
+        }
+      }
+    }
+
+    &-cancel {
+      width: 100%;
+      padding: 2.13vmin;
+      font-weight: 600;
+      font-size: 1.296vmin;
+      text-align: center;
+      color: #fff;
+      transition: tranform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 0.278vmin;
+      transition:
+        transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        box-shadow 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.01);
+        box-shadow: 0vmin 0vmin 0.556vmin 0.185vmin rgba(255, 0, 0, 0.5);
+      }
+
+      &:active {
+        transform: scale(1.02);
+      }
+    }
+  }
+}

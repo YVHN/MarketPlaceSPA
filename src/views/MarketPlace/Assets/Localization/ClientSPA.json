@@ -1,0 +1,403 @@
+{
+    "Аукцион": {
+        "eng": "Auction"
+    },
+    "Недвижимость": {
+        "eng": "Estate"
+    },
+    "Транспорт": {
+        "eng": "Transport"
+    },
+    "Предметы": {
+        "eng": "Items"
+    },
+    "Аренда транспорта": {
+        "eng": "Transportation rental"
+    },
+    "Одежда и аксессуары": {
+        "eng": "Clothing and accessories"
+    },
+    "Услуги и прочее": {
+        "eng": "Services and other"
+    },
+    "Бизнес": {
+        "eng": "Business"
+    },
+    "Избранное": {
+        "eng": "Favorites"
+    },
+    "Склад хранения": {
+        "eng": "Storage warehouse"
+    },
+    "Мои обьявления": {
+        "eng": "My ads"
+    },
+    "История покупок": {
+        "eng": "Purchase history"
+    },
+    "Выйти": {
+        "eng": "Get out"
+    },
+    "Создать": {
+        "eng": "Create"
+    },
+    "Вернуться назад": {
+        "eng": "Go back"
+    },
+    "Сбросить фильтр": {
+        "eng": "Reset filter"
+    },
+    "Анимации": {
+        "eng": "Animations"
+    },
+    "Скины": {
+        "eng": "Skins"
+    },
+    "Стикеры": {
+        "eng": "Stickers"
+    },
+    "Оружие": {
+        "eng": "Weapons"
+    },
+    "Одежда": {
+        "eng": "Clothes"
+    },
+    "Выбор категории": {
+        "eng": "Category selection"
+    },
+    "Сортировать": {
+        "eng": "Sort"
+    },
+    "По возрастанию цены": {
+        "eng": "Increasing in price"
+    },
+    "По убыванию цены": {
+        "eng": "Decreasing in price"
+    },
+    "По дате размещения": {
+        "eng": "By date of posting"
+    },
+    "По дате окончания": {
+        "eng": "By end date"
+    },
+    "Самые популярные": {
+        "eng": "Most popular"
+    },
+    "Дом": {
+        "eng": "House"
+    },
+    "Апартаменты": {
+        "eng": "Apartments"
+    },
+    "Кол-во товара": {
+        "eng": "Quantity of goods"
+    },
+    "Цена от:": {
+        "eng": "Price from:"
+    },
+    "Время хранения:": {
+        "eng": "Storage time:"
+    },
+    "за час": {
+        "eng": "per hour"
+    },
+    "Разное": {
+        "eng": "Sundries"
+    },
+    "Выгрузить со склада": {
+        "eng": "Unload from warehouse"
+    },
+    "Доступно": {
+        "eng": "Available"
+    },
+    "На складе": {
+        "eng": "In stock"
+    },
+    "Не доступно": {
+        "eng": "Unavailable"
+    },
+    "Тут пока пусто": {
+        "eng": "There's nothing here yet"
+    },
+    "Создать обьявление": {
+        "eng": "Create an ad"
+    },
+    "Сделать ставку": {
+        "eng": "Make a bet"
+    },
+    "Описание лота:": {
+        "eng": "Lot Description:"
+    },
+    "График ставок": {
+        "eng": "Rate schedule"
+    },
+    "км.": {
+        "eng": "km."
+    },
+    "Категория": {
+        "eng": "Caregory"
+    },
+    "Последняя ставка": {
+        "eng": "Last bet"
+    },
+    "Кол-во гаражных мест": {
+        "eng": "Number of garage spaces"
+    },
+    "Улица": {
+        "eng": "Street"
+    },
+    "Пробег": {
+        "eng": "Mileage"
+    },
+    "Гос. номер": {
+        "eng": "License plate"
+    },
+    "Сделайте ставку на": {
+        "eng": "Place your bet on"
+    },
+    "Укажите свою ставку": {
+        "eng": "Specify your rate"
+    },
+    "Ваша ставка должна быть выше": {
+        "eng": "Your bet should be higher than"
+    },
+    "Автор": {
+        "eng": "Author"
+    },
+    "Состояние": {
+        "eng": "Condition"
+    },
+    "Кол-во": {
+        "eng": "Quantity"
+    },
+    "Цена за 1 шт.": {
+        "eng": "Price for 1 pc."
+    },
+    "Таймер": {
+        "eng": "Timer"
+    },
+    "Действие": {
+        "eng": "Action"
+    },
+    "Время и дата": {
+        "eng": "Time and date"
+    },
+    "Ставка": {
+        "eng": "Bet"
+    },
+    "шт.": {
+        "eng": "pcs."
+    },
+    "кг.": {
+        "eng": "kg."
+    },
+    "Тест драйв": {
+        "eng": "Test drive"
+    },
+    "Комментарий продавца:": {
+        "eng": "Seller's comment:"
+    },
+    "Гос. цена:": {
+        "eng": "State price:"
+    },
+    "Продавец": {
+        "eng": "Seller"
+    },
+    "Телефон": {
+        "eng": "Phone"
+    },
+    "Ускорение": {
+        "eng": "Acceleration"
+    },
+    "Макс. скорость": {
+        "eng": "Max. speed"
+    },
+    "Тормоза": {
+        "eng": "Brakes"
+    },
+    "Управляемость": {
+        "eng": "Controllability"
+    },
+    "Начать сделку": {
+        "eng": "Make deal"
+    },
+    "Тип имущества": {
+        "eng": "Property type"
+    },
+    "Автосалон": {
+        "eng": "Car dealership"
+    },
+    "История ставок": {
+        "eng": "History of bets"
+    },
+    "Список предложений": {
+        "eng": "List of suggestions"
+    },
+    "Описание о предмете:": {
+        "eng": "Subject Description:"
+    },
+    "Купить": {
+        "eng": "Buy"
+    },
+    "д.": {
+        "eng": "d."
+    },
+    "ч.": {
+        "eng": "h."
+    },
+    "м.": {
+        "eng": "m."
+    },
+    "Вес": {
+        "eng": "Weight"
+    },
+    "График цен": {
+        "eng": "Price chart"
+    },
+    "Добавить лот на продажу": {
+        "eng": "Add lot for sale"
+    },
+    "Этот предмет отсутсвует у вас на вашем складе. Вы не можете выставить лот на торговую площадку, приобретите этот товар.": {
+        "eng": "This item is out of stock in your warehouse. You are unable to list the item on the marketplace, please purchase this item."
+    },
+    "Выставить лот": {
+        "eng": "Put up the lot"
+    },
+    "Название товара:": {
+        "eng": "Product name:"
+    },
+    "Доступно кол-во": {
+        "eng": "Available quantity"
+    },
+    "Стоимость продажи за 1 шт.": {
+        "eng": "Sale price per 1 piece."
+    },
+    "Высталено на продажу": {
+        "eng": "For sale"
+    },
+    "Доступно в продаже": {
+        "eng": "Available for sale"
+    },
+    "Разместить лот": {
+        "eng": "Place a lot"
+    },
+    "Отменить":{
+        "eng": "Cancel"
+    },
+    "Введите сумму": {
+        "eng": "Enter amount"
+    },
+    "Покупка товара": {
+        "eng": "Purchase of goods"
+    },
+    "Оплата наличными": {
+        "eng": "Cash payment"
+    },
+    "Оплата картой": {
+        "eng": "Card payment"
+    },
+    "Количество": {
+        "eng": "Quantity"
+    },
+    "Цена": {
+        "eng": "Price"
+    },
+    "Сдать транспорт в аренду": {
+        "eng": "Rent a vehicle"
+    },
+    "Выставить на аукцион": {
+        "eng": "Auction it off"
+    },
+    "Обложка обьявления": {
+        "eng": "Announcement cover"
+    },
+    "Обложка лота": {
+        "eng": "Lot cover"
+    },
+    "Стандартная обложка": {
+        "eng": "Standard cover"
+    },
+    "Кликните в область чтобы загрузить обложку": {
+        "eng": "Click in the area to download the cover"
+    },
+    "Прикрепите фотографии": {
+        "eng": "Attach pictures"
+    },
+    "Отсуствуют фотографии": {
+        "eng": "There are no pictures"
+    },
+    "Минимальная стоимость по рынку:": {
+        "eng": "Minimum market value:"
+    },
+    "Разместить обьявление": {
+        "eng": "Place an ad"
+    },
+    "Тип имущества:": {
+        "eng": "Property type:"
+    },
+    "Тюнинг": {
+        "eng": "Tuning"
+    },
+    "Загрузить фото": {
+        "eng": "Upload photo"
+    },
+    "Комментарий к лоту": {
+        "eng": "Lot comment"
+    },
+    "Комментарий к обьявлению": {
+        "eng": "Annoucement comment"
+    },
+    "Введите комментарий": {
+        "eng": "Enter a comment"
+    },
+    "Задайте начальную ставку": {
+        "eng": "Set the starting bet"
+    },
+    "Цена аренды в час": {
+        "eng": "Rent price per hour"
+    },
+    "Стоимость продажи": {
+        "eng": "Cost of sale"
+    },
+    "Размещение обьявления является платной услугой. Прежде чем обьявление станет доступно, необходимо указать время действия вашего обьявление, его можно будет продлить позже.": {
+        "eng": "Posting an advertisement is a paid service. Before the advertisement becomes available, you must specify the time of validity of your advertisement, it can be extended later."
+    },
+    "Размещение лота является платной услугой. Прежде чем лот выставится, необходимо указать время действия вашего лота.": {
+        "eng": "Placing a lot is a paid service. Before a lot is listed, you must indicate the expiration date of your lot."
+    },
+    "Часы размещения": {
+        "eng": "Placement hours"
+    },
+    "Максимальное значение": {
+        "eng": "Maximum value"
+    },
+    "Итоговая сумма": {
+        "eng": "Total amount"
+    },
+    "Заголовок объявления": {
+        "eng": "Announcement title"
+    },
+    "Собственная обложка": {
+        "eng": "Own cover"
+    },
+    "Название транспорта:": {
+        "eng": "Transportation name:"
+    },
+    "Цена за 1 час:": {
+        "eng": "Price per 1 hour:"
+    },
+    "Тип обьявления": {
+        "eng": "Announcement type"
+    },
+    "Тип аренды": {
+        "eng": "Rent type"
+    },
+    "Почасовой": {
+        "eng": "Hourly"
+    },
+    "Количество часов": {
+        "eng": "Number of hours"
+    }
+
+
+}

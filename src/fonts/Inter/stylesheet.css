@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'Inter';
+    src: url('./InterBlack.ttf') format('truetype');
+    font-weight: 900;
+    /* Жирный шрифт */
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./InterBold.ttf') format('truetype');
+    font-weight: 700;
+    /* Полужирный шрифт */
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./InterExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    /* Дополнительно жирный шрифт */
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./InterExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    /* Дополнительно легкий шрифт */
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./InterLight.ttf') format('truetype');
+    font-weight: 300;
+    /* Легкий шрифт */
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./InterRegular.ttf') format('truetype');
+    font-weight: 400;
+    /* Обычный шрифт */
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./InterSemiBold.ttf') format('truetype');
+    font-weight: 600;
+    /* Полужирный средний шрифт */
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./InterThin.ttf') format('truetype');
+    font-weight: 100;
+    /* Тонкий шрифт */
+}

@@ -1,0 +1,86 @@
+@import '@/views/MarketPlace/Assets/Styles/Variables.scss';
+
+.marketPlace {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: url('@/views/MarketPlace/Assets/Images/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  padding: 3.704vmin 2.963vmin 4.537vmin 4.907vmin;
+
+  &-background-triangles {
+    position: absolute;
+    top: 2.13vmin;
+    left: 0;
+    width: 3.796vmin;
+    height: 9.074vmin;
+  }
+
+  &-body {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 25vmin 1fr;
+    grid-template-rows: 6.296vmin 1fr;
+    grid-column-gap: 2.963vmin;
+    grid-row-gap: 2.407vmin;
+    width: 100%;
+    height: 100%;
+    color: white;
+    .content {
+      overflow: hidden;
+    }
+
+    .logo {
+      margin-bottom: 2.407vmin;
+
+      &-title {
+        padding-top: 0.741vmin;
+        font-weight: 700;
+        font-size: 2.222vmin;
+        text-shadow: 0 0.37vmin 2.963vmin rgba(95, 216, 223, 0.25);
+        background: linear-gradient(94deg, #fff 0%, #b5b5b5 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-transform: uppercase;
+        margin-bottom: 0.741vmin;
+
+        & > span {
+          -webkit-text-fill-color: $main-color1;
+        }
+      }
+
+      &-description {
+        font-weight: 300;
+        font-size: 1.111vmin;
+        color: rgba(255, 255, 255, 0.44);
+        letter-spacing: 0.213vmin;
+      }
+
+      * {
+        font-family: 'IBM Plex Mono';
+      }
+    }
+  }
+}
+
+.router-enter-from {
+  opacity: 0;
+}
+
+.router-enter-to {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.router-leave-from {
+  opacity: 1;
+}
+
+.router-leave-to {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}

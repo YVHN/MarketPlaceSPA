@@ -1,0 +1,226 @@
+@import '@/views/MarketPlace/Assets/Styles/Variables.scss';
+
+.item {
+  width: 26.667vmin;
+  height: 24.444vmin;
+  border-radius: 0.741vmin;
+  padding: 0.833vmin 1.667vmin;
+  background: rgba(255, 255, 255, 0.02);
+  position: relative;
+  z-index: 5;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition:
+    transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    background 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+
+  &:hover {
+    transform: scale(1.02);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  &-header {
+    position: relative;
+    width: 100%;
+    height: 12.963vmin;
+    display: flex;
+    justify-content: center;
+
+    &-info {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      gap: 0.463vmin;
+      padding: 0.463vmin;
+
+      .unit {
+        height: min-content;
+        display: flex;
+        align-items: center;
+        font-weight: 700;
+        font-size: 1.296vmin;
+        color: #fff;
+        padding: 0.5vmin;
+        background: rgba(20, 20, 20, 0.9);
+        border-radius: 0.278vmin;
+
+        &-icon {
+          margin-right: 0.463vmin;
+          width: 2.222vmin;
+          height: 2.222vmin;
+          fill: #5f9adf;
+        }
+      }
+    }
+  }
+
+  &-title {
+    font-weight: 700;
+    font-size: 1.481vmin;
+    margin-top: 1vmin;
+  }
+
+  &-category {
+    margin: 0.5vmin 0 0 0;
+    font-weight: 400;
+    font-size: 1.296vmin;
+    color: rgba(255, 255, 255, 0.19);
+  }
+
+
+  &-exchange {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-price {
+      &-title {
+        font-weight: 400;
+        font-size: 1.296vmin;
+        color: rgba(255, 255, 255, 0.19);
+        margin-bottom: 0.4vmin;
+      }
+
+      &-value {
+        font-weight: 700;
+        font-size: 1.296vmin;
+        line-height: 143%;
+        color: #5f9adf;
+      }
+    }
+
+    &-available {
+      &-title {
+        font-weight: 400;
+        font-size: 1.296vmin;
+        text-align: right;
+        color: rgba(255, 255, 255, 0.19);
+        margin-bottom: 0.833vmin;
+      }
+
+      &-value {
+        font-weight: 700;
+        font-size: 1.296vmin;
+        text-align: end;
+      }
+    }
+
+    &-transport {
+      &-licensePlate {
+        &-title {
+          font-weight: 400;
+          font-size: 1.296vmin;
+          text-align: right;
+          color: rgba(255, 255, 255, 0.19);
+          margin-bottom: 0.833vmin;
+        }
+
+        &-value {
+          font-weight: 700;
+          font-size: 1.296vmin;
+          text-align: end;
+        }
+      }
+    }
+  }
+  &-transportRent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.926vmin;
+  }
+  &-storage {
+    &-time {
+      & > span {
+        font-weight: 700;
+        font-size: 1.204vmin;
+        line-height: 143%;
+        color: #5f9adf;
+      }
+
+      font-size: 1.204vmin;
+      font-weight: 400;
+    }
+
+    &-button {
+      margin-top: 0.3vmin;
+      text-align: center;
+      width: 100%;
+      padding: 1.111vmin 0;
+      border-radius: 0.185vmin;
+      font-weight: 700;
+      font-size: 1.204vmin;
+
+      background: rgba(255, 255, 255, 0.08);
+      cursor: pointer;
+      transition:
+        transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        background 0.3s ease;
+
+      &:hover {
+        transform: scale(1.02);
+        background: rgb(95, 154, 223);
+      }
+
+      &:active {
+        transform: scale(1.05);
+      }
+    }
+  }
+  &-default {
+    margin-bottom: 0.926vmin;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-price {
+      color: #5f9adf;
+      font-size: 1.667vmin;
+      font-weight: 700;
+      &>span {
+        color: white;
+      }
+    }
+    &-likesviews {
+      display: flex;
+      align-items: center;
+      gap: 0.926vmin;
+      .unit {
+        display: flex;
+        align-items: center;
+        font-size: 1.296vmin;
+        &-img {
+          height: 1.296vmin;
+          width: 1.296vmin;
+          margin-right: 0.463vmin;
+        }
+      }
+    }
+  }
+
+  &-status {
+    margin-bottom: 1.2vmin;
+    font-weight: 700;
+    font-size: 1.2vmin;
+
+    .available {
+      color: #5fdf6c;
+    }
+
+    .storage {
+      color: #5f9adf;
+    }
+
+    .unavailable {
+      color: #DF5F5F;
+    }
+  }
+
+  * {
+    font-family: 'PF DinDisplay Pro';
+    user-select: none;
+  }
+}

@@ -1,0 +1,562 @@
+.openedItem {
+  width: 100%;
+  height: 100%;
+
+  &-first {
+    display: flex;
+    flex-direction: column;
+    gap: 2.13vmin;
+  }
+  &-item {
+    width: 35.185vmin;
+    position: relative;
+    color: white;
+
+    &-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      height: 24.722vmin;
+
+      & > img {
+        width: 20.833vmin;
+        height: 20.833vmin;
+      }
+
+      &-favorite {
+        position: absolute;
+        width: 2.778vmin;
+        height: 2.407vmin;
+        top: 2.778vmin;
+        right: 4.63vmin;
+      }
+    }
+
+    &-title {
+      font-weight: 700;
+      font-size: 1.667vmin;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-info-items {
+      &-wrapper {
+        display: flex;
+        gap: 1.296vmin;
+        margin-bottom: 1.111vmin;
+      }
+
+      &-unit {
+        display: flex;
+
+        &-title {
+          font-weight: 400;
+          font-size: 1.296vmin;
+          color: rgba(255, 255, 255, 0.17);
+          margin-right: 0.463vmin;
+        }
+
+        &-value {
+          font-weight: 500;
+          font-size: 1.296vmin;
+        }
+      }
+
+      &-price {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        gap: 0.463vmin;
+        font-weight: 400;
+        font-size: 1.296vmin;
+        color: rgba(255, 255, 255, 0.17);
+        margin-bottom: 1.759vmin;
+
+        & > span {
+          position: relative;
+          top: 0.093vmin;
+          font-weight: 500;
+          font-size: 1.111vmin;
+          color: #fff;
+        }
+
+        & > img {
+          width: 1.111vmin;
+          height: 1.111vmin;
+        }
+      }
+    }
+
+    &-info-estate {
+      display: flex;
+      flex-direction: column;
+      gap: 1.111vmin;
+      margin-bottom: 1.944vmin;
+
+      &-unit {
+        display: flex;
+        align-items: center;
+        gap: 0.463vmin;
+
+        &-title {
+          font-weight: 400;
+          font-size: 1.296vmin;
+          color: rgba(255, 255, 255, 0.17);
+        }
+
+        &-value {
+          font-weight: 500;
+          font-size: 1.296vmin;
+          line-height: 162%;
+          display: flex;
+          align-items: center;
+
+          & > img {
+            width: 1.111vmin;
+            height: 1.111vmin;
+            margin-left: 0.463vmin;
+          }
+
+          & > span {
+            color: rgba(255, 255, 255, 0.24);
+            margin-left: 0.463vmin;
+          }
+        }
+      }
+    }
+
+    &-description {
+      margin-bottom: 1.574vmin;
+
+      &-title {
+        font-weight: 500;
+        font-size: 1.296vmin;
+        margin-bottom: 0.741vmin;
+      }
+
+      &-text {
+        font-weight: 400;
+        font-size: 1.111vmin;
+        color: rgba(255, 255, 255, 0.16);
+      }
+    }
+
+    &-button {
+      width: 100%;
+      border-radius: 0.185vmin;
+      background: rgba(255, 255, 255, 0.08);
+      font-weight: 700;
+      font-size: 1.204vmin;
+      padding: 1.944vmin;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 0 0.926vmin;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+      &:hover {
+        transform: scale(1.02);
+      }
+
+      &:active {
+        transform: scale(1.05);
+      }
+    }
+
+    &-buttons {
+      display: flex;
+      gap: 1.296vmin;
+    }
+
+    .liked {
+      box-shadow: 0 0 0.37vmin 0.185vmin rgba(70, 122, 255, 0.4);
+
+      .like-button-img {
+        fill: #467aff;
+      }
+    }
+
+    .like-button {
+      width: fit-content;
+      padding: 1.667vmin 3.333vmin;
+      transition:
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+
+      &-img {
+        fill: rgba(255, 255, 255, 0.18);
+        width: 2.037vmin;
+        height: 2.037vmin;
+        transition: fill 0.3s ease;
+      }
+
+      &:hover {
+        .like-button-img {
+          fill: #467aff;
+        }
+      }
+    }
+
+    &-warning {
+      font-weight: 400;
+      font-size: 1.111vmin;
+      color: rgba(255, 255, 255, 0.16);
+    }
+  }
+  .openedTransport {
+    display: flex;
+    gap: 5.926vmin;
+
+    &-preview {
+      width: 52.685vmin;
+
+      &-title {
+        font-weight: 700;
+        font-size: 1.389vmin;
+        color: #fff;
+        margin-bottom: 0.926vmin;
+      }
+
+      &-subtitle {
+        font-weight: 400;
+        font-size: 1.204vmin;
+        color: rgba(255, 255, 255, 0.19);
+        margin-bottom: 1.852vmin;
+      }
+
+      &-img {
+        backdrop-filter: blur(2.88vmin);
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 0.741vmin;
+        margin-bottom: 1.481vmin;
+        padding: 3.704vmin 0;
+        display: flex;
+        justify-content: center;
+        height: 28.241vmin;
+
+        & > img {
+          height: 100%;
+        }
+      }
+
+      &-test {
+        width: fit-content;
+        padding: 1.667vmin 5.833vmin;
+        font-weight: 700;
+        font-size: 1.111vmin;
+        color: #fff;
+        border-radius: 0.185vmin;
+        background: #56b77d;
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+
+        &:hover {
+          box-shadow: 0 0 0.556vmin #56b77d;
+        }
+      }
+    }
+
+    &-info {
+      &-title {
+        font-weight: 700;
+        font-size: 1.389vmin;
+        color: #fff;
+        margin-bottom: 1.019vmin;
+      }
+
+      &-item {
+        width: 28.333vmin;
+
+        &-title {
+          font-weight: 700;
+          font-size: 2.963vmin;
+          color: #fff;
+          margin-bottom: 1.852vmin;
+        }
+
+        &-short {
+          display: flex;
+          align-items: center;
+          gap: 2.037vmin;
+          margin-bottom: 1.574vmin;
+
+          &-unit {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.296vmin;
+            color: #fff;
+
+            & > img {
+              width: 2.222vmin;
+              height: 2.222vmin;
+              margin-right: 0.37vmin;
+            }
+          }
+        }
+
+        &-full {
+          .wrapper {
+            display: flex;
+            gap: 1.2vmin;
+            margin-bottom: 1.574vmin;
+          }
+
+          .price {
+            color: #8eff35;
+            font-weight: 400;
+            font-size: 1.111vmin;
+          }
+
+          &-unit {
+            text-wrap: nowrap;
+            display: flex;
+            align-items: end;
+            font-weight: 400;
+            font-size: 1.296vmin;
+
+            & > span {
+              color: white;
+              margin-left: 0.463vmin;
+              font-weight: 500;
+              color: rgba(255, 255, 255, 0.17);
+            }
+          }
+        }
+
+        &-seller {
+          margin-bottom: 1.574vmin;
+
+          &-title {
+            font-weight: 400;
+            font-size: 1.296vmin;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 0.7vmin;
+          }
+
+          &-value {
+            font-weight: 600;
+            font-size: 1.481vmin;
+            color: #fff;
+
+            & > span {
+              font-weight: 400;
+              color: rgba(255, 255, 255, 0.36);
+            }
+          }
+        }
+
+        &-contact {
+          margin-bottom: 1.574vmin;
+
+          &-title {
+            font-weight: 400;
+            font-size: 1.296vmin;
+            margin-bottom: 0.7vmin;
+            color: rgba(255, 255, 255, 0.55);
+          }
+
+          &-value {
+            font-weight: 600;
+            font-size: 1.481vmin;
+            color: #fff;
+          }
+        }
+
+        &-actions {
+          display: flex;
+          gap: 0.648vmin;
+
+          &-buy {
+            width: 26.759vmin;
+            height: 4.63vmin;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.111vmin;
+            color: #fff;
+            background: #5f9adf;
+            border-radius: 0.185vmin;
+            cursor: pointer;
+            transition:
+              transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.3s ease;
+
+            &:hover {
+              transform: scale(1.02);
+              box-shadow: 0 0 0.556vmin #5f9adf;
+            }
+          }
+
+          &-call {
+            border-radius: 0.185vmin;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 1.204vmin;
+            transition:
+              transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              background 0.3s ease;
+            cursor: pointer;
+
+            & > img {
+              width: 2.222vmin;
+              height: 2.222vmin;
+            }
+
+            &:hover {
+              background: #5f9adf;
+              transform: scale(1.03);
+            }
+          }
+
+          &-message {
+            border-radius: 0.185vmin;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 1.204vmin;
+            transition:
+              transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              background 0.3s ease;
+            cursor: pointer;
+
+            & > img {
+              width: 2.222vmin;
+              height: 2.222vmin;
+            }
+
+            &:hover {
+              background: #5f9adf;
+              transform: scale(1.03);
+            }
+          }
+        }
+
+        .information {
+          width: 32vmin;
+        }
+
+        .specifications {
+          margin-top: 1.574vmin;
+          display: flex;
+          gap: 1.481vmin;
+          width: 24.074vmin;
+
+          &-unit {
+            width: 12.037vmin;
+            padding: 1.111vmin;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 0.185vmin;
+            &-title {
+              text-wrap: nowrap;
+              margin-bottom: 1.019vmin;
+              font-weight: 700;
+              font-size: 1.111vmin;
+              color: #fff;
+            }
+
+            &-wrapper {
+              display: flex;
+              align-items: center;
+              font-weight: 700;
+              font-size: 1.111vmin;
+              color: #fff;
+
+              & > img {
+                margin-right: 0.556vmin;
+                width: 1.389vmin;
+                height: 1.389vmin;
+              }
+            }
+
+            &-value {
+              font-weight: 700;
+              font-size: 1.111vmin;
+              color: #5f9adf;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-wrapper {
+    display: flex;
+  }
+
+  * {
+    font-family: 'PF DinDisplay Pro';
+  }
+}
+.test {
+  width: 100%;
+  height: 100%;
+  background: red;
+}
+
+//different types
+.estate {
+  &:first-child {
+    margin-right: 4.63vmin;
+  }
+  width: 34.907vmin;
+
+  .openedItem-item {
+    &-header {
+      & > img {
+        width: 100%;
+        border-radius: 0.278vmin;
+      }
+
+      margin-bottom: 1.204vmin;
+      height: 20.185vmin;
+    }
+
+    &-title {
+      margin-bottom: 0.741vmin;
+    }
+  }
+
+  .openedItem-offers-list {
+    &-units {
+      &-unit {
+        &:nth-child(4) {
+          padding: 0 2.315vmin;
+          margin-right: 1.852vmin;
+        }
+      }
+    }
+  }
+}
+
+.items {
+  &:first-child {
+    margin-right: 2.963vmin;
+  }
+
+  width: 36.852vmin;
+
+  .openedItem-item {
+    &-header {
+      border-radius: 0.741vmin 0.741vmin 0 0;
+      background: rgba(255, 255, 255, 0.02);
+      margin-bottom: 1.944vmin;
+    }
+
+    &-title {
+      margin-bottom: 1.204vmin;
+    }
+  }
+
+  .openedItem-offers-list {
+    &-units {
+      &-unit {
+        &:nth-child(7) {
+          padding: 0vmin 3.102vmin;
+          margin-right: 1.852vmin;
+          margin-left: 1.852vmin;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@import '@/views/MarketPlace/Assets/Styles/Variables.scss';
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+
+  &-sections-list {
+    padding: 1.667vmin;
+    border-radius: 0.556vmin;
+    backdrop-filter: blur(3.056vmin);
+    background: rgba(255, 255, 255, 0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vmin;
+  }
+
+  .personal {
+    padding: 4.259vmin 3.519vmin 2.593vmin;
+  }
+
+  &-exit {
+    margin-top: 3vmin;
+    font-weight: 500;
+    font-size: 1.296vmin;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.741vmin 1.759vmin;
+    background: rgba(255, 27, 54, 0.05);
+    border-radius: 0.556vmin;
+    cursor: pointer;
+    transition:
+      background 0.3s ease,
+      transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      box-shadow 0.3s ease;
+
+    & > img {
+      width: 1.481vmin;
+      height: 1.481vmin;
+      margin-right: 1.852vmin;
+    }
+    &:hover {
+      background: rgba(255, 27, 54, 0.2);
+      transform: scale(1.08);
+      box-shadow: 0 0 0.926vmin rgba(255, 27, 54, 0.3);
+    }
+  }
+
+  * {
+    font-family: 'PF DinDisplay Pro';
+  }
+}

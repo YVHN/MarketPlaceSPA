@@ -1,0 +1,212 @@
+@import '@/views/MarketPlace/Assets/Styles/Variables.scss';
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1.389vmin;
+
+  &-title {
+    font-weight: 700;
+    font-size: 1.667vmin;
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  &-return-button {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 1.481vmin;
+    color: rgba(255, 255, 255, 0.28);
+    cursor: pointer;
+    transition:
+      transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      color 0.3s ease;
+
+    &-img {
+      margin-right: 1.389vmin;
+      width: 1.481vmin;
+      height: 1.481vmin;
+      transition: fill-opacity 0.3s ease;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      color: #fff;
+
+      .header-return-button-img {
+        fill-opacity: 1;
+      }
+    }
+  }
+
+  &-sort {
+    display: flex;
+    align-items: center;
+    gap: 1.481vmin;
+
+    .active-select {
+      &>img {
+        transform: rotate(180deg);
+      }
+
+      .header-sort-select-body {
+        max-height: fit-content;
+        opacity: 1;
+      }
+    }
+
+    .picked {
+      font-weight: 600;
+      color: white;
+    }
+
+    &-select {
+      width: 17.315vmin;
+      position: relative;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 0.278vmin;
+      padding: 1.204vmin 1.296vmin;
+      font-weight: 600;
+      font-size: 1.296vmin;
+      justify-content: space-between;
+
+      &>img {
+        width: 0.926vmin;
+        height: 0.926vmin;
+        transition: transform 0.3s ease;
+      }
+
+      &-body {
+        backdrop-filter: blur(2.037vmin);
+        background: rgba(0, 0, 0, 0.07);
+        border-radius: 0.463vmin;
+        width: 90%;
+        height: fit-content;
+        top: 4.2vmin;
+        left: 0;
+        position: absolute;
+        z-index: 200;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.3s ease,
+          opacity 0.3s ease;
+
+        &-list {
+          display: flex;
+          padding: 0.833vmin 0;
+          flex-direction: column;
+          align-items: center;
+
+          .item-reset {
+            font-weight: 600;
+            color: #5f9adf;
+          }
+
+          &-item {
+            width: 100%;
+            text-align: center;
+            font-weight: 400;
+            font-size: 1.111vmin;
+            color: rgba(255, 255, 255, 0.24);
+            transition:
+              color 0.3s ease,
+              transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 0.37vmin;
+
+            &:hover {
+              transform: scale(1.02);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+
+    &-create-button {
+      background: $main-color1;
+      border-radius: 0.185vmin;
+      padding: 0.926vmin 2.222vmin;
+      font-family: 'IBM Plex Mono';
+      font-weight: 700;
+      font-size: 0.926vmin;
+      color: #fff;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &-money {
+      color: white;
+      display: flex;
+
+      align-items: center;
+      margin: 0 1.111vmin 0 1.667vmin;
+
+      &-cash {
+        margin-right: 1.111vmin;
+        display: flex;
+        align-items: center;
+        font-size: 1.111vmin;
+
+        &>img {
+          width: 1.111vmin;
+          height: 1.111vmin;
+          margin-left: 0.37vmin;
+        }
+
+        &>span {
+          margin-left: 0.37vmin;
+          color: rgba(255, 255, 255, 0.24);
+        }
+      }
+
+      &-bank {
+        display: flex;
+        align-items: center;
+        font-size: 1.111vmin;
+
+        &>img {
+          width: 1.111vmin;
+          height: 1.111vmin;
+          margin-left: 0.37vmin;
+        }
+
+        &>span {
+          margin-left: 0.37vmin;
+          color: rgba(255, 255, 255, 0.24);
+        }
+      }
+    }
+
+    &-user {
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      font-size: 1.296vmin;
+
+      &-avatar {
+        margin-left: 0.648vmin;
+        width: 3.704vmin;
+        height: 3.704vmin;
+      }
+    }
+  }
+
+  * {
+    font-family: 'PF DinDisplay Pro';
+  }
+}

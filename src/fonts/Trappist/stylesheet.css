@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Trappist';
+    src: url('Trappist-Regular.eot');
+    src: local('Trappist Regular'), local('Trappist-Regular'),
+        url('Trappist-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Trappist-Regular.woff2') format('woff2'),
+        url('Trappist-Regular.woff') format('woff'),
+        url('Trappist-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+

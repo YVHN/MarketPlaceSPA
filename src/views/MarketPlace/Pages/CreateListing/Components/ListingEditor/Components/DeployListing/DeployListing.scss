@@ -1,0 +1,207 @@
+.deployListing {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.51);
+
+  &-body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-bottom: 1.111vmin;
+    transform: translate(-50%, -50%);
+    width: 48.426vmin;
+    height: fit-content;
+    padding: 3.796vmin 4.722vmin;
+    border-radius: 1.481vmin;
+    background: #101114;
+
+    &-title {
+      width: 100%;
+      font-weight: 700;
+      font-size: 1.852vmin;
+      text-align: center;
+      color: #fff;
+      margin-bottom: 1.111vmin;
+      line-height: 152%;
+
+      & > span {
+        color: #5fd8df;
+      }
+    }
+
+    &-warning {
+      width: 100%;
+      font-weight: 500;
+      font-size: 1.296vmin;
+      margin-bottom: 1.667vmin;
+      line-height: 165%;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    &-hours {
+      display: flex;
+      gap: 1.111vmin;
+
+      & > img {
+        width: 3.704vmin;
+        height: 3.704vmin;
+      }
+
+      &-content {
+        width: 28.148vmin;
+
+        &-values {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 0.741vmin;
+
+          &-value {
+            &-title {
+              margin-bottom: 0.37vmin;
+              font-weight: 400;
+              font-size: 1.296vmin;
+              color: rgba(255, 255, 255, 0.55);
+            }
+
+            &-hours {
+              font-weight: 600;
+              font-size: 1.481vmin;
+              color: #fff;
+            }
+          }
+        }
+
+        &-progress {
+          position: relative;
+          width: 100%;
+          height: 0.37vmin;
+          border-radius: 2.407vmin;
+          display: flex;
+          align-items: center;
+          background: rgba(255, 255, 255, 0.08);
+
+          &-fill {
+            height: 100%;
+            background: #5f9adf;
+            border-top-left-radius: 2.407vmin;
+            border-bottom-left-radius: 2.407vmin;
+          }
+
+          &-handle {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #d9d9d9;
+            width: 0.926vmin;
+            height: 0.926vmin;
+            border: 0.093vmin solid #9c9c9c;
+            border-radius: 50%;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    &-price {
+      margin-top: 1.852vmin;
+      display: flex;
+      gap: 1.111vmin;
+
+      & > img {
+        width: 3.611vmin;
+        height: 3.611vmin;
+      }
+
+      &-content {
+        &-title {
+          font-weight: 400;
+          font-size: 1.296vmin;
+          color: rgba(255, 255, 255, 0.55);
+          margin-bottom: 0.463vmin;
+        }
+
+        &-value {
+          font-weight: 600;
+          font-size: 1.481vmin;
+          color: #0f6;
+        }
+      }
+    }
+
+    &-payMethod {
+      display: flex;
+      gap: 1.111vmin;
+      width: 100%;
+      margin-top: 3.056vmin;
+      margin-bottom: 1.111vmin;
+
+      &-method {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 5.926vmin;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 0.278vmin;
+        font-weight: 600;
+        font-size: 1.296vmin;
+        text-align: center;
+        color: #fff;
+        width: 100%;
+        cursor: pointer;
+        transition:
+          transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+          background 0.3s ease;
+        background: #5bc558;
+
+        &:hover {
+          transform: scale(1.02);
+          box-shadow: 0 0 2.407vmin 0 rgba(91, 197, 88, 0.13);
+        }
+
+        &:active {
+          transform: scale(1.04);
+        }
+      }
+    }
+
+    &-cancel {
+      width: 100%;
+      padding: 2.13vmin;
+      font-weight: 600;
+      font-size: 1.296vmin;
+      text-align: center;
+      color: #fff;
+      transition: tranform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 0.278vmin;
+      transition:
+        transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        box-shadow 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.01);
+        box-shadow: 0vmin 0vmin 0.556vmin 0.185vmin rgba(255, 0, 0, 0.5);
+      }
+
+      &:active {
+        transform: scale(1.02);
+      }
+    }
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}

@@ -1,0 +1,128 @@
+.makeBet {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.51);
+
+  &-body {
+    background: #101114;
+    border-radius: 1.481vmin;
+    padding: 3.796vmin 5.37vmin;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .wrong {
+      box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.479);
+      &::placeholder {
+        color: red;
+      }
+    }
+
+    &-title {
+      font-weight: 700;
+      font-size: 1.852vmin;
+      color: #fff;
+      margin-bottom: 1.759vmin;
+      text-align: center;
+    }
+
+    &-bets {
+      display: grid;
+      grid-gap: 0.833vmin;
+      grid-template-columns: repeat(2, 18.519vmin);
+      grid-template-rows: repeat(3, 4.63vmin);
+
+      .active {
+        background: #5fd8df;
+        box-shadow: 0 0 0.556vmin 0.093vmin rgba(95, 216, 223, 0.3);
+
+        & > span {
+          color: white;
+        }
+      }
+
+      &-bet {
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.04);
+        font-weight: 400;
+        font-size: 1.296vmin;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.185vmin;
+        transition:
+          transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+          background 0.3s ease;
+
+        &:hover {
+          transform: scale(1.01);
+          background: #5fd8df;
+          & > span {
+            color: white;
+          }
+        }
+
+        & > span {
+          color: rgba(255, 255, 255, 0.12);
+          margin-left: 0.463vmin;
+        }
+      }
+    }
+
+    &-my-bet {
+      margin-top: 1.296vmin;
+
+      &-title {
+        font-weight: 700;
+        font-size: 1.389vmin;
+        margin-bottom: 1.019vmin;
+      }
+
+      &-input {
+        transition:
+          color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+    }
+
+    &-make {
+      margin-top: 2.037vmin;
+      font-weight: 600;
+      font-size: 1.296vmin;
+      border-radius: 0.278vmin;
+      box-shadow:
+        0 0 2.407vmin 0 rgba(91, 197, 88, 0.13),
+        inset 0 0 2.407vmin 0 rgba(91, 197, 88, 0.44);
+      background: #5bc558;
+      text-align: center;
+      padding: 2.13vmin 0;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+
+    &-cancel {
+      margin-top: 1.111vmin;
+      padding: 2.13vmin 0;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 0.278vmin;
+      font-weight: 600;
+      font-size: 1.296vmin;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+  }
+}

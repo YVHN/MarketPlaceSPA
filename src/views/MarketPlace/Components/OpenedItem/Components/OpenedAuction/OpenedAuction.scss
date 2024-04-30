@@ -1,0 +1,177 @@
+.auction {
+  display: flex;
+  flex-direction: column;
+  gap: 4.63vmin;
+
+  .wrapper {
+    display: flex;
+    gap: 4.907vmin;
+  }
+
+  &-item {
+    width: 50vmin;
+
+    .wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &-img {
+      width: 100%;
+      height: 20.37vmin;
+      margin-bottom: 1.204vmin;
+      position: relative;
+
+      & > img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    &-title {
+      font-weight: 700;
+      font-size: 1.574vmin;
+      color: #fff;
+    }
+
+    &-likesviews {
+      display: flex;
+      gap: 0.926vmin;
+
+      &-unit {
+        font-weight: 400;
+        font-size: 1.296vmin;
+        display: flex;
+        align-items: center;
+
+        &-img {
+          width: 1.111vmin;
+          height: 1.111vmin;
+          margin-left: 0.463vmin;
+        }
+      }
+    }
+
+    &-info {
+      margin: 0.741vmin 0 2.037vmin 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.111vmin;
+
+      &-unit {
+        display: flex;
+        align-items: center;
+        gap: 0.463vmin;
+
+        &-title {
+          font-weight: 400;
+          font-size: 1.296vmin;
+          color: rgba(255, 255, 255, 0.17);
+        }
+
+        &-value {
+          font-weight: 500;
+          font-size: 1.296vmin;
+          color: #fff;
+          position: relative;
+          top: 0.139vmin;
+        }
+      }
+    }
+
+    &-button {
+      width: 100%;
+      border-radius: 0.185vmin;
+      background: rgba(255, 255, 255, 0.08);
+      font-weight: 700;
+      font-size: 1.204vmin;
+      padding: 1.944vmin;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition:
+        transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        background 0.3s ease;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+
+      &:active {
+        transform: scale(1.05);
+      }
+    }
+
+    &-buttons {
+      display: flex;
+      gap: 1.296vmin;
+    }
+
+    .bet-button {
+      &:hover {
+        background: #5f9adf;
+      }
+    }
+
+    .liked {
+      box-shadow: 0 0 0.37vmin 0.185vmin rgba(70, 122, 255, 0.4);
+
+      .like-button-img {
+        fill: #467aff;
+      }
+    }
+
+    .like-button {
+      width: fit-content;
+      padding: 1.667vmin 3.333vmin;
+      transition:
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+
+      &-img {
+        fill: rgba(255, 255, 255, 0.18);
+        width: 2.037vmin;
+        height: 2.037vmin;
+        transition: fill 0.3s ease;
+      }
+
+      &:hover {
+        .like-button-img {
+          fill: #467aff;
+        }
+      }
+    }
+
+    &-description {
+      margin-bottom: 1.574vmin;
+
+      &-title {
+        font-weight: 500;
+        font-size: 1.296vmin;
+        color: #fff;
+        margin-bottom: 0.741vmin;
+      }
+
+      &-content {
+        font-weight: 400;
+        font-size: 1.111vmin;
+        color: rgba(255, 255, 255, 0.16);
+      }
+    }
+  }
+  &-graph {
+    height: 100%;
+    padding: 1.852vmin 0 2.315vmin;
+
+    &-title {
+      font-weight: 700;
+      font-size: 1.667vmin;
+      padding: 0 1.852vmin;
+    }
+
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 0.741vmin;
+  }
+}
