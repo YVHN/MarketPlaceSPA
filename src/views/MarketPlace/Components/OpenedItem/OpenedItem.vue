@@ -57,6 +57,46 @@ export default {
         this.itemData.id,
       );
     },
+    handleItemClick(item) {
+      // events.callServer(
+      //   'MarketPlace:Item:GetItemFullData:Server',
+      //   item.id,
+      //   item.category,
+      // );
+      // На сервере
+      let result;
+      // Если айтем на складе, ничего не делать
+      if (this.checkPath('storage')) return '';
+      // Если айтем предлагается для создания обьявления
+      if (this.checkPath('create-listing')) {
+        if (item.type === 'item') {
+          this.shortItemData = item;
+          this.isAddLot = true;
+        }
+        if (item?.action === 'empty') {
+          this.fullItemData = {};
+          this.$store.dispatch('toggleStatus', 'createListing');
+        } else if (item?.action === 'sortTransport') {
+          this.$emit('sort', 'transport');
+        } else {
+          result = this.$store.getters.getItemFullData(item.id, 'items');
+          if (result) {
+            this.fullItemData = result;
+            console.log(result);
+            this.$store.dispatch('toggleStatus', 'createListing');
+          }
+        }
+      } else if (this.checkPath('trading')) {
+        result = this.$store.getters.getItemFullData(
+          item.id,
+          this.typeIdentify(item),
+        );
+        if (result) {
+          this.fullItemData = result;
+          this.$store.dispatch('toggleStatus', 'pickedItem');
+        }
+      }
+    },
     typeIdentify(pickedItem) {
       if (pickedItem?.competitors !== undefined) return 'auction';
       if (pickedItem?.available !== undefined) return 'exchange';

@@ -15,11 +15,8 @@
               {{ $store.getters.getLanguageText('Стандартная обложка') }}
             </div>
             <div class="listingEditor-cover-images-item-img">
-              <img
-                v-if="getItem.sellData?.img"
-                :class="getItem.sellData?.type"
-                :src="require(`@/views/MarketPlace/Assets/Images/Items/${getItem.sellData.img}.png`)"
-              />
+              <img v-if="getItem.sellData?.img" :class="getItem.sellData?.type"
+                :src="require(`@/views/MarketPlace/Assets/Images/Items/${getItem.sellData.img}.png`)" />
             </div>
           </div>
           <div class="listingEditor-cover-images-custom">
@@ -57,13 +54,8 @@
         <div class="listingEditor-article-title">
           {{ $store.getters.getLanguageText('Заголовок объявления') }}
         </div>
-        <input
-          class="listingEditor-article-input input"
-          type="text"
-          placeholder="Введите заголовок"
-          :class="{ empty: !titleInput }"
-          v-model="titleInput"
-        />
+        <input class="listingEditor-article-input input" type="text" placeholder="Введите заголовок"
+          :class="{ empty: !titleInput }" v-model="titleInput" />
       </div>
       <div class="listingEditor-description">
         <div class="listingEditor-description-title">
@@ -73,24 +65,16 @@
             )
           }}
         </div>
-        <textarea
-          class="listingEditor-description-text input"
-          :class="{ empty: !descriptionInput }"
-          :placeholder="$store.getters.getLanguageText('Введите комментарий')"
-          v-model="descriptionInput"
-        ></textarea>
+        <textarea class="listingEditor-description-text input" :class="{ empty: !descriptionInput }"
+          :placeholder="$store.getters.getLanguageText('Введите комментарий')" v-model="descriptionInput"></textarea>
       </div>
       <div class="listingEditor-deploy">
         <div class="listingEditor-deploy-title">
           {{ $store.getters.getLanguageText(getPriceTitle) }}
         </div>
         <div class="listingEditor-deploy-wrapper">
-          <CustomInput
-            :placeholder="$store.getters.getLanguageText('Введите сумму')"
-            class="input"
-            :class="{ empty: !salePrice }"
-            @setValue="setPrice"
-          />
+          <CustomInput :placeholder="$store.getters.getLanguageText('Введите сумму')" class="input"
+            :class="{ empty: !salePrice }" @setValue="setPrice" />
           <div class="listingEditor-deploy-button" @click="toggleDeployStatus">
             {{
               $store.getters.getLanguageText(
@@ -99,10 +83,7 @@
             }}
           </div>
         </div>
-        <div
-          class="listingEditor-deploy-minPrice"
-          v-if="this.$route.path.includes(getItem.sellData?.type)"
-        >
+        <div class="listingEditor-deploy-minPrice" v-if="this.$route.path.includes(getItem.sellData?.type)">
           {{
             `${$store.getters.getLanguageText(
               'Минимальная стоимость по рынку:',
@@ -119,15 +100,8 @@
               {{ $store.getters.getTitle(getItem.sellData) }}
             </div>
             <div class="info-item-short">
-              <div
-                class="info-item-short-unit"
-                v-for="(unit, index) in getShortData"
-                :key="index"
-              >
-                <component
-                  class="info-item-short-unit-img"
-                  :is="unit.img"
-                ></component>
+              <div class="info-item-short-unit" v-for="(unit, index) in getShortData" :key="index">
+                <component class="info-item-short-unit-img" :is="unit.img"></component>
                 {{ `${formatNumber(unit.value)}` }}
               </div>
             </div>
@@ -140,35 +114,22 @@
                 {{ $store.getters.getLanguageText('Гос. цена:') }}
                 <span class="price">{{
                   `${formatNumber(getItem.sellData.statePrice)} $`
-                }}</span>
+                  }}</span>
               </div>
-              <div
-                class="info-item-full-unit"
-                v-for="(unit, index) in getFullData"
-                :key="index"
-              >
+              <div class="info-item-full-unit" v-for="(unit, index) in getFullData" :key="index">
                 {{ `${$store.getters.getLanguageText(unit.title)}:`
                 }}<span>{{ $store.getters.getLanguageText(unit.value) }}</span>
               </div>
             </div>
           </div>
-          <Specifications
-            v-if="getItem.sellData?.specifications"
-            :specifications="getItem.sellData.specifications"
-          />
+          <Specifications v-if="getItem.sellData?.specifications" :specifications="getItem.sellData.specifications" />
         </div>
       </div>
     </div>
-    <DeployListing
-      @toggleDeployStatus="toggleDeployStatus"
-      @deploy="deploy"
-      class="listingEditor-deployListing"
-      :price="salePrice"
-      v-if="isDeploy"
-    />
+    <DeployListing @toggleDeployStatus="toggleDeployStatus" @deploy="deploy" class="listingEditor-deployListing"
+      :price="salePrice" v-if="isDeploy" />
   </div>
 </template>
-
 <script>
 import imageIcon from '@/views/MarketPlace/Assets/Icons/Listing/image.vue';
 import DeployListing from './Components/DeployListing/DeployListing.vue';
@@ -322,7 +283,7 @@ export default {
     },
     getFullData() {
       const item = this.getItem.sellData?.type;
-      if(!item) return [];
+      if (!item) return [];
       let list;
       if (item.type === 'estate') {
         list = [

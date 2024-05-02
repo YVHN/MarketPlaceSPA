@@ -153,7 +153,7 @@ export default {
         this.$router.push('/market-place/create-listing/all');
         events.callServer(
           'MarketPlace:List:GetListData:Server',
-          'create-listing',
+          'createListing',
           1
         );
       }

@@ -3,7 +3,7 @@
     <!-- Список предметов -->
     <div class="itemsList-list-wrapper">
       <div class="itemsList-list" v-if="listData.length">
-        <Item v-for="item in listData" @unloadItem="unloadItem" @click.native="handleItemClick(item)" :item="item" @test="test"
+        <Item v-for="item in listData" @click.native="handleItemClick(item)" @unloadItem="unloadItem" :item="item"
           :key="item.id" />
         <AddLot :data="shortItemData" v-if="isAddLot" @toggleIsAddStatus="toggleIsAddStatus" />
       </div>
@@ -70,16 +70,12 @@ export default {
     events.add('MarketPlace:Item:SetFullData:Cef', (json) => {
       const parsedJson = JSON.parse(json);
       if (!parsedJson) return null;
-
       this.$router.push(`/market-place/trading/${this.$route.params.filter}/opened`);
       console.log('айтем пришёл');
       this.$store.commit('pickItem', parsedJson);
     });
   },
   methods: {
-    test() {
-      console.log('хуй');
-    },
     goToPage(page) {
       this.currentPage = page;
       events.callServer(
@@ -99,7 +95,7 @@ export default {
           this.toggleIsAddStatus();
         } else if (item.sellData?.filter && item.status === 'available') {
           if (item.sellData.filter === 'none') {
-            this.$store.commit('pickItem', {sellData: {}});
+            this.$store.commit('pickItem', { sellData: {} });
             this.$router.push('/market-place/create-listing/none/empty');
           } else if (item.sellData.filter === 'transportRent') {
             this.$router.push('/market-place/create-listing/transport-rent');
@@ -107,7 +103,7 @@ export default {
             this.$router.push('/market-place/create-listing/auction');
           }
         } else if (this.checkPath('create-listing')) {
-          if (this.$route.params.filter !== 'all') {
+          if (this.$route.params.filter) {
             this.$router.push(`/market-place/create-listing/${this.$route.params.filter}/create`);
           } else {
             this.$router.push(

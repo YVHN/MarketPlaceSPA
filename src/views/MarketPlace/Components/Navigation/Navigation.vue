@@ -15,7 +15,7 @@
         :data="section"
         :section="'personal'"
       />
-      <div class="aside-exit">
+      <div class="aside-exit" @click="onClose">
         <img class="section-img" src="@/views/MarketPlace/Assets/Icons/exit.svg" />
         {{ $store.getters.getLanguageText('Выйти') }}
       </div>
@@ -94,6 +94,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    onClose() {
+      mp.trigger("MarketPlace:Close:Client");
+    },
   },
   components: {
     NavigateButton,

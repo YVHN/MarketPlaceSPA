@@ -252,12 +252,12 @@ export default {
     },
   },
   methods: {
-    test() {
-      this.$emit('test')
-    },
     formatNumber(num) {
       if (typeof num === undefined && !num) return '';
       return num.toLocaleString('ru-RU');
+    },
+    handleItemClick() {
+      this.$emit('handleItemClick', this.item);
     },
     unloadItem() {
       this.$emit('unloadItem', this.item.id);
