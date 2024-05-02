@@ -75,7 +75,7 @@
       v-if="isMakeBet"
       :lotId="lotData.id"
       :title="$store.getters.getTitle(sellItem)"
-      :startPrice="lotData.auctionData.startPrice"
+      :startPrice="lotData.auctionData.lastBet"
       @toggleMakeBetStatus="toggleStatus"
     />
   </div>
@@ -124,7 +124,7 @@ export default {
         },
         {
           title: 'Последняя ставка',
-          value: this.formatNumber(this.lotData.auctionData.startPrice),
+          value: this.formatNumber(this.lotData.auctionData.lastBet),
         },
       ];
       if (item.type === 'estate') {
@@ -168,6 +168,7 @@ export default {
   },
   methods: {
     formatNumber(num) {
+      if(typeof num === undefined) return '';
       return `$${num.toLocaleString('ru-RU')}`;
     },
     toLike() {

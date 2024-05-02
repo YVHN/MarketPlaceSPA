@@ -87,6 +87,8 @@ export default {
     handleItemClick(item) {
       if (this.checkPath('trading')) {
         events.callServer('MarketPlace:Item:GetFullData:Server', item.id);
+        this.$store.commit('auctionTest', item.id);
+        this.$router.push(`/market-place/trading/${this.$route.params.filter}/opened`);
       } else if (this.checkPath('storage')) {
         return '';
       } else if (this.checkPath('create-listing')) {
@@ -113,6 +115,7 @@ export default {
           this.$store.commit('pickItem', item);
         } else {
           events.callServer('MarketPlace:Item:GetFullData:Server', item.id);
+          
         }
       }
     },
