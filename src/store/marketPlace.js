@@ -4,7 +4,7 @@ import Vue from 'vue'
 const marketPlace = {
 	state: {
 		currentLanguage: 'eng',
-		pagesInSection: 7,
+		pagesInSection: 1,
 		marketPlaceData: {
 			auction: [
 				{
@@ -554,13 +554,6 @@ const marketPlace = {
 		pickItem(state, item) {
 			console.log(item);
 			state.pickedItem = item;
-		},
-		auctionTest(state, itemId) {
-			console.log('аукцион');
-			const item = state.itemsData.auction.find(item => item.id === itemId);
-			if (item) {
-				state.pickedItem = item;
-			};
 		},
 		deleteItemFromStorage(state, id) {
 			const filtered = state.marketPlaceData.storage.filter(

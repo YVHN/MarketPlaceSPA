@@ -172,11 +172,11 @@ export default {
       events.remove('MarketPlace:CreateListing:PublishAccept:Cef');
     });
     events.add('MarketPlace:CreateListing:PublishAccept:Cef', () => {
+      events.callServer('MarketPlace:List:GetListData:Server','createListing',1);
       this.toggleDeployStatus();
       this.$store.dispatch('resetPickedItem');
       this.$router.push('/market-place/create-listing/all');
     });
-    console.log(this.getItem);
   },
   methods: {
     toggleDeployStatus() {
