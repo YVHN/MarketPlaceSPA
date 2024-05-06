@@ -597,10 +597,10 @@ events.add('MarketPlace:List:SetListData:Cef', (json) => {
 	console.log(parsedJson.data);
 	marketPlace.state.pagesInSection = Math.ceil(parsedJson.totalCount / 15);
 });
-// if (global?.mp) {
-// 	for (const key in marketPlace.state.marketPlaceData) {
-// 		marketPlace.state.marketPlaceData[key] = [];
-// 	}
-// }
+if (global?.mp) {
+	for (const key in marketPlace.state.marketPlaceData) {
+		marketPlace.state.marketPlaceData[key] = [];
+	}
+}
 
 export default marketPlace;

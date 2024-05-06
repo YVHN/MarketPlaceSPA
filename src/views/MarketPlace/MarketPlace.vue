@@ -28,14 +28,6 @@ import HeaderBlock from './Components/HeaderBlock/HeaderBlock.vue';
 import Navigation from './Components/Navigation/Navigation.vue';
 
 export default {
-  beforeRouteEnter(to, from, next) {
-    setTimeout(events.callServer('MarketPlace:GetListData:Server', to.params.filter, 1), 100);
-    next(vm => {
-      if(vm.$route.params.filter !== 'auction') {
-        vm.$router.push('/market-place/trading/auction');
-      }
-    });
-  },
   components: {
     Navigation,
     HeaderBlock,
