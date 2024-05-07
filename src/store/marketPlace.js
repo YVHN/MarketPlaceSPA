@@ -5,6 +5,7 @@ const marketPlace = {
 	state: {
 		currentLanguage: 'eng',
 		pagesInSection: 1,
+		listData: [],
 		marketPlaceData: {
 			auction: [
 				{
@@ -522,8 +523,8 @@ const marketPlace = {
 			};
 		},
 		// Возвращает список предметов в данной секции
-		getList: (state) => (section) => {
-			const list = state.marketPlaceData[section];
+		getList(state) {
+			const list = state.listData;
 			if (!list) return [];
 			return list;
 		},
@@ -569,6 +570,10 @@ const marketPlace = {
 		},
 		appendOfferBet(state, offer) {
 			state.pickedItem.auctionData.offers.push(offer);
+		},
+		resetListData(state) {
+			console.log('список очищен');
+			state.listData = [];
 		}
 	},
 	actions: {
@@ -596,7 +601,7 @@ const marketPlace = {
 // Получение списка и перезаписывание
 events.add('MarketPlace:List:SetListData:Cef', (json) => {
 	const parsedJson = JSON.parse(json);
-	marketPlace.state.marketPlaceData[parsedJson.section] = parsedJson.data;
+	marketPlace.state.listData = parsedJson.data;
 	console.log(parsedJson.data);
 	marketPlace.state.pagesInSection = Math.ceil(parsedJson.totalCount / 15);
 });

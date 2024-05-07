@@ -62,6 +62,7 @@ export default {
     pickSection() {
       if (!this.$route.path.includes(this.$props.data.path)) {
         this.$router.push(`/market-place/${this.$props.section}/${this.$props.data.path}`);
+        this.$store.commit('resetListData');
         setTimeout(() => {
           events.callServer(
             'MarketPlace:List:GetListData:Server',

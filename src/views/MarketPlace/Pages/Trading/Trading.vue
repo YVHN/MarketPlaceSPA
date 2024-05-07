@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     getList() {
-      return this.$store.getters.getList(this.$route.params.filter);
+      return this.$store.getters.getList;
     },
     getPickedItem() {
       return this.$store.getters.getPickedItem;
