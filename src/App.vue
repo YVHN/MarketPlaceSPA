@@ -3,8 +3,7 @@
 		<!-- <CustomAnimationMenu :activeCustomMenuAnimation="activeCustomMenuAnimation" />
 		<InventoryEvents /> -->
 		<div>
-			<router-view :key="$route.fullPath">
-			</router-view>
+			<router-view></router-view>
 			<!-- <CircleMenu />
 			<Hud :isOpenedHintsMenu="isOpenedHintsMenu" />
 			<Report />

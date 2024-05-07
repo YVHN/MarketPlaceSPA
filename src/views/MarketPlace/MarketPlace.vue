@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import events from '@/modules/events';
 import HeaderBlock from './Components/HeaderBlock/HeaderBlock.vue';
 import Navigation from './Components/Navigation/Navigation.vue';
 

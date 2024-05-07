@@ -89,7 +89,18 @@ import ListBlock from '../ListBlock/ListBlock.vue';
 import FavoriteIndicator from '@/views//MarketPlace/Components/ItemComponents/FavoriteIndicator/FavoriteIndicator.vue';
 import MakeBet from './Components/MakeBet/MakeBet.vue';
 import Graph from '../Graph/Graph.vue';
+import { onUnmounted } from 'vue';
 export default {
+  mounted() {
+    events.add('Marketplace:Auction:AppendOffer:Cef', (id, json) => {
+      if(lotData.id === id) {
+        this.$store.commit('AppendOfferBet', JSON.parse(json));
+      }
+    });
+    onUnmounted(() => {
+      events.remove('Marketplace:Auction:AppendOffer:Cef');
+    });
+  },
   components: {
     likes,
     ListBlock,

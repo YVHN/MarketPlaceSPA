@@ -567,6 +567,9 @@ const marketPlace = {
 			);
 			state.marketPlaceData[section] = filtered;
 		},
+		appendOfferBet(state, offer) {
+			state.pickedItem.auctionData.offers.push(offer);
+		}
 	},
 	actions: {
 		// На сервере
