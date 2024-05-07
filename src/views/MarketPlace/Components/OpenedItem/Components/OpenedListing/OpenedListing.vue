@@ -55,7 +55,7 @@
             <div class="header-info">
               <div
                 class="info-item-full-unit"
-                v-if="getItem.sellData?.statePrice !== undefined"
+                v-if="getItem.sellData?.statePrice"
               >
                 {{ $store.getters.getLanguageText('Гос. цена:') }}
                 <span class="price">{{
