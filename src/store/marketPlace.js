@@ -611,5 +611,10 @@ if (global?.mp) {
 		marketPlace.state.marketPlaceData[key] = [];
 	}
 }
+(function() {
+	marketPlace.state.listData = [];
+	marketPlace.state.pickedItem = null;
+	marketPlace.state.pagesInSection = 1;
+  })();
 
 export default marketPlace;
