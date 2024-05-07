@@ -96,8 +96,8 @@ export default {
       events.remove('Marketplace:Auction:AppendOffer:Cef');
     });
     events.add('Marketplace:Auction:AppendOffer:Cef', (id, json) => {
-      if(lotData.id === id) {
-        this.$store.commit('AppendOfferBet', JSON.parse(json));
+      if(this.lotData.id === id) {
+        this.$store.commit('appendOfferBet', JSON.parse(json));
       }
     });
   },

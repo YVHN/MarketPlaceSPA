@@ -569,6 +569,7 @@ const marketPlace = {
 			state.marketPlaceData[section] = filtered;
 		},
 		appendOfferBet(state, offer) {
+			console.log('ставка добавлена');
 			state.pickedItem.auctionData.offers.push(offer);
 		},
 		resetListData(state) {
