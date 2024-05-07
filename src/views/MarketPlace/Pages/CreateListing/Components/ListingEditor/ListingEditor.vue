@@ -110,7 +110,7 @@
                 {{ $store.getters.getLanguageText('Тип имущества:') }}
                 <span>{{ $store.getters.getType(getItem.sellData) }}</span>
               </div>
-              <div class="info-item-full-unit">
+              <div class="info-item-full-unit" v-if="getItem.sellData?.statePrice">
                 {{ $store.getters.getLanguageText('Гос. цена:') }}
                 <span class="price">{{
                   `${formatNumber(getItem.sellData.statePrice)} $`
