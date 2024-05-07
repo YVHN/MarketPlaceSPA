@@ -72,7 +72,7 @@ export default {
       if (path.includes('listings')) return 'Мои обьявления';
       if (path.includes('history')) return 'История покупок';
       if (path.includes('favorites')) return 'Избранное';
-      if (path.includes('create-listing')) return 'Создать обьявление';
+      if (path.includes('createListing')) return 'Создать обьявление';
       return '';
     },
   },
@@ -148,9 +148,9 @@ export default {
       }
     },
     openCreateListing() {
-      if(!this.$route.path.includes('create-listing')) {
+      if(!this.$route.path.includes('createListing')) {
         this.$store.dispatch('resetPickedItem');
-        this.$router.push('/market-place/create-listing/all');
+        this.$router.push('/market-place/createListing/all');
         events.callServer(
           'MarketPlace:List:GetListData:Server',
           'createListing',

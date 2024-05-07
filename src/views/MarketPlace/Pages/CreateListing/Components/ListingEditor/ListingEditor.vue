@@ -175,7 +175,7 @@ export default {
       events.callServer('MarketPlace:List:GetListData:Server','createListing',1);
       this.toggleDeployStatus();
       this.$store.dispatch('resetPickedItem');
-      this.$router.push('/market-place/create-listing/all');
+      this.$router.push('/market-place/createListing/all');
     });
   },
   methods: {

@@ -55,7 +55,7 @@ export default {
       return this.$store.getters.getPagesInSection;
     },
     isCreateListing() {
-      return this.$route.path.includes('create-listing');
+      return this.$route.path.includes('createListing');
     },
   },
   mounted() {
@@ -80,7 +80,7 @@ export default {
       this.currentPage = page;
       events.callServer(
         'MarketPlace:List:GetListData:Server',
-        this.isCreateListing ? 'create-listing' : this.$route.params.filter,
+        this.isCreateListing ? 'createListing' : this.$route.params.filter,
         this.currentPage,
       );
     },
@@ -89,31 +89,30 @@ export default {
         events.callServer('MarketPlace:Item:GetFullData:Server', item.id);
       } else if (this.checkPath('storage')) {
         return '';
-      } else if (this.checkPath('create-listing')) {
+      } else if (this.checkPath('createListing')) {
         if (item.sellData.type === 'item') {
           this.shortItemData = item.sellData;
           this.toggleIsAddStatus();
         } else if (item.sellData?.filter && item.status === 'available') {
           if (item.sellData.filter === 'none') {
             this.$store.commit('pickItem', { sellData: {} });
-            this.$router.push('/market-place/create-listing/none/empty');
+            this.$router.push('/market-place/createListing/none/empty');
           } else if (item.sellData.filter === 'transportRent') {
-            this.$router.push('/market-place/create-listing/transport-rent');
+            this.$router.push('/market-place/createListing/transport-rent');
           } else if (item.sellData.filter === 'auction') {
-            this.$router.push('/market-place/create-listing/auction');
+            this.$router.push('/market-place/createListing/auction');
           }
-        } else if (this.checkPath('create-listing')) {
+        } else if (this.checkPath('createListing')) {
           if (this.$route.params.filter) {
-            this.$router.push(`/market-place/create-listing/${this.$route.params.filter}/create`);
+            this.$router.push(`/market-place/createListing/${this.$route.params.filter}/create`);
           } else {
             this.$router.push(
-              `/market-place/create-listing/${item.sellData.type}/create`,
+              `/market-place/createListing/${item.sellData.type}/create`,
             );
           }
           this.$store.commit('pickItem', item);
         } else {
           events.callServer('MarketPlace:Item:GetFullData:Server', item.id);
-          
         }
       }
     },

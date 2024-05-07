@@ -68,7 +68,7 @@ export default {
       // Если айтем на складе, ничего не делать
       if (this.checkPath('storage')) return '';
       // Если айтем предлагается для создания обьявления
-      if (this.checkPath('create-listing')) {
+      if (this.checkPath('createListing')) {
         if (item.type === 'item') {
           this.shortItemData = item;
           this.isAddLot = true;

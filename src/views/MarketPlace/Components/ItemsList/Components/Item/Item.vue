@@ -113,7 +113,7 @@
         <div
           class="item-storage-button"
           @click="unloadItem"
-          v-if="!$route.path.includes('create-listing')"
+          v-if="!$route.path.includes('createListing')"
         >
           {{ $store.getters.getLanguageText('Выгрузить со склада') }}
         </div>
@@ -180,7 +180,7 @@ export default {
   },
   computed: {
     getIsShowFavorite() {
-      const regex = new RegExp(`storage|create-listing`);
+      const regex = new RegExp(`storage|createListing`);
       return regex.test(this.$route.path);
     },
     getIsImgFull() {

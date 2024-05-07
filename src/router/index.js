@@ -692,7 +692,7 @@ const routes = [
 					),
 			},
 			{
-				path: 'create-listing/:filter',
+				path: 'createListing/:filter',
 				component: () =>
 					import(
 						'@/views/MarketPlace/Pages/CreateListing/CreateListing.vue'
