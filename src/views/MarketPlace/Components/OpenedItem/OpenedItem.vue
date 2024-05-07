@@ -58,11 +58,6 @@ export default {
       );
     },
     handleItemClick(item) {
-      // events.callServer(
-      //   'MarketPlace:Item:GetItemFullData:Server',
-      //   item.id,
-      //   item.category,
-      // );
       // На сервере
       let result;
       // Если айтем на складе, ничего не делать
