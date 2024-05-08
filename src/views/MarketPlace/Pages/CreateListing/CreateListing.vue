@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import { onUnmounted } from 'vue';
 import ItemsList from '../../Components/ItemsList/ItemsList.vue';
 import events from '@/modules/events';
 
@@ -14,12 +15,12 @@ export default {
     ItemsList,
   },
   mounted() {
+    onUnmounted(() => {
+      events.callServer('MarketPlace:CreateListing:Leave:Server');
+      events.callServer('MarketPlace:List:GetListData:Server', this.$route.params.filter, 1);
+    });
     this.checkAuction();
     this.checkRent();
-  },
-  beforeRouteLeave(to, from, next) {
-    events.callServer('MarketPlace:CreateListing:Leave:Server');
-    next();
   },
   data() {
     return {
