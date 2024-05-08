@@ -17,6 +17,7 @@ export default {
   mounted() {
     onUnmounted(() => {
       events.callServer('MarketPlace:CreateListing:Leave:Server');
+      this.$store.commit('resetListData');
       events.callServer('MarketPlace:List:GetListData:Server', this.$route.params.filter, 1);
     });
     this.checkAuction();
