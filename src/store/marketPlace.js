@@ -552,6 +552,13 @@ const marketPlace = {
 		},
 	},
 	mutations: {
+		start(state) {
+			console.log('очищен');
+			state.listData = [];
+			state.pickedItem = null;
+			state.pagesInSection = 1;
+			console.log(`PickedItem : ${state.pickedItem}`);
+		},
 		pickItem(state, item) {
 			console.log(item);
 			state.pickedItem = item;
@@ -611,10 +618,4 @@ if (global?.mp) {
 		marketPlace.state.marketPlaceData[key] = [];
 	}
 }
-(function() {
-	marketPlace.state.listData = [];
-	marketPlace.state.pickedItem = null;
-	marketPlace.state.pagesInSection = 1;
-  })();
-
 export default marketPlace;

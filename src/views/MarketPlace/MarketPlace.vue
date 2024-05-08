@@ -34,6 +34,10 @@ export default {
       }
     });
   },
+  mounted() {
+    console.log('маркет запустился');
+    this.$store.commit('start');
+  },
   components: {
     Navigation,
     HeaderBlock,
