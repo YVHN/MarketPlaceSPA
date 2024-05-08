@@ -62,6 +62,9 @@ export default {
     onUnmounted(() => {
       events.remove('MarketPlace:Storage:DeleteItem:Cef');
       events.remove('MarketPlace:Item:SetFullData:Cef');
+      if(!this.$route.path.includes('createListing')) {
+        this.$store.commit('resetListData');
+      }
     });
     events.add('MarketPlace:Storage:DeleteItem:Cef', (id) => {
       this.$store.commit('deleteItemFromStorage', id);
