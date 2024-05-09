@@ -476,7 +476,7 @@ const marketPlace = {
 			],
 		},
 		favoritesIdList: [],
-		pickedItem: null,
+		selectedItem: null,
 	},
 	getters: {
 		getPagesInSection(state) {
@@ -574,21 +574,21 @@ const marketPlace = {
 			}
 			return '';
 		},
-		getPickedItem(state) {
-			return state.pickedItem;
+		getSelectedItem(state) {
+			return state.selectedItem;
 		},
 	},
 	mutations: {
 		start(state) {
 			console.log('очищен');
 			state.listData = [];
-			state.pickedItem = null;
+			state.selectedItem = null;
 			state.pagesInSection = 1;
-			console.log(`PickedItem : ${state.pickedItem}`);
+			console.log(`selectedItem : ${state.selectedItem}`);
 		},
 		pickItem(state, item) {
 			console.log(item);
-			state.pickedItem = item;
+			state.selectedItem = item;
 		},
 		deleteItemFromStorage(state, id) {
 			const filtered = state.marketPlaceData.storage.filter(
@@ -603,13 +603,17 @@ const marketPlace = {
 			state.marketPlaceData[section] = filtered;
 		},
 		appendOfferBet(state, offer) {
-			console.log('ставка добавлена');
-			state.pickedItem.auctionData.offers.push(offer);
+			console.log('Cтавка добавлена');
+			state.selectedItem.auctionData.offers.push(offer);
 		},
 		resetListData(state) {
-			console.log('список очищен');
+			console.log('Список предметов очищен');
 			state.listData = [];
-		}
+		},
+		resetSelectedItem(state) {
+			console.log('Выбранный айтем очищен');
+			state.selectedItem = null;
+		},
 	},
 	actions: {
 		// На сервере
@@ -628,9 +632,6 @@ const marketPlace = {
 		buyItem({ state }, item) {
 			state.storageData.push(item);
 		},
-		resetPickedItem({ state }) {
-			state.pickedItem = null;
-		},
 	},
 };
 // Получение списка и перезаписывание
@@ -642,9 +643,9 @@ events.add('MarketPlace:List:SetListData:Cef', (json) => {
 });
 // Изменяет свойство
 events.add('Marketplace:Action:ChangePropertyValue', (id, property, value) => {
-	if(marketPlace.state.pickedItem) {
-		if (marketPlace.state.pickedItem.id === id) {
-			setFieldValue(pickedItem, property, value);
+	if(marketPlace.state.selectedItem) {
+		if (marketPlace.state.selectedItem.id === id) {
+			setFieldValue(selectedItem, property, value);
 		}
 	}
     let listItem = marketPlace.state.listData.find((item) => item.id === id);

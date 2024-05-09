@@ -11,7 +11,7 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </div>
       </div>
-      <HeaderBlock />
+      <Header />
       <Navigation />
       <div class="content">
         <router-view v-slot="{ Component }">
@@ -23,24 +23,25 @@
 </template>
 
 <script>
-import HeaderBlock from './Components/HeaderBlock/HeaderBlock.vue';
+import Header from './Components/Header/Header.vue';
 import Navigation from './Components/Navigation/Navigation.vue';
 
 export default {
+  name: 'MarketPlace',
+  components: {
+    Navigation,
+    Header,
+  },
   beforeRouteEnter(to, from, next) {
     next(vm => {
-      if(vm.$route.params.filter !== 'auction') {
-        vm.$router.push('/market-place/trading/auction');
+      if(vm.$route.params.section !== 'auction') {
+        vm.$router.push('/market-place/viewing/auction');
       }
     });
   },
   mounted() {
-    console.log('маркет запустился');
-    this.$store.commit('start');
-  },
-  components: {
-    Navigation,
-    HeaderBlock,
+    // console.log('маркет запустился');
+    // this.$store.commit('start');
   },
 };
 </script>

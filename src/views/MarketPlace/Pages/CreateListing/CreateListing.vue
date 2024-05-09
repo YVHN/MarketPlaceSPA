@@ -17,11 +17,13 @@ export default {
   mounted() {
     onUnmounted(() => {
       events.callServer('MarketPlace:CreateListing:Leave:Server');
+      this.$store.commit('resetSelectedItem');
       this.$store.commit('resetListData');
-      events.callServer('MarketPlace:List:GetListData:Server', this.$route.params.filter, 1);
     });
     this.checkAuction();
     this.checkRent();
+    console.log('я появился');
+
   },
   data() {
     return {
@@ -64,21 +66,22 @@ export default {
   },
   computed: {
     getListData() {
-      const storage = this.$store.getters.getList;
-      let filter = this.$route.params.filter;
-      if (filter === 'transport-rent') filter = 'transport';
-      const defaultListings = this.defaultListings;
-      if (filter === 'auction') {
-        return storage.filter((item) => item.sellData.type !== 'item');
-      } else if (filter === 'transport') {
-        return storage.filter((item) => item.sellData.type === 'transport');
-      } else {
-        const listingData = [...defaultListings, ...storage];
-        return listingData;
-      }
+      // const storage = this.$store.getters.getList;
+      // let filter = this.$route.params.filter;
+      // if (filter === 'transport-rent') filter = 'transport';
+      // const defaultListings = this.defaultListings;
+      // if (filter === 'auction') {
+      //   return storage.filter((item) => item.sellData.type !== 'item');
+      // } else if (filter === 'transport') {
+      //   return storage.filter((item) => item.sellData.type === 'transport');
+      // } else {
+      //   const listingData = [...defaultListings, ...storage];
+      //   return listingData;
+      // }
+      return [];
     },
     getItem() {
-      return this.$store.getters.getPickedItem;
+      return this.$store.getters.getSelectedItem;
     },
     isCanRent() {
       const rentFiltered = this.getListData.filter(

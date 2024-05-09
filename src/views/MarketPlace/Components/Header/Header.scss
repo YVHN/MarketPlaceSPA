@@ -1,0 +1,102 @@
+@import '@/views/MarketPlace/Assets/Styles/Variables.scss';
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1.389vmin;
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 2.7vmin;
+    height: 100%;
+    
+
+    .header-title {
+      font-weight: 700;
+      font-size: 1.667vmin;
+      color: rgba(255, 255, 255, 0.95);
+    }
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+
+    &-create-button {
+      background: $main-color1;
+      border-radius: 0.185vmin;
+      padding: 0.926vmin 2.222vmin;
+      font-family: 'IBM Plex Mono';
+      font-weight: 700;
+      font-size: 0.926vmin;
+      color: #fff;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    &-money {
+      color: white;
+      display: flex;
+
+      align-items: center;
+      margin: 0 1.111vmin 0 1.667vmin;
+
+      &-cash {
+        margin-right: 1.111vmin;
+        display: flex;
+        align-items: center;
+        font-size: 1.111vmin;
+
+        &>img {
+          width: 1.111vmin;
+          height: 1.111vmin;
+          margin-left: 0.37vmin;
+        }
+
+        &>span {
+          margin-left: 0.37vmin;
+          color: rgba(255, 255, 255, 0.24);
+        }
+      }
+
+      &-bank {
+        display: flex;
+        align-items: center;
+        font-size: 1.111vmin;
+
+        &>img {
+          width: 1.111vmin;
+          height: 1.111vmin;
+          margin-left: 0.37vmin;
+        }
+
+        &>span {
+          margin-left: 0.37vmin;
+          color: rgba(255, 255, 255, 0.24);
+        }
+      }
+    }
+
+    &-user {
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      font-size: 1.296vmin;
+
+      &-avatar {
+        margin-left: 0.648vmin;
+        width: 3.704vmin;
+        height: 3.704vmin;
+      }
+    }
+  }
+
+  * {
+    font-family: 'PF DinDisplay Pro';
+  }
+}

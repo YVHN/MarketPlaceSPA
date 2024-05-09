@@ -1,15 +1,13 @@
 <template>
-  <div class="navigateButton" :class="{ active: getIsActive }" @click="pickSection">
+  <router-link class="navigateButton" active-class="active" :to="`/market-place/viewing/${data.path}`">
     <component class="navigateButton-img" :is="data.img" />
     <p class="navigateButton-title">
       {{ $store.getters.getLanguageText(data.title) }}
     </p>
-  </div>
+  </router-link>
 </template>
 
 <script>
-import events from '@/modules/events';
-
 import auction from '@/views/MarketPlace/Assets/Icons/MarketSections/auction.vue';
 import business from '@/views/MarketPlace/Assets/Icons/MarketSections/business.vue';
 import clothes from '@/views/MarketPlace/Assets/Icons/MarketSections/clothes.vue';
@@ -29,10 +27,6 @@ export default {
       type: Object,
       required: true,
     },
-    section: {
-      type: String,
-      required: true,
-    },
   },
   components: {
     //icons
@@ -48,31 +42,6 @@ export default {
     history,
     listings,
     storage,
-  },
-  computed: {
-    getIsActive() {
-      if (this.section === 'trading') {
-        return this.$route.params.filter === this.data.path;
-      } else {
-        return this.$route.path.includes(this.data.path);
-      }
-    },
-  },
-  methods: {
-    pickSection() {
-      if (!this.$route.path.includes(this.$props.data.path)) {
-        this.$router.push(`/market-place/${this.$props.section}/${this.$props.data.path}`);
-        this.$store.commit('resetListData');
-        setTimeout(() => {
-          events.callServer(
-            'MarketPlace:List:GetListData:Server',
-            this.$props.data.path,
-            1
-          );
-          this.$store.dispatch('resetPickedItem');
-        }, 30);
-      }
-    },
   },
 };
 </script>

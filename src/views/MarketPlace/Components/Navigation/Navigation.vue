@@ -1,11 +1,10 @@
 <template>
   <div class="aside">
-    <div class="aside-sections-list">
+    <div class="aside-sections-list trading">
       <NavigateButton
         v-for="(section, index) in tradingSections"
         :key="index"
         :data="section"
-        :section="'trading'"
       />
     </div>
     <div class="aside-sections-list personal">
@@ -13,7 +12,6 @@
         v-for="(section, index) in personalSections"
         :key="index"
         :data="section"
-        :section="'personal'"
       />
       <div class="aside-exit" @click="onClose">
         <img class="section-img" src="@/views/MarketPlace/Assets/Icons/exit.svg" />
@@ -27,6 +25,9 @@
 import NavigateButton from './Components/NavigateButton/NavigateButton.vue';
 
 export default {
+  components: {
+    NavigateButton,
+  },
   data() {
     return {
       tradingSections: [
@@ -99,9 +100,6 @@ export default {
     onClose() {
       mp.trigger("MarketPlace:Close:Client");
     },
-  },
-  components: {
-    NavigateButton,
   },
 };
 </script>

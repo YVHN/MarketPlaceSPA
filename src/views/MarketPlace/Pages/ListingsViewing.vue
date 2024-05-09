@@ -1,14 +1,14 @@
 <template>
   <div class="trading">
     <!-- Открытый айтем -->
-    <RouterView v-if="getPickedItem" />
+    <RouterView v-if="getSelectedItem" />
     <!-- Список айтемов -->
     <ItemsList v-else :list-data="getList" />
   </div>
 </template>
 
 <script>
-import ItemsList from '../../Components/ItemsList/ItemsList.vue';
+import ItemsList from '../Components/ItemsList/ItemsList.vue';
 
 export default {
   components: {
@@ -18,8 +18,8 @@ export default {
     getList() {
       return this.$store.getters.getList;
     },
-    getPickedItem() {
-      return this.$store.getters.getPickedItem;
+    getSelectedItem() {
+      return this.$store.getters.getSelectedItem;
     }
   },
 };

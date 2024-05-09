@@ -661,16 +661,16 @@ const routes = [
 	// }
 	{
 		path: '/market-place',
-		redirect: '/market-place/trading/estate',
+		redirect: '/market-place/viewing/auction',
 		component: () =>
 			import('@/views/MarketPlace/MarketPlace.vue'),
 		children: [
 			{
-				path: 'trading/:filter',
+				path: 'viewing/:section',
 				props: true,
 				component: () =>
 					import(
-						'@/views/MarketPlace/Pages/Trading/Trading.vue'
+						'@/views/MarketPlace/Pages/ListingsViewing.vue'
 					),
 				children: [
 					{
@@ -682,14 +682,6 @@ const routes = [
 							),
 					},
 				],
-			},
-			{
-				path: 'personal/:filter',
-				props: true,
-				component: () =>
-					import(
-						'@/views/MarketPlace/Pages/Personal/Personal.vue'
-					),
 			},
 			{
 				path: 'createListing/:filter',

@@ -57,15 +57,19 @@ export default {
     isCreateListing() {
       return this.$route.path.includes('createListing');
     },
+    getCurrentSection() {
+      return this.$route.params.section;
+    }
   },
   mounted() {
     onUnmounted(() => {
       events.remove('MarketPlace:Storage:DeleteItem:Cef');
       events.remove('MarketPlace:Item:SetFullData:Cef');
-      if(!this.$route.path.includes('createListing')) {
-        this.$store.commit('resetListData');
-      }
     });
+    if (this.isCreateListing) {
+      events.callServer('MarketPlace:List:GetListData:Server', 'createListing', 1);
+    }
+
     events.add('MarketPlace:Storage:DeleteItem:Cef', (id) => {
       this.$store.commit('deleteItemFromStorage', id);
     });
@@ -78,13 +82,20 @@ export default {
       this.$store.commit('pickItem', parsedJson);
     });
   },
+  watch: {
+    getCurrentSection(newVal) {
+      this.$store.commit('resetSelectedItem');
+      this.$store.commit('resetListData');
+      events.callServer('MarketPlace:List:GetListData:Server', newVal, 1);
+    }
+  },
   methods: {
     goToPage(page) {
       this.currentPage = page;
       events.callServer(
         'MarketPlace:List:GetListData:Server',
-        this.isCreateListing ? 'createListing' : this.$route.params.filter,
-        this.currentPage,
+        this.$route.params.section,
+        this.currentPage
       );
     },
     handleItemClick(item) {
