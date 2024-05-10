@@ -81,7 +81,7 @@ export default {
             this.$store.dispatch('toggleStatus', 'createListing');
           }
         }
-      } else if (this.checkPath('trading')) {
+      } else if (this.checkPath('viewing')) {
         result = this.$store.getters.getItemFullData(
           item.id,
           this.typeIdentify(item),
