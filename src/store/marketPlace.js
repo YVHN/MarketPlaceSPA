@@ -2,30 +2,30 @@ import events from '@/modules/events';
 import Vue from 'vue'
 
 function setFieldValue(obj, fieldName, value) {
-    // Проверяем, существует ли объект
-    if (obj && typeof obj === "object") {
-        // Проверяем, существует ли поле в текущем объекте
-        if (fieldName in obj) {
-            // Если поле является объектом, вызываем функцию рекурсивно
-            if (typeof obj[fieldName] === "object") {
-                setFieldValue(obj[fieldName], fieldName, value);
-            } else {
-                // Устанавливаем значение поля
-                obj[fieldName] = value;
-                console.log(`Значение поля ${fieldName} было успешно установлено: ${value}`);
-            }
-        } else {
-            // Если поле отсутствует в текущем объекте, ищем во вложенных объектах
-            for (let key in obj) {
-                if (typeof obj[key] === "object") {
-                    setFieldValue(obj[key], fieldName, value);
-                }
-            }
-        }
-    } else {
-        console.log(`Объект не существует или не является объектом.`);
-    }
-    console.log(obj);
+	// Проверяем, существует ли объект
+	if (obj && typeof obj === "object") {
+		// Проверяем, существует ли поле в текущем объекте
+		if (fieldName in obj) {
+			// Если поле является объектом, вызываем функцию рекурсивно
+			if (typeof obj[fieldName] === "object") {
+				setFieldValue(obj[fieldName], fieldName, value);
+			} else {
+				// Устанавливаем значение поля
+				obj[fieldName] = value;
+				console.log(`Значение поля ${fieldName} было успешно установлено: ${value}`);
+			}
+		} else {
+			// Если поле отсутствует в текущем объекте, ищем во вложенных объектах
+			for (let key in obj) {
+				if (typeof obj[key] === "object") {
+					setFieldValue(obj[key], fieldName, value);
+				}
+			}
+		}
+	} else {
+		console.log(`Объект не существует или не является объектом.`);
+	}
+	console.log(obj);
 }
 
 const marketPlace = {
@@ -643,15 +643,15 @@ events.add('MarketPlace:List:SetListData:Cef', (json) => {
 });
 // Изменяет свойство
 events.add('Marketplace:Action:ChangePropertyValue', (id, property, value) => {
-	if(marketPlace.state.pickedItem) {
+	if (marketPlace.state.pickedItem) {
 		if (marketPlace.state.pickedItem.id === id) {
-			setFieldValue(pickedItem, property, value);
+			setFieldValue(marketPlace.state.pickedItem, property, value);
 		}
 	}
-    let listItem = marketPlace.state.listData.find((item) => item.id === id);
-    if (listItem) {
-        setFieldValue(listItem, property, value);
-    }
+	let listItem = marketPlace.state.listData.find((item) => item.id === id);
+	if (listItem) {
+		setFieldValue(listItem, property, value);
+	}
 });
 if (global?.mp) {
 	for (const key in marketPlace.state.marketPlaceData) {
