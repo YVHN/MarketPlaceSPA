@@ -128,7 +128,6 @@ export default {
       this.$emit('deploy', { method: method, hours: this.pickedHours });
     },
     pickQuantity(hours) {
-      console.log(hours);
       this.pickedHours = hours;
     },
     formatNumber(num) {

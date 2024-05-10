@@ -15,7 +15,7 @@ export default {
   methods: {
     returnBack() {
       this.$router.go(-1);
-      this.$store.commit('resetSelectedItem');
+      this.$store.commit('resetPickedItem');
     },
   }
 }

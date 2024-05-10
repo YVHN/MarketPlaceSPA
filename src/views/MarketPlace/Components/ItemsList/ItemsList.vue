@@ -77,14 +77,14 @@ export default {
     events.add('MarketPlace:Item:SetFullData:Cef', (json) => {
       const parsedJson = JSON.parse(json);
       if (!parsedJson) return null;
-      this.$router.push(`/market-place/trading/${this.$route.params.filter}/opened`);
+      this.$router.push(`/market-place/trading/${this.$route.params.section}/opened`);
       console.log('айтем пришёл');
       this.$store.commit('pickItem', parsedJson);
     });
   },
   watch: {
     getCurrentSection(newVal) {
-      this.$store.commit('resetSelectedItem');
+      this.$store.commit('resetPickedItem');
       this.$store.commit('resetListData');
       events.callServer('MarketPlace:List:GetListData:Server', newVal, 1);
     }

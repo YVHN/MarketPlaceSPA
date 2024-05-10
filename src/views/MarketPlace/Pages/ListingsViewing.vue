@@ -1,7 +1,7 @@
 <template>
   <div class="trading">
     <!-- Открытый айтем -->
-    <RouterView v-if="getSelectedItem" />
+    <RouterView v-if="getPickedItem" />
     <!-- Список айтемов -->
     <ItemsList v-else :list-data="getList" />
   </div>
@@ -18,8 +18,8 @@ export default {
     getList() {
       return this.$store.getters.getList;
     },
-    getSelectedItem() {
-      return this.$store.getters.getSelectedItem;
+    getPickedItem() {
+      return this.$store.getters.getPickedItem;
     }
   },
 };

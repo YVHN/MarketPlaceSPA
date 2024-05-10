@@ -17,7 +17,7 @@ export default {
   mounted() {
     onUnmounted(() => {
       events.callServer('MarketPlace:CreateListing:Leave:Server');
-      this.$store.commit('resetSelectedItem');
+      this.$store.commit('resetPickedItem');
       this.$store.commit('resetListData');
     });
     this.checkAuction();
@@ -66,22 +66,21 @@ export default {
   },
   computed: {
     getListData() {
-      // const storage = this.$store.getters.getList;
-      // let filter = this.$route.params.filter;
-      // if (filter === 'transport-rent') filter = 'transport';
-      // const defaultListings = this.defaultListings;
-      // if (filter === 'auction') {
-      //   return storage.filter((item) => item.sellData.type !== 'item');
-      // } else if (filter === 'transport') {
-      //   return storage.filter((item) => item.sellData.type === 'transport');
-      // } else {
-      //   const listingData = [...defaultListings, ...storage];
-      //   return listingData;
-      // }
-      return [];
+      const storage = this.$store.getters.getList;
+      let filter = this.$route.params.filter;
+      if (filter === 'transport-rent') filter = 'transport';
+      const defaultListings = this.defaultListings;
+      if (filter === 'auction') {
+        return storage.filter((item) => item.sellData.type !== 'item');
+      } else if (filter === 'transport') {
+        return storage.filter((item) => item.sellData.type === 'transport');
+      } else {
+        const listingData = [...defaultListings, ...storage];
+        return listingData;
+      }
     },
     getItem() {
-      return this.$store.getters.getSelectedItem;
+      return this.$store.getters.getPickedItem;
     },
     isCanRent() {
       const rentFiltered = this.getListData.filter(

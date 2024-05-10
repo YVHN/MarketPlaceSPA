@@ -476,7 +476,7 @@ const marketPlace = {
 			],
 		},
 		favoritesIdList: [],
-		selectedItem: null,
+		pickedItem: null,
 	},
 	getters: {
 		getPagesInSection(state) {
@@ -574,21 +574,21 @@ const marketPlace = {
 			}
 			return '';
 		},
-		getSelectedItem(state) {
-			return state.selectedItem;
+		getPickedItem(state) {
+			return state.pickedItem;
 		},
 	},
 	mutations: {
 		start(state) {
 			console.log('очищен');
 			state.listData = [];
-			state.selectedItem = null;
+			state.pickedItem = null;
 			state.pagesInSection = 1;
-			console.log(`selectedItem : ${state.selectedItem}`);
+			console.log(`pickedItem : ${state.pickedItem}`);
 		},
 		pickItem(state, item) {
 			console.log(item);
-			state.selectedItem = item;
+			state.pickedItem = item;
 		},
 		deleteItemFromStorage(state, id) {
 			const filtered = state.marketPlaceData.storage.filter(
@@ -604,15 +604,15 @@ const marketPlace = {
 		},
 		appendOfferBet(state, offer) {
 			console.log('Cтавка добавлена');
-			state.selectedItem.auctionData.offers.push(offer);
+			state.pickedItem.auctionData.offers.push(offer);
 		},
 		resetListData(state) {
 			console.log('Список предметов очищен');
 			state.listData = [];
 		},
-		resetSelectedItem(state) {
+		resetPickedItem(state) {
 			console.log('Выбранный айтем очищен');
-			state.selectedItem = null;
+			state.pickedItem = null;
 		},
 	},
 	actions: {
@@ -643,9 +643,9 @@ events.add('MarketPlace:List:SetListData:Cef', (json) => {
 });
 // Изменяет свойство
 events.add('Marketplace:Action:ChangePropertyValue', (id, property, value) => {
-	if(marketPlace.state.selectedItem) {
-		if (marketPlace.state.selectedItem.id === id) {
-			setFieldValue(selectedItem, property, value);
+	if(marketPlace.state.pickedItem) {
+		if (marketPlace.state.pickedItem.id === id) {
+			setFieldValue(pickedItem, property, value);
 		}
 	}
     let listItem = marketPlace.state.listData.find((item) => item.id === id);

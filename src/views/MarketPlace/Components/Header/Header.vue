@@ -49,7 +49,7 @@ export default {
       return !result;
     },
     isItemSelected() {
-      const result = this.$store.getters.getSelectedItem;
+      const result = this.$store.getters.getPickedItem
       return result ? true : false;
     },
     getSectionTitle() {
