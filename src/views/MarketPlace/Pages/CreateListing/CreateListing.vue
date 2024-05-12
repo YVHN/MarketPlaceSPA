@@ -63,8 +63,7 @@ export default {
   },
   computed: {
     getListData() {
-      // this.$store.getters.getList
-      const storage = sectionsData.createListing;
+      const storage = this.$store.getters.getList;
       let filter = this.$route.params.filter;
       if (filter === 'transport-rent') filter = 'transport';
       const defaultListings = this.defaultListings;

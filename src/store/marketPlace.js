@@ -137,10 +137,9 @@ const marketPlace = {
 	mutations: {
 		start(state) {
 			console.log('запуск');
-			// state.listData = [];
-			// state.pickedItem = null;
-			// state.pagesInSection = 1;
-			// console.log(`pickedItem : ${state.pickedItem}`);
+			state.listData = [];
+			state.pickedItem = null;
+			state.pagesInSection = 1;
 		},
 		pickItem(state, item) {
 			console.log(item);
