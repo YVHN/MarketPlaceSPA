@@ -35,7 +35,7 @@
           <ProgressBar
             @pickQuantity="pickQuantity"
             :max-progress="maxHours"
-            :min-progress="5"
+            :min-progress="1"
           />
         </div>
       </div>
@@ -81,7 +81,7 @@ export default {
   },
   data() {
     return {
-      pickedHours: 5,
+      pickedHours: 1,
       isDragging: false,
       maxHours: 130,
       hoursQuantity: 0,

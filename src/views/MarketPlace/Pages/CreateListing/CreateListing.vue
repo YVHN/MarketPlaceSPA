@@ -1,6 +1,6 @@
 <template>
   <div class="createListing">
-    <RouterView v-if="getItem !== null" />
+    <RouterView v-if="getSelectedItem !== null" />
     <ItemsList v-else :list-data="getListData" @sort="sort" />
   </div>
 </template>
@@ -9,25 +9,22 @@
 import { onUnmounted } from 'vue';
 import ItemsList from '../../Components/ItemsList/ItemsList.vue';
 import events from '@/modules/events';
+import sectionsData from '../../Assets/Data/sectionsData';
 
 export default {
   components: {
     ItemsList,
   },
   mounted() {
+    this.$store.commit('resetListData');
+    events.callServer('MarketPlace:List:GetListData:Server', 'createListing', 1);
     onUnmounted(() => {
       events.callServer('MarketPlace:CreateListing:Leave:Server');
-      this.$store.commit('resetPickedItem');
       this.$store.commit('resetListData');
     });
-    this.checkAuction();
-    this.checkRent();
-    console.log('я появился');
-
   },
   data() {
     return {
-      list: [],
       defaultListings: [
         {
           id: -1,
@@ -46,7 +43,7 @@ export default {
             title: 'Создать обьявление',
             category: 'service',
             type: 'service',
-            filter: 'none',
+            filter: 'empty',
           },
           status: 'available',
         },
@@ -66,41 +63,28 @@ export default {
   },
   computed: {
     getListData() {
-      const storage = this.$store.getters.getList;
+      // this.$store.getters.getList
+      const storage = sectionsData.createListing;
       let filter = this.$route.params.filter;
       if (filter === 'transport-rent') filter = 'transport';
       const defaultListings = this.defaultListings;
       if (filter === 'auction') {
         return storage.filter((item) => item.sellData.type !== 'item');
-      } else if (filter === 'transport') {
+      } else if (filter === 'transportRent') {
         return storage.filter((item) => item.sellData.type === 'transport');
       } else {
-        const listingData = [...defaultListings, ...storage];
-        return listingData;
+        return [...defaultListings, ...storage];
       }
     },
-    getItem() {
+    getSelectedItem() {
       return this.$store.getters.getPickedItem;
-    },
-    isCanRent() {
-      const rentFiltered = this.getListData.filter(
-        (item) => item.sellData.type === 'transport',
-      );
-      return rentFiltered ? true : false;
-    },
-    isCanAuction() {
-      const auctionFiltered = this.getListData.filter(
-        (item) => item.sellData.type !== 'item',
-      );
-      return auctionFiltered ? true : false;
     },
   },
   watch: {
-    // Отслеживаем изменения в computed свойстве getListData
     getListData: {
       handler: function (newValue) {
         const auctionFiltered = newValue.filter(
-          (item) => item.sellData.type !== 'item',
+          (item) => !['item', 'service'].includes(item.sellData.type),
         );
         const rentFiltered = newValue.filter(
           (item) => item.sellData.type === 'transport',
@@ -112,7 +96,8 @@ export default {
           ? 'available'
           : 'unavailable';
       },
-      deep: true, // Включаем глубокое наблюдение, если это необходимо
+      deep: true,
+      immediate: true,
     },
     isCanRent(newValue) {
       console.log('Rent : ' + newValue);

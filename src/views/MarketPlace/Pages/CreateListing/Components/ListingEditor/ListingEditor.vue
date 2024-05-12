@@ -15,8 +15,8 @@
               {{ $store.getters.getLanguageText('Стандартная обложка') }}
             </div>
             <div class="listingEditor-cover-images-item-img">
-              <img v-if="getItem.sellData?.img" :class="getItem.sellData?.type"
-                :src="require(`@/views/MarketPlace/Assets/Images/Items/${getItem.sellData.img}.png`)" />
+              <img :class="getItem.sellData?.type"
+                src="@/views/MarketPlace/Assets/Images/Items/default.png" />
             </div>
           </div>
           <div class="listingEditor-cover-images-custom">
@@ -172,7 +172,8 @@ export default {
       events.remove('MarketPlace:CreateListing:PublishAccept:Cef');
     });
     events.add('MarketPlace:CreateListing:PublishAccept:Cef', () => {
-      events.callServer('MarketPlace:List:GetListData:Server','createListing',1);
+      this.$store.commit('resetListData');
+      events.callServer('MarketPlace:List:GetListData:Server','createListing', 1);
       this.toggleDeployStatus();
       this.$store.dispatch('resetPickedItem');
       this.$router.push('/market-place/createListing/all');

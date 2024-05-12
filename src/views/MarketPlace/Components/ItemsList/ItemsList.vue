@@ -12,14 +12,7 @@
         <EmptyPage />
       </div>
       <!-- Пагинация -->
-      <div class="itemsList-pagination">
-        <TransitionGroup class="itemsList-pagination-transition" tag="div" name="pagination">
-          <div class="itemsList-pagination-page" v-for="page in getPagesInSection" :key="page" @click="goToPage(page)"
-            :class="{ active: currentPage === page }">
-            {{ page }}
-          </div>
-        </TransitionGroup>
-      </div>
+      <Pagination :pages-quantity="getPagesInSection" />
     </div>
   </div>
 </template>
@@ -31,11 +24,14 @@ import EmptyPage from '../EmptyPage/EmptyPage.vue';
 import events from '@/modules/events';
 import { onUnmounted } from 'vue';
 
+import Pagination from './Components/Pagination/Pagination.vue';
+
 export default {
   components: {
     Item,
     EmptyPage,
     AddLot,
+    Pagination,
   },
   props: {
     listData: {
@@ -47,7 +43,6 @@ export default {
     return {
       shortItemData: {},
       isAddLot: false,
-      currentPage: 1,
     };
   },
   computed: {
@@ -66,68 +61,55 @@ export default {
       events.remove('MarketPlace:Storage:DeleteItem:Cef');
       events.remove('MarketPlace:Item:SetFullData:Cef');
     });
-    if (this.isCreateListing) {
-      events.callServer('MarketPlace:List:GetListData:Server', 'createListing', 1);
-    }
 
     events.add('MarketPlace:Storage:DeleteItem:Cef', (id) => {
       this.$store.commit('deleteItemFromStorage', id);
     });
-    // Получение фулл даты
+    // Получение фулл даты предмета
     events.add('MarketPlace:Item:SetFullData:Cef', (json) => {
       const parsedJson = JSON.parse(json);
       if (!parsedJson) return null;
       this.$router.push(`/market-place/viewing/${this.$route.params.section}/opened`);
-      console.log('айтем пришёл');
+      console.log('Запрос предмета успешен');
       this.$store.commit('pickItem', parsedJson);
     });
   },
-  watch: {
-    getCurrentSection(newVal) {
-      this.$store.commit('resetPickedItem');
-      this.$store.commit('resetListData');
-      events.callServer('MarketPlace:List:GetListData:Server', newVal, 1);
-    }
-  },
   methods: {
-    goToPage(page) {
-      this.currentPage = page;
-      events.callServer(
-        'MarketPlace:List:GetListData:Server',
-        this.$route.params.section,
-        this.currentPage
-      );
-    },
     handleItemClick(item) {
+      // Если айтем на продаже, то вызов фулл даты
       if (this.checkPath('viewing')) {
-        events.callServer('MarketPlace:Item:GetFullData:Server', item.id);
-      } else if (this.checkPath('storage')) {
-        return '';
+        this.viewingAction(item);
+        // Если айтем создания обьявления 
       } else if (this.checkPath('createListing')) {
-        if (item.sellData.type === 'item') {
-          this.shortItemData = item.sellData;
-          this.toggleIsAddStatus();
-        } else if (item.sellData?.filter && item.status === 'available') {
-          if (item.sellData.filter === 'none') {
-            this.$store.commit('pickItem', { sellData: {} });
-            this.$router.push('/market-place/createListing/none/empty');
-          } else if (item.sellData.filter === 'transportRent') {
-            this.$router.push('/market-place/createListing/transport-rent');
-          } else if (item.sellData.filter === 'auction') {
-            this.$router.push('/market-place/createListing/auction');
-          }
-        } else if (this.checkPath('createListing')) {
-          if (this.$route.params.filter) {
-            this.$router.push(`/market-place/createListing/${this.$route.params.filter}/create`);
-          } else {
-            this.$router.push(
-              `/market-place/createListing/${item.sellData.type}/create`,
-            );
-          }
-          this.$store.commit('pickItem', item);
+        this.createListingAction(item);
+      }
+    },
+    viewingAction(item) {
+      events.callServer('MarketPlace:Item:GetFullData:Server', item.id);
+    },
+    createListingAction(item) {
+      // Если это предмет 
+      if (item.sellData.type === 'item') {
+        this.shortItemData = item.sellData;
+        this.toggleIsAddStatus();
+        // Если это категория создания обьявления
+      } else if (item.sellData?.filter && item.status === 'available') {
+        // Фильтр предметов
+        if (item.sellData.filter === 'empty') {
+          this.$store.commit('pickItem', { sellData: {} });
+          this.$router.push('/market-place/createListing/all/empty');
         } else {
-          events.callServer('MarketPlace:Item:GetFullData:Server', item.id);
+          this.$router.push(`/market-place/createListing/${item.sellData.filter}`);
         }
+      } else if (item.sellData.type !== 'service') {
+        if (this.$route.params.filter) {
+          this.$router.push(`/market-place/createListing/${this.$route.params.filter}/create`);
+        } else {
+          this.$router.push(
+            `/market-place/createListing/${item.sellData.type}/create`,
+          );
+        }
+        this.$store.commit('pickItem', item);
       }
     },
     unloadItem(id) {
@@ -138,11 +120,6 @@ export default {
     },
     checkPath(path) {
       return this.$route.path.includes(path);
-    },
-    typeIdentify(pickedItem) {
-      if (pickedItem?.auctionData !== undefined) return 'auction';
-      if (pickedItem?.tradeData !== undefined) return 'exchange';
-      if (pickedItem) return 'listings';
     },
   },
 };

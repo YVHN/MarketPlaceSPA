@@ -1,13 +1,14 @@
 <template>
-  <router-link class="navigateButton" active-class="active" :to="`/market-place/viewing/${data.path}`">
+  <div class="navigateButton" :class="{ active: $route.params.section === data.path }" @click="selectSection(data.path)">
     <component class="navigateButton-img" :is="data.img" />
     <p class="navigateButton-title">
       {{ $store.getters.getLanguageText(data.title) }}
     </p>
-  </router-link>
+  </div>
 </template>
 
 <script>
+// icons
 import auction from '@/views/MarketPlace/Assets/Icons/MarketSections/auction.vue';
 import business from '@/views/MarketPlace/Assets/Icons/MarketSections/business.vue';
 import clothes from '@/views/MarketPlace/Assets/Icons/MarketSections/clothes.vue';
@@ -21,6 +22,8 @@ import history from '@/views/MarketPlace/Assets/Icons/PersonalSections/history.v
 import listings from '@/views/MarketPlace/Assets/Icons/PersonalSections/listings.vue';
 import storage from '@/views/MarketPlace/Assets/Icons/PersonalSections/storage.vue';
 
+import events from '@/modules/events';
+
 export default {
   props: {
     data: {
@@ -29,7 +32,7 @@ export default {
     },
   },
   components: {
-    //icons
+    // icons
     auction,
     business,
     clothes,
@@ -43,6 +46,17 @@ export default {
     listings,
     storage,
   },
+  methods: {
+    // Смена секции: переход и очистка
+    selectSection(section) {
+      if (this.$route.params.section !== section) {
+        this.$router.push(`/market-place/viewing/${section}`);
+        this.$store.commit('resetPickedItem');
+        this.$store.commit('resetListData');
+        events.callServer('MarketPlace:List:GetListData:Server', section, 1);
+      }
+    }
+  }
 };
 </script>
 
