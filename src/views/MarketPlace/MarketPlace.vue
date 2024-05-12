@@ -40,8 +40,7 @@ export default {
     });
   },
   mounted() {
-    // console.log('маркет запустился');
-    // this.$store.commit('start');
+    this.$store.commit('start');
   },
 };
 </script>
