@@ -50,7 +50,7 @@ export default {
     estate: [
         {
             id: 20,
-            views: 100,
+            views: 33,
             isFavorite: false,
             listingData: {},
             created: '11.04.2024 13:53',

@@ -60,11 +60,15 @@ export default {
     onUnmounted(() => {
       events.remove('MarketPlace:Storage:DeleteItem:Cef');
       events.remove('MarketPlace:Item:SetFullData:Cef');
+      events.remove('MarketPLace:Storage:AcceptUnload:Cef')
     });
 
     events.add('MarketPlace:Storage:DeleteItem:Cef', (id) => {
       this.$store.commit('deleteItemFromStorage', id);
     });
+    events.add('MarketPLace:Storage:AcceptUnload:Cef', (id) => {
+      this.$store.commit('unloadItem', id);
+    })
     // Получение фулл даты предмета
     events.add('MarketPlace:Item:SetFullData:Cef', (json) => {
       const parsedJson = JSON.parse(json);
@@ -85,6 +89,7 @@ export default {
       }
     },
     viewingAction(item) {
+      this.$store.commit('unloadItem', 20);
       events.callServer('MarketPlace:Item:GetFullData:Server', item.id);
     },
     createListingAction(item) {

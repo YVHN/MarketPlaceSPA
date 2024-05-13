@@ -46,20 +46,10 @@
             </div>
           </template>
         </div>
-        <Img
-          class="item-header-img"
-          :img="'default'"
-          :itemType="sellData.type"
-          :size="'s'"
-          :isSmall="sellData?.filter ? true : false"
-        />
-        <FavoriteIndicator
-          class="item-favorite"
-          :itemId="item.id"
-          :size="'small'"
-          :is-favorite="item.isFavorite"
-          v-if="!getIsShowFavorite"
-        />
+        <Img class="item-header-img" :img="'default'" :itemType="sellData.type" :size="'s'"
+          :isSmall="sellData?.filter ? true : false" />
+        <FavoriteIndicator class="item-favorite" :itemId="item.id" :size="'small'" :is-favorite="item.isFavorite"
+          v-if="!isShowFavorite" />
       </div>
       <div class="item-title">
         {{ $store.getters.getTitle(sellData) }}
@@ -87,10 +77,7 @@
           </div>
         </div>
       </div>
-      <div
-        class="item-transportRent"
-        v-else-if="isHas('sellData', 'rentPrice')"
-      >
+      <div class="item-transportRent" v-else-if="isHas('sellData', 'rentPrice')">
         <div class="item-default-price">
           {{ `${formatNumber(item.sellData.rentPrice)} $` }}
           <span>{{ $store.getters.getLanguageText('за час') }}</span>
@@ -110,11 +97,7 @@
           <span>{{ $store.getters.getLanguageText('Время хранения:') }} </span>
           {{ getShelfTime }}
         </div>
-        <div
-          class="item-storage-button"
-          @click="unloadItem"
-          v-if="!$route.path.includes('createListing')"
-        >
+        <div class="item-storage-button" @click="unloadItem" v-if="!$route.path.includes('createListing')">
           {{ $store.getters.getLanguageText('Выгрузить со склада') }}
         </div>
       </div>
@@ -179,7 +162,7 @@ export default {
     endTime,
   },
   computed: {
-    getIsShowFavorite() {
+    isShowFavorite() {
       const regex = new RegExp(`storage|createListing`);
       return regex.test(this.$route.path);
     },
@@ -228,7 +211,7 @@ export default {
           );
           const hours = Math.floor(
             (differenceInMilliseconds % (1000 * 60 * 60 * 24)) /
-              (1000 * 60 * 60),
+            (1000 * 60 * 60),
           );
           const minutes = Math.floor(
             (differenceInMilliseconds % (1000 * 60 * 60)) / (1000 * 60),

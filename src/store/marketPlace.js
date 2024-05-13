@@ -1,7 +1,7 @@
 import events from '@/modules/events';
 import Vue from 'vue'
 
-// import itemsFullData from '@/views/MarketPlace/Assets/Data/itemsFullData';
+import itemsFullData from '@/views/MarketPlace/Assets/Data/itemsFullData';
 import sectionsData from '@/views/MarketPlace/Assets/Data/sectionsData';
 
 function setFieldValue(obj, fieldName, value) {
@@ -35,7 +35,7 @@ const marketPlace = {
 	state: {
 		currentLanguage: 'eng',
 		pagesInSection: 10,
-		listData: sectionsData.auction,
+		listData: sectionsData.estate,
 		favoritesIdList: [],
 		pickedItem: null,
 	},
@@ -64,7 +64,7 @@ const marketPlace = {
 				return item.vehicleName;
 			} else if (['item', 'service'].includes(item.type)) {
 				return getters.getLanguageText(item.title);
-			} else if(['business'].includes(item.type)) {
+			} else if (['business'].includes(item.type)) {
 				const titles = {
 					1: 'Заправка',
 				}
@@ -145,11 +145,11 @@ const marketPlace = {
 			console.log(item);
 			state.pickedItem = item;
 		},
-		deleteItemFromStorage(state, id) {
-			const filtered = state.marketPlaceData.storage.filter(
+		unloadItem(state, id) {
+			const filtered = state.listData.filter(
 				(item) => item.id !== id,
 			);
-			state.marketPlaceData.storage = filtered;
+			state.listData = filtered;
 		},
 		deleteListingFromList(state, [section, id]) {
 			const filtered = state.marketPlaceData[section].filter(
@@ -171,6 +171,20 @@ const marketPlace = {
 				state.pickedItem = null;
 			}
 		},
+		changePropertyValue(state, [id, property, value]) {
+			if (state.pickedItem) {
+				if (state.pickedItem.id === id) {
+					setFieldValue(state.pickedItem, property, value);
+				}
+			}
+			let listItem = state.listData.find((item) => item.id === id);
+			if (listItem) {
+				setFieldValue(listItem, property, value);
+			}
+		},
+		test(state) {
+			
+		}
 	},
 	actions: {
 		// На сервере

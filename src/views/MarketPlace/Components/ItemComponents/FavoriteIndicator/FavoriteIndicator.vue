@@ -2,7 +2,7 @@
   <favorite
     class="favorite"
     @click.stop.native="update"
-    :class="[{ active: getFavoriteStatus }, size]"
+    :class="[{ active: isFavorite }, size]"
   />
 </template>
 
@@ -25,27 +25,17 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      status: this.isFavorite,
-    };
-  },
   components: {
     favorite,
   },
   methods: {
     update() {
-      this.status = !this.status;
+      this.$store.commit('changePropertyValue', [this.itemId, 'isFavorite', !this.isFavorite]);
       events.callServer(
         'MarketPlace:Item:Favorite:Server',
         this.itemId,
-        this.status,
+        !this.isFavorite,
       );
-    },
-  },
-  computed: {
-    getFavoriteStatus() {
-      return this.status;
     },
   },
 };

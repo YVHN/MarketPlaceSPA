@@ -167,14 +167,13 @@ export default {
   mounted() {
     onUnmounted(() => {
       events.remove('MarketPlace:Listing:DeleteListingFromLIst:Cef');
+      events.remove('MarketPlace:Listing:AcceptDeal:Cef');
     });
-    events.add('MarketPlace:Listing:DeleteListingFromLIst:Cef', (id) => {
-      this.toggleRentStatus();
-      this.$store.dispatch('resetPickedItem');
-      this.$store.commit('deleteListingFromList', [
-        this.$route.params.filter,
-        id,
-      ]);
+    events.add('MarketPlace:Listing:AcceptDeal:Cef', () => {
+      this.$router.push('/market-place/viewing/storage');
+      this.$store.commit('resetPickedItem');
+      this.$store.commit('resetListData');
+      events.callServer('MarketPlace:List:GetListData:Server', 'storage' ,1);
     });
   },
   methods: {

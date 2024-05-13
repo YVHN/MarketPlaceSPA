@@ -1,4 +1,4 @@
-export default itemsData = {
+export default {
     auction: [
         {
             "id": 1,
@@ -145,6 +145,7 @@ export default itemsData = {
             id: 20,
             views: 59,
             created: '11.04.2024 13:53',
+            isFavorite: false,
             sellData: {
                 id: 12,
                 type: 'house',
