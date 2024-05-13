@@ -89,7 +89,7 @@ export default {
       }
     },
     viewingAction(item) {
-      this.$store.commit('unloadItem', 20);
+
       events.callServer('MarketPlace:Item:GetFullData:Server', item.id);
     },
     createListingAction(item) {

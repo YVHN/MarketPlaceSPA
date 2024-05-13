@@ -166,7 +166,6 @@ export default {
   },
   mounted() {
     onUnmounted(() => {
-      events.remove('MarketPlace:Listing:DeleteListingFromLIst:Cef');
       events.remove('MarketPlace:Listing:AcceptDeal:Cef');
     });
     events.add('MarketPlace:Listing:AcceptDeal:Cef', () => {

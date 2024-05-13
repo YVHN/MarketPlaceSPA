@@ -182,9 +182,6 @@ const marketPlace = {
 				setFieldValue(listItem, property, value);
 			}
 		},
-		test(state) {
-			
-		}
 	},
 	actions: {
 		// На сервере

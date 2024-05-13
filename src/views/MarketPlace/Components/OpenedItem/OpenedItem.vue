@@ -28,6 +28,7 @@ import events from '@/modules/events';
 import OpenedAuction from './Components/OpenedAuction/OpenedAuction.vue';
 import OpenedExchange from './Components/OpenedExchange/OpenedExchange.vue';
 import OpenedListing from './Components/OpenedListing/OpenedListing.vue';
+import { onUnmounted } from 'vue';
 
 export default {
   data() {
@@ -39,67 +40,14 @@ export default {
       buyItemData: {},
     };
   },
-  methods: {
-    toLike() {
-      this.isLiked = !this.isLiked;
-      events.callServer(
-        'MarketPlace:Item:Like:Server',
-        this.itemData.id,
-        this.isLiked,
-      );
-      // На сервере
-      this.$store.dispatch('toLike', {
-        id: this.itemData.id,
-        likedStatus: this.isLiked,
-      });
-      events.callServer(
-        'MarketPlace:Item:GetItemFullData:Server',
-        this.itemData.id,
-      );
-    },
-    handleItemClick(item) {
-      // На сервере
-      let result;
-      // Если айтем на складе, ничего не делать
-      if (this.checkPath('storage')) return '';
-      // Если айтем предлагается для создания обьявления
-      if (this.checkPath('createListing')) {
-        if (item.type === 'item') {
-          this.shortItemData = item;
-          this.isAddLot = true;
-        }
-        if (item?.action === 'empty') {
-          this.fullItemData = {};
-          this.$store.dispatch('toggleStatus', 'createListing');
-        } else if (item?.action === 'sortTransport') {
-          this.$emit('sort', 'transport');
-        } else {
-          result = this.$store.getters.getItemFullData(item.id, 'items');
-          if (result) {
-            this.fullItemData = result;
-            console.log(result);
-            this.$store.dispatch('toggleStatus', 'createListing');
-          }
-        }
-      } else if (this.checkPath('viewing')) {
-        result = this.$store.getters.getItemFullData(
-          item.id,
-          this.typeIdentify(item),
-        );
-        if (result) {
-          this.fullItemData = result;
-          this.$store.dispatch('toggleStatus', 'pickedItem');
-        }
+  mounted() {
+    onUnmounted(() => {
+      if(this.$route.params?.section) {
+        events.callServer('MarketPlace:List:GetListData:Server', this.$route.params.section, 1);
       }
-    },
-    typeIdentify(pickedItem) {
-      if (pickedItem?.competitors !== undefined) return 'auction';
-      if (pickedItem?.available !== undefined) return 'exchange';
-      if (pickedItem) return 'listings';
-    },
-    checkPath(path) {
-      return this.$route.path.includes(path);
-    },
+    });
+  },
+  methods: {
   },
   computed: {
     getPickedItem() {

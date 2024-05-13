@@ -9,19 +9,19 @@
 import { onUnmounted } from 'vue';
 import ItemsList from '../../Components/ItemsList/ItemsList.vue';
 import events from '@/modules/events';
-import sectionsData from '../../Assets/Data/sectionsData';
 
 export default {
   components: {
     ItemsList,
   },
   mounted() {
-    this.$store.commit('resetListData');
-    events.callServer('MarketPlace:List:GetListData:Server', 'createListing', 1);
     onUnmounted(() => {
       events.callServer('MarketPlace:CreateListing:Leave:Server');
       this.$store.commit('resetListData');
+      events.callServer('MarketPlace:List:GetListData:Server', this.$route.params.section, 1);
     });
+    this.$store.commit('resetListData');
+    events.callServer('MarketPlace:List:GetListData:Server', 'createListing', 1);
   },
   data() {
     return {
