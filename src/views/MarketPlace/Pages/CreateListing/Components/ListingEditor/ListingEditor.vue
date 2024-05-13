@@ -175,7 +175,7 @@ export default {
       this.$store.commit('resetListData');
       events.callServer('MarketPlace:List:GetListData:Server','createListing', 1);
       this.toggleDeployStatus();
-      this.$store.dispatch('resetPickedItem');
+      this.$store.commit('resetPickedItem');
       this.$router.push('/market-place/createListing/all');
     });
   },
