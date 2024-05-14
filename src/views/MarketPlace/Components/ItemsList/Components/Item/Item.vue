@@ -97,7 +97,7 @@
           <span>{{ $store.getters.getLanguageText('Время хранения:') }} </span>
           {{ getShelfTime }}
         </div>
-        <div class="item-storage-button" @click="unloadItem" v-if="!$route.path.includes('createListing')">
+        <div class="item-storage-button" :class="{deactivate: getOpeningType === 'tablet'}" @click.stop="unloadItem" v-if="!$route.path.includes('createListing')">
           {{ $store.getters.getLanguageText('Выгрузить со склада') }}
         </div>
       </div>
@@ -136,6 +136,8 @@ import tenants from '@/views/MarketPlace/Assets/Icons/Item/tenants.vue';
 import likes from '@/views/MarketPlace/Assets/Icons/Item/likes.vue';
 import weight from '@/views/MarketPlace/Assets/Icons/Item/weight.vue';
 import endTime from '@/views/MarketPlace/Assets/Icons/Item/time.vue';
+
+import events from '@/modules/events';
 
 export default {
   props: {
@@ -233,6 +235,9 @@ export default {
       }
       return '';
     },
+    getOpeningType() {
+      return this.$store.getters.getOpeningType;
+    }
   },
   methods: {
     formatNumber(num) {
@@ -243,7 +248,7 @@ export default {
       this.$emit('handleItemClick', this.item);
     },
     unloadItem() {
-      this.$emit('unloadItem', this.item.id);
+      events.callServer('MarketPlace:Storage:Unload:Server', this.item.id);
     },
     isHas(section, property) {
       return this.item[section]?.[property] !== undefined;

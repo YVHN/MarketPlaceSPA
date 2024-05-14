@@ -38,8 +38,12 @@ const marketPlace = {
 		listData: sectionsData.estate,
 		favoritesIdList: [],
 		pickedItem: null,
+		openingType: 'tablet',
 	},
 	getters: {
+		getOpeningType(state) {
+			return state.openingType;
+		},
 		getPagesInSection(state) {
 			return state.pagesInSection;
 		},
@@ -75,7 +79,8 @@ const marketPlace = {
 		getCategory: (state, getters) => (item, itemType) => {
 			let category = '';
 			if (['house', 'apartment'].includes(item.type)) {
-				category = itemType === 'auction' ? 'Недвижимость' : item.address;
+				category = itemType === 'auction' ? 'Недвижимость' : '';
+				// Тут должен быть адрес
 			} else if (item.type === 'business') {
 				return item.address;
 			} else if (['transportRent', 'transport'].includes(item.type)) {

@@ -105,7 +105,7 @@
           {{ $store.getters.getLanguageText('Начать сделку') }}
         </div>
         <template v-if="getItem.listingData.seller.phone !== null">
-          <div class="action">
+          <div class="action" @click="test">
             <call class="action-img" />
           </div>
           <div class="action">
@@ -193,6 +193,13 @@ export default {
         );
       }
     },
+    test() {
+      console.log('тест');
+      this.$router.push('/market-place/viewing/storage');
+      this.$store.commit('resetPickedItem');
+      this.$store.commit('resetListData');
+      events.callServer('MarketPlace:List:GetListData:Server', 'storage' ,1);
+    }
   },
   computed: {
     getItem() {
@@ -244,7 +251,8 @@ export default {
       if (['house', 'apartment', 'business'].includes(item.type)) {
         list.push({
           title: 'Адрес',
-          value: item.address,
+          value: '',
+          // Тут должен быть address
         });
       } else if (item.type === 'transport') {
         list.push(

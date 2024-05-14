@@ -62,6 +62,11 @@ export default {
                 price: 50000,
                 parkingCapacity: 4,
                 maxTenants: 1,
+                coordinates: {
+                    x: 12,
+                    y: 11,
+                    z: 10,
+                }
             },
         },
     ],
@@ -141,7 +146,8 @@ export default {
             sellData: {
                 id: 12,
                 img: 'W4J82Contention',
-                model: 'W4 J82 Contention',
+                vehicleName: 'Буба лупа V8',
+                vehicleModel: 'W4 J82 Contention',
                 type: 'transport',
                 dealerShip: 'Ubermacht',
                 quantity: 3,

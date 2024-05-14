@@ -146,7 +146,8 @@ export default {
           },
           {
             title: 'Улица',
-            value: item.address,
+            value: '',
+            // Тут должен быть адрес
           },
         );
       } else if (item.type === 'transport') {

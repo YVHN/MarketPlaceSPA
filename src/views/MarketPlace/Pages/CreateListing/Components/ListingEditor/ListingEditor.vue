@@ -290,7 +290,8 @@ export default {
         list = [
           {
             title: 'Адрес',
-            value: item.address,
+            value: '',
+            // Тут должен быть адрес
           },
         ];
       } else if (item.type === 'transport') {

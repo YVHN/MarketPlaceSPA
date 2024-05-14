@@ -3,7 +3,7 @@
     <!-- Список предметов -->
     <div class="itemsList-list-wrapper">
       <div class="itemsList-list" v-if="listData.length">
-        <Item v-for="item in listData" @click.native="handleItemClick(item)" @unloadItem="unloadItem" :item="item"
+        <Item v-for="item in listData" @click.native="handleItemClick(item)" :item="item"
           :key="item.id" />
         <AddLot :data="shortItemData" v-if="isAddLot" @toggleIsAddStatus="toggleIsAddStatus" />
       </div>
@@ -81,7 +81,7 @@ export default {
   methods: {
     handleItemClick(item) {
       // Если айтем на продаже, то вызов фулл даты
-      if (this.checkPath('viewing')) {
+      if (this.checkPath('viewing') && !this.checkPath('storage')) {
         this.viewingAction(item);
         // Если айтем создания обьявления 
       } else if (this.checkPath('createListing')) {
@@ -89,7 +89,6 @@ export default {
       }
     },
     viewingAction(item) {
-
       events.callServer('MarketPlace:Item:GetFullData:Server', item.id);
     },
     createListingAction(item) {
@@ -116,9 +115,6 @@ export default {
         }
         this.$store.commit('pickItem', item);
       }
-    },
-    unloadItem(id) {
-      events.callServer('MarketPlace:Storage:Unload:Server', id);
     },
     toggleIsAddStatus() {
       this.isAddLot = !this.isAddLot;
