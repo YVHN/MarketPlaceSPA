@@ -176,6 +176,7 @@ export default {
         available: 'Доступно',
         storage: 'На складе',
         unavailable: 'Не доступно',
+        owned: 'В собственности',
       };
       return statuses[this.item.status];
     },

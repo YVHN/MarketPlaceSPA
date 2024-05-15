@@ -186,7 +186,7 @@ export default {
                 maxTenants: 3,
                 address: 'Хабибовна 33',
             },
-            status: 'storage',
+            status: 'owned',
         },
         {
             id: 5,

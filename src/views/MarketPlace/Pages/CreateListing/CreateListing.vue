@@ -10,6 +10,7 @@ import { onUnmounted } from 'vue';
 import ItemsList from '../../Components/ItemsList/ItemsList.vue';
 import events from '@/modules/events';
 
+
 export default {
   components: {
     ItemsList,
