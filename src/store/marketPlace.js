@@ -82,7 +82,7 @@ const marketPlace = {
 			let category = '';
 			if (['house', 'apartment'].includes(item.type)) {
 				category = itemType === 'auction' ? 'Недвижимость' : '';
-				return getAddress(item.coordinates);
+				return '';
 			} else if (item.type === 'business') {
 				return item.address;
 			} else if (['transportRent', 'transport'].includes(item.type)) {
@@ -144,9 +144,9 @@ const marketPlace = {
 	mutations: {
 		start(state) {
 			console.log('запуск');
-			state.listData = [];
-			state.pickedItem = null;
-			state.pagesInSection = 1;
+			// state.listData = [];
+			// state.pickedItem = null;
+			// state.pagesInSection = 1;
 		},
 		pickItem(state, item) {
 			console.log(item);
