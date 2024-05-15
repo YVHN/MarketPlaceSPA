@@ -40,7 +40,7 @@ const marketPlace = {
 		listData: sectionsData.storage,
 		favoritesIdList: [],
 		pickedItem: null,
-		openingType: 'tablet',
+		openingType: 'InTablet',
 	},
 	getters: {
 		getOpeningType(state) {
@@ -144,9 +144,9 @@ const marketPlace = {
 	mutations: {
 		start(state) {
 			console.log('запуск');
-			// state.listData = [];
-			// state.pickedItem = null;
-			// state.pagesInSection = 1;
+			state.listData = [];
+			state.pickedItem = null;
+			state.pagesInSection = 1;
 		},
 		pickItem(state, item) {
 			console.log(item);
@@ -231,5 +231,8 @@ events.add('Marketplace:Action:ChangePropertyValue', (id, property, value) => {
 events.add('MarketPlace:List:ItemDelete:Cef', (id) => {
 	const filtered = marketPlace.state.listData.filter((item) => item.id !== id);
 	marketPlace.state.unloadItem.listData = filtered;
+});
+events.add('MarketPlace:SetOpeningType:Cef', (type) => {
+	marketPlace.state.openingType = type;
 });
 export default marketPlace;

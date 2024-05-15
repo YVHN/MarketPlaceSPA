@@ -97,9 +97,9 @@
           <span>{{ $store.getters.getLanguageText('Время хранения:') }} </span>
           {{ shelfTime }}
         </div>
-        <div class="item-storage-button" :class="{ deactivate: getOpeningType === 'tablet' }" @click.stop="unloadItem"
+        <div class="item-storage-button" :class="{ deactivate: getOpeningType === 'InTablet' }" @click.stop="unloadItem"
           v-if="!$route.path.includes('createListing')">
-          {{ $store.getters.getLanguageText(getOpeningType === 'tablet' ? 'Доступно на складе' : 'Выгрузить со склада')
+          {{ $store.getters.getLanguageText(getOpeningType === 'InTablet' ? 'Доступно на складе' : 'Выгрузить со склада')
           }}
         </div>
       </div>
@@ -140,6 +140,7 @@ import weight from '@/views/MarketPlace/Assets/Icons/Item/weight.vue';
 import endTime from '@/views/MarketPlace/Assets/Icons/Item/time.vue';
 
 import events from '@/modules/events';
+import { onUnmounted } from 'vue';
 
 export default {
   props: {
@@ -204,12 +205,15 @@ export default {
       this.getShelfTime();
       this.startTimer();
     }
+    onUnmounted(() => {
+      this.stopTimer;
+    });
   },
   methods: {
     startTimer() {
       this.timer = setInterval(() => {
         this.getShelfTime();
-      }, 5000);
+      }, 60000);
     },
     stopTimer() {
       if (this.timer) {
@@ -244,19 +248,12 @@ export default {
         const hours = Math.floor((differenceInMilliseconds % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((differenceInMilliseconds % (1000 * 60 * 60)) / (1000 * 60));
         console.log(`дни: ${days}, часы: ${hours}, минуты: ${minutes},`);
-
-        if (days === 0 && hours === 0 && minutes === 0) {
-          this.shelfTime = 'Время истекло';
-          events.callServer('MarketPlace:List:ItemDelete:Server', this.item.id)
-          this.stopTimer();
-        } else {
           const showDays = days ? `${days} ${this.$store.getters.getLanguageText('д.')} ` : '';
           const showHours = hours ? `${hours} ${this.$store.getters.getLanguageText('ч.')} ` : '';
           const showMinutes = minutes ? `${minutes} ${this.$store.getters.getLanguageText('м.')} ` : '';
           this.shelfTime = `${showDays}${showHours}${showMinutes}`;
-        }
-      }
-    }
+      };
+    },
   },
 };
 </script>
