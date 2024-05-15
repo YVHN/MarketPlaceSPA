@@ -4,6 +4,8 @@ import Vue from 'vue'
 import itemsFullData from '@/views/MarketPlace/Assets/Data/itemsFullData';
 import sectionsData from '@/views/MarketPlace/Assets/Data/sectionsData';
 
+import getAddress from '@/functions/marketplace';
+
 function setFieldValue(obj, fieldName, value) {
 	// Проверяем, существует ли объект
 	if (obj && typeof obj === "object") {
@@ -80,7 +82,7 @@ const marketPlace = {
 			let category = '';
 			if (['house', 'apartment'].includes(item.type)) {
 				category = itemType === 'auction' ? 'Недвижимость' : '';
-				// Тут должен быть адрес
+				return getAddress(item.coordinates);
 			} else if (item.type === 'business') {
 				return item.address;
 			} else if (['transportRent', 'transport'].includes(item.type)) {

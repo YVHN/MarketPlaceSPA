@@ -63,9 +63,9 @@ export default {
                 parkingCapacity: 4,
                 maxTenants: 1,
                 coordinates: {
-                    x: 12,
-                    y: 11,
-                    z: 10,
+                    x: -1816.8712,
+                    y: -636.77,
+                    z: 9.818936 
                 }
             },
         },
