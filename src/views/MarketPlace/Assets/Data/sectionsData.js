@@ -138,39 +138,39 @@ export default {
                 weight: 12,
             },
             storageData: {
-                added: '14.04.2024 18:48',
+                endTime: '15.05.2024 16:13'
             },
         },
-        {
-            id: 40,
-            sellData: {
-                id: 12,
-                img: 'W4J82Contention',
-                vehicleName: 'Буба лупа V8',
-                vehicleModel: 'W4 J82 Contention',
-                type: 'transport',
-                dealerShip: 'Ubermacht',
-                quantity: 3,
-                mileage: 100,
-            },
-            storageData: {
-                added: '12.04.2024 13:55',
-            },
-        },
-        {
-            id: 13,
-            sellData: {
-                id: 3,
-                type: 'house',
-                img: 'House123',
-                address: 'Хабибовна 33',
-                parkingCapacity: 6,
-                maxTenants: 3,
-            },
-            storageData: {
-                added: '12.04.2024 13:55',
-            },
-        },
+        // {
+        //     id: 40,
+        //     sellData: {
+        //         id: 12,
+        //         img: 'W4J82Contention',
+        //         vehicleName: 'Буба лупа V8',
+        //         vehicleModel: 'W4 J82 Contention',
+        //         type: 'transport',
+        //         dealerShip: 'Ubermacht',
+        //         quantity: 3,
+        //         mileage: 100,
+        //     },
+        //     storageData: {
+        //         endTime: '15.05.2024 15:50',
+        //     },
+        // },
+        // {
+        //     id: 13,
+        //     sellData: {
+        //         id: 3,
+        //         type: 'house',
+        //         img: 'House123',
+        //         address: 'Хабибовна 33',
+        //         parkingCapacity: 6,
+        //         maxTenants: 3,
+        //     },
+        //     storageData: {
+        //         endTime: '15.05.2024 15:51',
+        //     },
+        // },
     ],
     favorites: [],
     userListings: [],

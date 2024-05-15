@@ -48,8 +48,8 @@
         </div>
         <Img class="item-header-img" :img="'default'" :itemType="sellData.type" :size="'s'"
           :isSmall="sellData?.filter ? true : false" />
-        <FavoriteIndicator class="item-favorite" :itemId="item.id" :size="'small'" :is-favorite="item.isFavorite"
-          v-if="!isShowFavorite" />
+        <FavoriteIndicator class="item-favorite" :itemId="item.id" :size="'small'"
+          :is-favorite="item?.isFavorite ? item.isFavorite : false" v-if="!isShowFavorite" />
       </div>
       <div class="item-title">
         {{ $store.getters.getTitle(sellData) }}
@@ -95,10 +95,12 @@
       <div class="item-storage" v-else-if="item?.storageData">
         <div class="item-storage-time">
           <span>{{ $store.getters.getLanguageText('Время хранения:') }} </span>
-          {{ getShelfTime }}
+          {{ shelfTime }}
         </div>
-        <div class="item-storage-button" :class="{deactivate: getOpeningType === 'tablet'}" @click.stop="unloadItem" v-if="!$route.path.includes('createListing')">
-          {{ $store.getters.getLanguageText('Выгрузить со склада') }}
+        <div class="item-storage-button" :class="{ deactivate: getOpeningType === 'tablet' }" @click.stop="unloadItem"
+          v-if="!$route.path.includes('createListing')">
+          {{ $store.getters.getLanguageText(getOpeningType === 'tablet' ? 'Доступно на складе' : 'Выгрузить со склада')
+          }}
         </div>
       </div>
       <div class="item-status" v-else-if="item?.status">
@@ -149,6 +151,8 @@ export default {
   data() {
     return {
       sellData: this.item.sellData,
+      timer: null,
+      shelfTime: null,
     };
   },
   components: {
@@ -191,58 +195,30 @@ export default {
       }
       return '';
     },
-    getShelfTime() {
-      if (this.item && (this.item?.storageData || this.item?.endTime)) {
-        // Получаем текущее время и время добавления
-        const currentTime = new Date();
-        const addedTime = this.$store.getters.getParsedTime(
-          this.item?.storageData?.added || this.item.endTime,
-          'shelfTime',
-        );
-
-        // Прибавляем 7 дней к времени добавления
-        // addedTime.setDate(addedTime.getDate() + 7);
-
-        // Проверяем, корректные ли даты мы получили
-        if (!isNaN(currentTime.getTime()) && !isNaN(addedTime.getTime())) {
-          // Вычисляем разницу в миллисекундах
-          const differenceInMilliseconds = Math.abs(currentTime - addedTime);
-
-          // Вычисляем разницу в днях, часах и минутах
-          const days = Math.floor(
-            differenceInMilliseconds / (1000 * 60 * 60 * 24),
-          );
-          const hours = Math.floor(
-            (differenceInMilliseconds % (1000 * 60 * 60 * 24)) /
-            (1000 * 60 * 60),
-          );
-          const minutes = Math.floor(
-            (differenceInMilliseconds % (1000 * 60 * 60)) / (1000 * 60),
-          );
-
-          const showDays = days
-            ? `${days} ${this.$store.getters.getLanguageText('д.')} `
-            : '';
-          const showHours = hours
-            ? `${hours} ${this.$store.getters.getLanguageText('ч.')} `
-            : '';
-          const showMinutes = minutes
-            ? `${minutes} ${this.$store.getters.getLanguageText('м.')} `
-            : '';
-
-          // Возвращаем разницу в формате "дни часы минуты"
-          return `${showDays}${showHours}${showMinutes}`;
-        }
-      }
-      return '';
-    },
     getOpeningType() {
       return this.$store.getters.getOpeningType;
     }
   },
+  mounted() {
+    if (this.item?.storageData?.endTime || this.item?.endTime) {
+      this.getShelfTime();
+      this.startTimer();
+    }
+  },
   methods: {
+    startTimer() {
+      this.timer = setInterval(() => {
+        this.getShelfTime();
+      }, 5000);
+    },
+    stopTimer() {
+      if (this.timer) {
+        clearInterval(this.timer);
+        this.timer = null;
+      }
+    },
     formatNumber(num) {
-      if (typeof num === undefined && !num) return '';
+      if (typeof num === 'undefined' && !num) return '';
       return num.toLocaleString('ru-RU');
     },
     handleItemClick() {
@@ -254,6 +230,33 @@ export default {
     isHas(section, property) {
       return this.item[section]?.[property] !== undefined;
     },
+    getShelfTime() {
+      const currentTime = new Date();
+      const addedTime = this.$store.getters.getParsedTime(
+        this.item?.endTime || this.item.storageData?.endTime,
+        'shelfTime',
+      );
+
+      if (!isNaN(currentTime.getTime()) && !isNaN(addedTime.getTime())) {
+        const differenceInMilliseconds = Math.abs(currentTime - addedTime);
+
+        const days = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((differenceInMilliseconds % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((differenceInMilliseconds % (1000 * 60 * 60)) / (1000 * 60));
+        console.log(`дни: ${days}, часы: ${hours}, минуты: ${minutes},`);
+
+        if (days === 0 && hours === 0 && minutes === 0) {
+          this.shelfTime = 'Время истекло';
+          events.callServer('MarketPlace:List:ItemDelete:Server', this.item.id)
+          this.stopTimer();
+        } else {
+          const showDays = days ? `${days} ${this.$store.getters.getLanguageText('д.')} ` : '';
+          const showHours = hours ? `${hours} ${this.$store.getters.getLanguageText('ч.')} ` : '';
+          const showMinutes = minutes ? `${minutes} ${this.$store.getters.getLanguageText('м.')} ` : '';
+          this.shelfTime = `${showDays}${showHours}${showMinutes}`;
+        }
+      }
+    }
   },
 };
 </script>

@@ -37,7 +37,7 @@ const marketPlace = {
 	state: {
 		currentLanguage: 'eng',
 		pagesInSection: 10,
-		listData: sectionsData.estate,
+		listData: sectionsData.storage,
 		favoritesIdList: [],
 		pickedItem: null,
 		openingType: 'tablet',
@@ -227,5 +227,9 @@ events.add('Marketplace:Action:ChangePropertyValue', (id, property, value) => {
 	if (listItem) {
 		setFieldValue(listItem, property, value);
 	}
+});
+events.add('MarketPlace:List:ItemDelete:Cef', (id) => {
+	const filtered = marketPlace.state.listData.filter((item) => item.id !== id);
+	marketPlace.state.unloadItem.listData = filtered;
 });
 export default marketPlace;
