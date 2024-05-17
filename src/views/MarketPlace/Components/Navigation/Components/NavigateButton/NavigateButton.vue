@@ -1,5 +1,5 @@
 <template>
-  <div class="navigateButton" :class="{ active: $route.params.section === data.path }" @click="selectSection(data.path)">
+  <div class="navigateButton" :class="{ active: $route.params.section === data.path, off: getOpeningType === 'InTablet' && data.path !== 'storage' }" @click="selectSection(data.path)">
     <component class="navigateButton-img" :is="data.img" />
     <p class="navigateButton-title">
       {{ $store.getters.getLanguageText(data.title) }}
@@ -56,6 +56,11 @@ export default {
         events.callServer('MarketPlace:List:GetListData:Server', section, 1);
       }
     }
+  },
+  computed: {
+    getOpeningType() {
+      return this.$store.getters.getOpeningType;
+    }
   }
 };
 </script>
@@ -85,17 +90,17 @@ export default {
     color: #fff;
   }
 
-  &:hover {
+  &:not(.off):hover {
     transform: scale(1.05);
     background: rgba(73, 73, 73, 0.1);
   }
 
-  &:active {
+  &:not(.off):active {
     transform: scale(1.1);
   }
 }
 
-.active {
+.active:not(.off) {
   background: #5f9adf;
   transform: scale(1.05);
 
@@ -105,6 +110,13 @@ export default {
 
   .navigateButton-img {
     fill-opacity: 1;
+  }
+}
+.off {
+  pointer-events: none;
+  background: rgba(128, 128, 128, 0.418);
+  .navigateButton-title {
+    color: rgba(148, 147, 147, 0.582);
   }
 }
 </style>

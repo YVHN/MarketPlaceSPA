@@ -5,6 +5,7 @@
         v-for="(section, index) in tradingSections"
         :key="index"
         :data="section"
+        
       />
     </div>
     <div class="aside-sections-list personal">

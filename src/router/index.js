@@ -661,7 +661,6 @@ const routes = [
 	// }
 	{
 		path: '/market-place',
-		redirect: '/market-place/viewing/auction',
 		component: () =>
 			import('@/views/MarketPlace/MarketPlace.vue'),
 		children: [

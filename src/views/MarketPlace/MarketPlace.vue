@@ -1,9 +1,6 @@
 <template>
   <div class="marketPlace">
-    <img
-      class="marketPlace-background-triangles"
-      src="@/views/MarketPlace/Assets/Images/backgroundTriangles.svg"
-    />
+    <img class="marketPlace-background-triangles" src="@/views/MarketPlace/Assets/Images/backgroundTriangles.svg" />
     <div class="marketPlace-body">
       <div class="logo">
         <div class="logo-title">Market <span>place</span></div>
@@ -32,16 +29,18 @@ export default {
     Navigation,
     Header,
   },
-  beforeRouteEnter(to, from, next) {
-    next(vm => {
-      if(vm.$route.params.section !== 'auction') {
-        vm.$router.push('/market-place/viewing/auction');
-      }
-    });
-  },
   mounted() {
     this.$store.commit('start');
+    if (!['auction', 'storage'].includes(this.$route.params.section)) {
+      if(this.getOpeningType === 'inTablet') this.$router.push('/market-place/viewing/storage');
+      else this.$router.push('/market-place/viewing/auction');
+    }
   },
+  computed: {
+    getOpeningType() {
+      return this.$store.getters.getOpeningType;
+    }
+  }
 };
 </script>
 
