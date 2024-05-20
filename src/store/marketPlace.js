@@ -230,7 +230,7 @@ events.add('Marketplace:Action:ChangePropertyValue', (id, property, value) => {
 });
 events.add('MarketPlace:List:ItemDelete:Cef', (id) => {
 	const filtered = marketPlace.state.listData.filter((item) => item.id !== id);
-	marketPlace.state.unloadItem.listData = filtered;
+	marketPlace.state.listData = filtered;
 });
 events.add('MarketPlace:SetOpeningType:Cef', (type) => {
 	marketPlace.state.openingType = type;
