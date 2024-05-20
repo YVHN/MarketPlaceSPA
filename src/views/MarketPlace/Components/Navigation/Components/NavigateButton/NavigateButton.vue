@@ -1,5 +1,5 @@
 <template>
-  <div class="navigateButton" :class="{ active: $route.params.section === data.path, off: getOpeningType === 'InTablet' && data.path !== 'storage' }" @click="selectSection(data.path)">
+  <div class="navigateButton" :class="{ active: $route.params.section === data.path, off: getOpeningType === 'InStorage' && data.path !== 'storage' }" @click="selectSection(data.path)">
     <component class="navigateButton-img" :is="data.img" />
     <p class="navigateButton-title">
       {{ $store.getters.getLanguageText(data.title) }}

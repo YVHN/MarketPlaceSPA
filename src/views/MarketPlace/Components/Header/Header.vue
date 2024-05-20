@@ -8,7 +8,7 @@
         <SortSelects :selects="selects" v-else-if="isShowSort" :key="3"/>
     </div>
     <div class="header-content">
-      <div class="header-content-create-button" @click="openCreateListing">{{
+      <div class="header-content-create-button" :class="{off: getOpeningType === 'InStorage'}" @click="openCreateListing">{{
         $store.getters.getLanguageText('Создать') }}</div>
       <div class="header-content-money">
         <div class="header-content-money-cash">
@@ -41,6 +41,9 @@ export default {
     SortSelects
   },
   computed: {
+    getOpeningType() {
+      return this.$store.getters.getOpeningType;
+    },
     isCreateListing() {
       return this.$route.path.includes('createListing');
     },

@@ -99,4 +99,11 @@
   * {
     font-family: 'PF DinDisplay Pro';
   }
+  .off {
+    pointer-events: none;
+    background: rgba(128, 128, 128, 0.418);
+    .navigateButton-title {
+      color: rgba(148, 147, 147, 0.582);
+    }
+  }
 }

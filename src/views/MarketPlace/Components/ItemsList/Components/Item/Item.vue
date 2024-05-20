@@ -99,7 +99,7 @@
         </div>
         <div class="item-storage-button" :class="{ deactivate: getOpeningType === 'InTablet' }" @click.stop="unloadItem"
           v-if="!$route.path.includes('createListing')">
-          {{ $store.getters.getLanguageText(getOpeningType === 'InTablet' ? 'Доступно на складе' : 'Выгрузить со склада')
+          {{ $store.getters.getLanguageText(getOpeningType === 'InTablet' ? 'Выгрузка не доступна с планшета' : 'Выгрузить со склада')
           }}
         </div>
       </div>
