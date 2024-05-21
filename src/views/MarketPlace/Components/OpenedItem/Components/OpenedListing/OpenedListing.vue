@@ -81,7 +81,7 @@
           </div>
         </div>
       </div>
-      <div class="info-seller">
+      <div class="info-seller" v-if="getItem?.listingData?.seller">
         <div class="info-seller-unit">
           <div class="info-seller-unit-title">
             {{ $store.getters.getLanguageText('Продавец') }}
@@ -91,7 +91,7 @@
             <span>{{ `#${getItem.listingData.seller.static}` }}</span>
           </div>
         </div>
-        <div class="info-seller-unit">
+        <div class="info-seller-unit" v-if="getItem?.listingData?.seller?.phone">
           <div class="info-seller-unit-title">
             {{ $store.getters.getLanguageText('Телефон') }}
           </div>
@@ -104,8 +104,8 @@
         <div class="info-actions-makeDeal" @click="makeDeal">
           {{ $store.getters.getLanguageText('Начать сделку') }}
         </div>
-        <template v-if="getItem.listingData.seller.phone !== null">
-          <div class="action" @click="test">
+        <template v-if="getItem?.listingData?.seller?.phone">
+          <div class="action">
             <call class="action-img" />
           </div>
           <div class="action">
@@ -193,13 +193,6 @@ export default {
         );
       }
     },
-    test() {
-      console.log('тест');
-      this.$router.push('/market-place/viewing/storage');
-      this.$store.commit('resetPickedItem');
-      this.$store.commit('resetListData');
-      events.callServer('MarketPlace:List:GetListData:Server', 'storage' ,1);
-    }
   },
   computed: {
     getItem() {

@@ -1,44 +1,13 @@
 export default {
     auction: [
         {
-            "id": 1,
-            "sellData": {
-                "type": "transport",
-                "img": null,
-                "description": "test",
-                "price": 0,
-                "id": 923260,
-                "vehicleModel": "daytona",
-                "vehicleName": "Ferari Daytona",
-                "statePrice": 0,
-                "specifications": {}
-            },
-            "views": 0,
-            "isFavorite": false,
-            "created": "02.05.2024 16:16:39",
-            "endTime": "02.05.2024 21:16:39",
-            "likes": 0,
-            "isLiked": false,
-            "auctionData": {
-                "seller": {
-                    "username": "Cherry_Waves",
-                    "static": 128683,
-                    "phone": 233197770
-                },
-                "lastBet": 1000000,
-                "competitors": 0,
-                "offers": []
-            },
-            "sales": []
-        },
-        {
             id: 2,
             likes: 123,
             views: 321,
             isLiked: false,
             isFavorite: false,
-            created: '11.04.2024 13:53',
-            endTime: '15.04.2024 15:53',
+            created: '2024-05-24T21:06:06.9686271+03:00',
+            endTime: '2024-05-24T21:06:06.9686271+03:00',
             sellData: {
                 img: 'W4J82Contention',
                 model: 'W4 J82 Contention',
@@ -67,7 +36,15 @@ export default {
                             static: 123,
                         },
                         bet: 74300,
-                        created: '11.04.2024 18:31',
+                        created: '2024-05-24T21:06:06.9686271+03:00',
+                    },
+                    {
+                        playerData: {
+                            username: 'Maneskin Benson',
+                            static: 123,
+                        },
+                        bet: 12300,
+                        created: '2024-05-28T21:06:06.9686271+03:00',
                     },
                 ],
             },
@@ -147,7 +124,7 @@ export default {
             created: '11.04.2024 13:53',
             isFavorite: false,
             sellData: {
-                id: 12,
+                id: 777,
                 type: 'house',
                 img: 'House123',
                 address: 'Хабибовна 33',
@@ -161,8 +138,8 @@ export default {
                 seller: {
                     username: 'First_Last',
                     static: 666666,
-                    phone: '666-666-666',
-                },
+                    phone: null,
+                }
             },
         },
         {

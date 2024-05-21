@@ -10,7 +10,7 @@
             </div>
             <div class="unit">
               <endTime class="unit-icon" />
-              {{ getShelfTime }}
+              {{ shelfTime }}
             </div>
           </template>
           <template v-else>
@@ -99,8 +99,7 @@
         </div>
         <div class="item-storage-button" :class="{ deactivate: getOpeningType === 'InTablet' }" @click.stop="unloadItem"
           v-if="!$route.path.includes('createListing')">
-          {{ $store.getters.getLanguageText(getOpeningType === 'InTablet' ? 'Выгрузка не доступна с планшета' : 'Выгрузить со склада')
-          }}
+          {{ $store.getters.getLanguageText(getOpeningType === 'InTablet' ? 'Выгрузка не доступна с планшета' : 'Выгрузить со склада') }}
         </div>
       </div>
       <div class="item-status" v-else-if="item?.status">
@@ -141,6 +140,7 @@ import endTime from '@/views/MarketPlace/Assets/Icons/Item/time.vue';
 
 import events from '@/modules/events';
 import { onUnmounted } from 'vue';
+import { getEndTime } from '@/functions/marketplace';
 
 export default {
   props: {
@@ -202,7 +202,7 @@ export default {
   },
   mounted() {
     if (this.item?.storageData?.endTime || this.item?.endTime) {
-      this.getShelfTime();
+      this.getEndTime();
       this.startTimer();
     }
     onUnmounted(() => {
@@ -212,8 +212,8 @@ export default {
   methods: {
     startTimer() {
       this.timer = setInterval(() => {
-        this.getShelfTime();
-      }, 60000);
+        this.getEndTime();
+      }, 5000);
     },
     stopTimer() {
       if (this.timer) {
@@ -234,26 +234,10 @@ export default {
     isHas(section, property) {
       return this.item[section]?.[property] !== undefined;
     },
-    getShelfTime() {
-      const currentTime = new Date();
-      const addedTime = this.$store.getters.getParsedTime(
-        this.item?.endTime || this.item.storageData?.endTime,
-        'shelfTime',
-      );
+    getEndTime() {
+      this.shelfTime = getEndTime(this.item?.endTime || this.item.storageData?.endTime, 'default');
+    }
 
-      if (!isNaN(currentTime.getTime()) && !isNaN(addedTime.getTime())) {
-        const differenceInMilliseconds = Math.abs(currentTime - addedTime);
-
-        const days = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((differenceInMilliseconds % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((differenceInMilliseconds % (1000 * 60 * 60)) / (1000 * 60));
-        console.log(`дни: ${days}, часы: ${hours}, минуты: ${minutes},`);
-          const showDays = days ? `${days} ${this.$store.getters.getLanguageText('д.')} ` : '';
-          const showHours = hours ? `${hours} ${this.$store.getters.getLanguageText('ч.')} ` : '';
-          const showMinutes = minutes ? `${minutes} ${this.$store.getters.getLanguageText('м.')} ` : '';
-          this.shelfTime = `${showDays}${showHours}${showMinutes}`;
-      };
-    },
   },
 };
 </script>

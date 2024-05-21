@@ -65,7 +65,7 @@
             <div>{{ offer.quantity }}</div>
             <div>{{ `${offer.pricePerItem}$` }}</div>
             <div>
-              {{ getShelfTime(offer.created, 'shelfTime') }}
+              {{ getEndTime(offer.created) }}
             </div>
             <div
               class="listBlock-list-item-button"
@@ -77,9 +77,9 @@
           <template v-else>
             <div>{{ offer.playerData.static }}</div>
             <div class="listBlock-list-item-time">
-              {{ $store.getters.getParsedTime(offer.created, 'full').date }}
+              {{ parseDate(offer.created).date }}
               <span>{{
-                $store.getters.getParsedTime(offer.created, 'full').time
+                parseDate(offer.created).time
               }}</span>
             </div>
             <div class="listBlock-list-item-bet">
@@ -93,6 +93,8 @@
 </template>
 
 <script>
+import { parseDate, getEndTime } from '@/functions/marketplace';
+
 export default {
   props: {
     list: {
@@ -109,48 +111,12 @@ export default {
       if (num === undefined || !num) return '';
       return num.toLocaleString('ru-RU');
     },
-    getShelfTime(time) {
-      // Получаем текущее время и время добавления
-      const currentTime = new Date();
-      const addedTime = this.$store.getters.getParsedTime(time, 'shelfTime');
-
-      // Прибавляем 7 дней к времени добавления
-      addedTime.setDate(addedTime.getDate() + 1);
-
-      console.log(addedTime);
-      // Проверяем, корректные ли даты мы получили
-      if (!isNaN(currentTime.getTime()) && !isNaN(addedTime.getTime())) {
-        // Вычисляем разницу в миллисекундах
-        const differenceInMilliseconds = Math.abs(currentTime - addedTime);
-
-        // Вычисляем разницу в днях, часах и минутах
-        const days = Math.floor(
-          differenceInMilliseconds / (1000 * 60 * 60 * 24),
-        );
-        const hours = Math.floor(
-          (differenceInMilliseconds % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-        );
-        const minutes = Math.floor(
-          (differenceInMilliseconds % (1000 * 60 * 60)) / (1000 * 60),
-        );
-
-        const showDays = days
-          ? `${days} ${this.$store.getters.getLanguageText('д.')} `
-          : '';
-        const showHours = hours
-          ? `${hours} ${this.$store.getters.getLanguageText('ч.')} `
-          : '';
-        const showMinutes = minutes
-          ? `${minutes} ${this.$store.getters.getLanguageText('м.')} `
-          : '';
-
-        console.log(`${showDays}${showHours}${showMinutes}`);
-
-        // Возвращаем разницу в формате "дни часы минуты"
-        return `${showDays}${showHours}${showMinutes}`;
-      }
-      return '';
+    parseDate(time) {
+      return parseDate(time, 'object');
     },
+    getEndTime(endTime) {
+      return getEndTime(endTime);
+    }
   },
 };
 </script>

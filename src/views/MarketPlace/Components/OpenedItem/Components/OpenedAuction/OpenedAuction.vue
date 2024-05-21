@@ -89,6 +89,7 @@ import ListBlock from '../ListBlock/ListBlock.vue';
 import FavoriteIndicator from '@/views//MarketPlace/Components/ItemComponents/FavoriteIndicator/FavoriteIndicator.vue';
 import MakeBet from './Components/MakeBet/MakeBet.vue';
 import Graph from '../Graph/Graph.vue';
+import { parseDate } from '@/functions/marketplace';
 import { onUnmounted } from 'vue';
 export default {
   mounted() {
@@ -170,7 +171,7 @@ export default {
       const list = [];
       this.lotData.auctionData.offers.forEach((offer) => {
         const bet = {
-          date: this.$store.getters.getParsedTime(offer.created, 'graph'),
+          date: parseDate(offer.created, 'default'),
           amount: offer.bet,
         };
         list.push(bet);

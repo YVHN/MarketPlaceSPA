@@ -4,8 +4,6 @@ import Vue from 'vue'
 import itemsFullData from '@/views/MarketPlace/Assets/Data/itemsFullData';
 import sectionsData from '@/views/MarketPlace/Assets/Data/sectionsData';
 
-import getAddress from '@/functions/marketplace';
-
 function setFieldValue(obj, fieldName, value) {
 	// Проверяем, существует ли объект
 	if (obj && typeof obj === "object") {
@@ -37,7 +35,7 @@ const marketPlace = {
 	state: {
 		currentLanguage: 'eng',
 		pagesInSection: 10,
-		listData: sectionsData.storage,
+		listData: sectionsData.auction,
 		favoritesIdList: [],
 		pickedItem: null,
 		openingType: 'InTablet',
@@ -99,22 +97,6 @@ const marketPlace = {
 			if (item?.tradeData) return item.tradeData.startPrice;
 			if (item.sellData?.rentPrice) return item.sellData.rentPrice;
 			return item.sellData.price;
-		},
-		getParsedTime: () => (dateTimeString, type) => {
-			const [dateStr, timeStr] = dateTimeString.split(' ');
-			const [day, month, year] = dateStr.split('.');
-			const [hours, minutes] = timeStr.split(':');
-
-			const parsedDate = {
-				date: '',
-				time: timeStr,
-			};
-			if (type === 'full') parsedDate.date = dateStr;
-			if (type === 'graph') return `${day}.${month} ${timeStr}`;
-			if (type === 'shelfTime')
-				return new Date(year, month - 1, day, hours, minutes);
-
-			return parsedDate;
 		},
 		//---------------------------------------------------
 		getLanguageText(state) {

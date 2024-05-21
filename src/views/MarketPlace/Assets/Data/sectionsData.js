@@ -6,8 +6,8 @@ export default {
             likes: 100,
             isLiked: false,
             isFavorite: false,
-            endTime: '15.04.2024 18:55',
-            created: '11.04.2024 13:53',
+            endTime: '2024-05-24T21:06:06.9686271+03:00',
+            created: '2024-05-21T17:06:06.9686271+03:00',
             sellData: {
                 id: 666,
                 img: 'House123',
@@ -29,8 +29,8 @@ export default {
             views: 38,
             isLiked: false,
             isFavorite: false,
-            created: '11.04.2024 13:53',
-            endTime: '15.04.2024 15:53',
+            endTime: '2024-05-22T21:06:06.9686271+03:00',
+            created: '2024-05-21T17:06:06.9686271+03:00',
             sellData: {
                 img: 'image.png',
                 vehicleName: 'W4 J82 Contention',
@@ -138,7 +138,7 @@ export default {
                 weight: 12,
             },
             storageData: {
-                endTime: '15.05.2024 16:13'
+                endTime: '2024-05-22T21:06:06.9686271+03:00'
             },
         },
         // {
