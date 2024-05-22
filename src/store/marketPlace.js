@@ -38,7 +38,7 @@ const marketPlace = {
 		listData: sectionsData.auction,
 		favoritesIdList: [],
 		pickedItem: null,
-		openingType: 'InTablet',
+		openingType: 'InStorage',
 	},
 	getters: {
 		getOpeningType(state) {

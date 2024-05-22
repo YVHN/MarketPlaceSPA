@@ -1,5 +1,5 @@
 <template>
-  <div class="marketPlace">
+  <div class="marketPlace" :class="{ inStorage: isInStorage }">
     <img class="marketPlace-background-triangles" src="@/views/MarketPlace/Assets/Images/backgroundTriangles.svg" />
     <div class="marketPlace-body">
       <div class="logo">
@@ -8,8 +8,20 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </div>
       </div>
-      <Header />
-      <Navigation />
+      <div class="header">
+        <Header v-if="!isInStorage"/>
+        <div class="header-storage" v-else>
+          Склад хранения
+        </div>
+      </div>
+      <div class="aside">
+        <Navigation v-if="!isInStorage"/>
+        <div class="aside-inventory" v-else>
+          <div class="aside-inventory-empty">
+            Тут инвентарь будет
+          </div>
+        </div>
+      </div>
       <div class="content">
         <router-view v-slot="{ Component }">
           <component :is="Component" />
@@ -32,13 +44,16 @@ export default {
   mounted() {
     this.$store.commit('start');
     if (!['auction', 'storage'].includes(this.$route.params.section)) {
-      if(this.getOpeningType === 'inTablet') this.$router.push('/market-place/viewing/storage');
+      if (this.getOpeningType === 'inTablet') this.$router.push('/market-place/viewing/storage');
       else this.$router.push('/market-place/viewing/auction');
     }
   },
   computed: {
     getOpeningType() {
       return this.$store.getters.getOpeningType;
+    },
+    isInStorage() {
+      return this.getOpeningType === 'InStorage';
     }
   }
 };

@@ -1,8 +1,10 @@
 @import '@/views/MarketPlace/Assets/Styles/Variables.scss';
 
 .header {
+  height: 100%;
   display: flex;
   align-items: center;
+  width: 100%;
   gap: 1.389vmin;
   .header-actions {
     display: flex;
