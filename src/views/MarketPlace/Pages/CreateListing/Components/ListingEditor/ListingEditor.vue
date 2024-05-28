@@ -198,7 +198,7 @@ export default {
       if (!this.$route.path.includes('empty')) {
         listingData.id = this.getItem.id;
       }
-      if (this.$route.path.includes('transport-rent')) {
+      if (this.$route.path.includes('transportRent')) {
         listingData.rentPrice = this.salePrice;
       } else if (this.$route.path.includes('auction')) {
         listingData.lastBet = this.salePrice;
