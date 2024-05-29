@@ -1,7 +1,7 @@
 <template>
   <div class="createListing">
     <RouterView v-if="getSelectedItem !== null" />
-    <ItemsList v-else :list-data="getListData" @sort="sort" />
+    <ItemsList v-else :list-data="getListData" />
   </div>
 </template>
 
@@ -9,6 +9,7 @@
 import { onUnmounted } from 'vue';
 import ItemsList from '../../Components/ItemsList/ItemsList.vue';
 import events from '@/modules/events';
+import sectionsData from '../../Assets/Data/sectionsData';
 
 
 export default {
@@ -70,7 +71,7 @@ export default {
       const defaultListings = this.defaultListings;
       if (filter === 'auction') {
         return storage.filter((item) => item.sellData.type !== 'item');
-      } else if (filter === 'transportRent') {
+      } else if (filter === 'transport') {
         return storage.filter((item) => item.sellData.type === 'transport');
       } else {
         return [...defaultListings, ...storage];
@@ -105,10 +106,7 @@ export default {
   },
 
   methods: {
-    sort(filter) {
-      this.filter = filter;
-    },
-    checkAuction() {
+    checkRent() {
       const rentFiltered = this.getListData.filter(
         (item) => item.sellData.type === 'transport',
       );
@@ -116,7 +114,7 @@ export default {
         ? 'available'
         : 'unavailable';
     },
-    checkRent() {
+    checkAuction() {
       const auctionFiltered = this.getListData.filter(
         (item) => item.sellData.type !== 'item',
       );
