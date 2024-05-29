@@ -66,7 +66,7 @@ export default {
     getListData() {
       const storage = this.$store.getters.getList;
       let filter = this.$route.params.filter;
-      if (filter === 'transport-rent') filter = 'transport';
+      if (filter === 'transportRent') filter = 'transport';
       const defaultListings = this.defaultListings;
       if (filter === 'auction') {
         return storage.filter((item) => item.sellData.type !== 'item');
