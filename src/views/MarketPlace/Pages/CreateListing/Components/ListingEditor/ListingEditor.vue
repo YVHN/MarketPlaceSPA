@@ -229,13 +229,13 @@ export default {
       const path = this.$route.path;
       if (path.includes('auction')) return 'auction';
       if (path.includes('empty')) return 'service';
-      if (path.includes('transport-rent')) return 'transportRent';
+      if (path.includes('transportRent')) return 'transportRent';
       return 'listing';
     },
     getPriceTitle() {
       const section = this.$route.params.filter;
       if (section === 'auction') return 'Задайте начальную ставку';
-      if (section === 'transport-rent') return 'Цена аренды в час';
+      if (section === 'transportRent') return 'Цена аренды в час';
       return 'Стоимость продажи';
     },
     getIsAuction() {
