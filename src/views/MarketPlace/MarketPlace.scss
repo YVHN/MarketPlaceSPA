@@ -1,5 +1,96 @@
 @import '@/views/MarketPlace/Assets/Styles/Variables.scss';
-@import '@/views/MarketPlace/Assets/Styles/Global.scss';
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;700&family=Inter:wght@500&family=Readex+Pro:wght@500&display=swap');
+
+.reset {
+
+  //reset
+  * {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    user-select: none;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+
+  :focus,
+  :active {
+    outline: none;
+  }
+
+  a:focus,
+  a:active {
+    outline: none;
+  }
+
+  nav,
+  footer,
+  header,
+  aside {
+    display: block;
+  }
+
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    font-style: 100%;
+    line-height: 1;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  input,
+  button,
+  textarea {
+    font-family: inherit;
+  }
+
+  input::-ms-clear {
+    display: none;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+
+  a,
+  a:visited {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  ul li {
+    list-style: none;
+  }
+
+  img {
+    vertical-align: top;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: inherit;
+    font-weight: 400;
+  }
+}
 
 .marketPlace {
   width: 100vw;
@@ -24,7 +115,7 @@
     font-size: 1.667vmin;
     color: rgba(255, 255, 255, 0.95);
   }
-  
+
   .aside-inventory {
     height: 100%;
     width: 100%;
@@ -34,6 +125,7 @@
     align-items: center;
     justify-content: center;
   }
+
   .aside-inventory-empty {
     font-size: 2vmin;
     font-weight: 700;

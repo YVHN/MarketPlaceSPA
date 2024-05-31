@@ -1,32 +1,34 @@
 <template>
-  <div class="marketPlace" :class="{ inStorage: isInStorage }">
-    <img class="marketPlace-background-triangles" src="@/views/MarketPlace/Assets/Images/backgroundTriangles.svg" />
-    <div class="marketPlace-body">
-      <div class="logo">
-        <div class="logo-title">Market <span>place</span></div>
-        <div class="logo-description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  <div class="reset">
+    <div class="marketPlace" :class="{ inStorage: isInStorage }">
+      <img class="marketPlace-background-triangles" src="@/views/MarketPlace/Assets/Images/backgroundTriangles.svg" />
+      <div class="marketPlace-body">
+        <div class="logo">
+          <div class="logo-title">Market <span>place</span></div>
+          <div class="logo-description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </div>
         </div>
-      </div>
-      <div class="header">
-        <Header v-if="!isInStorage"/>
-        <div class="header-storage" v-else>
-          Склад хранения
+        <div class="header">
+          <Header v-if="!isInStorage"/>
+          <div class="header-storage" v-else>
+            Склад хранения
+          </div>
         </div>
-      </div>
-      <div class="aside">
-        <Navigation v-if="!isInStorage"/>
-        <div class="aside-inventory" v-else>
-          <!-- Тут инвентарь -->
-          <!-- <div class="aside-inventory-empty">
-            Тут инвентарь будет
-          </div> -->
+        <div class="aside">
+          <Navigation v-if="!isInStorage"/>
+          <div class="aside-inventory" v-else>
+            <!-- Тут инвентарь -->
+            <!-- <div class="aside-inventory-empty">
+              Тут инвентарь будет
+            </div> -->
+          </div>
         </div>
-      </div>
-      <div class="content">
-        <router-view v-slot="{ Component }">
-          <component :is="Component" />
-        </router-view>
+        <div class="content">
+          <router-view v-slot="{ Component }">
+            <component :is="Component" />
+          </router-view>
+        </div>
       </div>
     </div>
   </div>

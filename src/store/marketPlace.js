@@ -35,7 +35,7 @@ const marketPlace = {
 	state: {
 		currentLanguage: 'eng',
 		pagesInSection: 10,
-		listData: sectionsData.clothes,
+		listData: sectionsData.auction,
 		favoritesIdList: [],
 		pickedItem: null,
 		openingType: 'InTablet',
@@ -151,9 +151,9 @@ const marketPlace = {
 	mutations: {
 		start(state) {
 			console.log('запуск');
-			state.listData = [];
-			state.pickedItem = null;
-			state.pagesInSection = 1;
+			// state.listData = [];
+			// state.pickedItem = null;
+			// state.pagesInSection = 1;
 		},
 		pickItem(state, item) {
 			console.log(item);

@@ -2,16 +2,15 @@
 
 .header {
   height: 100%;
-  display: flex;
+  display: flex !important;
   align-items: center;
   width: 100%;
-  gap: 1.389vmin;
+  gap: 1.389vmin !important;
   .header-actions {
     display: flex;
     align-items: center;
     gap: 2.7vmin;
     height: 100%;
-    
 
     .header-title {
       font-weight: 700;
@@ -23,12 +22,13 @@
   &-content {
     display: flex;
     align-items: center;
-    margin-left: auto;
+    margin-left: auto !important;
+    gap: 1.5vmin;
 
     &-create-button {
       background: $main-color1;
       border-radius: 0.185vmin;
-      padding: 0.926vmin 2.222vmin;
+      padding: 0.926vmin 2.222vmin !important;
       font-family: 'IBM Plex Mono';
       font-weight: 700;
       font-size: 0.926vmin;
