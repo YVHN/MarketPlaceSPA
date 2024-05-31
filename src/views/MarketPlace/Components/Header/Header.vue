@@ -12,18 +12,18 @@
         $store.getters.getLanguageText('Создать') }}</div>
       <div class="header-content-money">
         <div class="header-content-money-cash">
-          {{ `200 300 333 333` }}
+          {{ formatNumber(getUserInfo?.moneyCash) }}
           <span>$</span>
           <img src="@/views/MarketPlace/Assets/Icons/Secondary/cash.svg" alt="" />
         </div>
         <div class="header-content-money-bank">
-          {{ `200 300 333 333` }}
+          {{ formatNumber(getUserInfo?.moneyBank) }}
           <span>$</span>
           <img src="@/views/MarketPlace/Assets/Icons/Secondary/bank.svg" alt="" />
         </div>
       </div>
       <div class="header-content-user">
-        Maneskin Benson
+        {{ getUserInfo.userName || '' }}
         <img class="header-content-user-avatar" src="@/views/MarketPlace/Assets/Icons/Secondary/avatar.svg" alt="" />
       </div>
     </div>
@@ -33,40 +33,13 @@
 <script>
 import SortSelects from './Components/SortSelects.vue';
 import ReturnBack from './Components/ReturnBack.vue';
+import { formatNumber } from '@/functions/marketplace';
 
 export default {
   name: 'Header',
   components: {
     ReturnBack,
     SortSelects
-  },
-  computed: {
-    getOpeningType() {
-      return this.$store.getters.getOpeningType;
-    },
-    isCreateListing() {
-      return this.$route.path.includes('createListing');
-    },
-    isShowSort() {
-      const result = ['favorites', 'storage', 'listings', 'history'].includes(this.$route.params.section) || this.isCreateListing;
-      return !result;
-    },
-    isItemSelected() {
-      const result = this.$store.getters.getPickedItem
-      return result ? true : false;
-    },
-    getSectionTitle() {
-      const section = this.$route.params?.section || 'createListing';
-      const titles = {
-        'storage': 'Склад хранения',
-        'listings': 'Мои обьявления',
-        'history': 'История покупок',
-        'favorites': 'Избранное',
-        'createListing': 'Создать обьявление',
-      }
-      const title = titles[section];
-      return title ? title : '';
-    },
   },
   data() {
     return {
@@ -100,11 +73,45 @@ export default {
       ],
     }
   },
+  computed: {
+    getOpeningType() {
+      return this.$store.getters.getOpeningType;
+    },
+    isCreateListing() {
+      return this.$route.path.includes('createListing');
+    },
+    isShowSort() {
+      const result = ['favorites', 'storage', 'listings', 'history'].includes(this.$route.params.section) || this.isCreateListing;
+      return !result;
+    },
+    isItemSelected() {
+      const result = this.$store.getters.getPickedItem
+      return result ? true : false;
+    },
+    getSectionTitle() {
+      const section = this.$route.params?.section || 'createListing';
+      const titles = {
+        'storage': 'Склад хранения',
+        'listings': 'Мои обьявления',
+        'history': 'История покупок',
+        'favorites': 'Избранное',
+        'createListing': 'Создать обьявление',
+      }
+      const title = titles[section];
+      return title ? title : '';
+    },
+    getUserInfo() {
+      return this.$store.getters.getUserInfo;
+    }
+  },
   methods: {
     openCreateListing() {
       if(!this.$route.path.includes('createListing')) {
         this.$router.push('/market-place/createListing/all');
       }
+    },
+    formatNumber(num) {
+      return formatNumber(num);
     }
   },
 };

@@ -39,6 +39,11 @@ const marketPlace = {
 		favoritesIdList: [],
 		pickedItem: null,
 		openingType: 'InTablet',
+		userInfo: {
+			moneyCash: 1233,
+			moneyBank: 12,
+			userName: 'Maneskin Ben',
+		}
 	},
 	getters: {
 		getOpeningType(state) {
@@ -46,6 +51,9 @@ const marketPlace = {
 		},
 		getPagesInSection(state) {
 			return state.pagesInSection;
+		},
+		getUserInfo(state) {
+			return state.userInfo;
 		},
 		// айтемы
 		getType: (state, getters) => (item) => {
@@ -214,7 +222,15 @@ events.add('MarketPlace:List:ItemDelete:Cef', (id) => {
 	const filtered = marketPlace.state.listData.filter((item) => item.id !== id);
 	marketPlace.state.listData = filtered;
 });
-events.add('MarketPlace:SetOpeningType:Cef', (type) => {
-	marketPlace.state.openingType = type;
+events.add('MarketPlace:SetData:Cef', (json) => {
+	const parsed = JSON.parse(json);
+	marketPlace.state.openingType = parsed.openingType;
+	marketPlace.state.userInfo = parsed.userInfo;
+});
+events.add('MarketPlace:User:UpdateMoneyCash:Cef', (num) => {
+	marketPlace.state.userInfo.moneyCash = num;
+});
+events.add('MarketPlace:User:UpdateBankCash:Cef', (num) => {
+	marketPlace.state.userInfo.moneyBank = num;
 });
 export default marketPlace;
