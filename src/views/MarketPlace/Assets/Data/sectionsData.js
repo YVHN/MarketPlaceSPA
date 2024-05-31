@@ -122,7 +122,33 @@ export default {
             },
         },
     ],
-    clothes: [],
+    clothes: [
+        {
+            "id": 0,
+            "sellData": {
+              "type": "clothes",
+              itemName: 'Лупа',
+              "img": null,
+              "description": "1",
+              "price": 1000,
+              "variation": 277,
+              "texture": 0,
+              "gender": false,
+              "itemType": -6
+            },
+            "views": 2,
+            "isFavorite": false,
+            "created": "2024-05-27T13:08:27.2905118+03:00",
+            "listingData": {
+              "seller": {
+                "username": "Cherry_Waves",
+                "static": 128683,
+                "phone": 233197770
+              }
+            },
+            "endTime": "2024-05-27T14:08:27.2905118+03:00"
+          }
+    ],
     services: [],
     business: [],
     storage: [

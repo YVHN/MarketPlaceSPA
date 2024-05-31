@@ -35,7 +35,7 @@ const marketPlace = {
 	state: {
 		currentLanguage: 'eng',
 		pagesInSection: 10,
-		listData: sectionsData.auction,
+		listData: sectionsData.clothes,
 		favoritesIdList: [],
 		pickedItem: null,
 		openingType: 'InTablet',
@@ -81,6 +81,8 @@ const marketPlace = {
 					1: 'Заправка',
 				}
 				return `${getters.getLanguageText(titles[item.businessType])} #${item.businessId}`
+			} else if (item.type === 'clothes') {
+				return getters.getLanguageText(item.itemName);
 			}
 			return '';
 		},
@@ -97,6 +99,22 @@ const marketPlace = {
 				category = 'Разное';
 			} else if (item.type === 'service') {
 				category = 'Услуги и прочее';
+			} else if (item.type === 'clothes') {
+				const categories = {
+					'-1': 'Маска',
+					'-3' : 'Перчатки',
+					'-4' : 'Штаны',
+					'-6' : 'Ботинки',
+					'-7' : 'Ювелирка',
+					'-8' : 'Рубашка',
+					'-9' : 'Бронежилет',
+					'-10' : 'хз',
+					'-11' : 'Верх',
+					'-12' : 'Шляпа',
+					'-13' : 'Очки',
+					'-14' : 'Аксесcуары'
+				}
+				category = categories[item.itemType];	
 			}
 			return getters.getLanguageText(category);
 		},
@@ -106,7 +124,6 @@ const marketPlace = {
 			if (item.sellData?.rentPrice) return item.sellData.rentPrice;
 			return item.sellData.price;
 		},
-		//---------------------------------------------------
 		getLanguageText(state) {
 			return (text, ...args) => {
 				return Vue.prototype.$getLanguageText(text, ...args);
