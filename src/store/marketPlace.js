@@ -221,6 +221,9 @@ events.add('Marketplace:Action:ChangePropertyValue', (id, property, value) => {
 events.add('MarketPlace:List:ItemDelete:Cef', (id) => {
 	const filtered = marketPlace.state.listData.filter((item) => item.id !== id);
 	marketPlace.state.listData = filtered;
+	if (id === marketPlace.state.pickedItem?.id) {
+		marketPlace.state.pickedItem = null;
+	}
 });
 events.add('MarketPlace:SetData:Cef', (json) => {
 	const parsed = JSON.parse(json);
