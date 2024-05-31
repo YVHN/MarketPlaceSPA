@@ -12,7 +12,7 @@
         </div>
         <div class="wrapper">
           <div class="auction-item-title">
-            {{ $store.getters.getTitle(sellItem) }}
+            {{ getItemTitle(lotData) }}
           </div>
           <div class="auction-item-likesviews">
             <div class="auction-item-likesviews-unit">
@@ -74,7 +74,7 @@
     <MakeBet
       v-if="isMakeBet"
       :lotId="lotData.id"
-      :title="$store.getters.getTitle(sellItem)"
+      :title="getItemTitle(lotData)"
       :startPrice="lotData.auctionData.lastBet"
       @toggleMakeBetStatus="toggleStatus"
     />
@@ -91,6 +91,8 @@ import MakeBet from './Components/MakeBet/MakeBet.vue';
 import Graph from '../Graph/Graph.vue';
 import { parseDate } from '@/functions/marketplace';
 import { onUnmounted } from 'vue';
+
+import { getItemTitle } from '@/functions/marketplace';
 export default {
   mounted() {
     onUnmounted(() => {
@@ -180,6 +182,9 @@ export default {
     },
   },
   methods: {
+    getItemTitle(itemCard) {
+      return getItemTitle(itemCard);
+    },
     formatNumber(num) {
       if(typeof num === undefined) return '';
       return `$${num.toLocaleString('ru-RU')}`;

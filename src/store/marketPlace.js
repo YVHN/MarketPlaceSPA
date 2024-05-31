@@ -1,35 +1,9 @@
 import events from '@/modules/events';
+import { setFieldValue } from '@/functions/marketplace';
 import Vue from 'vue'
 
 import itemsFullData from '@/views/MarketPlace/Assets/Data/itemsFullData';
 import sectionsData from '@/views/MarketPlace/Assets/Data/sectionsData';
-
-function setFieldValue(obj, fieldName, value) {
-	// Проверяем, существует ли объект
-	if (obj && typeof obj === "object") {
-		// Проверяем, существует ли поле в текущем объекте
-		if (fieldName in obj) {
-			// Если поле является объектом, вызываем функцию рекурсивно
-			if (typeof obj[fieldName] === "object") {
-				setFieldValue(obj[fieldName], fieldName, value);
-			} else {
-				// Устанавливаем значение поля
-				obj[fieldName] = value;
-				console.log(`Значение поля ${fieldName} было успешно установлено: ${value}`);
-			}
-		} else {
-			// Если поле отсутствует в текущем объекте, ищем во вложенных объектах
-			for (let key in obj) {
-				if (typeof obj[key] === "object") {
-					setFieldValue(obj[key], fieldName, value);
-				}
-			}
-		}
-	} else {
-		console.log(`Объект не существует или не является объектом.`);
-	}
-	console.log(obj);
-}
 
 const marketPlace = {
 	state: {
@@ -65,59 +39,6 @@ const marketPlace = {
 			if (item.type === 'clothes') type = 'Одежда';
 			return getters.getLanguageText(type);
 		},
-		getTitle: (state, getters) => (item) => {
-			if (['house', 'apartment'].includes(item.type)) {
-				const titles = {
-					house: 'Дом',
-					apartment: 'Апартаменты',
-				};
-				return `${getters.getLanguageText(titles[item.type])} #${item.id}`;
-			} else if (['transportRent', 'transport'].includes(item.type)) {
-				return item.vehicleName;
-			} else if (['item', 'service'].includes(item.type)) {
-				return getters.getLanguageText(item.title);
-			} else if (['business'].includes(item.type)) {
-				const titles = {
-					1: 'Заправка',
-				}
-				return `${getters.getLanguageText(titles[item.businessType])} #${item.businessId}`
-			} else if (item.type === 'clothes') {
-				return getters.getLanguageText(item.itemName);
-			}
-			return '';
-		},
-		getCategory: (state, getters) => (item, itemType) => {
-			let category = '';
-			if (['house', 'apartment'].includes(item.type)) {
-				category = itemType === 'auction' ? 'Недвижимость' : '';
-				return '';
-			} else if (item.type === 'business') {
-				return item.address;
-			} else if (['transportRent', 'transport'].includes(item.type)) {
-				category = itemType === 'auction' ? 'Транспорт' : item.dealerShip;
-			} else if (item.type === 'item') {
-				category = 'Разное';
-			} else if (item.type === 'service') {
-				category = 'Услуги и прочее';
-			} else if (item.type === 'clothes') {
-				const categories = {
-					'-1': 'Маска',
-					'-3' : 'Перчатки',
-					'-4' : 'Штаны',
-					'-6' : 'Ботинки',
-					'-7' : 'Ювелирка',
-					'-8' : 'Рубашка',
-					'-9' : 'Бронежилет',
-					'-10' : 'хз',
-					'-11' : 'Верх',
-					'-12' : 'Шляпа',
-					'-13' : 'Очки',
-					'-14' : 'Аксесcуары'
-				}
-				category = categories[item.itemType];	
-			}
-			return getters.getLanguageText(category);
-		},
 		getPrice: () => (item) => {
 			if (item?.auctionData) return item.auctionData.lastBet;
 			if (item?.tradeData) return item.tradeData.startPrice;
@@ -151,9 +72,9 @@ const marketPlace = {
 	mutations: {
 		start(state) {
 			console.log('запуск');
-			state.listData = [];
-			state.pickedItem = null;
-			state.pagesInSection = 1;
+			// state.listData = [];
+			// state.pickedItem = null;
+			// state.pagesInSection = 1;
 		},
 		pickItem(state, item) {
 			console.log(item);

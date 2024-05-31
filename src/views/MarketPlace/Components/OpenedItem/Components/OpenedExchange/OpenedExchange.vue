@@ -81,7 +81,8 @@ import BuyItem from './Components/BuyItem/BuyItem.vue';
 import AddLot from './Components/AddLot/AddLot.vue';
 import Graph from '../Graph/Graph.vue';
 import events from '@/modules/events';
-import { onUnmounted } from 'vue';
+import Vue, { onUnmounted } from 'vue';
+import { getItemSubTitle } from '@/functions/marketplace';
 
 export default {
   components: {
@@ -129,7 +130,7 @@ export default {
       const list = [
         {
           title: 'Категория',
-          value: this.$store.getters.getCategory(item),
+          value: getItemSubTitle(this.item),
         },
         {
           title: 'Вес',

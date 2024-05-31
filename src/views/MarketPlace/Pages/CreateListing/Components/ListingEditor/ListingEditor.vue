@@ -97,7 +97,7 @@
         <div class="info-item">
           <div class="information">
             <div class="info-item-title">
-              {{ $store.getters.getTitle(getItem.sellData) }}
+              {{ getItemTitle(getItem) }}
             </div>
             <div class="info-item-short">
               <div class="info-item-short-unit" v-for="(unit, index) in getShortData" :key="index">
@@ -144,6 +144,7 @@ import quantity from '@/views/MarketPlace/Assets/Icons/Item/quantity.vue';
 import tenants from '@/views/MarketPlace/Assets/Icons/Item/tenants.vue';
 import weight from '@/views/MarketPlace/Assets/Icons/Item/weight.vue';
 import { onUnmounted } from 'vue';
+import { getItemTitle } from '@/functions/marketplace';
 
 export default {
   components: {
@@ -223,6 +224,9 @@ export default {
       if (!num) return '';
       return num.toLocaleString('ru-RU');
     },
+    getItemTitle(itemCard) {
+      return getItemTitle(itemCard);
+    }
   },
   computed: {
     getListingType() {

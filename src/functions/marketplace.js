@@ -9,7 +9,8 @@ export function getAddress() {
     ).streetName);
     const addressHouse = area + " | " + adress;
     return addressHouse;
-}
+};
+
 export function getEndTime(endItemTime) {
     const currentTime = new Date();
     const endTime = new Date(endItemTime);
@@ -28,7 +29,8 @@ export function getEndTime(endItemTime) {
     } else {
         return 'Время недоступно';
     }
-}
+};
+
 export function parseDate(dateString, type) {
     // Создание объекта Date из строки
     const date = new Date(dateString);
@@ -46,9 +48,95 @@ export function parseDate(dateString, type) {
         date: `${day}.${month}.${year}`,
         time: `${hours}:${minutes}`,
     };
-}
+};
 
 export function formatNumber(num) {
-    if(!num) return 0;
+    if (!num) return 0;
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+};
+
+export function getItemSubTitle(itemCard) {
+    const isAuction = Boolean(itemCard?.auctionData);
+    const item = itemCard.sellData;
+    let subTitle = '';
+    if (['house', 'apartment'].includes(item.type)) {
+        category = isAuction ? 'Недвижимость' : 'Адрес';
+        return '';
+    } else if (item.type === 'business') {
+        subTitle = isAuction ? 'Бизнес' : 'Адрес';
+    } else if (['transportRent', 'transport'].includes(item.type)) {
+        subTitle = isAuction ? 'Транспорт' : item.dealerShip;
+    } else if (item.type === 'item') {
+        subTitle = 'Разное';
+    } else if (item.type === 'service') {
+        subTitle = 'Услуги и прочее';
+    } else if (item.type === 'clothes') {
+        const categories = {
+            '-1': 'Маска',
+            '-3': 'Перчатки',
+            '-4': 'Штаны',
+            '-6': 'Ботинки',
+            '-7': 'Ювелирка',
+            '-8': 'Рубашка',
+            '-9': 'Бронежилет',
+            '-10': 'хз',
+            '-11': 'Верх',
+            '-12': 'Шляпа',
+            '-13': 'Очки',
+            '-14': 'Аксесcуары'
+        }
+        subTitle = categories[item.itemType] || '';
+    }
+    return subTitle;
+};
+
+export function getItemTitle(itemCard) {
+    const item = itemCard.sellData;
+    let title = '';
+    if (['house', 'apartment'].includes(item.type)) {
+        const titles = {
+            house: 'Дом',
+            apartment: 'Апартаменты',
+        };
+        title = `${getters.getLanguageText(titles[item.type])} #${item.id}`;
+    } else if (['transportRent', 'transport'].includes(item.type)) {
+        title = item.vehicleName;
+    } else if (['item', 'service'].includes(item.type)) {
+        title = getters.getLanguageText(item.title);
+    } else if (['business'].includes(item.type)) {
+        const titles = {
+            1: 'Заправка',
+        }
+        title = `${getters.getLanguageText(titles[item.businessType])} #${item.businessId}`
+    } else if (['clothes', 'item'].includes(item.type)) {
+        title = item.itemName;
+    }
+    return title;
+};
+
+export function setFieldValue(obj, fieldName, value) {
+	// Проверяем, существует ли объект
+	if (obj && typeof obj === "object") {
+		// Проверяем, существует ли поле в текущем объекте
+		if (fieldName in obj) {
+			// Если поле является объектом, вызываем функцию рекурсивно
+			if (typeof obj[fieldName] === "object") {
+				setFieldValue(obj[fieldName], fieldName, value);
+			} else {
+				// Устанавливаем значение поля
+				obj[fieldName] = value;
+				console.log(`Значение поля ${fieldName} было успешно установлено: ${value}`);
+			}
+		} else {
+			// Если поле отсутствует в текущем объекте, ищем во вложенных объектах
+			for (let key in obj) {
+				if (typeof obj[key] === "object") {
+					setFieldValue(obj[key], fieldName, value);
+				}
+			}
+		}
+	} else {
+		console.log(`Объект не существует или не является объектом.`);
+	}
+	console.log(obj);
 }

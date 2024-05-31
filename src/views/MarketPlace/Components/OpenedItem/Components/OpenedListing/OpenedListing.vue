@@ -29,7 +29,7 @@
         <div class="header">
           <div class="header-item">
             <div class="header-item-title">
-              {{ $store.getters.getTitle(getItem.sellData) }}
+              {{ getItemTitle(getItem) }}
             </div>
             <div class="short">
               <div
@@ -142,6 +142,7 @@ import call from '@/views/MarketPlace/Assets/Icons/Item/call.vue';
 import message from '@/views/MarketPlace/Assets/Icons/Item/message.vue';
 import views from '@/views/MarketPlace/Assets/Icons/Item/views.svg';
 import { onUnmounted } from 'vue';
+import { getItemTitle } from '@/functions/marketplace';
 
 export default {
   components: {
@@ -176,6 +177,9 @@ export default {
     });
   },
   methods: {
+    getItemTitle(itemCard) {
+      return getItemTitle(itemCard);
+    },
     formatNumber(num) {
       if (typeof num === undefined && !num) return '';
       return num.toLocaleString('ru-RU');

@@ -52,10 +52,10 @@
           :is-favorite="item?.isFavorite ? item.isFavorite : false" v-if="!isShowFavorite" />
       </div>
       <div class="item-title">
-        {{ $store.getters.getTitle(sellData) }}
+        {{ getItemTitle(item) }}
       </div>
       <div class="item-category">
-        {{ $store.getters.getCategory(sellData, getItemListingType) }}
+        {{ getItemSubTitle(item) }}
       </div>
     </div>
     <div class="item-footer">
@@ -142,6 +142,8 @@ import events from '@/modules/events';
 import { onUnmounted } from 'vue';
 import { getEndTime } from '@/functions/marketplace';
 
+import { getItemSubTitle, getItemTitle } from '@/functions/marketplace';
+
 export default {
   props: {
     item: {
@@ -210,6 +212,12 @@ export default {
     });
   },
   methods: {
+    getItemSubTitle(itemCard) {
+      return getItemSubTitle(itemCard);
+    },
+    getItemTitle(itemCard) {
+      return getItemTitle(itemCard);
+    },
     startTimer() {
       this.timer = setInterval(() => {
         this.getEndTime();
