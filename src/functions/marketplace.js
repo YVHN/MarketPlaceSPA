@@ -60,8 +60,7 @@ export function getItemSubTitle(itemCard) {
     const item = itemCard.sellData;
     let subTitle = '';
     if (['house', 'apartment'].includes(item.type)) {
-        category = isAuction ? 'Недвижимость' : 'Адрес';
-        return '';
+        subTitle = isAuction ? 'Недвижимость' : 'Адрес';
     } else if (item.type === 'business') {
         subTitle = isAuction ? 'Бизнес' : 'Адрес';
     } else if (['transportRent', 'transport'].includes(item.type)) {
@@ -93,21 +92,34 @@ export function getItemSubTitle(itemCard) {
 export function getItemTitle(itemCard) {
     const item = itemCard.sellData;
     let title = '';
-    if (['house', 'apartment'].includes(item.type)) {
-        const titles = {
-            house: 'Дом',
-            apartment: 'Апартаменты',
-        };
-        title = `${getters.getLanguageText(titles[item.type])} #${item.id}`;
+    if (item.type === 'house') {
+       title = 'Дом'
+    } else if(item.type === 'apart') {
+        title = 'Апартаменты'
     } else if (['transportRent', 'transport'].includes(item.type)) {
         title = item.vehicleName;
     } else if (['item', 'service'].includes(item.type)) {
-        title = getters.getLanguageText(item.title);
+        title = item.itemName;
     } else if (['business'].includes(item.type)) {
         const titles = {
+            0: 'Магазин 24/7',
             1: 'Заправка',
+            2: 'Автосалон Luxe',
+            3: 'Автосалон Premium',
+            4: 'Автосалон Econom',
+            5: 'Мотосалон',
+            6: 'Магазин оружия',
+            7: 'Магазин одежды',
+            9: 'Тату-Салон',
+            10: 'Парикмахерская',
+            12: 'LS Customs',
+            13: 'Автомойка',
+            15: 'Армейская заправка',
+            16: 'Вертолетная заправка',
+            25: 'Воздушный транспорт',
+            26: 'Водный тра'
         }
-        title = `${getters.getLanguageText(titles[item.businessType])} #${item.businessId}`
+        title = titles[item.businessType] || '';
     } else if (['clothes', 'item'].includes(item.type)) {
         title = item.itemName;
     }

@@ -216,7 +216,12 @@ export default {
       return getItemSubTitle(itemCard);
     },
     getItemTitle(itemCard) {
-      return getItemTitle(itemCard);
+      if(['business', 'house', 'apart'].includes(itemCard.sellData.type)) {
+        const id = itemCard.sellData.id;
+        return `${getItemTitle(itemCard)} #${id}`;
+      } else {
+        return getItemTitle(itemCard);
+      }
     },
     startTimer() {
       this.timer = setInterval(() => {

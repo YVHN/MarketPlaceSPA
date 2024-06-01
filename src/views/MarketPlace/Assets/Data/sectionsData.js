@@ -207,7 +207,7 @@ export default {
         {
             id: 12,
             sellData: {
-                id: 10,
+                id: 44,
                 type: 'house',
                 img: 'House123',
                 parkingCapacity: 6,
@@ -220,7 +220,7 @@ export default {
             id: 5,
             sellData: {
                 img: 'W4J82Contention',
-                vehicleName: 'Bugattи Roadster',
+                vehicleName: 'Bugattи Roadstrer',
                 vehicleModel: 'bmistralw16',
                 type: 'transport',
                 dealerShip: 'Ubermacht',
@@ -237,7 +237,7 @@ export default {
         {
             id: 2,
             sellData: {
-                title: 'Хранилище данных - 16 TB',
+                itemName: 'Хранилище данных - 16 TB',
                 img: 'DataStorage16TB',
                 state: 'Отличное',
                 type: 'item',
@@ -249,11 +249,11 @@ export default {
         {
             id: 14,
             sellData: {
+                id: 12,
                 type: 'business',
                 img: null,
                 description: null,
                 price: 0,
-                businessId: 12,
                 businessType: 1,
                 address: 'Пушкинская 13',
                 statePrice: 1200,
