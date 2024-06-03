@@ -98,7 +98,7 @@ export function getItemTitle(itemCard) {
         title = 'Апартаменты'
     } else if (['transportRent', 'transport'].includes(item.type)) {
         title = item.vehicleName;
-    } else if (['item', 'service'].includes(item.type)) {
+    } else if (item.type === 'item') {
         title = item.itemName;
     } else if (['business'].includes(item.type)) {
         const titles = {
@@ -122,6 +122,8 @@ export function getItemTitle(itemCard) {
         title = titles[item.businessType] || '';
     } else if (['clothes', 'item'].includes(item.type)) {
         title = item.itemName;
+    } else if (item.type === 'service') {
+        title = item.title;
     }
     return title;
 };

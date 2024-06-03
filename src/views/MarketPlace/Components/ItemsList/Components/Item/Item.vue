@@ -49,7 +49,7 @@
         <Img class="item-header-img" :img="'default'" :itemType="sellData.type" :size="'s'"
           :isSmall="sellData?.filter ? true : false" />
         <FavoriteIndicator class="item-favorite" :itemId="item.id" :size="'small'"
-          :is-favorite="item?.isFavorite ? item.isFavorite : false" v-if="!isShowFavorite" />
+          :is-favorite="item?.isFavorite ? item.isFavorite : false" v-if="!isHideFavorite" />
       </div>
       <div class="item-title">
         {{ getItemTitle(item) }}
@@ -59,7 +59,17 @@
       </div>
     </div>
     <div class="item-footer">
-      <div class="item-exchange" v-if="item?.tradeData">
+      <div class="item-storage" v-if="item?.storageData">
+        <div class="item-storage-time">
+          <span>{{ $store.getters.getLanguageText('Время хранения:') }} </span>
+          {{ shelfTime }}
+        </div>
+        <div class="item-storage-button" :class="{ deactivate: getOpeningType === 'InTablet' }"
+          v-if="!$route.path.includes('createListing')">
+          {{ $store.getters.getLanguageText(getOpeningType === 'InTablet' ? 'Выгрузка не доступна с планшета' : 'Выгрузить со склада') }}
+        </div>
+      </div>
+      <div class="item-exchange" v-else-if="item?.tradeData">
         <div class="item-exchange-price">
           <div class="item-exchange-price-title">
             {{ $store.getters.getLanguageText('Цена от:') }}
@@ -90,16 +100,6 @@
             <img class="unit-img" src="@/views/MarketPlace/Assets/Icons/Item/views.svg" />
             {{ item.views }}
           </div>
-        </div>
-      </div>
-      <div class="item-storage" v-else-if="item?.storageData">
-        <div class="item-storage-time">
-          <span>{{ $store.getters.getLanguageText('Время хранения:') }} </span>
-          {{ shelfTime }}
-        </div>
-        <div class="item-storage-button" :class="{ deactivate: getOpeningType === 'InTablet' }" @click.stop="unloadItem"
-          v-if="!$route.path.includes('createListing')">
-          {{ $store.getters.getLanguageText(getOpeningType === 'InTablet' ? 'Выгрузка не доступна с планшета' : 'Выгрузить со склада') }}
         </div>
       </div>
       <div class="item-status" v-else-if="item?.status">
@@ -171,9 +171,10 @@ export default {
     endTime,
   },
   computed: {
-    isShowFavorite() {
-      const regex = new RegExp(`storage|createListing`);
-      return regex.test(this.$route.path);
+    isHideFavorite() {
+      const isStorage = this.item?.storageData;
+      const isCreateListing = this.item?.status;
+      return isStorage || isCreateListing;
     },
     getIsImgFull() {
       return ['business', 'house', 'apartment'].includes(this.sellData.type);
@@ -240,9 +241,6 @@ export default {
     },
     handleItemClick() {
       this.$emit('handleItemClick', this.item);
-    },
-    unloadItem() {
-      events.callServer('MarketPlace:Storage:Unload:Server', this.item.id);
     },
     isHas(section, property) {
       return this.item[section]?.[property] !== undefined;

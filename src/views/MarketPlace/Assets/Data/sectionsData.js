@@ -66,7 +66,7 @@ export default {
                 coordinates: {
                     x: -1816.8712,
                     y: -636.77,
-                    z: 9.818936 
+                    z: 9.818936
                 }
             },
         },
@@ -128,28 +128,28 @@ export default {
         {
             "id": 0,
             "sellData": {
-              "type": "clothes",
-              itemName: 'Лупа',
-              "img": null,
-              "description": "1",
-              "price": 1000,
-              "variation": 277,
-              "texture": 0,
-              "gender": false,
-              "itemType": -6
+                "type": "clothes",
+                itemName: 'Лупа',
+                "img": null,
+                "description": "1",
+                "price": 1000,
+                "variation": 277,
+                "texture": 0,
+                "gender": false,
+                "itemType": -6
             },
             "views": 2,
             "isFavorite": false,
             "created": "2024-05-27T13:08:27.2905118+03:00",
             "listingData": {
-              "seller": {
-                "username": "Cherry_Waves",
-                "static": 128683,
-                "phone": 233197770
-              }
+                "seller": {
+                    "username": "Cherry_Waves",
+                    "static": 128683,
+                    "phone": 233197770
+                }
             },
             "endTime": "2024-05-27T14:08:27.2905118+03:00"
-          }
+        }
     ],
     services: [],
     business: [],
@@ -157,7 +157,7 @@ export default {
         {
             id: 11,
             sellData: {
-                title: 'Хранилище данных - 16 TB',
+                itemName: 'Хранилище данных - 16 TB',
                 img: 'DataStorage16TB',
                 state: 'Отличное',
                 type: 'item',
@@ -166,9 +166,28 @@ export default {
                 weight: 12,
             },
             storageData: {
+                added: "2024-05-31T11:44:23.9085336+03:00",
                 endTime: '2024-05-22T21:06:06.9686271+03:00'
             },
         },
+        {
+            id: 0,
+            sellData: {
+                type: "transportRent",
+                img: null,
+                description: "1",
+                dealerShip: 'Это аренда',
+                id: 923471,
+                vehicleName: "Ferari Daytona",
+                vehicleModel: "daytona",
+                rentPrice: 100000,
+                rentTime: 60
+            },
+            storageData: {
+                added: "2024-05-31T11:44:23.9085336+03:00",
+                endTime: "2024-06-04T11:44:23.9085336+03:00"
+            }
+        }
         // {
         //     id: 40,
         //     sellData: {

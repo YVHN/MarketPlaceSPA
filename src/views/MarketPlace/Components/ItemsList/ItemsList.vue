@@ -81,12 +81,17 @@ export default {
   methods: {
     handleItemClick(item) {
       // Если айтем на продаже, то вызов фулл даты
-      if (this.checkPath('viewing') && !this.checkPath('storage')) {
+      if (this.checkPath('viewing') && !item?.storageData) {
         this.viewingAction(item);
         // Если айтем создания обьявления 
       } else if (this.checkPath('createListing')) {
         this.createListingAction(item);
+      } else if (item?.storageData) {
+        this.storageAction(item);
       }
+    },
+    storageAction(item) {
+      events.callServer('MarketPlace:Storage:Unload:Server', item.id);
     },
     viewingAction(item) {
       events.callServer('MarketPlace:Item:GetFullData:Server', item.id);
