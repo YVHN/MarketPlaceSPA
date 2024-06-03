@@ -81,7 +81,7 @@ import BuyItem from './Components/BuyItem/BuyItem.vue';
 import AddLot from './Components/AddLot/AddLot.vue';
 import Graph from '../Graph/Graph.vue';
 import events from '@/modules/events';
-import Vue, { onUnmounted } from 'vue';
+import { onUnmounted } from 'vue';
 import { getItemSubTitle } from '@/functions/marketplace';
 
 export default {
@@ -107,7 +107,7 @@ export default {
       isBuy: false,
       isAdd: false,
       buyItemData: null,
-      haveItem: null,
+      haveItem: true,
     };
   },
   mounted() {

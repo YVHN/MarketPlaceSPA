@@ -1,5 +1,5 @@
 <template>
-  <div class="item">
+  <div class="item" :class="{ deactivate: getOpeningType === 'InTablet' }">
     <div class="item-top">
       <div class="item-header">
         <div class="item-header-info">
@@ -64,7 +64,7 @@
           <span>{{ $store.getters.getLanguageText('Время хранения:') }} </span>
           {{ shelfTime }}
         </div>
-        <div class="item-storage-button" :class="{ deactivate: getOpeningType === 'InTablet' }"
+        <div class="item-storage-button"
           v-if="!$route.path.includes('createListing')">
           {{ $store.getters.getLanguageText(getOpeningType === 'InTablet' ? 'Выгрузка не доступна с планшета' : 'Выгрузить со склада') }}
         </div>
@@ -248,7 +248,6 @@ export default {
     getEndTime() {
       this.shelfTime = getEndTime(this.item?.endTime || this.item.storageData?.endTime, 'default');
     }
-
   },
 };
 </script>

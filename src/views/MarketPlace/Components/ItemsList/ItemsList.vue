@@ -23,6 +23,7 @@ import AddLot from '../OpenedItem/Components/OpenedExchange/Components/AddLot/Ad
 import EmptyPage from '../EmptyPage/EmptyPage.vue';
 import events from '@/modules/events';
 import { onUnmounted } from 'vue';
+import itemsFullData from '../../Assets/Data/itemsFullData';
 
 import Pagination from './Components/Pagination/Pagination.vue';
 

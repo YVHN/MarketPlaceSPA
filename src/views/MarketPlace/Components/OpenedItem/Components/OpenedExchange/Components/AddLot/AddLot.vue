@@ -7,7 +7,7 @@
       <div class="addLot-body-info">
         <div class="addLot-body-info-unit">
           <div class="addLot-body-info-unit-title">
-            {{ $store.getters.getLanguageText('Название товара:') }}:
+            {{ $store.getters.getLanguageText('Название товара') }}
           </div>
           <div class="addLot-body-info-unit-value">{{ data.title }}</div>
         </div>
@@ -111,7 +111,7 @@ export default {
           itemType: this.data.itemType,
         };
         events.callServer(
-          'MarketPlace:Exchange:AddItem:Server',
+          'MarketPlace:Exchange:AddOffer:Server',
           JSON.stringify(data),
         );
         this.toggleStatus();

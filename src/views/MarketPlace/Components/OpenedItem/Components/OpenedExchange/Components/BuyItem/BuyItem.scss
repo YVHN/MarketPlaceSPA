@@ -8,6 +8,7 @@
   background: rgba(0, 0, 0, 0.51);
 
   &-body {
+    width: 48.611vmin;
     border-radius: 1.481vmin;
     position: absolute;
     top: 50%;
@@ -33,6 +34,7 @@
         gap: 1.6vmin;
         align-items: center;
         margin-bottom: 2.685vmin;
+        justify-content: space-between;
       }
 
       &-unit {

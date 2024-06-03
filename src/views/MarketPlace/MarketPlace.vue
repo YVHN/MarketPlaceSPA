@@ -17,7 +17,7 @@
         </div>
         <div class="aside">
           <Navigation v-if="!isInStorage"/>
-          <div class="aside-inventory" v-else>
+          <div class="aside-inventory" v-if="false">
             <!-- Тут инвентарь -->
             <!-- <div class="aside-inventory-empty">
               Тут инвентарь будет

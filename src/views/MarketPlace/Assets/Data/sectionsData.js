@@ -95,10 +95,10 @@ export default {
             id: 40,
             isFavorite: false,
             sellData: {
-                title: 'Хранилище данных - 16 TB',
+                itemName: 'Хранилище данных - 16 TB',
                 img: 'DataStorage16TB',
                 type: 'item',
-                category: 'different',
+                itemType: 4,
             },
             tradeData: {
                 startPrice: 5620,

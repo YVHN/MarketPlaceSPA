@@ -1,7 +1,7 @@
 @import '@/views/MarketPlace/Assets/Styles/Variables.scss';
 
 .item {
-  width: 26.667vmin;
+  min-width: 26.667vmin;
   height: 24.444vmin;
   border-radius: 0.741vmin;
   padding: 0.833vmin 1.667vmin;
@@ -21,6 +21,10 @@
   &:hover {
     transform: scale(1.02);
     background: rgba(255, 255, 255, 0.05);
+    .item-storage-button {
+      transform: scale(1.02);
+      background: rgb(95, 154, 223);
+    }
   }
 
   &-header {
@@ -160,15 +164,6 @@
       transition:
         transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
         background 0.3s ease;
-
-      &:hover {
-        transform: scale(1.02);
-        background: rgb(95, 154, 223);
-      }
-
-      &:active {
-        transform: scale(1.05);
-      }
     }
   }
   &-default {
@@ -227,5 +222,7 @@
 }
 .deactivate {
   pointer-events: none;
-  background: #5f9adf;
+  .item-storage-button {
+    background: #5f9adf;
+  }
 }

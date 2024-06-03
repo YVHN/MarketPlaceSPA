@@ -7,7 +7,7 @@
       <div class="buyItem-body-info">
         <div class="buyItem-body-info-unit">
           <div class="buyItem-body-info-unit-title">
-            {{ $store.getters.getLanguageText('Название товара:') }}
+            {{ $store.getters.getLanguageText('Название товара') }}
           </div>
           <div class="buyItem-body-info-unit-value">{{ item.title }}</div>
         </div>
@@ -143,7 +143,6 @@ export default {
         quantity: this.pickedQuantity,
         price: this.calculatePrice,
       };
-
       events.callServer(
         'MarketPlace:Exchange:BuyItem:Server',
         JSON.stringify(buyData),

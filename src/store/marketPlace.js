@@ -12,7 +12,7 @@ const marketPlace = {
 		listData: sectionsData.storage,
 		favoritesIdList: [],
 		pickedItem: null,
-		openingType: 'InTablet',
+		openingType: 'InStorage',
 		userInfo: {
 			moneyCash: 1233,
 			moneyBank: 12,
@@ -163,6 +163,10 @@ events.add('MarketPlace:List:ItemDelete:Cef', (id) => {
 		marketPlace.state.pickedItem = null;
 	}
 });
+events.add('MarketPlace:List:ItemAdd:Cef', (item) => {
+	if (!item) return;
+	marketPlace.state.listData.push(item);
+})
 events.add('MarketPlace:SetData:Cef', (json) => {
 	const parsed = JSON.parse(json);
 	marketPlace.state.openingType = parsed.openingType;
@@ -174,4 +178,17 @@ events.add('MarketPlace:User:UpdateMoneyCash:Cef', (num) => {
 events.add('MarketPlace:User:UpdateBankCash:Cef', (num) => {
 	marketPlace.state.userInfo.moneyBank = num;
 });
+events.add('MarketPlace:Exchange:AddOffer:Cef', (id, offer) => {
+	if (!offer) return;
+	else if (id === marketPlace.state.pickedItem.id) {
+		marketPlace.state.pickedItem.tradeData.offers.push(offer);
+		console.log('Предложение добавлено');
+	}
+});
+events.add('MarketPlace:Exchange:DeleteOffer:Cef', (id, offerId) => {
+	if (marketPlace.state.pickedItem.id === id) {
+		const filtered = marketPlace.state.pickedItem.tradeData.offers.filter(offer => offer.id !== offerId);
+		marketPlace.state.pickedItem.tradeData.offers = filtered;
+	}
+})
 export default marketPlace;
