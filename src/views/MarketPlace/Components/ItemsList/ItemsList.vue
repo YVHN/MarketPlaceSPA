@@ -92,6 +92,7 @@ export default {
       }
     },
     storageAction(item) {
+      console.log('выгрузка');
       events.callServer('MarketPlace:Storage:Unload:Server', item.id);
     },
     viewingAction(item) {
