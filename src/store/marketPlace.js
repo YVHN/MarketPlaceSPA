@@ -12,7 +12,7 @@ const marketPlace = {
 		listData: sectionsData.storage,
 		favoritesIdList: [],
 		pickedItem: null,
-		openingType: 'InStorage',
+		openingType: 'InTablet',
 		userInfo: {
 			moneyCash: 1233,
 			moneyBank: 12,

@@ -1,5 +1,5 @@
 <template>
-  <div class="item" :class="{ deactivate: getOpeningType === 'InTablet' }">
+  <div class="item" :class="{ deactivate: getOpeningType === 'InTablet' && item?.storageData }">
     <div class="item-top">
       <div class="item-header">
         <div class="item-header-info">
