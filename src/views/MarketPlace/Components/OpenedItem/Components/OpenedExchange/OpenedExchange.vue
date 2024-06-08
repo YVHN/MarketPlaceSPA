@@ -130,7 +130,7 @@ export default {
       const list = [
         {
           title: 'Категория',
-          value: getItemSubTitle(this.item),
+          value: $store.getters.getLanguageText(getItemSubTitle(this.item, this.$route.params.section)),
         },
         {
           title: 'Вес',

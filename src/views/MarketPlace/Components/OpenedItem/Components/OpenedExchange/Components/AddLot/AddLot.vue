@@ -7,22 +7,22 @@
       <div class="addLot-body-info">
         <div class="addLot-body-info-unit">
           <div class="addLot-body-info-unit-title">
-            {{ $store.getters.getLanguageText('Название товара') }}
+            {{ $store.getters.getLanguageText('Название товара:') }}
           </div>
-          <div class="addLot-body-info-unit-value">{{ data.title }}</div>
+          <div class="addLot-body-info-unit-value">{{ data.sellData.itemName }}</div>
         </div>
         <div class="addLot-body-info-unit">
           <div class="addLot-body-info-unit-title">
             {{ $store.getters.getLanguageText('Состояние') }}
           </div>
-          <div class="addLot-body-info-unit-value">{{ data.state }}</div>
+          <div class="addLot-body-info-unit-value">{{ data.sellData.state }}</div>
         </div>
         <div class="addLot-body-info-unit">
           <div class="addLot-body-info-unit-title">
             {{ $store.getters.getLanguageText('Доступно кол-во') }}
           </div>
           <div class="addLot-body-info-unit-value">
-            {{ `${data.quantity} ${$store.getters.getLanguageText('шт.')}` }}
+            {{ `${data.sellData.quantity} ${$store.getters.getLanguageText('шт.')}` }}
           </div>
         </div>
       </div>
@@ -50,14 +50,15 @@
             {{ $store.getters.getLanguageText('Доступно в продаже') }}
           </div>
           <div class="addLot-body-info-unit-value">
-            {{ `${data.quantity} ${$store.getters.getLanguageText('шт.')}` }}
+            {{ `${data.sellData.quantity} ${$store.getters.getLanguageText('шт.')}` }}
           </div>
         </div>
       </div>
       <ProgressBar
+        v-if="data.sellData.quantity > 1"
         @pickQuantity="pickQuantity"
         :progress="0"
-        :max-progress="data.quantity"
+        :max-progress="data.sellData.quantity"
         :min-progress="1"
       />
       <div class="addLot-body-actions">

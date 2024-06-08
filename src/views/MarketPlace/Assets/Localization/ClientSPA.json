@@ -107,6 +107,9 @@
     "Выгрузить со склада": {
         "eng": "Unload from warehouse"
     },
+    "Выгрузка не доступна с планшета": {
+        "eng": "Upload is not available from the tablet"
+    },
     "Доступно": {
         "eng": "Available"
     },
@@ -398,6 +401,4 @@
     "Количество часов": {
         "eng": "Number of hours"
     }
-
-
 }

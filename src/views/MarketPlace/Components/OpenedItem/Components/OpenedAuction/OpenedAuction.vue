@@ -163,7 +163,7 @@ export default {
           },
           {
             title: 'Гос. номер',
-            value: item.licensePlate,
+            value: item?.licensePlate || "Нет",
           },
         );
       }

@@ -385,7 +385,7 @@ const animations = {
 
 export default new Vuex.Store({
 	state: {
-        currentLanguage: 'rus',
+        currentLanguage: 'eng',
 	},
 	getters: {
         getCurrentLanguage(state) {

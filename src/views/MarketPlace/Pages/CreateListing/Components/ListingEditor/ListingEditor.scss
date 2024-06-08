@@ -9,7 +9,10 @@
   }
   .input {
     transition: box-shadow 0.3s ease;
-    margin-left: 8px;
+    margin-left: 0.741vmin;
+    &:focus {
+      box-shadow: 0 0 0.741vmin #5f9adf;
+    }
   }
 
   &-info {
@@ -396,9 +399,6 @@
   * {
     font-family: 'PF DinDisplay Pro';
   }
-}
-.empty {
-  box-shadow: 0 0 8px #5f9adf;
 }
 .estate {
   width: 100%;

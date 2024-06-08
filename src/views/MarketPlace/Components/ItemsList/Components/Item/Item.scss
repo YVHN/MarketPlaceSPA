@@ -1,7 +1,7 @@
 @import '@/views/MarketPlace/Assets/Styles/Variables.scss';
 
 .item {
-  min-width: 26.667vmin;
+  min-width: calc((100% - 1.852vmin * 4) / 4);
   height: 24.444vmin;
   border-radius: 0.741vmin;
   padding: 0.833vmin 1.667vmin;

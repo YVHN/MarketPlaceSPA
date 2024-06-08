@@ -12,7 +12,7 @@
         <div class="header">
           <Header v-if="!isInStorage"/>
           <div class="header-storage" v-else>
-            Склад хранения
+            {{ $store.getters.getLanguageText("Склад хранения") }}
           </div>
         </div>
         <div class="aside">

@@ -219,7 +219,46 @@ export default {
         //     },
         // },
     ],
-    favorites: [],
+    favorites: [
+        {
+            id: 31,
+            views: 10,
+            isFavorite: false,
+            listingData: {},
+            sellData: {
+                id: 54,
+                vehicleName: 'Bugattи Roaдster',
+                vehicleModel: 'bmistralw16',
+                type: 'transportRent',
+                img: 'image.png',
+                description: '...',
+                dealerShip: 'Хуй',
+                price: 2000000,
+                mileage: 100,
+            },
+        },
+        {
+            id: 20,
+            views: 33,
+            isFavorite: false,
+            listingData: {},
+            created: '11.04.2024 13:53',
+            sellData: {
+                id: 12,
+                type: 'house',
+                img: 'House123',
+                address: 'Хабибовна 33',
+                price: 50000,
+                parkingCapacity: 4,
+                maxTenants: 1,
+                coordinates: {
+                    x: -1816.8712,
+                    y: -636.77,
+                    z: 9.818936
+                }
+            },
+        },
+    ],
     userListings: [],
     history: [],
     createListing: [
@@ -261,7 +300,7 @@ export default {
                 state: 'Отличное',
                 type: 'item',
                 itemType: 4,
-                quantity: 3,
+                quantity: 1,
             },
             status: 'storage',
         },

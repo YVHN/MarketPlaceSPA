@@ -47,9 +47,9 @@
               {{
                 `$ ${formatNumber(
                   getItem.sellData?.rentPrice
-                    ? `${getItem.sellData.rentPrice + ' в час'}`
+                    ? `${getItem.sellData.rentPrice}`
                     : getItem.sellData.price,
-                )}`
+                )} ${getItem.sellData?.rentPrice ? '/ч.' : ''}`
               }}
             </div>
             <div class="header-info">
@@ -259,7 +259,7 @@ export default {
           },
           {
             title: 'Гос. номер',
-            value: item.licensePlate,
+            value: item.licensePlate || "Нет",
           },
         );
       }

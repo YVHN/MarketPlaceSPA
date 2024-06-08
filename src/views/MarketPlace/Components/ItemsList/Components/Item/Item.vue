@@ -55,7 +55,7 @@
         {{ getItemTitle(item) }}
       </div>
       <div class="item-category">
-        {{ getItemSubTitle(item) }}
+        {{ $store.getters.getLanguageText(getItemSubTitle(item, $route.params.section)) }}
       </div>
     </div>
     <div class="item-footer">
@@ -90,7 +90,7 @@
       <div class="item-transportRent" v-else-if="isHas('sellData', 'rentPrice')">
         <div class="item-default-price">
           {{ `${formatNumber(item.sellData.rentPrice)} $` }}
-          <span>{{ $store.getters.getLanguageText('за час') }}</span>
+          <span>{{ $store.getters.getLanguageText('/ч.') }}</span>
         </div>
         <div class="item-default-likesviews">
           <div class="unit" v-if="item?.likes">
@@ -214,7 +214,7 @@ export default {
   },
   methods: {
     getItemSubTitle(itemCard) {
-      return getItemSubTitle(itemCard);
+      return this.$store.getters.getLanguageText(getItemSubTitle(itemCard, this.$route.params.section));
     },
     getItemTitle(itemCard) {
       if(['business', 'house', 'apart'].includes(itemCard.sellData.type)) {

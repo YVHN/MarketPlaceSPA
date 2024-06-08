@@ -1,3 +1,4 @@
+import store from "@/store";
 export function getAddress() {
     const area = mp.game.ui.getLabelText(mp.game.zone.getNameOfZone(x, y, z));
     const adress = mp.game.ui.getStreetNameFromHashKey(mp.game.pathfind.getStreetNameAtCoord(
@@ -55,16 +56,16 @@ export function formatNumber(num) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 };
 
-export function getItemSubTitle(itemCard) {
-    const isAuction = Boolean(itemCard?.auctionData);
+export function getItemSubTitle(itemCard, section) {
+    const isDefault = section === 'favorites' || section === 'auction';
     const item = itemCard.sellData;
     let subTitle = '';
     if (['house', 'apartment'].includes(item.type)) {
-        subTitle = isAuction ? 'Недвижимость' : 'Адрес';
+        subTitle = isDefault ? 'Недвижимость' : 'Адрес';
     } else if (item.type === 'business') {
-        subTitle = isAuction ? 'Бизнес' : 'Адрес';
+        subTitle = isDefault ? 'Бизнес' : 'Адрес';
     } else if (['transportRent', 'transport'].includes(item.type)) {
-        subTitle = isAuction ? 'Транспорт' : item.dealerShip;
+        subTitle = isDefault ? 'Транспорт' : item.dealerShip;
     } else if (item.type === 'item') {
         subTitle = 'Разное';
     } else if (item.type === 'service') {
@@ -125,7 +126,7 @@ export function getItemTitle(itemCard) {
     } else if (item.type === 'service') {
         title = item.title;
     }
-    return title;
+    return store.getters.getLanguageText(title);
 };
 
 export function setFieldValue(obj, fieldName, value) {
