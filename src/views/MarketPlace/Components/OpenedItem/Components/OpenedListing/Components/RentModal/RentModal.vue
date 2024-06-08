@@ -132,7 +132,7 @@ export default {
       const payment = {
         id: this.item.id,
         quantity: this.pickedQuantity,
-        mathod: payMethod,
+        method: payMethod,
       };
       const json = JSON.stringify(payment);
       events.callServer('MarketPlace:Listing:RentTransport:Server', json);

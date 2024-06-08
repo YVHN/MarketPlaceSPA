@@ -106,9 +106,10 @@ export default {
     confirm() {
       if (this.pricePerItem) {
         const data = {
+          cardItemId: this.data.id,
           pricePerItem: this.pricePerItem,
           quantity: this.pickedQuantity,
-          itemType: this.data.itemType,
+          itemType: this.data.sellData.itemType,
         };
         events.callServer(
           'MarketPlace:Exchange:AddOffer:Server',

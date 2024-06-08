@@ -5,7 +5,7 @@
       <div class="itemsList-list" v-if="listData.length">
         <Item v-for="item in listData" @click.native="handleItemClick(item)" :item="item"
           :key="item.id" />
-        <AddLot :data="shortItemData" v-if="isAddLot" @toggleIsAddStatus="toggleIsAddStatus" />
+        <AddLot :data="itemData" v-if="isAddLot" @toggleIsAddStatus="toggleIsAddStatus" />
       </div>
       <!-- Пустая страница -->
       <div v-else>
@@ -42,7 +42,7 @@ export default {
   },
   data() {
     return {
-      shortItemData: {},
+      itemData: {},
       isAddLot: false,
     };
   },
@@ -101,7 +101,7 @@ export default {
     createListingAction(item) {
       // Если это предмет 
       if (item.sellData.type === 'item') {
-        this.shortItemData = item.sellData;
+        this.itemData = item;
         this.toggleIsAddStatus();
         // Если это категория создания обьявления
       } else if (item.sellData?.filter && item.status === 'available') {
