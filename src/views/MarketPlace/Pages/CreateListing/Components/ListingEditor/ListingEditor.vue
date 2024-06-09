@@ -302,7 +302,7 @@ export default {
         list = [
           {
             title: 'Автосалон',
-            value: item.dealerShip,
+            value: item.dealerShip || 'Не указано',
           },
           {
             title: 'Тюнинг',

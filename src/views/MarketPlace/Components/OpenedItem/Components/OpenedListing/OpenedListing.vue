@@ -255,7 +255,7 @@ export default {
         list.push(
           {
             title: 'Автосалон',
-            value: item.dealerShip,
+            value: item.dealerShip || 'Не указано',
           },
           {
             title: 'Гос. номер',
