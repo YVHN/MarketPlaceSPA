@@ -10,6 +10,7 @@ export default {
             endTime: '2024-05-24T21:06:06.9686271+03:00',
             sellData: {
                 img: 'W4J82Contention',
+                vehicleName: 'dwadwad',
                 model: 'W4 J82 Contention',
                 type: 'transport',
                 licensePlate: 'XXXXXX',

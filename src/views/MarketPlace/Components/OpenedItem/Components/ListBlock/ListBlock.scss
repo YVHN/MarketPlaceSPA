@@ -14,9 +14,9 @@
     flex-direction: column;
 
     &-body {
-      height: 40.667vmin;
+      max-height: calc(100vh - 63vmin);
       display: flex;
-      flex-direction: column;
+      flex-direction: column-reverse;
       gap: 1.389vmin;
       overflow: auto;
 

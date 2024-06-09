@@ -5,13 +5,8 @@
         {{ `${$store.getters.getLanguageText('Сделайте ставку на')} ${title}` }}
       </div>
       <div class="makeBet-body-bets">
-        <div
-          class="makeBet-body-bets-bet"
-          :class="{ active: userBet === bet.value }"
-          @click="() => pickBet(bet.value)"
-          v-for="(bet, index) in getDefaultBets"
-          :key="index"
-        >
+        <div class="makeBet-body-bets-bet" :class="{ active: userBet === bet.value }" @click="() => pickBet(bet.value)"
+          v-for="(bet, index) in getDefaultBets" :key="index">
           {{ formatNumber(bet.value) }} <span>$</span>
         </div>
       </div>
@@ -19,23 +14,15 @@
         <div class="makeBet-body-my-bet-title">
           {{ $store.getters.getLanguageText('Укажите свою ставку') }}
         </div>
-        <CustomInput
-          class="makeBet-body-my-bet-input"
-          :placeholder="`${$store.getters.getLanguageText(
-            'Ваша ставка должна быть выше',
-          )} ${formatNumber(startPrice)}$`"
-          :outside-value="userBet"
-          @setValue="setUserBet"
-          :class="{ wrong: getIsWrong }"
-        />
+        <CustomInput class="makeBet-body-my-bet-input" :placeholder="`${$store.getters.getLanguageText(
+          'Ваша ставка должна быть выше',
+        )} ${formatNumber(startPrice)}$`" :outside-value="userBet" @setValue="setUserBet"
+          :class="{ wrong: getIsWrong }" />
       </div>
       <div class="makeBet-body-make" @click="makeBet">
         {{ $store.getters.getLanguageText('Сделать ставку') }}
       </div>
-      <div
-        class="makeBet-body-cancel"
-        @click="() => this.$emit('toggleMakeBetStatus')"
-      >
+      <div class="makeBet-body-cancel" @click="() => this.$emit('toggleMakeBetStatus')">
         {{ $store.getters.getLanguageText('Отменить') }}
       </div>
     </div>

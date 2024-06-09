@@ -17,8 +17,13 @@ export default {
       required: false,
     },
   },
+  watch: {
+    graphData() {
+      this.renderChart();
+    },
+  },
   methods: {
-    // Функция для форматирования значений оси Y
+    // Function to format Y-axis values
     formatYValue(value) {
       if (value >= 1000000) {
         return (value / 1000000).toFixed(1) + 'M$';
@@ -26,6 +31,10 @@ export default {
       return value + '$';
     },
     renderChart() {
+      if (this.chartInstance) {
+        this.chartInstance.destroy();
+      }
+
       const chartCanvas = this.$refs.chartCanvas;
       const ctx = chartCanvas.getContext('2d');
       const labels = [];
@@ -33,7 +42,7 @@ export default {
       this.graphData.forEach((unit) => labels.push(unit.date));
       this.graphData.forEach((unit) => amounts.push(unit.amount));
 
-      new Chart(ctx, {
+      this.chartInstance = new Chart(ctx, {
         type: 'line',
         data: {
           labels: labels,
@@ -75,7 +84,7 @@ export default {
               ticks: {
                 color: '#5fdf6c',
                 padding: 20,
-                // Использую функцию форматирования
+                // Use the formatting function
                 callback: this.formatYValue,
               },
               grid: {
@@ -87,6 +96,11 @@ export default {
         },
       });
     },
+  },
+  data() {
+    return {
+      chartInstance: null,
+    };
   },
 };
 </script>
