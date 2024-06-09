@@ -29,24 +29,24 @@ export default {
       const list = this.specifications;
       const specifications = [
         {
-          title: 'Ускорение',
+          title: 'Турбонаддув',
           img: 'acceleration',
-          value: list.acceleration,
+          value: list.turbine,
         },
         {
-          title: 'Макс. скорость',
+          title: 'Двигатель',
           img: 'acceleration',
-          value: list.speed,
+          value: list.engine,
         },
         {
           title: 'Тормоза',
           img: 'clutch',
-          value: list.clutch,
+          value: list.brake,
         },
         {
-          title: 'Управляемость',
+          title: 'Подвеска',
           img: 'controllability',
-          value: list.controllability,
+          value: list.suspencion,
         },
       ];
       return specifications;

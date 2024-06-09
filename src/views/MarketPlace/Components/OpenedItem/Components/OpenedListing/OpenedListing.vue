@@ -259,7 +259,7 @@ export default {
           },
           {
             title: 'Гос. номер',
-            value: item.licensePlate || "Нет",
+            value: item.licensePlate || "Уникальное",
           },
         );
       }

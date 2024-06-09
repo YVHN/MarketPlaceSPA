@@ -282,11 +282,11 @@ export default {
                 vehicleModel: 'bmistralw16',
                 type: 'transport',
                 dealerShip: 'Ubermacht',
-                specifications: {
-                    acceleration: 56,
-                    clutch: 23,
-                    controllability: 40,
-                    speed: 130,
+                "specifications": {
+                    "engine": 0,
+                    "brake": 0,
+                    "suspencion": 12,
+                    "turbine": 0
                 },
                 mileage: 66,
             },
