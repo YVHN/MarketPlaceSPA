@@ -43,7 +43,7 @@ export default {
             this.selectedPage = page;
             events.callServer(
                 'MarketPlace:List:GetListData:Server',
-                this.$route.params.section,
+                this.isCreateListing ? 'createListing' : this.$route.params.section,
                 this.selectedPage
             );
         },
@@ -54,6 +54,9 @@ export default {
                 return this.$route.params.section;
             }
             else return this.$route.params.filter;
+        },
+        isCreateListing() {
+            return this.$route.path.includes('createListing');
         }
     }
 };
