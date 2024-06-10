@@ -92,19 +92,56 @@ export default {
     ],
     items: [
         {
-            id: 40,
-            isFavorite: false,
-            sellData: {
-                itemName: 'Хранилище данных - 16 TB',
-                img: 'DataStorage16TB',
-                type: 'item',
-                itemType: 4,
+            "id": 0,
+            "sellData": {
+              "type": "item",
+              "img": null,
+              "description": null,
+              "weight": 0.4,
+              "itemType": 599,
+              "itemName": "Конфеты",
             },
-            tradeData: {
-                startPrice: 5620,
-                available: 4321,
-            },
-        },
+            "views": 0,
+            "isFavorite": false,
+            "created": "0001-01-01T00:00:00",
+            "tradeData": {
+              "startPrice": 100,
+              "available": 310,
+              "offers": [
+                {
+                  "id": 0,
+                  "playerData": {
+                    "username": "Cherry_Waves",
+                    "static": 128683,
+                    "phone": 233197770
+                  },
+                  "quantity": 20,
+                  "pricePerItem": 1000
+                },
+                {
+                  "id": 1,
+                  "playerData": {
+                    "username": "Cherry Waves",
+                    "static": 128683,
+                    "phone": 233197770
+                  },
+                  "quantity": 20,
+                  "pricePerItem": 1000
+                },
+                {
+                  "id": 2,
+                  "playerData": {
+                    "username": "Cherry Waves",
+                    "static": 128683,
+                    "phone": 233197770
+                  },
+                  "quantity": 10,
+                  "pricePerItem": 100
+                }
+              ],
+              
+            }
+        }
     ],
     transportRent: [
         {

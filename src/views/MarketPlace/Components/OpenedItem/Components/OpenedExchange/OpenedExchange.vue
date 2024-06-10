@@ -10,7 +10,7 @@
             :is-favorite="item.isFavorite"
           />
         </div>
-        <div class="wrapper">
+        <div class="container">
           <div class="exchange-item-title">
             {{ sellItem.title }}
           </div>
@@ -44,7 +44,7 @@
         <div class="exchange-item-warning" v-if="!haveItem">
           {{
             $store.getters.getLanguageText(
-              'Этот предмет отсутсвует у вас на вашем складе. Вы не можете выставитьлот на торговую площадку, приобретите этот товар.',
+              'Этот предмет отсутсвует у вас на вашем складе. Вы не можете выставить лот на торговую площадку, приобретите этот товар.',
             )
           }}
         </div>
@@ -59,7 +59,7 @@
       <div class="exchange-graph-title">
         {{ $store.getters.getLanguageText('График цен') }}
       </div>
-      <Graph :graphData="item.tradeData.graphStat" />
+      <Graph :graphData="getGraphData" />
     </div>
     <BuyItem
       v-if="isBuy"
@@ -111,7 +111,6 @@ export default {
     };
   },
   mounted() {
-    this.checkItemInStorage();
     onUnmounted(() => {
       events.remove('MarketPlace:Exchange:SetItemForSell:Cef');
     });
@@ -130,7 +129,7 @@ export default {
       const list = [
         {
           title: 'Категория',
-          value: $store.getters.getLanguageText(getItemSubTitle(this.item, this.$route.params.section)),
+          value: this.$store.getters.getLanguageText(getItemSubTitle(this.item, this.$route.params.section)),
         },
         {
           title: 'Вес',
@@ -146,6 +145,10 @@ export default {
         },
       ];
       return list;
+    },
+    getGraphData() {
+      if(!this.item.tradeData?.graphData) return [];
+      else return this.item.tradeData.graphData;
     },
   },
   methods: {

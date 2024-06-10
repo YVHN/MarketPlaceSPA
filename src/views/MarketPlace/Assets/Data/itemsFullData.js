@@ -91,32 +91,56 @@ export default {
     ],
     items: [
         {
-            id: 5,
-            img: 'W4J82Contention',
-            model: 'W4 J82 Contention',
-            type: 'transport',
-            licensePlate: 'XXXXXX',
-            dealerShip: 'Ubermacht',
-            tuningStatus: 'Отличное',
-            mileage: 100,
-            weight: 100,
-            statePrice: 12312,
-            specifications: {
-                acceleration: 56,
-                clutch: 23,
-                controllability: 40,
-                speed: 130,
+            "id": 0,
+            "sellData": {
+              "type": "item",
+              "img": null,
+              "description": null,
+              "weight": 0.4,
+              "itemType": 599,
+              "itemName": "Конфеты",
             },
-        },
-        {
-            id: 12,
-            type: 'house',
-            img: 'House123',
-            address: 'Хабибовна 33',
-            statePrice: 12322,
-            parkingCapacity: 4,
-            maxTenants: 1,
-        },
+            "views": 0,
+            "isFavorite": false,
+            "created": "0001-01-01T00:00:00",
+            "tradeData": {
+              "startPrice": 100,
+              "available": 310,
+              "offers": [
+                {
+                  "id": 0,
+                  "playerData": {
+                    "username": "Cherry_Waves",
+                    "static": 128683,
+                    "phone": 233197770
+                  },
+                  "quantity": 20,
+                  "pricePerItem": 1000
+                },
+                {
+                  "id": 1,
+                  "playerData": {
+                    "username": "Cherry Waves",
+                    "static": 128683,
+                    "phone": 233197770
+                  },
+                  "quantity": 20,
+                  "pricePerItem": 1000
+                },
+                {
+                  "id": 2,
+                  "playerData": {
+                    "username": "Cherry Waves",
+                    "static": 128683,
+                    "phone": 233197770
+                  },
+                  "quantity": 10,
+                  "pricePerItem": 100
+                }
+              ],
+              
+            }
+        }
     ],
     listings: [
         {

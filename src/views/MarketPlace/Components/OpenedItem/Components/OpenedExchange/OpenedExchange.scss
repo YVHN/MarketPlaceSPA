@@ -6,12 +6,13 @@
   .wrapper {
     display: flex;
     gap: 4.907vmin;
+    height: 48.5vmin;
   }
 
   &-item {
     width: 37.222vmin;
 
-    .wrapper {
+    .container {
       display: flex;
       align-items: center;
       justify-content: space-between;

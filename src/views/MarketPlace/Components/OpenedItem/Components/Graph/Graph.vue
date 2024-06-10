@@ -39,8 +39,10 @@ export default {
       const ctx = chartCanvas.getContext('2d');
       const labels = [];
       const amounts = [];
-      this.graphData.forEach((unit) => labels.push(unit.date));
-      this.graphData.forEach((unit) => amounts.push(unit.amount));
+      if(this.graphData) {
+        this.graphData.forEach((unit) => labels.push(unit.date));
+        this.graphData.forEach((unit) => amounts.push(unit.amount));
+      }
 
       this.chartInstance = new Chart(ctx, {
         type: 'line',
