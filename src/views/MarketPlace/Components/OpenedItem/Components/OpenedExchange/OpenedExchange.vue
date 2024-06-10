@@ -41,7 +41,7 @@
         >
           {{ $store.getters.getLanguageText('Добавить лот на продажу') }}
         </div>
-        <div class="exchange-item-warning" v-if="haveItem">
+        <div class="exchange-item-warning" v-if="!haveItem">
           {{
             $store.getters.getLanguageText(
               'Этот предмет отсутсвует у вас на вашем складе. Вы не можете выставитьлот на торговую площадку, приобретите этот товар.',
@@ -107,7 +107,7 @@ export default {
       isBuy: false,
       isAdd: false,
       buyItemData: null,
-      haveItem: true,
+      haveItem: null,
     };
   },
   mounted() {
@@ -171,11 +171,6 @@ export default {
       };
       this.buyItemData = data;
       this.toggleStatus('buy');
-    },
-    checkItemInStorage() {
-      const item = this.$store.getters.getItemFromStorage(this.item.id);
-      this.haveItem = item ? item.sellData : null;
-      console.log(this.haveItem);
     },
   },
 };

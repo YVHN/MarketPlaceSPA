@@ -106,10 +106,6 @@
               </div>
             </div>
             <div class="info-item-full">
-              <div class="info-item-full-unit">
-                {{ $store.getters.getLanguageText('Тип имущества:') }}
-                <span>{{ $store.getters.getType(getItem.sellData) }}</span>
-              </div>
               <div class="info-item-full-unit" v-if="getItem.sellData?.statePrice">
                 {{ $store.getters.getLanguageText('Гос. цена:') }}
                 <span class="price">{{
@@ -287,10 +283,10 @@ export default {
       return !Object.keys(this.getItem.sellData).length > 0;
     },
     getFullData() {
-      const item = this.getItem.sellData?.type;
+      const item = this.getItem.sellData;
       if (!item) return [];
       let list;
-      if (item.type === 'estate') {
+      if (['apart', 'house', 'business'].includes(item.type)) {
         list = [
           {
             title: 'Адрес',
@@ -302,15 +298,15 @@ export default {
         list = [
           {
             title: 'Автосалон',
-            value: item.dealerShip || 'Не указано',
+            value: item?.dealerShip || 'Не указано',
           },
           {
             title: 'Тюнинг',
-            value: item.tuningStatus,
+            value: item?.tuningStatus || 'Не указано',
           },
           {
             title: 'Гос. номер',
-            value: item.licensePlate || "Нет",
+            value: item?.licensePlate || "Нет",
           },
         ];
       }

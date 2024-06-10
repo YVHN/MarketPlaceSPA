@@ -11,6 +11,7 @@
       </div>
       <div
         class="openedListing-testDrive"
+        @click="handleTestDriveClick"
         v-if="getItem.sellData.type === 'transport'"
       >
         {{ $store.getters.getLanguageText('Тест драйв') }}
@@ -177,6 +178,9 @@ export default {
     });
   },
   methods: {
+    handleTestDriveClick() {
+      events.callServer('Marketplace:VehicleTestDrive:Server', this.getItem.id);
+    },
     getItemTitle(itemCard) {
       return getItemTitle(itemCard);
     },

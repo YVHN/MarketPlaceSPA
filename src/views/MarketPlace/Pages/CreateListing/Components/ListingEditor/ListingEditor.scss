@@ -52,7 +52,7 @@
 
       &-full {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         gap: 1.111vmin;
 
         .price {
