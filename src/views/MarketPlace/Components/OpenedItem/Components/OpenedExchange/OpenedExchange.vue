@@ -4,11 +4,7 @@
       <div class="exchange-item">
         <div class="exchange-item-img">
           <img :src="require(`@/views/MarketPlace/Assets/Images/Items/${'default'}.png`)" />
-          <FavoriteIndicator
-            :itemId="item.id"
-            :size="'big'"
-            :is-favorite="item.isFavorite"
-          />
+          <FavoriteIndicator :itemId="item.id" :size="'big'" :is-favorite="item.isFavorite" />
         </div>
         <div class="container">
           <div class="exchange-item-title">
@@ -16,11 +12,7 @@
           </div>
         </div>
         <div class="exchange-item-info">
-          <div
-            class="exchange-item-info-unit"
-            v-for="(unit, index) in getItemInfo"
-            :key="index"
-          >
+          <div class="exchange-item-info-unit" v-for="(unit, index) in getItemInfo" :key="index">
             <div class="exchange-item-info-unit-title">
               {{ `${$store.getters.getLanguageText(unit.title)}:` }}
             </div>
@@ -35,13 +27,10 @@
             {{ sellItem.description }}
           </div>
         </div>
-        <div
-          class="exchange-item-button bet-button"
-          @click="toggleStatus('add')"
-        >
+        <div class="exchange-item-button bet-button" v-if="haveItem" @click="toggleStatus('add')">
           {{ $store.getters.getLanguageText('Добавить лот на продажу') }}
         </div>
-        <div class="exchange-item-warning" v-if="!haveItem">
+        <div class="exchange-item-warning" v-else>
           {{
             $store.getters.getLanguageText(
               'Этот предмет отсутсвует у вас на вашем складе. Вы не можете выставить лот на торговую площадку, приобретите этот товар.',
@@ -49,11 +38,7 @@
           }}
         </div>
       </div>
-      <ListBlock
-        :list="item.tradeData.offers"
-        @buyItem="buyItem"
-        :showType="'exchange'"
-      />
+      <ListBlock :list="item.tradeData.offers" @buyItem="buyItem" :showType="'exchange'" />
     </div>
     <div class="exchange-graph">
       <div class="exchange-graph-title">
@@ -61,16 +46,8 @@
       </div>
       <Graph :graphData="getGraphData" />
     </div>
-    <BuyItem
-      v-if="isBuy"
-      @toggleIsBuyStatus="toggleStatus('buy')"
-      :item="buyItemData"
-    />
-    <AddLot
-      v-if="isAdd"
-      :data="haveItem"
-      @toggleIsAddStatus="toggleStatus('add')"
-    />
+    <BuyItem v-if="isBuy" @toggleIsBuyStatus="toggleStatus('buy')" :item="buyItemData" />
+    <AddLot v-if="isAdd" :data="haveItem" @toggleIsAddStatus="toggleStatus('add')" />
   </div>
 </template>
 
@@ -115,7 +92,7 @@ export default {
       events.remove('MarketPlace:Exchange:SetItemForSell:Cef');
     });
     events.callServer(
-      'MarketPlace:Exchange:GetItemForSell:Server',
+      'MarketPlace:Exchange:IsCanSell:Server',
       this.sellItem.itemType,
     );
     events.add('MarketPlace:Exchange:SetItemForSell:Cef', (json) => {
@@ -147,7 +124,7 @@ export default {
       return list;
     },
     getGraphData() {
-      if(!this.item.tradeData?.graphData) return [];
+      if (!this.item.tradeData?.graphData) return [];
       else return this.item.tradeData.graphData;
     },
   },

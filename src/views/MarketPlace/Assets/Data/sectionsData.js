@@ -332,12 +332,12 @@ export default {
         {
             id: 2,
             sellData: {
-                itemName: 'Хранилище данных - 16 TB',
+                itemName: 'Хранилище данных - 12 TB',
                 img: 'DataStorage16TB',
                 state: 'Отличное',
                 type: 'item',
                 itemType: 4,
-                quantity: 1,
+                quantity: 43,
             },
             status: 'storage',
         },
