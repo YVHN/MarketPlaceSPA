@@ -191,4 +191,12 @@ events.add('MarketPlace:Exchange:DeleteOffer:Cef', (id, offerId) => {
 		marketPlace.state.pickedItem.tradeData.offers = filtered;
 	}
 })
+events.add('MarketPlace:Exchange:EditOffer:Cef', (cardId, offerId, quantity) => {
+	if (marketPlace.state.pickedItem.id === cardId) {
+		const offer = marketPlace.state.pickedItem.tradeData.offers.find((offer) => offer.id === offerId);
+		if (offer) {
+			offer.quantity = quantity;
+		}
+	}
+});
 export default marketPlace;

@@ -141,7 +141,6 @@ export default {
         offerId: this.item.offerId,
         method: payMethod,
         quantity: this.pickedQuantity,
-        price: this.calculatePrice,
       };
       events.callServer(
         'MarketPlace:Exchange:BuyItem:Server',
