@@ -126,6 +126,9 @@ export function getItemTitle(itemCard) {
     } else if (item.type === 'service') {
         title = item.title;
     }
+    if(['apartment', 'house', 'business'].includes(item.type)) {
+        return `${store.getters.getLanguageText(title)} #${item.id}`;
+    }
     return store.getters.getLanguageText(title);
 };
 
