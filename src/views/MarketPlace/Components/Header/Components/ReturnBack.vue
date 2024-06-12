@@ -14,7 +14,15 @@ export default {
   },
   methods: {
     returnBack() {
-      this.$router.go(-1);
+      if(this.$route.path.includes('createListing')) {
+        if(this.$route.params?.type || this.$route.params.filter !== 'all') {
+          this.$router.push('/market-place/createListing/all');
+        } else {
+          this.$router.push('/market-place/viewing/auction');
+        }
+      } else {
+        this.$router.go(-1);
+      }
       this.$store.commit('resetPickedItem');
     },
   }
