@@ -72,7 +72,10 @@ const marketPlace = {
 	mutations: {
 		changeCardItemQuantity(state, [id, quantity]) {
 			const cardItem = state.listData.find((item) => item.id === id);
+			console.log('смена кол-ва');
+			console.log(`кол-во:${quantity}`);
 			if(cardItem) {
+				console.log('меняю кол-во');
 				cardItem.sellData.quantity = quantity;
 			}
 		},
