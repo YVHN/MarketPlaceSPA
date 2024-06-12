@@ -8,7 +8,7 @@
               <competitors class="unit-icon" />
               {{ formatNumber(item.auctionData.competitors) }}
             </div>
-            <div class="unit">
+            <div class="unit" v-if="shelfTime">
               <endTime class="unit-icon" />
               {{ shelfTime }}
             </div>
