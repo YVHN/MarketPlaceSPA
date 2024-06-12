@@ -95,7 +95,7 @@ export function getItemTitle(itemCard) {
     let title = '';
     if (item.type === 'house') {
        title = 'Дом'
-    } else if(item.type === 'apart') {
+    } else if(item.type === 'apartment') {
         title = 'Апартаменты'
     } else if (['transportRent', 'transport'].includes(item.type)) {
         title = item.vehicleName;

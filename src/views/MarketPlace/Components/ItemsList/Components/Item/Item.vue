@@ -220,7 +220,7 @@ export default {
       return this.$store.getters.getLanguageText(getItemSubTitle(itemCard, this.$route.params.section));
     },
     getItemTitle(itemCard) {
-      if(['business', 'house', 'apart'].includes(itemCard.sellData.type)) {
+      if(['business', 'house', 'apartment'].includes(itemCard.sellData.type)) {
         const id = itemCard.sellData.id;
         return `${getItemTitle(itemCard)} #${id}`;
       } else {

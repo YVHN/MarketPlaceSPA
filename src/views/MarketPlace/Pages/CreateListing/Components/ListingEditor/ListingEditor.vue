@@ -286,7 +286,7 @@ export default {
       const item = this.getItem.sellData;
       if (!item) return [];
       let list;
-      if (['apart', 'house', 'business'].includes(item.type)) {
+      if (['apartment', 'house', 'business'].includes(item.type)) {
         list = [
           {
             title: 'Адрес',
