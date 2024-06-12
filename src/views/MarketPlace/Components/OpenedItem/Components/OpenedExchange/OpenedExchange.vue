@@ -117,7 +117,7 @@ export default {
           value: this.item.tradeData.available,
         },
         {
-          title: 'Последняя ставка',
+          title: 'Минимальная цена',
           value: this.formatNumber(this.item.tradeData.startPrice),
         },
       ];

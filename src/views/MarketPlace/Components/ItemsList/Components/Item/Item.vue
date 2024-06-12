@@ -36,7 +36,7 @@
                 )} ${$store.getters.getLanguageText('км.')}`
               }}
             </div>
-            <div class="unit" v-if="isHas('sellData', 'weight')">
+            <div class="unit" v-if="isShowQuantityTip">
               <weight class="unit-icon" />
               {{
                 `${formatNumber(
@@ -171,6 +171,9 @@ export default {
     endTime,
   },
   computed: {
+    isShowQuantityTip() {
+      return this.isHas('sellData', 'weight') && (this.$route.params.section === 'storage' || this.$route.path.includes('createListing'));
+    },
     isHideFavorite() {
       const isStorage = this.item?.storageData;
       const isCreateListing = this.item?.status;

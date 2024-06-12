@@ -181,7 +181,7 @@ events.add('MarketPlace:SetData:Cef', (json) => {
 events.add('MarketPlace:User:UpdateMoneyCash:Cef', (num) => {
 	marketPlace.state.userInfo.moneyCash = num;
 });
-events.add('MarketPlace:User:UpdateBankCash:Cef', (num) => {
+events.add('MarketPlace:User:UpdateMoneyBank:Cef', (num) => {
 	marketPlace.state.userInfo.moneyBank = num;
 });
 events.add('MarketPlace:Exchange:AddOffer:Cef', (id, offer) => {
