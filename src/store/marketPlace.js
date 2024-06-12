@@ -70,6 +70,12 @@ const marketPlace = {
 		},
 	},
 	mutations: {
+		changeCardItemQuantity(state, [id, quantity]) {
+			const cardItem = state.listData.find((item), item.id === id);
+			if(cardItem) {
+				cardItem.sellData.quantity = quantity;
+			}
+		},
 		start(state) {
 			console.log('запуск');
 			state.listData = [];

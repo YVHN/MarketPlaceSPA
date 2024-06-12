@@ -117,6 +117,7 @@ export default {
           JSON.stringify(data),
         );
         this.toggleStatus();
+        this.$store.commit('changeCardItemQuantity', this.data.id, this.data.sellData.quantity - this.pickedQuantity);
       }
     },
   },
