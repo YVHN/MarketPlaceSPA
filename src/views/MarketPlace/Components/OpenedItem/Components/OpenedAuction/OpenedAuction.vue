@@ -1,69 +1,41 @@
 <template>
   <div class="auction">
-    <div class="wrapper">
-      <div class="auction-item">
-        <div class="auction-item-img">
-          <Img :img="'default'" :itemType="sellItem.type" :size="'m'" />
-          <FavoriteIndicator
-            :itemId="lotData.id"
-            :size="'big'"
-            :is-favorite="lotData.isFavorite"
-          />
-        </div>
-        <div class="wrapper">
-          <div class="auction-item-title">
-            {{ getItemTitle(lotData) }}
+    <div class="top">
+      <div class="item">
+        <div class="item-container">
+          <div class="item-img">
+            <Img :img="'default'" :itemType="getPickedItem.sellData.type" :size="'m'" />
+            <FavoriteIndicator :itemId="getPickedItem.id" :size="'big'" :is-favorite="getPickedItem.isFavorite" />
           </div>
-          <div class="auction-item-likesviews">
-            <div class="auction-item-likesviews-unit">
-              {{ lotData.likes }}
-              <likes class="auction-item-likesviews-unit-img" />
+          <div class="item-info">
+            <div class="item-info-header">
+              <div class="item-title">
+                {{ getItemTitle(getPickedItem) }}
+              </div>
+              <div class="item-likesviews">
+                <div class="item-likesviews-unit">
+                  {{ getPickedItem.likes }}
+                  <likes class="item-likesviews-unit-img" />
+                </div>
+                <div class="item-likesviews-unit">
+                  {{ getPickedItem.views }}
+                  <img class="item-likesviews-unit-img" src="@/views/MarketPlace/Assets/Icons/Item/views.svg" />
+                </div>
+              </div>
             </div>
-            <div class="auction-item-likesviews-unit">
-              {{ lotData.views }}
-              <img
-                class="auction-item-likesviews-unit-img"
-                src="@/views/MarketPlace/Assets/Icons/Item/views.svg"
-              />
-            </div>
+            <ItemMainInfo :card-item="getPickedItem" class="item-info-mainInfo" :type="'column'" />
           </div>
         </div>
-        <div class="auction-item-info">
-          <div
-            class="auction-item-info-unit"
-            v-for="(unit, index) in getItemInfo"
-            :key="index"
-          >
-            <div class="auction-item-info-unit-title">
-              {{ `${$store.getters.getLanguageText(unit.title)}:` }}
-            </div>
-            <div class="auction-item-info-unit-value">
-              {{ $store.getters.getLanguageText(unit.value) }}
-            </div>
-          </div>
-        </div>
-        <div class="auction-item-description">
-          <div class="auction-item-description-title">
-            {{ $store.getters.getLanguageText('Описание лота:') }}
-          </div>
-          <div class="auction-item-description-content">
-            {{ sellItem.description }}
-          </div>
-        </div>
-        <div class="auction-item-buttons">
-          <div class="auction-item-button bet-button" @click="toggleStatus">
+        <div class="item-buttons">
+          <div class="item-button bet-button" @click="toggleStatus">
             {{ $store.getters.getLanguageText('Сделать ставку') }}
           </div>
-          <div
-            class="auction-item-button like-button"
-            :class="{ liked: isLiked }"
-            @click="toLike"
-          >
+          <div class="item-button like-button" :class="{ liked: isLiked }" @click="toLike">
             <likes class="like-button-img" />
           </div>
         </div>
       </div>
-      <ListBlock :list="lotData.auctionData.offers" :showType="'auction'" />
+      <ListBlock :list="getPickedItem.auctionData.offers" :showType="'auction'" />
     </div>
     <div class="auction-graph">
       <div class="auction-graph-title">
@@ -71,13 +43,8 @@
       </div>
       <Graph :graphData="getBetsList" />
     </div>
-    <MakeBet
-      v-if="isMakeBet"
-      :lotId="lotData.id"
-      :title="getItemTitle(lotData)"
-      :startPrice="lotData.auctionData.lastBet"
-      @toggleMakeBetStatus="toggleStatus"
-    />
+    <MakeBet v-if="isMakeBet" :lotId="getPickedItem.id" :title="getItemTitle(getPickedItem)"
+      :startPrice="getPickedItem.auctionData.lastBet" @toggleMakeBetStatus="toggleStatus" />
   </div>
 </template>
 
@@ -93,13 +60,15 @@ import { parseDate } from '@/functions/marketplace';
 import { onUnmounted } from 'vue';
 
 import { getItemTitle } from '@/functions/marketplace';
+import ItemMainInfo from '../../../ItemComponents/ItemMainInfo/ItemMainInfo.vue';
 export default {
   mounted() {
+    this.setIsLiked();
     onUnmounted(() => {
       events.remove('Marketplace:Auction:AppendOffer:Cef');
     });
     events.add('Marketplace:Auction:AppendOffer:Cef', (id, json) => {
-      if(this.lotData.id === id) {
+      if (this.getPickedItem.id === id) {
         this.$store.commit('appendOfferBet', JSON.parse(json));
       }
     });
@@ -111,67 +80,18 @@ export default {
     FavoriteIndicator,
     MakeBet,
     Img,
-  },
-  props: {
-    lotData: {
-      type: Object,
-      required: true,
-    },
-    sellItem: {
-      type: Object,
-      required: true,
-    },
+    ItemMainInfo,
   },
   data() {
     return {
       isMakeBet: false,
-      isLiked: this.lotData.isLiked,
+      isLiked: false,
     };
   },
   computed: {
-    getItemInfo() {
-      const item = this.sellItem;
-      let list = [
-        {
-          title: 'Категория',
-          value: this.$store.getters.getType(item),
-        },
-        {
-          title: 'Последняя ставка',
-          value: this.formatNumber(this.lotData.auctionData.lastBet),
-        },
-      ];
-      if (item.type === 'estate') {
-        list.push(
-          {
-            title: 'Кол-во гаражных мест',
-            value: item.parkingCapacity,
-          },
-          {
-            title: 'Улица',
-            value: '',
-            // Тут должен быть адрес
-          },
-        );
-      } else if (item.type === 'transport') {
-        list.push(
-          {
-            title: 'Пробег',
-            value: `${item.mileage} ${this.$store.getters.getLanguageText(
-              'км.',
-            )}`,
-          },
-          {
-            title: 'Гос. номер',
-            value: item?.licensePlate || "Уникальное",
-          },
-        );
-      }
-      return list;
-    },
     getBetsList() {
       const list = [];
-      this.lotData.auctionData.offers.forEach((offer) => {
+      this.getPickedItem.auctionData.offers.forEach((offer) => {
         const bet = {
           date: parseDate(offer.created, 'default'),
           amount: offer.bet,
@@ -180,20 +100,26 @@ export default {
       });
       return list;
     },
+    getPickedItem() {
+      return this.$store.getters.getPickedItem;
+    }
   },
   methods: {
+    setIsLiked() {
+      this.isLiked = this.getPickedItem.isLiked;
+    },
     getItemTitle(itemCard) {
       return getItemTitle(itemCard);
     },
     formatNumber(num) {
-      if(typeof num === undefined) return '';
+      if (typeof num === undefined) return '';
       return `$${num.toLocaleString('ru-RU')}`;
     },
     toLike() {
       this.isLiked = !this.isLiked;
       events.callServer(
         'MarketPlace:Auction:Like:Server',
-        this.lotData.id,
+        this.getPickedItem.id,
         this.isLiked,
       );
     },

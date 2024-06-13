@@ -7,93 +7,22 @@
         )
       }}
     </div>
-    <div class="listBlock-list">
-      <div class="listBlock-list-units" v-if="showType === 'exchange'">
-        <div class="units-user">
-          <div class="listBlock-list-units-unit">
-            {{ $store.getters.getLanguageText('Автор') }}
-          </div>
-        </div>
-        <div class="listBlock-list-units-unit">
-          {{ 'Static' }}
-        </div>
-        <div class="listBlock-list-units-unit">
-          {{ $store.getters.getLanguageText('Состояние') }}
-        </div>
-        <div class="listBlock-list-units-unit">
-          {{ $store.getters.getLanguageText('Кол-во') }}
-        </div>
-        <div class="listBlock-list-units-unit">
-          {{ $store.getters.getLanguageText('Цена за 1 шт.') }}
-        </div>
-        <div class="listBlock-list-units-unit">
-          {{ $store.getters.getLanguageText('Таймер') }}
-        </div>
-        <div class="listBlock-list-units-unit">
-          {{ $store.getters.getLanguageText('Действие') }}
+    <div class="list">
+      <div class="list-headings">
+        <div class="list-headings-heading" v-for="heading in getListHeadings" :key="heading">
+          {{ heading }}
         </div>
       </div>
-      <div class="listBlock-list-units" v-else>
-        <div class="units-user">
-          <div class="listBlock-list-units-unit">
-            {{ $store.getters.getLanguageText('Автор') }}
-          </div>
-        </div>
-        <div class="listBlock-list-units-unit">
-          {{ 'Static' }}
-        </div>
-        <div class="listBlock-list-units-unit">
-          {{ $store.getters.getLanguageText('Время и дата') }}
-        </div>
-        <div class="listBlock-list-units-unit">
-          {{ $store.getters.getLanguageText('Ставка') }}
-        </div>
-      </div>
-      <div class="listBlock-list-body">
-        <div
-          class="listBlock-list-item"
-          v-for="(offer, index) in list"
-          :key="index"
-        >
-          <div class="listBlock-list-item-user">
-            <img src="@/views/MarketPlace/Assets/Icons/Secondary/avatar.svg" />
-            <div>{{ offer.playerData.username }}</div>
-          </div>
-          <template v-if="showType === 'exchange'">
-            <div>{{ offer.playerData.static }}</div>
-            <div>{{ offer.state }}</div>
-            <div>{{ offer.quantity }}</div>
-            <div>{{ `${offer.pricePerItem}$` }}</div>
-            <div>
-              {{ getEndTime(offer.created) }}
-            </div>
-            <div
-              class="listBlock-list-item-button"
-              @click="() => $emit('buyItem', offer)"
-            >
-              {{ $store.getters.getLanguageText('Купить') }}
-            </div>
-          </template>
-          <template v-else>
-            <div>{{ offer.playerData.static }}</div>
-            <div class="listBlock-list-item-time">
-              {{ parseDate(offer.created).date }}
-              <span>{{
-                parseDate(offer.created).time
-              }}</span>
-            </div>
-            <div class="listBlock-list-item-bet">
-              {{ `${formatNumber(offer.bet)} $` }}
-            </div>
-          </template>
-        </div>
+      <div class="list-offers" ref="list">
+        <OfferItem @buyItem="openBuyItemModal" v-for="(offer, index) in list" :key="index" :offer-data="offer" :type="showType"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { parseDate, getEndTime } from '@/functions/marketplace';
+import { parseDate, getEndTime, formatNumber } from '@/functions/marketplace';
+import OfferItem from './Components/OfferItem.vue'
 
 export default {
   props: {
@@ -106,18 +35,50 @@ export default {
       required: true,
     },
   },
+  components: {
+    OfferItem,
+  },
   methods: {
+    openBuyItemModal(offer) {
+      this.$emit('buyItem', offer);
+    },
     formatNumber(num) {
-      if (num === undefined || !num) return '';
-      return num.toLocaleString('ru-RU');
+      return formatNumber(num);
     },
     parseDate(time) {
       return parseDate(time, 'object');
     },
     getEndTime(endTime) {
       return getEndTime(endTime);
+    },
+    scrollToTop() {
+      const listElement = this.$refs.list;
+      if (listElement) {
+        listElement.scrollTop = -listElement.scrollHeight;
+      }
+    },
+  },
+  watch: {
+    list() {
+      this.$nextTick(() => {
+        this.scrollToTop();
+      });
     }
   },
+  mounted() {
+    this.scrollToTop();
+  },
+  computed: {
+    getListHeadings() {
+      if (this.showType === 'auction') {
+        return ['Автор', 'Static', 'Время и дата', 'Ставка']
+      } else if (this.showType === 'exchange') {
+        return ['Автор', 'Static', 'Состояние', 'Кол-во', 'Цена за 1 шт.', 'Таймер', 'Действие'];
+      } else {
+        return [];
+      }
+    },
+  }
 };
 </script>
 

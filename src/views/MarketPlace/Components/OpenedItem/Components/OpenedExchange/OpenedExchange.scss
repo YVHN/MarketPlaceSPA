@@ -1,16 +1,25 @@
 .exchange {
-  display: flex;
-  flex-direction: column;
-  gap: 2.13vmin;
-
-  .wrapper {
+  .top {
     display: flex;
     gap: 4.907vmin;
-    height: 48.5vmin;
+    height: 46vmin;
+    margin-bottom: 3.2vmin;
   }
 
-  &-item {
+  .item {
     width: 37.222vmin;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &-info {
+      &-title {
+        font-weight: 700;
+        font-size: 1.574vmin;
+        color: #fff;
+        margin-bottom: 1.2vmin;
+      }
+      margin-bottom: 1.852vmin;
+    }
 
     .container {
       display: flex;
@@ -30,48 +39,15 @@
       backdrop-filter: blur(2.88vmin);
       background: rgba(255, 255, 255, 0.02);
 
-      & > img {
+      &>img {
         height: 100%;
-      }
-    }
-
-    &-title {
-      font-weight: 700;
-      font-size: 1.574vmin;
-      color: #fff;
-    }
-
-    &-info {
-      margin: 1.204vmin 0;
-      display: flex;
-      gap: 1.296vmin;
-      flex-wrap: wrap;
-
-      &-unit {
-        display: flex;
-        align-items: center;
-        gap: 0.463vmin;
-
-        &-title {
-          font-weight: 400;
-          font-size: 1.296vmin;
-          color: rgba(255, 255, 255, 0.17);
-        }
-
-        &-value {
-          font-weight: 500;
-          font-size: 1.296vmin;
-          color: #fff;
-          position: relative;
-          top: 0.139vmin;
-        }
       }
     }
 
     &-button {
       width: 100%;
       border-radius: 0.185vmin;
-      background: rgba(255, 255, 255, 0.08);
+      background: #5F9ADF;
       font-weight: 700;
       font-size: 1.204vmin;
       padding: 1.944vmin;
@@ -90,6 +66,10 @@
       &:active {
         transform: scale(1.05);
       }
+    }
+    .off {
+      background: rgba(255, 255, 255, 0.08);
+      pointer-events: none;
     }
 
     &-description {
@@ -114,12 +94,13 @@
       font-weight: 400;
       font-size: 1.111vmin;
       color: rgba(255, 255, 255, 0.16);
+      text-align: center;
     }
   }
 
   &-graph {
     height: 100%;
-    padding: 1.852vmin 0 0.7vmin;
+    padding: 1.852vmin 0 2.315vmin;
 
     &-title {
       font-weight: 700;

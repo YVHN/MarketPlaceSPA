@@ -4,8 +4,6 @@
     <div class="openedItem-opened" v-if="getAction === 'opened'">
       <OpenedAuction
         v-if="getPickedItem?.auctionData"
-        :sellItem="getPickedItem.sellData"
-        :lotData="getPickedItem"
       />
       <!-- Биржа -->
       <OpenedExchange

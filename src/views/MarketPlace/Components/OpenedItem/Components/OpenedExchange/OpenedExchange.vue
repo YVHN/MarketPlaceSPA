@@ -1,41 +1,38 @@
 <template>
   <div class="exchange">
-    <div class="wrapper">
-      <div class="exchange-item">
-        <div class="exchange-item-img">
-          <img :src="require(`@/views/MarketPlace/Assets/Images/Items/${'default'}.png`)" />
-          <FavoriteIndicator :itemId="item.id" :size="'big'" :is-favorite="item.isFavorite" />
-        </div>
-        <div class="container">
-          <div class="exchange-item-title">
-            {{ sellItem.title }}
+    <div class="top">
+      <div class="item">
+        <div class="item-container">
+          <div class="item-img">
+            <img :src="require(`@/views/MarketPlace/Assets/Images/Items/${'default'}.png`)" />
+            <FavoriteIndicator :itemId="item.id" :size="'big'" :is-favorite="item.isFavorite" />
           </div>
-        </div>
-        <div class="exchange-item-info">
-          <div class="exchange-item-info-unit" v-for="(unit, index) in getItemInfo" :key="index">
-            <div class="exchange-item-info-unit-title">
-              {{ `${$store.getters.getLanguageText(unit.title)}:` }}
+          <div class="item-info">
+            <div class="item-info-title">
+              {{ sellItem.title }}
             </div>
-            <div class="exchange-item-info-unit-value">{{ unit.value }}</div>
+            <ItemMainInfo :card-item="getPickedItem"/>
+            <!-- <div class="exchange-item-description">
+              <div class="exchange-item-description-title">
+                {{ $store.getters.getLanguageText('Описание о предмете:') }}
+              </div>
+              <div class="exchange-item-description-content">
+                {{ sellItem.description }}
+              </div>
+            </div> -->
           </div>
         </div>
-        <div class="exchange-item-description">
-          <div class="exchange-item-description-title">
-            {{ $store.getters.getLanguageText('Описание о предмете:') }}
+        <div class="item-addLot">
+          <div class="item-button" :class="{off: !haveItem}" @click="toggleStatus('add')">
+            {{ $store.getters.getLanguageText('Добавить лот на продажу') }}
           </div>
-          <div class="exchange-item-description-content">
-            {{ sellItem.description }}
+          <div class="item-warning" >
+            {{
+              $store.getters.getLanguageText(
+                'Этот предмет отсутсвует у вас на вашем складе. Вы не можете выставить лот на торговую площадку, приобретите этот товар.',
+              )
+            }}
           </div>
-        </div>
-        <div class="exchange-item-button bet-button" v-if="haveItem" @click="toggleStatus('add')">
-          {{ $store.getters.getLanguageText('Добавить лот на продажу') }}
-        </div>
-        <div class="exchange-item-warning" v-else>
-          {{
-            $store.getters.getLanguageText(
-              'Этот предмет отсутсвует у вас на вашем складе. Вы не можете выставить лот на торговую площадку, приобретите этот товар.',
-            )
-          }}
         </div>
       </div>
       <ListBlock :list="item.tradeData.offers" @buyItem="buyItem" :showType="'exchange'" />
@@ -60,6 +57,7 @@ import Graph from '../Graph/Graph.vue';
 import events from '@/modules/events';
 import { onUnmounted } from 'vue';
 import { getItemSubTitle } from '@/functions/marketplace';
+import ItemMainInfo from '../../../ItemComponents/ItemMainInfo/ItemMainInfo.vue';
 
 export default {
   components: {
@@ -68,6 +66,7 @@ export default {
     FavoriteIndicator,
     BuyItem,
     AddLot,
+    ItemMainInfo,
   },
   props: {
     item: {
@@ -101,27 +100,8 @@ export default {
     });
   },
   computed: {
-    getItemInfo() {
-      const item = this.sellItem;
-      const list = [
-        {
-          title: 'Категория',
-          value: this.$store.getters.getLanguageText(getItemSubTitle(this.item, this.$route.params.section)),
-        },
-        {
-          title: 'Вес',
-          value: item.weight,
-        },
-        {
-          title: 'Кол-во',
-          value: this.item.tradeData.available,
-        },
-        {
-          title: 'Минимальная цена',
-          value: this.formatNumber(this.item.tradeData.startPrice),
-        },
-      ];
-      return list;
+    getPickedItem() {
+      return this.$store.getters.getPickedItem;
     },
     getGraphData() {
       if (!this.item.tradeData?.graphData) return [];

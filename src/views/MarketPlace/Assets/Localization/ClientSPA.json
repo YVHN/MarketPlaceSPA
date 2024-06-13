@@ -89,8 +89,8 @@
     "Апартаменты": {
         "eng": "Apartments"
     },
-    "Кол-во товара": {
-        "eng": "Quantity of goods"
+    "Кол-во товара:": {
+        "eng": "Quantity of goods:"
     },
     "Цена от:": {
         "eng": "Price from:"

@@ -26,6 +26,7 @@ import { onUnmounted } from 'vue';
 import itemsFullData from '../../Assets/Data/itemsFullData';
 
 import Pagination from './Components/Pagination/Pagination.vue';
+import sectionsData from '../../Assets/Data/sectionsData';
 
 export default {
   components: {
@@ -96,7 +97,9 @@ export default {
       events.callServer('MarketPlace:Storage:Unload:Server', item.id);
     },
     viewingAction(item) {
-      events.callServer('MarketPlace:Item:GetFullData:Server', item.id);
+      // events.callServer('MarketPlace:Item:GetFullData:Server', item.id);
+      this.$store.commit('pickItem', itemsFullData.exchange[0]);
+      this.$router.push('/market-place/viewing/auction/opened');
     },
     createListingAction(item) {
       // Если это предмет 

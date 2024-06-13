@@ -10,16 +10,14 @@ export default {
             endTime: '2024-05-24T21:06:06.9686271+03:00',
             sellData: {
                 img: 'W4J82Contention',
-                vehicleName: 'dwadwad',
+                vehicleName: 'W4 J82 Contention',
                 model: 'W4 J82 Contention',
                 type: 'transport',
                 licensePlate: 'XXXXXX',
                 dealerShip: 'Ubermacht',
-                tuningStatus: 'Отличное',
-                mileage: 100,
-                weight: 100,
+                tuningStatus: 'Отличный',
                 statePrice: 12312,
-                description: 'biba ;ipa',
+                description: 'biba lipa',
                 specifications: {
                     acceleration: 56,
                     clutch: 23,
@@ -33,21 +31,13 @@ export default {
                 offers: [
                     {
                         playerData: {
-                            username: 'Maneskin Benson',
+                            username: 'Maneskin Benson32113132312',
                             static: 123,
                         },
                         bet: 74300,
                         created: '2024-05-24T21:06:06.9686271+03:00',
                     },
-                    {
-                        playerData: {
-                            username: 'Maneskin Benson',
-                            static: 123,
-                        },
-                        bet: 12300,
-                        created: '2024-05-28T21:06:06.9686271+03:00',
-                    },
-                ],
+                ]
             },
         },
     ],
@@ -75,7 +65,6 @@ export default {
                 ],
                 offers: [
                     {
-                        id: 21,
                         playerData: {
                             username: 'Maneskin Benson',
                             static: '123',
@@ -83,7 +72,7 @@ export default {
                         state: 'Отличное',
                         quantity: 123,
                         pricePerItem: 7000,
-                        created: '15.04.2024 16:05',
+                        endTime: '2024-06-24T21:06:06.9686271+03:00',
                     },
                 ],
             },

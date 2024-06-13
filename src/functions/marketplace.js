@@ -57,7 +57,7 @@ export function formatNumber(num) {
 };
 
 export function getItemSubTitle(itemCard, section) {
-    const isDefault = section === 'favorites' || section === 'auction';
+    const isDefault = ['auction', 'favorites'].includes(section);
     const item = itemCard.sellData;
     let subTitle = '';
     if (['house', 'apartment'].includes(item.type)) {
@@ -157,4 +157,14 @@ export function setFieldValue(obj, fieldName, value) {
 		console.log(`Объект не существует или не является объектом.`);
 	}
 	console.log(obj);
+}
+export function getCardItemType(cardItemType) {
+    const types = {
+        transport: 'Транспорт',
+        house: 'Недвижимость',
+        apartment: 'Недвижимость',
+        business: 'Бизнес',
+        transportRent: 'Транспорт',
+    }
+    return types[cardItemType] || "";
 }

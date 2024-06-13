@@ -6,6 +6,7 @@
 
 <script>
 import Chart from 'chart.js/auto';
+import { formatNumber } from '@/functions/marketplace';
 
 export default {
   mounted() {
@@ -26,7 +27,7 @@ export default {
     // Function to format Y-axis values
     formatYValue(value) {
       if (value >= 1000000) {
-        return (value / 1000000).toFixed(1) + 'M$';
+        return (value / 1000000).toFixed(0) + 'M$';
       }
       return value + '$';
     },

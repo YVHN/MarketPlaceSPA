@@ -94,52 +94,52 @@ export default {
         {
             "id": 0,
             "sellData": {
-              "type": "item",
-              "img": null,
-              "description": null,
-              "weight": 0.4,
-              "itemType": 599,
-              "itemName": "Конфеты",
+                "type": "item",
+                "img": null,
+                "description": null,
+                "weight": 0.4,
+                "itemType": 599,
+                "itemName": "Конфеты",
             },
             "views": 0,
             "isFavorite": false,
             "created": "0001-01-01T00:00:00",
             "tradeData": {
-              "startPrice": 100,
-              "available": 310,
-              "offers": [
-                {
-                  "id": 0,
-                  "playerData": {
-                    "username": "Cherry_Waves",
-                    "static": 128683,
-                    "phone": 233197770
-                  },
-                  "quantity": 20,
-                  "pricePerItem": 1000
-                },
-                {
-                  "id": 1,
-                  "playerData": {
-                    "username": "Cherry Waves",
-                    "static": 128683,
-                    "phone": 233197770
-                  },
-                  "quantity": 20,
-                  "pricePerItem": 1000
-                },
-                {
-                  "id": 2,
-                  "playerData": {
-                    "username": "Cherry Waves",
-                    "static": 128683,
-                    "phone": 233197770
-                  },
-                  "quantity": 10,
-                  "pricePerItem": 100
-                }
-              ],
-              
+                "startPrice": 100,
+                "available": 310,
+                "offers": [
+                    {
+                        "id": 0,
+                        "playerData": {
+                            "username": "Cherry_Waves",
+                            "static": 128683,
+                            "phone": 233197770
+                        },
+                        "quantity": 20,
+                        "pricePerItem": 1000
+                    },
+                    {
+                        "id": 1,
+                        "playerData": {
+                            "username": "Cherry Waves",
+                            "static": 128683,
+                            "phone": 233197770
+                        },
+                        "quantity": 20,
+                        "pricePerItem": 1000
+                    },
+                    {
+                        "id": 2,
+                        "playerData": {
+                            "username": "Cherry Waves",
+                            "static": 128683,
+                            "phone": 233197770
+                        },
+                        "quantity": 10,
+                        "pricePerItem": 100
+                    }
+                ],
+
             }
         }
     ],
@@ -312,23 +312,37 @@ export default {
             status: 'owned',
         },
         {
-            id: 5,
-            sellData: {
-                img: 'W4J82Contention',
-                vehicleName: 'Bugattи Roadstrer',
-                vehicleModel: 'bmistralw16',
-                type: 'transport',
-                dealerShip: 'Ubermacht',
-                "specifications": {
-                    "engine": 0,
-                    "brake": 0,
-                    "suspencion": 12,
-                    "turbine": 0
-                },
-                mileage: 66,
+            "id": 14,
+            "sellData": {
+              "type": "transport",
+              "img": null,
+              "description": "0",
+              "id": 923471,
+              "vehicleModel": "daytona",
+              "vehicleName": "Ferari Daytona",
+              "licensePlace": "",
+              "dealerShip": null,
+              "specifications": {
+                "engine": 0,
+                "brake": 0,
+                "suspencion": 0,
+                "turbine": 0
+              },
+              "price": 1000000,
+              "statePrice": 0
             },
-            status: 'storage',
-        },
+            "views": 4,
+            "isFavorite": false,
+            "created": "2024-06-12T20:21:25.6750976+03:00",
+            "listingData": {
+              "seller": {
+                "username": "Cherry Waves",
+                "static": 128683,
+                "phone": 233197770
+              }
+            },
+            "endTime": "2024-06-12T21:21:25.6750976+03:00"
+          },
         {
             id: 2,
             sellData: {
