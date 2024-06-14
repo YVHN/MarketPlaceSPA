@@ -84,10 +84,10 @@
     }
 
     .liked {
-      box-shadow: 0 0 0.37vmin 0.185vmin rgba(70, 122, 255, 0.4);
+      box-shadow: 0 0 0.37vmin 0.185vmin rgba(95, 154, 223, 0.4);
 
       .like-button-img {
-        fill: #467aff;
+        fill: #5f9adf;
       }
     }
 
@@ -107,7 +107,7 @@
 
       &:hover {
         .like-button-img {
-          fill: #467aff;
+          fill: #5f9adf;
         }
       }
     }

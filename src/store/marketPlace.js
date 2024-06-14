@@ -8,8 +8,8 @@ import sectionsData from '@/views/MarketPlace/Assets/Data/sectionsData';
 const marketPlace = {
 	state: {
 		currentLanguage: 'eng',
-		pagesInSection: 10,
-		listData: sectionsData.auction,
+		pagesInSection: 0,
+		listData: sectionsData.createListing,
 		favoritesIdList: [],
 		pickedItem: null,
 		openingType: 'InTablet',
@@ -70,10 +70,9 @@ const marketPlace = {
 		},
 	},
 	mutations: {
-		changeCardItemQuantity(state, [id, quantity]) {
-			const cardItem = state.listData.find((item) => item.id === id);
-			console.log('смена кол-ва');
-			console.log(`кол-во:${quantity}`);
+		changeCardItemQuantity(state, [cardItemId, quantity]) {
+			const cardItem = state.listData.find((item) => item.id === cardItemId);
+			console.log('кол-во');
 			if(cardItem) {
 				console.log('меняю кол-во');
 				cardItem.sellData.quantity = quantity;
@@ -81,9 +80,9 @@ const marketPlace = {
 		},
 		start(state) {
 			console.log('запуск');
-			// state.listData = [];
-			// state.pickedItem = null;
-			// state.pagesInSection = 1;
+			state.listData = [];
+			state.pickedItem = null;
+			state.pagesInSection = 1;
 		},
 		pickItem(state, item) {
 			console.log(item);
@@ -107,7 +106,7 @@ const marketPlace = {
 		},
 		resetListData(state) {
 			console.log('Список предметов очищен');
-			state.listData = [];
+			// state.listData = [];
 		},
 		resetPickedItem(state) {
 			if (state.pickedItem) {
@@ -201,6 +200,7 @@ events.add('MarketPlace:Exchange:DeleteOffer:Cef', (id, offerId) => {
 	}
 })
 events.add('MarketPlace:Exchange:EditOffer:Cef', (cardId, offerId, quantity) => {
+	console.log('Редактирование предложения');
 	if (marketPlace.state.pickedItem.id === cardId) {
 		const offer = marketPlace.state.pickedItem.tradeData.offers.find((offer) => offer.id === offerId);
 		if (offer) {

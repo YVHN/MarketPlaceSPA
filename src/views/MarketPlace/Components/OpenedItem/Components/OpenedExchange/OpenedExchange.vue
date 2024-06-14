@@ -5,11 +5,11 @@
         <div class="item-container">
           <div class="item-img">
             <img :src="require(`@/views/MarketPlace/Assets/Images/Items/${'default'}.png`)" />
-            <FavoriteIndicator :itemId="item.id" :size="'big'" :is-favorite="item.isFavorite" />
+            <FavoriteIndicator :itemId="getPickedItem.id" :size="'big'" :is-favorite="getPickedItem.isFavorite" />
           </div>
           <div class="item-info">
             <div class="item-info-title">
-              {{ sellItem.title }}
+              {{ getPickedItem.sellData.title }}
             </div>
             <ItemMainInfo :card-item="getPickedItem"/>
             <!-- <div class="exchange-item-description">
@@ -26,7 +26,7 @@
           <div class="item-button" :class="{off: !haveItem}" @click="toggleStatus('add')">
             {{ $store.getters.getLanguageText('Добавить лот на продажу') }}
           </div>
-          <div class="item-warning" >
+          <div class="item-warning" v-if="!haveItem">
             {{
               $store.getters.getLanguageText(
                 'Этот предмет отсутсвует у вас на вашем складе. Вы не можете выставить лот на торговую площадку, приобретите этот товар.',
@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
-      <ListBlock :list="item.tradeData.offers" @buyItem="buyItem" :showType="'exchange'" />
+      <ListBlock :list="getPickedItem.tradeData.offers" @buyItem="buyItem" :showType="'exchange'" />
     </div>
     <div class="exchange-graph">
       <div class="exchange-graph-title">
@@ -43,7 +43,7 @@
       </div>
       <Graph :graphData="getGraphData" />
     </div>
-    <BuyItem v-if="isBuy" @toggleIsBuyStatus="toggleStatus('buy')" :item="buyItemData" />
+    <BuyItem v-if="isBuy" @toggleIsBuyStatus="toggleStatus('buy')" :offer="buyItemData" />
     <AddLot v-if="isAdd" :data="haveItem" @toggleIsAddStatus="toggleStatus('add')" />
   </div>
 </template>
@@ -58,6 +58,7 @@ import events from '@/modules/events';
 import { onUnmounted } from 'vue';
 import { getItemSubTitle } from '@/functions/marketplace';
 import ItemMainInfo from '../../../ItemComponents/ItemMainInfo/ItemMainInfo.vue';
+import sectionsData from '@/views/MarketPlace/Assets/Data/sectionsData';
 
 export default {
   components: {
@@ -69,14 +70,7 @@ export default {
     ItemMainInfo,
   },
   props: {
-    item: {
-      type: Object,
-      required: true,
-    },
-    sellItem: {
-      type: Object,
-      required: true,
-    },
+
   },
   data() {
     return {
@@ -92,7 +86,7 @@ export default {
     });
     events.callServer(
       'MarketPlace:Exchange:IsCanSell:Server',
-      this.sellItem.itemType,
+      this.getPickedItem.sellData.itemType,
     );
     events.add('MarketPlace:Exchange:SetItemForSell:Cef', (json) => {
       const parsedJson = JSON.parse(json);
@@ -104,8 +98,8 @@ export default {
       return this.$store.getters.getPickedItem;
     },
     getGraphData() {
-      if (!this.item.tradeData?.graphData) return [];
-      else return this.item.tradeData.graphData;
+      if (!this.getPickedItem.tradeData?.graphData) return [];
+      else return this.getPickedItem.tradeData.graphData;
     },
   },
   methods: {
@@ -121,9 +115,9 @@ export default {
     },
     buyItem(offerData) {
       const data = {
-        id: this.item.id,
+        cardItemId: this.getPickedItem.id,
         offerId: offerData.id,
-        title: this.sellItem.title,
+        name: this.getPickedItem.sellData.title,
         playerData: offerData.playerData,
         state: offerData.state,
         quantity: offerData.quantity,
@@ -131,7 +125,7 @@ export default {
       };
       this.buyItemData = data;
       this.toggleStatus('buy');
-    },
+    }
   },
 };
 </script>

@@ -8,8 +8,6 @@
       <!-- Биржа -->
       <OpenedExchange
         v-else-if="getPickedItem?.tradeData"
-        :sellItem="getPickedItem.sellData"
-        :item="getPickedItem"
       />
       <!-- Обьявление -->
       <OpenedListing

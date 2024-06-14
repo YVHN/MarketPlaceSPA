@@ -97,9 +97,7 @@ export default {
       events.callServer('MarketPlace:Storage:Unload:Server', item.id);
     },
     viewingAction(item) {
-      // events.callServer('MarketPlace:Item:GetFullData:Server', item.id);
-      this.$store.commit('pickItem', itemsFullData.exchange[0]);
-      this.$router.push('/market-place/viewing/auction/opened');
+      events.callServer('MarketPlace:Item:GetFullData:Server', item.id);
     },
     createListingAction(item) {
       // Если это предмет 

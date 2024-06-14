@@ -1,34 +1,33 @@
 export default {
     auction: [
         {
-            id: 2,
-            likes: 123,
-            views: 321,
-            isLiked: false,
-            isFavorite: false,
-            created: '2024-05-24T21:06:06.9686271+03:00',
-            endTime: '2024-05-24T21:06:06.9686271+03:00',
-            sellData: {
-                img: 'W4J82Contention',
-                vehicleName: 'W4 J82 Contention',
-                model: 'W4 J82 Contention',
-                type: 'transport',
-                licensePlate: 'XXXXXX',
-                dealerShip: 'Ubermacht',
-                tuningStatus: 'Отличный',
-                statePrice: 12312,
-                description: 'biba lipa',
-                specifications: {
-                    acceleration: 56,
-                    clutch: 23,
-                    controllability: 40,
-                    speed: 130,
+            "id": 4,
+            "sellData": {
+                "type": "apartment",
+                "img": null,
+                "description": null,
+                "id": 1,
+                "apartmentType": "Комфорт",
+                "parkingCapacity": 6,
+                "maxTenants": 4,
+                "coordinates": {
+                    "x": 1553.0693,
+                    "y": 3689.9731,
+                    "z": 34.556717
                 },
+                "price": 0,
+                "statePrice": 90000000
             },
-            auctionData: {
-                competitors: 7,
-                lastBet: 50000,
-                offers: [
+            "views": 1,
+            "isFavorite": false,
+            "created": "2024-06-12T20:01:32.0033998+03:00",
+            "endTime": "2024-06-13T20:01:32.0033998+03:00",
+            "likes": 12,
+            "isLiked": false,
+            "auctionData": {
+                "lastBet": 90000000,
+                "competitors": 0,
+                "offers": [
                     {
                         playerData: {
                             username: 'Maneskin Benson32113132312',
@@ -38,8 +37,8 @@ export default {
                         created: '2024-05-24T21:06:06.9686271+03:00',
                     },
                 ]
-            },
-        },
+            }
+        }
     ],
     exchange: [
         {
@@ -65,6 +64,7 @@ export default {
                 ],
                 offers: [
                     {
+                        id: 1,
                         playerData: {
                             username: 'Maneskin Benson',
                             static: '123',
@@ -82,52 +82,52 @@ export default {
         {
             "id": 0,
             "sellData": {
-              "type": "item",
-              "img": null,
-              "description": null,
-              "weight": 0.4,
-              "itemType": 599,
-              "itemName": "Конфеты",
+                "type": "item",
+                "img": null,
+                "description": null,
+                "weight": 0.4,
+                "itemType": 599,
+                "itemName": "Конфеты",
             },
             "views": 0,
             "isFavorite": false,
             "created": "0001-01-01T00:00:00",
             "tradeData": {
-              "startPrice": 100,
-              "available": 310,
-              "offers": [
-                {
-                  "id": 0,
-                  "playerData": {
-                    "username": "Cherry_Waves",
-                    "static": 128683,
-                    "phone": 233197770
-                  },
-                  "quantity": 20,
-                  "pricePerItem": 1000
-                },
-                {
-                  "id": 1,
-                  "playerData": {
-                    "username": "Cherry Waves",
-                    "static": 128683,
-                    "phone": 233197770
-                  },
-                  "quantity": 20,
-                  "pricePerItem": 1000
-                },
-                {
-                  "id": 2,
-                  "playerData": {
-                    "username": "Cherry Waves",
-                    "static": 128683,
-                    "phone": 233197770
-                  },
-                  "quantity": 10,
-                  "pricePerItem": 100
-                }
-              ],
-              
+                "startPrice": 100,
+                "available": 310,
+                "offers": [
+                    {
+                        "id": 0,
+                        "playerData": {
+                            "username": "Cherry_Waves",
+                            "static": 128683,
+                            "phone": 233197770
+                        },
+                        "quantity": 20,
+                        "pricePerItem": 1000
+                    },
+                    {
+                        "id": 1,
+                        "playerData": {
+                            "username": "Cherry Waves",
+                            "static": 128683,
+                            "phone": 233197770
+                        },
+                        "quantity": 20,
+                        "pricePerItem": 1000
+                    },
+                    {
+                        "id": 2,
+                        "playerData": {
+                            "username": "Cherry Waves",
+                            "static": 128683,
+                            "phone": 233197770
+                        },
+                        "quantity": 10,
+                        "pricePerItem": 100
+                    }
+                ],
+
             }
         }
     ],

@@ -20,7 +20,7 @@ export default {
             },
             auctionData: {
                 lastBet: 666666,
-                competitors: 6,
+                competitors: 0,
             },
         },
         {
@@ -86,7 +86,6 @@ export default {
                 description: '...',
                 dealerShip: 'Хуй',
                 price: 2000000,
-                mileage: 100,
             },
         },
     ],
@@ -97,49 +96,16 @@ export default {
                 "type": "item",
                 "img": null,
                 "description": null,
-                "weight": 0.4,
+                "weight": 0.01,
+                "quantity": 1,
                 "itemType": 599,
                 "itemName": "Конфеты",
             },
-            "views": 0,
-            "isFavorite": false,
-            "created": "0001-01-01T00:00:00",
+            "views": 7,
+            "isFavorite": true,
             "tradeData": {
-                "startPrice": 100,
-                "available": 310,
-                "offers": [
-                    {
-                        "id": 0,
-                        "playerData": {
-                            "username": "Cherry_Waves",
-                            "static": 128683,
-                            "phone": 233197770
-                        },
-                        "quantity": 20,
-                        "pricePerItem": 1000
-                    },
-                    {
-                        "id": 1,
-                        "playerData": {
-                            "username": "Cherry Waves",
-                            "static": 128683,
-                            "phone": 233197770
-                        },
-                        "quantity": 20,
-                        "pricePerItem": 1000
-                    },
-                    {
-                        "id": 2,
-                        "playerData": {
-                            "username": "Cherry Waves",
-                            "static": 128683,
-                            "phone": 233197770
-                        },
-                        "quantity": 10,
-                        "pricePerItem": 100
-                    }
-                ],
-
+                "startPrice": 500,
+                "available": 55
             }
         }
     ],
@@ -314,37 +280,37 @@ export default {
         {
             "id": 14,
             "sellData": {
-              "type": "transport",
-              "img": null,
-              "description": "0",
-              "id": 923471,
-              "vehicleModel": "daytona",
-              "vehicleName": "Ferari Daytona",
-              "licensePlace": "",
-              "dealerShip": null,
-              "specifications": {
-                "engine": 0,
-                "brake": 0,
-                "suspencion": 0,
-                "turbine": 0
-              },
-              "price": 1000000,
-              "statePrice": 0
+                "type": "transport",
+                "img": null,
+                "description": "0",
+                "id": 923471,
+                "vehicleModel": "daytona",
+                "vehicleName": "Ferari Daytona",
+                "licensePlace": "",
+                "dealerShip": null,
+                "specifications": {
+                    "engine": 0,
+                    "brake": 0,
+                    "suspencion": 0,
+                    "turbine": 0
+                },
+                "price": 1000000,
+                "statePrice": 0
             },
             "views": 4,
             "isFavorite": false,
             "created": "2024-06-12T20:21:25.6750976+03:00",
             "listingData": {
-              "seller": {
-                "username": "Cherry Waves",
-                "static": 128683,
-                "phone": 233197770
-              }
+                "seller": {
+                    "username": "Cherry Waves",
+                    "static": 128683,
+                    "phone": 233197770
+                }
             },
             "endTime": "2024-06-12T21:21:25.6750976+03:00"
-          },
+        },
         {
-            id: 2,
+            id: 77,
             sellData: {
                 itemName: 'Хранилище данных - 12 TB',
                 img: 'DataStorage16TB',
@@ -356,7 +322,7 @@ export default {
             status: 'storage',
         },
         {
-            id: 14,
+            id: 7,
             sellData: {
                 id: 12,
                 type: 'business',

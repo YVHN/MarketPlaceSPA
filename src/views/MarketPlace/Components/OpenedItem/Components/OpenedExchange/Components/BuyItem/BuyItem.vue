@@ -9,15 +9,15 @@
           <div class="buyItem-body-info-unit-title">
             {{ $store.getters.getLanguageText('Название товара') }}
           </div>
-          <div class="buyItem-body-info-unit-value">{{ item.title }}</div>
+          <div class="buyItem-body-info-unit-value">{{ offer.name }}</div>
         </div>
         <div class="buyItem-body-info-unit">
           <div class="buyItem-body-info-unit-title">
             {{ $store.getters.getLanguageText('Продавец') }}
           </div>
           <div class="buyItem-body-info-unit-value">
-            {{ item.playerData.username }}
-            <span>{{ `#${item.playerData.static}` }}</span>
+            {{ offer.playerData.username }}
+            <span>{{ `#${offer.playerData.static}` }}</span>
           </div>
         </div>
         <div class="info-wrapper">
@@ -25,14 +25,14 @@
             <div class="buyItem-body-info-unit-title">
               {{ $store.getters.getLanguageText('Состояние') }}
             </div>
-            <div class="buyItem-body-info-unit-value">{{ item.state }}</div>
+            <div class="buyItem-body-info-unit-value">{{ offer.state }}</div>
           </div>
           <div class="buyItem-body-info-unit">
             <div class="buyItem-body-info-unit-title">
               {{ `${$store.getters.getLanguageText('Доступно кол-во')}:` }}
             </div>
             <div class="buyItem-body-info-unit-value">
-              {{ `${item.quantity} ${$store.getters.getLanguageText('шт.')}` }}
+              {{ `${offer.quantity} ${$store.getters.getLanguageText('шт.')}` }}
             </div>
           </div>
           <div class="buyItem-body-info-unit">
@@ -40,7 +40,7 @@
               {{ $store.getters.getLanguageText('Цена за 1 шт:') }}
             </div>
             <div class="buyItem-body-info-unit-value">
-              {{ `${Number(item.price).toLocaleString('ru-RU')} $` }}
+              {{ `${Number(offer.price).toLocaleString('ru-RU')} $` }}
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@
       <ProgressBar
         @pickQuantity="pickQuantity"
         :progress="0"
-        :max-progress="item.quantity"
+        :max-progress="offer.quantity"
         :min-progress="1"
       />
       <div class="buyItem-body-payMethod">
@@ -92,7 +92,7 @@ import { onUnmounted } from 'vue';
 
 export default {
   props: {
-    item: {
+    offer: {
       type: Object,
       required: true,
     },
@@ -128,7 +128,7 @@ export default {
   },
   computed: {
     calculatePrice() {
-      return this.item.price * this.pickedQuantity;
+      return this.offer.price * this.pickedQuantity;
     },
   },
   methods: {
@@ -137,8 +137,8 @@ export default {
     },
     acceptBuy(payMethod) {
       const buyData = {
-        id: this.item.id,
-        offerId: this.item.offerId,
+        id: this.offer.cardItemId,
+        offerId: this.offer.offerId,
         method: payMethod,
         quantity: this.pickedQuantity,
       };

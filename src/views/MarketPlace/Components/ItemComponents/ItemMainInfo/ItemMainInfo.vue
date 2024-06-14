@@ -105,7 +105,7 @@ export default {
                 info.push(
                     {
                         title: 'Гос. цена:',
-                        value: this.cardItem.sellData.statePrice,
+                        value: `${formatNumber(this.cardItem.sellData.statePrice)} $`,
                     }
                 )
             }

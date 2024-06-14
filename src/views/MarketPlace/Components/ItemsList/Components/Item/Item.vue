@@ -28,14 +28,6 @@
                 `${sellData.quantity} ${$store.getters.getLanguageText('шт.')}`
               }}
             </div>
-            <div class="unit" v-if="isHas('sellData', 'mileage')">
-              <mileage class="unit-icon" />
-              {{
-                `${formatNumber(
-                  sellData.mileage,
-                )} ${$store.getters.getLanguageText('км.')}`
-              }}
-            </div>
             <div class="unit" v-if="isShowQuantityTip">
               <weight class="unit-icon" />
               {{
@@ -80,7 +72,7 @@
         </div>
         <div class="item-exchange-available">
           <div class="item-exchange-available-title">
-            {{ $store.getters.getLanguageText('Кол-во товара') }}
+            {{ $store.getters.getLanguageText('Кол-во товара:') }}
           </div>
           <div class="item-exchange-available-value">
             {{ formatNumber(item.tradeData.available) }}
@@ -129,7 +121,6 @@
 import Img from '../../../ItemComponents/Img/Img.vue';
 import FavoriteIndicator from '@/views/MarketPlace/Components/ItemComponents/FavoriteIndicator/FavoriteIndicator.vue';
 // icons
-import mileage from '@/views/MarketPlace/Assets/Icons/Item/mileage.vue';
 import competitors from '@/views/MarketPlace/Assets/Icons/Item/competitors.vue';
 import parking from '@/views/MarketPlace/Assets/Icons/Item/parking.vue';
 import quantity from '@/views/MarketPlace/Assets/Icons/Item/quantity.vue';
@@ -159,7 +150,6 @@ export default {
     };
   },
   components: {
-    mileage,
     FavoriteIndicator,
     quantity,
     competitors,

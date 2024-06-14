@@ -30,11 +30,8 @@
         <div class="addLot-body-input-title">
           {{ $store.getters.getLanguageText('Стоимость продажи за 1 шт.') }}
         </div>
-        <CustomInput
-          @setValue="setInput"
-          :placeholder="$store.getters.getLanguageText('Введите сумму')"
-          class="addLot-body-input-field"
-        />
+        <CustomInput @setValue="setInput" :placeholder="$store.getters.getLanguageText('Введите сумму')"
+          class="addLot-body-input-field" />
       </div>
       <div class="addLot-body-price">
         <div class="addLot-body-info-unit">
@@ -54,13 +51,8 @@
           </div>
         </div>
       </div>
-      <ProgressBar
-        v-if="data.sellData.quantity > 1"
-        @pickQuantity="pickQuantity"
-        :progress="0"
-        :max-progress="data.sellData.quantity"
-        :min-progress="1"
-      />
+      <ProgressBar v-if="data.sellData.quantity > 1" @pickQuantity="pickQuantity" :progress="0"
+        :max-progress="data.sellData.quantity" :min-progress="1" />
       <div class="addLot-body-actions">
         <div class="button confirm" @click="confirm">
           {{ $store.getters.getLanguageText('Разместить лот') }}
@@ -117,7 +109,14 @@ export default {
           JSON.stringify(data),
         );
         this.toggleStatus();
-        this.$store.commit('changeCardItemQuantity', this.data.id, this.data.sellData.quantity - this.pickedQuantity);
+        if (this.$route.path.includes('createListing')) {
+          this.$store.commit('changeCardItemQuantity', [data.cardItemId, this.data.sellData.quantity - this.pickedQuantity]);
+        } else {
+          events.callServer(
+            'MarketPlace:Exchange:IsCanSell:Server',
+            data.itemType,
+          );
+        }
       }
     },
   },
