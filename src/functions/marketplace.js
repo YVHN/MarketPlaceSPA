@@ -44,11 +44,34 @@ export function parseDate(dateString, type) {
     const minutes = String(date.getMinutes()).padStart(2, '0');
 
     // Форматирование даты и времени
-    if (type === 'default') return `${day}.${month} ${hours}:${minutes}`;
-    else if (type === 'object') return {
-        date: `${day}.${month}.${year}`,
-        time: `${hours}:${minutes}`,
-    };
+    if (type === 'default') {
+        return `${day}.${month} ${hours}:${minutes}`;
+    } else if (type === 'object') {
+        return {
+            date: `${day}.${month}.${year}`,
+            time: `${hours}:${minutes}`,
+        }
+    } else if (type === 'month') {
+        const months = {
+            '01': 'Январь',
+            '02': 'Февраль',
+            '03': 'Март',
+            '04': 'Апрель',
+            '05': 'Май',
+            '06': 'Июнь',
+            '07': 'Июль',
+            '08': 'Август',
+            '09': 'Сентябрь',
+            10: 'Октябрь',
+            11: 'Ноябрь',
+            12: 'Декабрь'
+        }
+        return months[month];
+    } else if (type === 'time') {
+        return `${hours}:${minutes}`;
+    } else if (type === 'day') {
+        return `${day}.${month}`;
+    }
 };
 
 export function formatNumber(num) {
@@ -94,8 +117,8 @@ export function getItemTitle(itemCard) {
     const item = itemCard.sellData;
     let title = '';
     if (item.type === 'house') {
-       title = 'Дом'
-    } else if(item.type === 'apartment') {
+        title = 'Дом'
+    } else if (item.type === 'apartment') {
         title = 'Апартаменты'
     } else if (['transportRent', 'transport'].includes(item.type)) {
         title = item.vehicleName;
@@ -126,37 +149,37 @@ export function getItemTitle(itemCard) {
     } else if (item.type === 'service') {
         title = item.title;
     }
-    if(['apartment', 'house', 'business'].includes(item.type)) {
+    if (['apartment', 'house', 'business'].includes(item.type)) {
         return `${store.getters.getLanguageText(title)} #${item.id}`;
     }
     return store.getters.getLanguageText(title);
 };
 
 export function setFieldValue(obj, fieldName, value) {
-	// Проверяем, существует ли объект
-	if (obj && typeof obj === "object") {
-		// Проверяем, существует ли поле в текущем объекте
-		if (fieldName in obj) {
-			// Если поле является объектом, вызываем функцию рекурсивно
-			if (typeof obj[fieldName] === "object") {
-				setFieldValue(obj[fieldName], fieldName, value);
-			} else {
-				// Устанавливаем значение поля
-				obj[fieldName] = value;
-				console.log(`Значение поля ${fieldName} было успешно установлено: ${value}`);
-			}
-		} else {
-			// Если поле отсутствует в текущем объекте, ищем во вложенных объектах
-			for (let key in obj) {
-				if (typeof obj[key] === "object") {
-					setFieldValue(obj[key], fieldName, value);
-				}
-			}
-		}
-	} else {
-		console.log(`Объект не существует или не является объектом.`);
-	}
-	console.log(obj);
+    // Проверяем, существует ли объект
+    if (obj && typeof obj === "object") {
+        // Проверяем, существует ли поле в текущем объекте
+        if (fieldName in obj) {
+            // Если поле является объектом, вызываем функцию рекурсивно
+            if (typeof obj[fieldName] === "object") {
+                setFieldValue(obj[fieldName], fieldName, value);
+            } else {
+                // Устанавливаем значение поля
+                obj[fieldName] = value;
+                console.log(`Значение поля ${fieldName} было успешно установлено: ${value}`);
+            }
+        } else {
+            // Если поле отсутствует в текущем объекте, ищем во вложенных объектах
+            for (let key in obj) {
+                if (typeof obj[key] === "object") {
+                    setFieldValue(obj[key], fieldName, value);
+                }
+            }
+        }
+    } else {
+        console.log(`Объект не существует или не является объектом.`);
+    }
+    console.log(obj);
 }
 export function getCardItemType(cardItemType) {
     const types = {

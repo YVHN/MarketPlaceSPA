@@ -41,7 +41,7 @@
       <div class="auction-graph-title">
         {{ $store.getters.getLanguageText('График ставок') }}
       </div>
-      <Graph :graphData="getBetsList" />
+      <Graph :graph-data="getPickedItem.auctionData.graphData" />
     </div>
     <MakeBet v-if="isMakeBet" :lotId="getPickedItem.id" :title="getItemTitle(getPickedItem)"
       :startPrice="getPickedItem.auctionData.lastBet" @toggleMakeBetStatus="toggleStatus" />
@@ -89,17 +89,6 @@ export default {
     };
   },
   computed: {
-    getBetsList() {
-      const list = [];
-      this.getPickedItem.auctionData.offers.forEach((offer) => {
-        const bet = {
-          date: parseDate(offer.created, 'default'),
-          amount: offer.bet,
-        };
-        list.push(bet);
-      });
-      return list;
-    },
     getPickedItem() {
       return this.$store.getters.getPickedItem;
     }

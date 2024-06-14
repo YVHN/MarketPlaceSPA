@@ -6,7 +6,7 @@
 
 <script>
 import Chart from 'chart.js/auto';
-import { formatNumber } from '@/functions/marketplace';
+import { parseDate } from '@/functions/marketplace';
 
 export default {
   mounted() {
@@ -14,8 +14,8 @@ export default {
   },
   props: {
     graphData: {
-      type: Array,
-      required: false,
+      type: Object,
+      required: true,
     },
   },
   watch: {
@@ -40,9 +40,9 @@ export default {
       const ctx = chartCanvas.getContext('2d');
       const labels = [];
       const amounts = [];
-      if(this.graphData) {
-        this.graphData.forEach((unit) => labels.push(unit.date));
-        this.graphData.forEach((unit) => amounts.push(unit.amount));
+      if(this.graphData?.data) {
+        this.graphData.data.forEach((unit) => labels.push(parseDate(unit.date, this.getDateFormatType)));
+        this.graphData.data.forEach((unit) => amounts.push(unit.amount));
       }
 
       this.chartInstance = new Chart(ctx, {
@@ -105,6 +105,17 @@ export default {
       chartInstance: null,
     };
   },
+  computed: {
+    getDateFormatType() {
+     const types = {
+      year: 'month',
+      month: 'default',
+      week: 'day',
+      day: 'time'
+     }
+     return types[this.graphData?.type] || 'default';
+   }
+  }
 };
 </script>
 

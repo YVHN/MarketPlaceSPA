@@ -41,7 +41,7 @@
       <div class="exchange-graph-title">
         {{ $store.getters.getLanguageText('График цен') }}
       </div>
-      <Graph :graphData="getGraphData" />
+      <Graph :graphData="getPickedItem.tradeData?.graphData || []" />
     </div>
     <BuyItem v-if="isBuy" @toggleIsBuyStatus="toggleStatus('buy')" :offer="buyItemData" />
     <AddLot v-if="isAdd" :data="haveItem" @toggleIsAddStatus="toggleStatus('add')" />
@@ -96,10 +96,6 @@ export default {
   computed: {
     getPickedItem() {
       return this.$store.getters.getPickedItem;
-    },
-    getGraphData() {
-      if (!this.getPickedItem.tradeData?.graphData) return [];
-      else return this.getPickedItem.tradeData.graphData;
     },
   },
   methods: {

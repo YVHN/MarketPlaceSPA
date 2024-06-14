@@ -27,6 +27,19 @@ export default {
             "auctionData": {
                 "lastBet": 90000000,
                 "competitors": 0,
+                graphData: {
+                    type: 'year',
+                    data: [
+                        {
+                            date: '2024-06-12T20:01:32',
+                            amount: 1232,
+                        },
+                        {
+                            date: '2024-12-12T20:01:32',
+                            amount: 1232,
+                        },
+                    ]
+                },
                 "offers": [
                     {
                         playerData: {
@@ -36,8 +49,16 @@ export default {
                         bet: 74300,
                         created: '2024-05-24T21:06:06.9686271+03:00',
                     },
+                    {
+                        playerData: {
+                            username: 'Maneskin Benson32113132312',
+                            static: 123,
+                        },
+                        bet: 74300,
+                        created: '2024-05-24T21:06:06.9686271+03:00',
+                    },
                 ]
-            }
+            },
         }
     ],
     exchange: [
@@ -56,12 +77,19 @@ export default {
             tradeData: {
                 startPrice: 7000,
                 available: 100,
-                graphStat: [
-                    {
-                        date: 'Апрель',
-                        amount: 1232,
-                    },
-                ],
+                graphData: {
+                    type: 'month',
+                    data: [
+                        {
+                            date: '2024-06-12T20:01:32',
+                            amount: 1232,
+                        },
+                        {
+                            date: '2024-12-12T20:01:32',
+                            amount: 1232,
+                        },
+                    ]
+                },
                 offers: [
                     {
                         id: 1,
