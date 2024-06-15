@@ -10,7 +10,7 @@
             {{ $store.getters.getLanguageText('Название транспорта:') }}
           </div>
           <div class="rentModal-body-info-unit-value">
-            {{ item.sellData.title }}
+            {{ item.sellData.vehicleName }}
           </div>
         </div>
         <div class="rentModal-body-info-unit">
@@ -54,7 +54,7 @@
               {{ `${pickedQuantity} ${$store.getters.getLanguageText('ч.')}` }}
             </div>
           </div>
-          <div class="rentModal-body-info-unit">
+          <div class="rentModal-body-info-unit right">
             <div class="rentModal-body-info-unit-title">
               {{ $store.getters.getLanguageText('Цена') }}
             </div>

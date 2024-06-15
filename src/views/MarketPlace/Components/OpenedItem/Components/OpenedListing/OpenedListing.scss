@@ -4,10 +4,28 @@
   display: flex;
   gap: 6vmin;
 
-  &-preview {
+  .item {
     width: 70vmin;
+
     &-img {
       position: relative;
+    }
+
+    &-testDrive {
+      margin-top: 2vmin;
+      font-weight: 700;
+      font-size: 1.111vmin;
+      color: #fff;
+      padding: 1.667vmin 5.833vmin;
+      background: #56b77d;
+      border-radius: 0.463vmin;
+      width: fit-content;
+      cursor: pointer;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: #5f9adf;
+      }
     }
 
     &-comment {
@@ -24,118 +42,50 @@
     }
   }
 
-  &-testDrive {
-    margin-top: 2vmin;
-    font-weight: 700;
-    font-size: 1.111vmin;
-    color: #fff;
-    padding: 1.667vmin 5.833vmin;
-    background: #56b77d;
-    border-radius: 0.463vmin;
-    width: fit-content;
-    cursor: pointer;
-    transition: background 0.3s ease;
-
-    &:hover {
-      background: #5f9adf;
-    }
-  }
-
   .info {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 
-    &-item {
-      .header {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 0.5vmin;
+    &-header {
+      display: flex;
+      justify-content: space-between;
 
-        &-item {
-          &-title {
-            font-weight: 700;
-            font-size: 2.963vmin;
-            color: #fff;
-            margin-bottom: 1.852vmin;
-          }
-
-          .short {
-            display: flex;
-            align-items: center;
-            gap: 2.037vmin;
-            margin-bottom: 1.574vmin;
-
-            &-unit {
-              display: flex;
-              align-items: center;
-              font-weight: 700;
-              font-size: 1.296vmin;
-              color: #fff;
-
-              &-img {
-                width: 2.222vmin;
-                height: 2.222vmin;
-                margin-right: 0.37vmin;
-                fill: #5f9adf;
-              }
-            }
-          }
-        }
-
-        &-price {
-          &-title {
-            font-weight: 700;
-            font-size: 2.963vmin;
-            color: #8eff35;
-            margin-bottom: 1.852vmin;
-          }
-        }
+      &-title {
+        font-weight: 700;
+        font-size: 2.963vmin;
+        color: #fff;
       }
 
-      .full {
+      &-price {
+        font-weight: 700;
+        font-size: 2.963vmin;
+        color: #8eff35;
+      }
+
+      &-container {
         display: flex;
-        justify-content: space-between;
-        display: flex;
-        margin: 0 0 2vmin 0;
+        flex-direction: column;
+        align-items: end;
+        gap: 1vmin;
+      }
 
-        &-views {
-          display: flex;
-          gap: 0.463vmin;
-          align-items: center;
-          &-img {
-            width: 1.5vmin;
-            height: 1.5vmin;
-          }
-
-          &-value {
-            color: rgba(255, 255, 255, 0.36);
-            font-size: 1.481vmin;
-          }
-        }
-
-        .full-wrapper {
-          display: flex;
-          flex-direction: column;
-          gap: 1.111vmin;
-
-          .full-unit {
-            display: flex;
-            align-items: center;
-            font-weight: 400;
-            font-size: 1.296vmin;
-            color: rgba(255, 255, 255, 0.36);
-
-            &>span {
-              position: relative;
-              top: 0.185vmin;
-              color: white;
-              margin-left: 0.463vmin;
-              font-weight: 500;
-              color: white;
-            }
-          }
+      &-statePrice {
+        font-weight: 400;
+        font-size: 1.9vmin;
+        color: rgba(255, 255, 255, 0.17);
+        &-value {
+          color: white;
         }
       }
     }
+    &-tips {
+      margin: 1.389vmin 0;
+    }
+    &-properties {
+      margin: 1.389vmin 0;
+    }
+
     &-seller {
       margin: 0 0 2vmin 0;
       display: flex;
@@ -205,6 +155,6 @@
         }
       }
     }
-    
+
   }
 }

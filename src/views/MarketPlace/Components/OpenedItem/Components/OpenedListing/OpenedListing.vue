@@ -1,87 +1,41 @@
 <template>
   <div class="openedListing">
-    <div class="openedListing-preview">
-      <div class="openedListing-preview-img">
+    <div class="item">
+      <div class="item-img">
         <Img :img="'default'" :itemType="getItem.sellData.type" :size="'l'" />
-        <FavoriteIndicator
-          :item-id="getItem.id"
-          :size="'big'"
-          :is-favorite="getItem.isFavorite"
-        />
+        <FavoriteIndicator :item-id="getItem.id" :size="'big'" :is-favorite="getItem.isFavorite" />
       </div>
-      <div
-        class="openedListing-testDrive"
-        @click="handleTestDriveClick"
-        v-if="getItem.sellData.type === 'transport'"
-      >
+      <div class="item-testDrive" @click="handleTestDriveClick" v-if="getItem.sellData.type === 'transport'">
         {{ $store.getters.getLanguageText('Тест драйв') }}
       </div>
-      <div class="openedListing-preview-comment">
-        <div class="openedListing-preview-comment-title">
+      <div class="item-comment">
+        <div class="item-comment-title">
           {{ $store.getters.getLanguageText('Комментарий продавца:') }}
         </div>
-        <div class="openedListing-preview-comment-text">
+        <div class="item-comment-text">
           {{ getItem.sellData.description }}
         </div>
       </div>
     </div>
     <div class="info">
-      <div class="info-item">
-        <div class="header">
-          <div class="header-item">
-            <div class="header-item-title">
-              {{ getItemTitle(getItem) }}
-            </div>
-            <div class="short">
-              <div
-                class="short-unit"
-                v-for="(unit, index) in getShortData"
-                :key="index"
-              >
-                <component class="short-unit-img" :is="unit.img"></component>
-                {{ `${formatNumber(unit.value)}` }}
-              </div>
-            </div>
-          </div>
-          <div class="header-price">
-            <div class="header-price-title price">
-              {{
-                `$ ${formatNumber(
-                  getItem.sellData?.rentPrice
-                    ? `${getItem.sellData.rentPrice}`
-                    : getItem.sellData.price,
-                )} ${getItem.sellData?.rentPrice ? '/ч.' : ''}`
-              }}
-            </div>
-            <div class="header-info">
-              <div
-                class="info-item-full-unit"
-                v-if="getItem.sellData?.statePrice"
-              >
-                {{ $store.getters.getLanguageText('Гос. цена:') }}
-                <span class="price">{{
-                  `${formatNumber(getItem.sellData.statePrice)} $`
-                }}</span>
-              </div>
-            </div>
-          </div>
+      <div class="info-header">
+        <div class="info-header-title">
+          {{ getItemTitle(getItem) }}
         </div>
-        <div class="full">
-          <div class="full-wrapper">
-            <div
-              class="full-unit"
-              v-for="(unit, index) in getFullData"
-              :key="index"
-            >
-              {{ `${$store.getters.getLanguageText(unit.title)}:` }}<span>{{ $store.getters.getLanguageText(unit.value) }}</span>
-            </div>
+        <div class="info-header-container">
+          <div class="info-header-price">
+            {{ getItemPrice }}
           </div>
-          <div class="full-views">
-            <img class="full-views-img" src="@/views/MarketPlace/Assets/Icons/Item/views.svg" />
-            <div class="full-views-value">{{ getItem?.views }}</div>
+          <div class="info-header-statePrice" v-if="getItem.sellData?.statePrice">
+            {{ $store.getters.getLanguageText('Гос. цена:') }}
+            <span class="info-header-statePrice-value">{{
+              `${formatNumber(getItem.sellData.statePrice)} $`
+              }}</span>
           </div>
         </div>
       </div>
+      <CardItemTips :card-item="getItem" class="info-tips" />
+      <ItemMainInfo :card-item="getItem" :type="'column'" class="info-properties"/>
       <div class="info-seller" v-if="getItem?.listingData?.seller">
         <div class="info-seller-unit">
           <div class="info-seller-unit-title">
@@ -114,16 +68,9 @@
           </div>
         </template>
       </div>
-      <Specifications
-        :specifications="getItem.sellData.specifications"
-        v-if="getItem.sellData?.specifications"
-      />
+      <Specifications :specifications="getItem.sellData.specifications" v-if="getItem.sellData?.specifications" />
     </div>
-    <RentModal
-      v-if="isRent"
-      :item="getItem"
-      @toggleRentStatus="toggleRentStatus"
-    />
+    <RentModal v-if="isRent" :item="getItem" @toggleRentStatus="toggleRentStatus" />
   </div>
 </template>
 
@@ -133,33 +80,23 @@ import RentModal from './Components/RentModal/RentModal.vue';
 import Img from '../../../ItemComponents/Img/Img.vue';
 import Specifications from '../../../ItemComponents/Specifications/Specifications.vue';
 import FavoriteIndicator from '@/views/MarketPlace/Components/ItemComponents/FavoriteIndicator/FavoriteIndicator.vue';
-import competitors from '@/views/MarketPlace/Assets/Icons/Item/competitors.vue';
-import mileage from '@/views/MarketPlace/Assets/Icons/Item/mileage.vue';
-import parking from '@/views/MarketPlace/Assets/Icons/Item/parking.vue';
-import quantity from '@/views/MarketPlace/Assets/Icons/Item/quantity.vue';
-import tenants from '@/views/MarketPlace/Assets/Icons/Item/tenants.vue';
-import weight from '@/views/MarketPlace/Assets/Icons/Item/weight.vue';
+import ItemMainInfo from '../../../ItemComponents/ItemMainInfo/ItemMainInfo.vue';
 import call from '@/views/MarketPlace/Assets/Icons/Item/call.vue';
 import message from '@/views/MarketPlace/Assets/Icons/Item/message.vue';
-import views from '@/views/MarketPlace/Assets/Icons/Item/views.svg';
+import CardItemTips from '../../../CardItemTips/CardItemTips.vue';
 import { onUnmounted } from 'vue';
-import { getItemTitle } from '@/functions/marketplace';
+import { getItemTitle, formatNumber } from '@/functions/marketplace';
 
 export default {
   components: {
-    competitors,
-    mileage,
-    parking,
-    quantity,
-    tenants,
-    weight,
     call,
     message,
     RentModal,
-    views,
     Img,
     Specifications,
     FavoriteIndicator,
+    ItemMainInfo,
+    CardItemTips,
   },
   data() {
     return {
@@ -174,7 +111,7 @@ export default {
       this.$router.push('/market-place/viewing/storage');
       this.$store.commit('resetPickedItem');
       this.$store.commit('resetListData');
-      events.callServer('MarketPlace:List:GetListData:Server', 'storage' ,1);
+      events.callServer('MarketPlace:List:GetListData:Server', 'storage', 1);
     });
   },
   methods: {
@@ -185,8 +122,7 @@ export default {
       return getItemTitle(itemCard);
     },
     formatNumber(num) {
-      if (typeof num === undefined && !num) return '';
-      return num.toLocaleString('ru-RU');
+      return formatNumber(num);
     },
     toggleRentStatus() {
       this.isRent = !this.isRent;
@@ -206,69 +142,11 @@ export default {
     getItem() {
       return this.$store.getters.getPickedItem;
     },
-    getShortData() {
-      const item = this.getItem.sellData;
-      const list = [];
-      if (item?.competitors) {
-        list.push({
-          img: 'competitors',
-          value: item.competitors,
-        });
-      }
-      if (item?.parkingCapacity) {
-        list.push({
-          img: 'parking',
-          value: item.parkingCapacity,
-        });
-      }
-      if (item?.mileage) {
-        list.push({
-          img: 'mileage',
-          value: item.mileage,
-        });
-      }
-      if (item?.maxTenants) {
-        list.push({
-          img: 'tenants',
-          value: item.maxTenants,
-        });
-      }
-      if (item.weight) {
-        list.push({
-          img: 'weight',
-          value: item.weight,
-        });
-      }
-      return list;
-    },
-    getFullData() {
-      const item = this.getItem.sellData;
-      let list = [
-        {
-          title: 'Тип имущества',
-          value: this.$store.getters.getType(item),
-        },
-      ];
-      if (['house', 'apartment', 'business'].includes(item.type)) {
-        list.push({
-          title: 'Адрес',
-          value: '',
-          // Тут должен быть address
-        });
-      } else if (item.type === 'transport') {
-        list.push(
-          {
-            title: 'Автосалон',
-            value: item.dealerShip || 'Не указано',
-          },
-          {
-            title: 'Гос. номер',
-            value: item.licensePlate || "Уникальное",
-          },
-        );
-      }
-      return list;
-    },
+    getItemPrice() {
+      const isRent = this.getItem.sellData?.rentPrice;
+      const price = isRent ? this.getItem.sellData.rentPrice : this.getItem.sellData.price;
+      return `$ ${this.formatNumber(price)} ${isRent ? '/ч.' : ''}`
+    }
   },
 };
 </script>

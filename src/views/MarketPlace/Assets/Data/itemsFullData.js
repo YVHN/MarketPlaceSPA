@@ -244,4 +244,101 @@ export default {
             },
         },
     ],
+    transport: [
+        {
+            "id": 14,
+            "sellData": {
+                "type": "transport",
+                "img": null,
+                "description": "0",
+                "id": 923471,
+                "vehicleModel": "daytona",
+                "vehicleName": "Ferari Daytona",
+                "licensePlace": "",
+                "dealerShip": null,
+                rentPrice: 23131,
+                "specifications": {
+                    "engine": 0,
+                    "brake": 0,
+                    "suspencion": 0,
+                    "turbine": 0
+                },
+                "price": 1000000,
+                "statePrice": 32131
+            },
+            "views": 4,
+            "isFavorite": false,
+            "created": "2024-06-12T20:21:25.6750976+03:00",
+            "listingData": {
+                "seller": {
+                    "username": "Cherry Waves",
+                    "static": 128683,
+                    "phone": 233197770
+                }
+            },
+            "endTime": "2024-06-12T21:21:25.6750976+03:00"
+        },
+        {
+            "id": 1,
+            "sellData": {
+                "type": "apartment",
+                "img": null,
+                "description": null,
+                "id": 1,
+                "apartmentType": "Комфорт",
+                "parkingCapacity": 6,
+                "maxTenants": 4,
+                "coordinates": {
+                    "x": 1553.0693,
+                    "y": 3689.9731,
+                    "z": 34.556717
+                },
+                "price": 0,
+                "statePrice": 90000000
+            },
+            "views": 4,
+            "isFavorite": false,
+            "created": "2024-06-12T20:21:25.6750976+03:00",
+            "listingData": {
+                "seller": {
+                    "username": "Cherry Waves",
+                    "static": 128683,
+                    "phone": 233197770
+                }
+            },
+            "endTime": "2024-06-12T21:21:25.6750976+03:00"
+        },
+    ],
+    estate: [
+        {
+            "id": 1,
+            "sellData": {
+                "type": "apartment",
+                "img": null,
+                "description": null,
+                "id": 1,
+                "apartmentType": "Комфорт",
+                "parkingCapacity": 6,
+                "maxTenants": 4,
+                "coordinates": {
+                    "x": 1553.0693,
+                    "y": 3689.9731,
+                    "z": 34.556717
+                },
+                "price": 0,
+                "statePrice": 90000000
+            },
+            "views": 4,
+            "isFavorite": false,
+            "created": "2024-06-12T20:21:25.6750976+03:00",
+            "listingData": {
+                "seller": {
+                    "username": "Cherry Waves",
+                    "static": 128683,
+                    "phone": 233197770
+                }
+            },
+            "endTime": "2024-06-12T21:21:25.6750976+03:00"
+        },
+    ],
 };

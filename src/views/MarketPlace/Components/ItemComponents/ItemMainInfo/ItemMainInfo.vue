@@ -25,9 +25,6 @@ export default {
         },
     },
     computed: {
-        isShowStatePrice() {
-            return ['auction'].includes(this.$route.params.section) || this.$route.path.includes('createListing');
-        },
         getItemMainInfo() {
             const info = [];
             if (this.cardItem.sellData?.type !== 'item') {
@@ -101,7 +98,7 @@ export default {
                     }
                 )
             }
-            if (this.cardItem.sellData.statePrice) {
+            if (this.cardItem.sellData.statePrice && this.getIsShowStatePrice) {
                 info.push(
                     {
                         title: 'Гос. цена:',
@@ -127,6 +124,9 @@ export default {
             }
             return info;
         },
+        getIsShowStatePrice() {
+            return ['auction'].includes(this.$route.params.section) || this.$route.path.includes('createListing');
+        }
     },
 };
 </script>
