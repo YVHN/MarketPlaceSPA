@@ -99,24 +99,8 @@
             <div class="info-item-title">
               {{ getItemTitle(getItem) }}
             </div>
-            <div class="info-item-short">
-              <div class="info-item-short-unit" v-for="(unit, index) in getShortData" :key="index">
-                <component class="info-item-short-unit-img" :is="unit.img"></component>
-                {{ `${formatNumber(unit.value)}` }}
-              </div>
-            </div>
-            <div class="info-item-full">
-              <div class="info-item-full-unit" v-if="getItem.sellData?.statePrice">
-                {{ $store.getters.getLanguageText('Гос. цена:') }}
-                <span class="price">{{
-                  `${formatNumber(getItem.sellData.statePrice)} $`
-                  }}</span>
-              </div>
-              <div class="info-item-full-unit" v-for="(unit, index) in getFullData" :key="index">
-                {{ `${$store.getters.getLanguageText(unit.title)}:`
-                }}<span>{{ $store.getters.getLanguageText(unit.value) }}</span>
-              </div>
-            </div>
+            <CardItemTips :card-item="getItem" />
+            <ItemMainInfo :card-item="getItem" :type="'column'"/>
           </div>
           <Specifications v-if="getItem.sellData?.specifications" :specifications="getItem.sellData.specifications" />
         </div>
@@ -131,14 +115,9 @@ import imageIcon from '@/views/MarketPlace/Assets/Icons/Listing/image.vue';
 import DeployListing from './Components/DeployListing/DeployListing.vue';
 import CustomInput from '@/views/MarketPlace/Components/OpenedItem/Components/CustomInput/CustomInput.vue';
 import Specifications from '@/views/MarketPlace/Components/ItemComponents/Specifications/Specifications.vue';
+import CardItemTips from '@/views/MarketPlace/Components/CardItemTips/CardItemTips.vue';
+import ItemMainInfo from '@/views/MarketPlace/Components/ItemComponents/ItemMainInfo/ItemMainInfo.vue';
 import events from '@/modules/events';
-
-import competitors from '@/views/MarketPlace/Assets/Icons/Item/competitors.vue';
-import mileage from '@/views/MarketPlace/Assets/Icons/Item/mileage.vue';
-import parking from '@/views/MarketPlace/Assets/Icons/Item/parking.vue';
-import quantity from '@/views/MarketPlace/Assets/Icons/Item/quantity.vue';
-import tenants from '@/views/MarketPlace/Assets/Icons/Item/tenants.vue';
-import weight from '@/views/MarketPlace/Assets/Icons/Item/weight.vue';
 import { onUnmounted } from 'vue';
 import { getItemTitle } from '@/functions/marketplace';
 
@@ -147,13 +126,9 @@ export default {
     imageIcon,
     DeployListing,
     CustomInput,
-    competitors,
-    mileage,
-    parking,
-    quantity,
-    tenants,
-    weight,
     Specifications,
+    CardItemTips,
+    ItemMainInfo,
   },
   data() {
     return {
@@ -244,73 +219,8 @@ export default {
     getItem() {
       return this.$store.getters.getPickedItem;
     },
-    getShortData() {
-      const item = this.getItem.sellData;
-      const list = [];
-      if (item?.competitors) {
-        list.push({
-          img: 'competitors',
-          value: item.competitors,
-        });
-      }
-      if (item?.parkingCapacity) {
-        list.push({
-          img: 'parking',
-          value: item.parkingCapacity,
-        });
-      }
-      if (item?.mileage) {
-        list.push({
-          img: 'mileage',
-          value: item.mileage,
-        });
-      }
-      if (item?.maxTenants) {
-        list.push({
-          img: 'tenants',
-          value: item.maxTenants,
-        });
-      }
-      if (item?.weight) {
-        list.push({
-          img: 'weight',
-          value: item.weight,
-        });
-      }
-      return list;
-    },
     getIsEmpty() {
       return !Object.keys(this.getItem.sellData).length > 0;
-    },
-    getFullData() {
-      const item = this.getItem.sellData;
-      if (!item) return [];
-      let list;
-      if (['apartment', 'house', 'business'].includes(item.type)) {
-        list = [
-          {
-            title: 'Адрес',
-            value: '',
-            // Тут должен быть адрес
-          },
-        ];
-      } else if (item.type === 'transport') {
-        list = [
-          {
-            title: 'Автосалон',
-            value: item?.dealerShip || 'Не указано',
-          },
-          {
-            title: 'Тюнинг',
-            value: item?.tuningStatus || 'Не указано',
-          },
-          {
-            title: 'Гос. номер',
-            value: item?.licensePlate || "Нет",
-          },
-        ];
-      }
-      return list;
     },
   },
 };

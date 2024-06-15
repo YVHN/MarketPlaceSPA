@@ -18,11 +18,11 @@
 </template>
 
 <script>
+import { onUnmounted } from 'vue';
 import Item from './Components/Item/Item.vue';
 import AddLot from '../OpenedItem/Components/OpenedExchange/Components/AddLot/AddLot.vue';
 import EmptyPage from '../EmptyPage/EmptyPage.vue';
 import events from '@/modules/events';
-import { onUnmounted } from 'vue';
 import itemsFullData from '../../Assets/Data/itemsFullData';
 
 import Pagination from './Components/Pagination/Pagination.vue';

@@ -56,6 +56,9 @@
           }
         }
       }
+      .right {
+        text-align: end;
+      }
     }
 
     &-input {
@@ -132,6 +135,9 @@
         }
       }
     }
+  }
+  .right {
+    text-align: end;
   }
   *{font-family: "PF DinDisplay Pro";}
 }

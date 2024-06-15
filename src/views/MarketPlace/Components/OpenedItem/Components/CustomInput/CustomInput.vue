@@ -2,7 +2,7 @@
   <!-- Инпут -->
   <input
     class="input"
-    :value="inputValue"
+    v-model="inputValue"
     @input="validateInput"
     maxlength="18"
   />
@@ -14,7 +14,7 @@ export default {
     outsideValue: {
       type: [Number, null],
       required: false,
-      default: null,
+      default: 0,
     },
   },
   data() {
@@ -22,37 +22,21 @@ export default {
       inputValue: this.formatInputValue(this.outsideValue),
     };
   },
-  watch: {
-    // Слежу за изменениями в пропе outsideValue
-    outsideValue(newValue) {
-      this.inputValue = this.formatInputValue(newValue);
-    },
-  },
   methods: {
-    // Валидируем ввод
     validateInput(event) {
-      let input = event.target.value;
-      // Проверка на ввод только чисел
-      input = input.replace(/\D/g, '');
-      if (+input) {
-        // Задаем новое числовое значение
+      let input = event.target.value.replace(/\D/g, '');
+      if (input) {
         this.inputValue = this.formatInputValue(input);
         this.$emit('setValue', +input);
       } else {
         this.$emit('setValue', 0);
         this.inputValue = '';
-        event.target.value = '';
       }
     },
-    // Форматируем значение с символом "$" и пробелами для разделения разрядов
     formatInputValue(value) {
-      if (!value) return ''; // Возвращаем пустую строку, если значение не передано
-      // Форматирование с добавлением символа "$" и пробелами для разделения разрядов
+      if (!value) return '';
       const formattedValue = `$ ${Number(value).toLocaleString('ru-RU')}`;
       return formattedValue;
-    },
-    sendValueOutside(num) {
-      this.$emit('setValue', num);
     },
   },
 };

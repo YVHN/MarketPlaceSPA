@@ -295,7 +295,7 @@ export default {
                     "turbine": 0
                 },
                 "price": 1000000,
-                "statePrice": 0
+                "statePrice": 321312,
             },
             "views": 4,
             "isFavorite": false,

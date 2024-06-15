@@ -42,7 +42,7 @@
             {{ `${pickedQuantity} ${$store.getters.getLanguageText('шт.')}` }}
           </div>
         </div>
-        <div class="addLot-body-info-unit">
+        <div class="addLot-body-info-unit right">
           <div class="addLot-body-info-unit-title">
             {{ $store.getters.getLanguageText('Доступно в продаже') }}
           </div>
