@@ -40,7 +40,10 @@ export default {
       const ctx = chartCanvas.getContext('2d');
       const labels = [];
       const amounts = [];
-      if(this.graphData?.data) {
+      if(!this.graphData && !Object.keys(this.graphData).length) {
+        
+      }
+      else if(this.graphData?.data) {
         this.graphData.data.forEach((unit) => labels.push(parseDate(unit.date, this.getDateFormatType)));
         this.graphData.data.forEach((unit) => amounts.push(unit.amount));
       }

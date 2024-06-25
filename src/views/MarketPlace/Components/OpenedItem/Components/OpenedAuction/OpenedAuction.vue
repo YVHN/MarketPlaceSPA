@@ -41,7 +41,7 @@
       <div class="auction-graph-title">
         {{ $store.getters.getLanguageText('График ставок') }}
       </div>
-      <Graph :graph-data="getPickedItem.auctionData.graphData" />
+      <Graph :graph-data="getPickedItem.auctionData?.graphData || {}" />
     </div>
     <MakeBet v-if="isMakeBet" :lotId="getPickedItem.id" :title="getItemTitle(getPickedItem)"
       :startPrice="getPickedItem.auctionData.lastBet" @toggleMakeBetStatus="toggleStatus" />

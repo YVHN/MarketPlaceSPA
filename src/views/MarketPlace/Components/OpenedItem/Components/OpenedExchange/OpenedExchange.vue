@@ -12,14 +12,6 @@
               {{ getPickedItem.sellData.title }}
             </div>
             <ItemMainInfo :card-item="getPickedItem"/>
-            <!-- <div class="exchange-item-description">
-              <div class="exchange-item-description-title">
-                {{ $store.getters.getLanguageText('Описание о предмете:') }}
-              </div>
-              <div class="exchange-item-description-content">
-                {{ sellItem.description }}
-              </div>
-            </div> -->
           </div>
         </div>
         <div class="item-addLot">
@@ -41,7 +33,7 @@
       <div class="exchange-graph-title">
         {{ $store.getters.getLanguageText('График цен') }}
       </div>
-      <Graph :graphData="getPickedItem.tradeData?.graphData || []" />
+      <Graph :graphData="getPickedItem.tradeData?.graphData || {}" />
     </div>
     <BuyItem v-if="isBuy" @toggleIsBuyStatus="toggleStatus('buy')" :offer="buyItemData" />
     <AddLot v-if="isAdd" :data="haveItem" @toggleIsAddStatus="toggleStatus('add')" />
