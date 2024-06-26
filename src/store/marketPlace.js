@@ -187,13 +187,10 @@ events.add('MarketPlace:User:UpdateMoneyBank:Cef', (num) => {
 	marketPlace.state.userInfo.moneyBank = num;
 });
 events.add('MarketPlace:Exchange:AddOffer:Cef', (id, offer) => {
-	console.log('вызывается не так');
-	console.log(offer);
-	if (!offer) {
-		console.log(id);
-	}
-	else if (id === marketPlace.state.pickedItem.id) {
-		marketPlace.state.pickedItem.tradeData.offers.push(offer);
+	console.log('Добавление оффера');
+	const parsedOffer = JSON.parse(offer);
+	if (id === marketPlace.state.pickedItem.id && parsedOffer) {
+		marketPlace.state.pickedItem.tradeData.offers.push(parsedOffer);
 		console.log('Предложение добавлено');
 	}
 });
