@@ -141,7 +141,7 @@ export function getItemTitle(itemCard) {
             15: 'Армейская заправка',
             16: 'Вертолетная заправка',
             25: 'Воздушный транспорт',
-            26: 'Водный тра'
+            26: 'Водный транспорт'
         }
         title = titles[item.businessType] || '';
     } else if (['clothes', 'item'].includes(item.type)) {
