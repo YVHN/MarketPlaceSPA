@@ -190,7 +190,7 @@ events.add('MarketPlace:Exchange:AddOffer:Cef', (id, offer) => {
 	const parsedOffer = JSON.parse(offer);
 	console.log(parsedOffer);
 	if (id === marketPlace.state.pickedItem.id && parsedOffer) {
-		marketPlace.state.pickedItem.tradeData.offers.push(parsed);
+		marketPlace.state.pickedItem.tradeData.offers.push(parsedOffer);
 		console.log('Предложение добавлено');
 	}
 });
