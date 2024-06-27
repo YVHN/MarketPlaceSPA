@@ -34,6 +34,7 @@
 import SortSelects from './Components/SortSelects.vue';
 import ReturnBack from './Components/ReturnBack.vue';
 import { formatNumber } from '@/functions/marketplace';
+import events from '@/modules/events';
 
 export default {
   name: 'Header',
