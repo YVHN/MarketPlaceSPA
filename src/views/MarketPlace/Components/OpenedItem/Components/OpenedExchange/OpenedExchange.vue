@@ -11,17 +11,17 @@
             <div class="item-info-title">
               {{ getPickedItem.sellData.title }}
             </div>
-            <ItemMainInfo :card-item="getPickedItem"/>
+            <ItemMainInfo :card-item="getPickedItem" />
           </div>
         </div>
         <div class="item-addLot">
-          <div class="item-button" :class="{off: !haveItem}" @click="toggleStatus('add')">
+          <div class="item-button" :class="{ off: !haveItem }" @click="toggleStatus('add')">
             {{ $store.getters.getLanguageText('Добавить лот на продажу') }}
           </div>
           <div class="item-warning" v-if="!haveItem">
             {{
               $store.getters.getLanguageText(
-                'Этот предмет отсутсвует у вас на вашем складе. Вы не можете выставить лот на торговую площадку, приобретите этот товар.',
+                'Этот предмет отсутсвует у вас на вашем складе. Вы не можете выставить лот на торговую площадку, приобретитеэтот товар.'
               )
             }}
           </div>
@@ -36,7 +36,7 @@
       <Graph :graphData="getPickedItem.tradeData?.graphData || {}" />
     </div>
     <BuyItem v-if="isBuy" @toggleIsBuyStatus="toggleStatus('buy')" :offer="buyItemData" />
-    <AddLot v-if="isAdd" :data="haveItem" @toggleIsAddStatus="toggleStatus('add')" />
+    <AddLot v-if="isAdd" :data="haveItem" @toggleIsAddStatus="toggleStatus('add')" @resetSellItem="resetSellItem" />
   </div>
 </template>
 
@@ -60,9 +60,6 @@ export default {
     BuyItem,
     AddLot,
     ItemMainInfo,
-  },
-  props: {
-
   },
   data() {
     return {
@@ -91,6 +88,13 @@ export default {
     },
   },
   methods: {
+    resetSellItem() {
+      this.haveItem = null;
+      events.callServer(
+        'MarketPlace:Exchange:IsCanSell:Server',
+        this.getPickedItem.sellData.itemType,
+      );
+    },
     formatNumber(num) {
       return `$${num.toLocaleString('ru-RU')}`;
     },

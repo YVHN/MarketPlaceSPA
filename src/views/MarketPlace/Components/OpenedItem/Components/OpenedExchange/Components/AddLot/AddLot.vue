@@ -109,6 +109,7 @@ export default {
           JSON.stringify(data),
         );
         this.toggleStatus();
+        this.$emit('resetSellItem');
         if (this.$route.path.includes('createListing')) {
           this.$store.commit('changeCardItemQuantity', [data.cardItemId, this.data.sellData.quantity - this.pickedQuantity]);
         } else {
