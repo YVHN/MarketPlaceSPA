@@ -97,7 +97,7 @@ export default {
                 "img": null,
                 "description": null,
                 "weight": 0.01,
-                "quantity": 1,
+                "quantity": 4,
                 "itemType": 599,
                 "itemName": "Конфеты",
             },

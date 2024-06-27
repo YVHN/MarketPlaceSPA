@@ -9,7 +9,7 @@ const marketPlace = {
 	state: {
 		currentLanguage: 'eng',
 		pagesInSection: 0,
-		listData: sectionsData.transport,
+		listData: sectionsData.items,
 		favoritesIdList: [],
 		pickedItem: null,
 		openingType: 'InTablet',
@@ -106,7 +106,7 @@ const marketPlace = {
 		},
 		resetListData(state) {
 			console.log('Список предметов очищен');
-			// state.listData = [];
+			state.listData = [];
 		},
 		resetPickedItem(state) {
 			if (state.pickedItem) {

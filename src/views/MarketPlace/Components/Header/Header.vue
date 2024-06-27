@@ -107,6 +107,7 @@ export default {
   methods: {
     openCreateListing() {
       if(!this.$route.path.includes('createListing')) {
+        this.$store.commit('resetPickedItem');
         this.$router.push('/market-place/createListing/all');
       }
     },

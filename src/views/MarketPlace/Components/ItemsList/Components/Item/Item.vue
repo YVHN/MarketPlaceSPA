@@ -22,13 +22,13 @@
               <tenants class="unit-icon" />
               {{ formatNumber(sellData.maxTenants) }}
             </div>
-            <div class="unit" v-if="isHas('sellData', 'quantity')">
+            <div class="unit" v-if="isShowQuantityTip" >
               <quantity class="unit-icon" />
               {{
                 `${sellData.quantity} ${$store.getters.getLanguageText('шт.')}`
               }}
             </div>
-            <div class="unit" v-if="isShowQuantityTip">
+            <div class="unit" v-if="isShowWeightTip">
               <weight class="unit-icon" />
               {{
                 `${formatNumber(
@@ -162,6 +162,9 @@ export default {
   },
   computed: {
     isShowQuantityTip() {
+      return this.isHas('sellData', 'quantity') && (this.$route.params.section === 'storage' || this.$route.path.includes('createListing'));
+    },
+    isShowWeightTip() {
       return this.isHas('sellData', 'weight') && (this.$route.params.section === 'storage' || this.$route.path.includes('createListing'));
     },
     isHideFavorite() {
