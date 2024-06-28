@@ -100,7 +100,7 @@
         </div>
       </div>
       <div class="item-default" v-else>
-        <div class="item-default-price">
+        <div class="item-default-price" v-if="$store.getters.getPrice(item)">
           {{ `$ ${formatNumber($store.getters.getPrice(item))}` }}
         </div>
         <div class="item-default-likesviews">

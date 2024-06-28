@@ -188,6 +188,7 @@ export function getCardItemType(cardItemType) {
         apartment: 'Недвижимость',
         business: 'Бизнес',
         transportRent: 'Транспорт',
+        service: 'Услуги и прочее',
     }
     return types[cardItemType] || "";
 }

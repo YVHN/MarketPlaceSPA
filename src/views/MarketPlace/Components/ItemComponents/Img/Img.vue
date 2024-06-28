@@ -9,7 +9,7 @@ import { getImgPath } from '@/functions/marketplace';
 export default {
   props: {
     cardItem: {
-      type: String,
+      type: Object,
       required: true,
     },
     size: {

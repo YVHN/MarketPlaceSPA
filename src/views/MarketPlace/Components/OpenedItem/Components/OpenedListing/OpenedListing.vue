@@ -23,7 +23,7 @@
           {{ getItemTitle(getItem) }}
         </div>
         <div class="info-header-container">
-          <div class="info-header-price">
+          <div class="info-header-price" v-if="getItem.sellData?.price !== undefined">
             {{ getItemPrice }}
           </div>
           <div class="info-header-statePrice" v-if="getItem.sellData?.statePrice">
@@ -56,7 +56,7 @@
         </div>
       </div>
       <div class="info-actions">
-        <div class="info-actions-makeDeal" @click="makeDeal">
+        <div class="info-actions-makeDeal" @click="makeDeal" v-if="getItem.sellData?.price !== undefined">
           {{ $store.getters.getLanguageText('Начать сделку') }}
         </div>
         <template v-if="getItem?.listingData?.seller?.phone">

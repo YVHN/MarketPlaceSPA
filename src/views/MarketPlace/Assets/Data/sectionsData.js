@@ -155,7 +155,28 @@ export default {
             "endTime": "2024-05-27T14:08:27.2905118+03:00"
         }
     ],
-    services: [],
+    services: [
+        {
+            "id": 22,
+            "sellData": {
+                "type": "service",
+                "img": null,
+                "description": "testing",
+                "title": "testing"
+            },
+            "views": 1,
+            "isFavorite": false,
+            "created": "2024-06-28T19:31:50.4238053+03:00",
+            "listingData": {
+                "seller": {
+                    "username": "Cherry Waves",
+                    "static": 128683,
+                    "phone": 233197770
+                }
+            },
+            "endTime": "2024-06-30T21:31:50.4238053+03:00"
+        }
+    ],
     business: [],
     storage: [
         {
