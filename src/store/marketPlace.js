@@ -9,7 +9,7 @@ const marketPlace = {
 	state: {
 		currentLanguage: 'eng',
 		pagesInSection: 0,
-		listData: sectionsData.items,
+		listData: sectionsData.auction,
 		favoritesIdList: [],
 		pickedItem: null,
 		openingType: 'InTablet',

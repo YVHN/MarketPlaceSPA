@@ -191,3 +191,17 @@ export function getCardItemType(cardItemType) {
     }
     return types[cardItemType] || "";
 }
+
+export function getImgPath(itemCard) {
+    switch (itemCard.sellData.type) {
+        case "apart":
+        case "house":
+            return `http://146.59.126.149/House/${itemCard.sellData.id}.png`;
+        case "vehicle":
+            return `http://146.59.126.149/vehicles/${itemCard.sellData.vehicleModel}.png`;
+        case "business":
+            return `http://146.59.126.149/bussines/${itemCard.sellData.businessType}.png`;
+        case "item" :
+            return `http://146.59.126.149/inventory_items/${itemCard.sellData.itemType}.png`;
+    }
+}

@@ -38,7 +38,7 @@
             </div>
           </template>
         </div>
-        <Img class="item-header-img" :img="'default'" :itemType="sellData.type" :size="'s'"
+        <Img class="item-header-img" :card-item="item" :size="'s'"
           :isSmall="sellData?.filter ? true : false" />
         <FavoriteIndicator class="item-favorite" :itemId="item.id" :size="'small'"
           :is-favorite="item?.isFavorite ? item.isFavorite : false" v-if="!isHideFavorite" />
@@ -135,6 +135,8 @@ import { getEndTime } from '@/functions/marketplace';
 
 import { getItemSubTitle, getItemTitle } from '@/functions/marketplace';
 
+import { getImgPath } from '@/functions/marketplace';
+
 export default {
   props: {
     item: {
@@ -209,6 +211,9 @@ export default {
     });
   },
   methods: {
+    getImgPath(itemCard) {
+      return getImgPath(itemCard);
+    },
     getItemSubTitle(itemCard) {
       return this.$store.getters.getLanguageText(getItemSubTitle(itemCard, this.$route.params.section));
     },

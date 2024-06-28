@@ -4,7 +4,7 @@
       <div class="item">
         <div class="item-container">
           <div class="item-img">
-            <img :src="require(`@/views/MarketPlace/Assets/Images/Items/${'default'}.png`)" />
+            <img :src="getImgPath(getPickedItem)" />
             <FavoriteIndicator :itemId="getPickedItem.id" :size="'big'" :is-favorite="getPickedItem.isFavorite" />
           </div>
           <div class="item-info">
@@ -51,6 +51,7 @@ import { onUnmounted } from 'vue';
 import { getItemSubTitle } from '@/functions/marketplace';
 import ItemMainInfo from '../../../ItemComponents/ItemMainInfo/ItemMainInfo.vue';
 import sectionsData from '@/views/MarketPlace/Assets/Data/sectionsData';
+import { getImgPath } from '@/functions/marketplace';
 
 export default {
   components: {
@@ -88,6 +89,9 @@ export default {
     },
   },
   methods: {
+    getImgPath(itemCard) {
+      return getImgPath(itemCard);
+    },
     resetSellItem() {
       this.haveItem = null;
       events.callServer(

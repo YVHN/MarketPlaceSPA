@@ -9,7 +9,7 @@ export default {
             endTime: '2024-05-24T21:06:06.9686271+03:00',
             created: '2024-05-21T17:06:06.9686271+03:00',
             sellData: {
-                id: 666,
+                id: 1,
                 img: 'House123',
                 type: 'house',
                 description: '...',
@@ -34,6 +34,7 @@ export default {
             sellData: {
                 img: 'image.png',
                 vehicleName: 'W4 J82 Contention',
+                vehicleModel: 'bmistralw16',
                 type: 'transport',
                 dealerShip: 'Хуй',
                 competitors: 12,

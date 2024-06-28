@@ -2,7 +2,7 @@
   <div class="openedListing">
     <div class="item">
       <div class="item-img">
-        <Img :img="'default'" :itemType="getItem.sellData.type" :size="'l'" />
+        <Img :card-item="getItem" :size="'l'" />
         <FavoriteIndicator :item-id="getItem.id" :size="'big'" :is-favorite="getItem.isFavorite" />
       </div>
       <div class="item-testDrive" @click="handleTestDriveClick" v-if="getItem.sellData.type === 'transport'">

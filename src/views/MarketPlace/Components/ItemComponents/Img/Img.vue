@@ -1,17 +1,14 @@
 <template>
   <div class="img-wrapper" :class="[size, getImgSize]">
-    <img :src="require(`@/views/MarketPlace/Assets/Images/Items/${img}.png`)" />
+    <img :src="getImgPath(cardItem)" />
   </div>
 </template>
 
 <script>
+import { getImgPath } from '@/functions/marketplace';
 export default {
   props: {
-    img: {
-      type: String,
-      required: true,
-    },
-    itemType: {
+    cardItem: {
       type: String,
       required: true,
     },
@@ -24,10 +21,15 @@ export default {
       required: false,
     },
   },
+  methods: {
+    getImgPath(cardItem) {
+      return getImgPath(cardItem);
+    }
+  },
   computed: {
     getImgSize() {
       if (
-        ['house', 'apartment', 'service', 'business'].includes(this.itemType) &&
+        ['house', 'apartment', 'service', 'business'].includes(this.cardItem.sellData.type) &&
         !this.isSmall
       )
         return 'big';

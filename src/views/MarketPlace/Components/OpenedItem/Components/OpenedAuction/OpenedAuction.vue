@@ -4,7 +4,7 @@
       <div class="item">
         <div class="item-container">
           <div class="item-img">
-            <Img :img="'default'" :itemType="getPickedItem.sellData.type" :size="'m'" />
+            <Img :cardItem="getPickedItem" :size="'m'" />
             <FavoriteIndicator :itemId="getPickedItem.id" :size="'big'" :is-favorite="getPickedItem.isFavorite" />
           </div>
           <div class="item-info">

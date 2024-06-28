@@ -16,7 +16,7 @@
             </div>
             <div class="listingEditor-cover-images-item-img">
               <img :class="getItem.sellData?.type"
-                src="@/views/MarketPlace/Assets/Images/Items/default.png" />
+                :src="getImgPath(getItem)" />
             </div>
           </div>
           <div class="listingEditor-cover-images-custom">
@@ -120,7 +120,7 @@ import ItemMainInfo from '@/views/MarketPlace/Components/ItemComponents/ItemMain
 import events from '@/modules/events';
 import { onUnmounted } from 'vue';
 import { getItemTitle } from '@/functions/marketplace';
-
+import { getImgPath } from '@/functions/marketplace';
 export default {
   components: {
     imageIcon,
@@ -152,6 +152,9 @@ export default {
     });
   },
   methods: {
+    getImgPath(itemCard) {
+      return getImgPath(itemCard);
+    },
     toggleDeployStatus() {
       if (!this.getIsEmpty) {
         if (this.salePrice && this.descriptionInput) {
