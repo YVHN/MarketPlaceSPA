@@ -200,6 +200,8 @@ export function getImgPath(itemCard) {
             case empty:
             case auction:
                 return require(`@/views/MarketPlace/Assets/Images/Items/thunderclap.png`);
+            case transportRent:
+                return require(`@/views/MarketPlace/Assets/Images/Items/carKeys.png`);
         }
     } else if (['apart', 'house'].includes(itemCard.sellData.type)) {
         return `${host}/House/${itemCard.sellData.id}.png`;
