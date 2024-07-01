@@ -125,7 +125,7 @@ export default {
             if(this.cardItem?.endTime) {
                 info.push(
                     {
-                        title: 'Окончание времени размещения:',
+                        title: 'Окончание размещения:',
                         value: parseDate(this.cardItem.endTime, 'default'),
                     }
                 )

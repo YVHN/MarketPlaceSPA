@@ -204,7 +204,7 @@ export function getImgPath(itemCard) {
         }
     } else if (['apart', 'house'].includes(itemCard.sellData.type)) {
         return `${host}/House/${itemCard.sellData.id}.png`;
-    } else if (itemCard.sellData.type === 'vehicle') {
+    } else if (['transport', 'transportRent'].includes(itemCard.sellData.type)) {
         return `${host}/vehicles/${itemCard.sellData.vehicleModel}.png`;
     } else if (itemCard.sellData.type === 'business') {
         return `${host}/bussines/${itemCard.sellData.businessType}.png`;
@@ -252,5 +252,7 @@ export function getImgPath(itemCard) {
             //     return `${host}/inventory_items/${item.id}_${splitedData[1]}.png`;
             // }
         }
+    } else {
+        return 'пути нет';
     }
 }
