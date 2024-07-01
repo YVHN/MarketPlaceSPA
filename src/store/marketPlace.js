@@ -152,9 +152,10 @@ const marketPlace = {
 // Получение списка и перезаписывание
 events.add('MarketPlace:List:SetListData:Cef', (json) => {
 	const parsedJson = JSON.parse(json);
+	const itemsInPage = parsedJson.section === 'createListing' ? 12 : 15;
 	marketPlace.state.listData = parsedJson.data;
 	console.log(parsedJson.data);
-	marketPlace.state.pagesInSection = Math.ceil(parsedJson.totalCount / 15);
+	marketPlace.state.pagesInSection = Math.ceil(parsedJson.totalCount / itemsInPage);
 });
 // Изменяет свойство
 events.add('Marketplace:Action:ChangePropertyValue', (id, property, value) => {
