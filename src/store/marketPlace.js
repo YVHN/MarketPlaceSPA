@@ -17,9 +17,13 @@ const marketPlace = {
 			moneyCash: 1233,
 			moneyBank: 12,
 			userName: 'Maneskin Ben',
-		}
+		},
+		pricePerHour: 50000
 	},
 	getters: {
+		getPricePerHour() {
+			return state.pricePerHour;
+		},
 		getOpeningType(state) {
 			return state.openingType;
 		},
@@ -179,6 +183,7 @@ events.add('MarketPlace:SetData:Cef', (json) => {
 	const parsed = JSON.parse(json);
 	marketPlace.state.openingType = parsed.openingType;
 	marketPlace.state.userInfo = parsed.userInfo;
+	marketPlace.state.pricePerHour = parsed.pricePerHour;
 });
 events.add('MarketPlace:User:UpdateMoneyCash:Cef', (num) => {
 	marketPlace.state.userInfo.moneyCash = num;
