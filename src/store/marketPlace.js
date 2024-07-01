@@ -21,7 +21,7 @@ const marketPlace = {
 		pricePerHour: 50000
 	},
 	getters: {
-		getPricePerHour() {
+		getPricePerHour(state) {
 			return state.pricePerHour;
 		},
 		getOpeningType(state) {

@@ -65,7 +65,8 @@ export default {
   props: {
     price: {
       type: Number,
-      required: true,
+      required: false,
+      default: 0,
     },
   },
   components: {
