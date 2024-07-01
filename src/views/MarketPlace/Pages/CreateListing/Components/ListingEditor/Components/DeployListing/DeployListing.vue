@@ -9,7 +9,7 @@
         }}
       </div>
       <div class="deployListing-body-warning">
-        {{ $store.getters.getLanguageText(getDescription) }}  
+        {{ $store.getters.getLanguageText(getDescription) }}
       </div>
       <div class="deployListing-body-hours">
         <img src="@/views/MarketPlace/Assets/Icons/Listing/time.svg" />
@@ -32,11 +32,7 @@
               </div>
             </div>
           </div>
-          <ProgressBar
-            @pickQuantity="pickQuantity"
-            :max-progress="maxHours"
-            :min-progress="1"
-          />
+          <ProgressBar @pickQuantity="pickQuantity" :max-progress="maxHours" :min-progress="1" />
         </div>
       </div>
       <div class="deployListing-body-price">
@@ -51,13 +47,9 @@
         </div>
       </div>
       <div class="deployListing-body-payMethod">
-        <div
-          class="deployListing-body-payMethod-method"
-          v-for="method in payMethods"
-          :key="method.id"
-          @click="deploy(method.value)"
-        >
-          {{ $store.getters.getLanguageText(method.title )}}
+        <div class="deployListing-body-payMethod-method" v-for="method in payMethods" :key="method.id"
+          @click="deploy(method.value)">
+          {{ $store.getters.getLanguageText(method.title) }}
         </div>
       </div>
       <div class="deployListing-body-cancel" @click="toggleDeployStatus">
@@ -85,7 +77,6 @@ export default {
       isDragging: false,
       maxHours: 130,
       hoursQuantity: 0,
-      pricePerHour: 3000,
       payMethods: [
         {
           title: 'Оплата наличными',
@@ -117,7 +108,7 @@ export default {
       return `${this.progress}%`;
     },
     getPriceForHours() {
-      return this.formatNumber(this.pickedHours * this.pricePerHour);
+      return this.formatNumber(this.pickedHours * $store.getters.getPricePerHour);
     },
   },
   methods: {
