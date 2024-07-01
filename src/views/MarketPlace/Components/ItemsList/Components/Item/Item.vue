@@ -99,6 +99,17 @@
           {{ $store.getters.getLanguageText(getItemStatus) }}
         </div>
       </div>
+      <div class="item-service" v-else-if="item.sellData.type === 'service'">
+        <div class="item-default-likesviews">
+          <div class="unit" v-if="item?.likes">
+            <likes class="unit-img" />{{ item.likes }}
+          </div>
+          <div class="unit">
+            <img class="unit-img" src="@/views/MarketPlace/Assets/Icons/Item/views.svg" />
+            {{ item.views }}
+          </div>
+        </div>
+      </div>
       <div class="item-default" v-else>
         <div class="item-default-price" v-if="$store.getters.getPrice(item)">
           {{ `$ ${formatNumber($store.getters.getPrice(item))}` }}

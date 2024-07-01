@@ -140,7 +140,8 @@ export default {
                 "variation": 277,
                 "texture": 0,
                 "gender": false,
-                "itemType": -6
+                "itemType": -6,
+                gender: 0,
             },
             "views": 2,
             "isFavorite": false,

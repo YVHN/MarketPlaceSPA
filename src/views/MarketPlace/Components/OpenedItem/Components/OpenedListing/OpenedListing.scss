@@ -29,6 +29,7 @@
     }
 
     &-comment {
+      position: relative;
       &-title {
         color: white;
         font-weight: 700;
@@ -38,6 +39,24 @@
 
       &-text {
         font-size: 1.389vmin;
+      }
+    }
+    &-likesviews {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.926vmin;
+      .unit {
+        display: flex;
+        align-items: center;
+        font-size: 1.296vmin;
+        &-img {
+          height: 1.296vmin;
+          width: 1.296vmin;
+          margin-right: 0.463vmin;
+        }
       }
     }
   }

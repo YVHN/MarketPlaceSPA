@@ -69,12 +69,12 @@
           :placeholder="$store.getters.getLanguageText('Введите комментарий')" v-model="descriptionInput"></textarea>
       </div>
       <div class="listingEditor-deploy">
-        <div class="listingEditor-deploy-title">
+        <div class="listingEditor-deploy-title" v-if="!getIsEmpty">
           {{ $store.getters.getLanguageText(getPriceTitle) }}
         </div>
         <div class="listingEditor-deploy-wrapper">
           <CustomInput :placeholder="$store.getters.getLanguageText('Введите сумму')" class="input"
-            :class="{ empty: !salePrice }" @setValue="setPrice" />
+            :class="{ empty: !salePrice }" @setValue="setPrice" v-if="!getIsEmpty" />
           <div class="listingEditor-deploy-button" @click="toggleDeployStatus">
             {{
               $store.getters.getLanguageText(
@@ -160,7 +160,7 @@ export default {
         if (this.salePrice && this.descriptionInput) {
           this.isDeploy = !this.isDeploy;
         }
-      } else if (this.salePrice && this.descriptionInput && this.titleInput) {
+      } else if (this.descriptionInput && this.titleInput) {
         this.isDeploy = !this.isDeploy;
       }
     },

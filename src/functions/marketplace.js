@@ -194,15 +194,62 @@ export function getCardItemType(cardItemType) {
 }
 
 export function getImgPath(itemCard) {
-    switch (itemCard.sellData.type) {
-        case "apart":
-        case "house":
-            return `http://146.59.126.149/House/${itemCard.sellData.id}.png`;
-        case "vehicle":
-            return `http://146.59.126.149/vehicles/${itemCard.sellData.vehicleModel}.png`;
-        case "business":
-            return `http://146.59.126.149/bussines/${itemCard.sellData.businessType}.png`;
-        case "item" :
-            return `http://146.59.126.149/inventory_items/${itemCard.sellData.itemType}.png`;
+    const host = "http://146.59.126.149";
+    if (itemCard.sellData?.filter) {
+        switch (itemCard.sellData.filter) {
+            case empty:
+            case auction:
+                return require(`@/views/MarketPlace/Assets/Images/Items/thunderclap.png`);
+        }
+    } else if (['apart', 'house'].includes(itemCard.sellData.type)) {
+        return `${host}/House/${itemCard.sellData.id}.png`;
+    } else if (itemCard.sellData.type === 'vehicle') {
+        return `${host}/vehicles/${itemCard.sellData.vehicleModel}.png`;
+    } else if (itemCard.sellData.type === 'business') {
+        return `${host}/bussines/${itemCard.sellData.businessType}.png`;
+    } else if (itemCard.sellData.type === 'item') {
+        return `${host}/inventory_items/${itemCard.sellData.itemType}.png`;
+    } else if (itemCard.sellData.type === 'clothes') {
+        const gender = itemCard.sellData.gender ? "male" : "female";
+        const propsPackageName = {
+            "-12": 0,
+            "-13": 1,
+        };
+        switch (itemCard.sellData.itemType) {
+            case -1: {
+                return `${host}/inventory/clothes/masks/${itemCard.sellData.variation}/${itemCard.sellData.texture}.png`;
+            }
+            case -20: {
+                return `${host}/inventory/clothes/${gender}/5/${itemCard.sellData.variation}/${itemCard.sellData.texture}.png`;
+            }
+            case -9: {
+                return `${host}/inventory/clothes/armors/${itemCard.sellData.variation}/${itemCard.sellData.texture}.png`;
+            }
+            case -4:
+            case -11:
+            case -6: {
+                return `${host}/inventory/clothes/${gender}/${Math.abs(itemCard.sellData.itemType)}/${itemCard.sellData.variation}/${itemCard.sellData.texture}.png`;
+            }
+            case -13:
+            case -12: {
+                return `${host}/inventory/clothes/${gender}/props/${propsPackageName[itemCard.sellData.itemType]}/${itemCard.sellData.variation}/${itemCard.sellData.texture}.png`;
+            }
+            // case 740: {
+            //     if (item.ItemData.WeaponComponentChildrenKey) {
+            //         return this.getWeaponHaveComponentImgPath(itemCard.sellData.WeaponComponentChildrenKey);
+            //     }
+            //     return this.getWeaponHaveComponentImgPath(itemCard.sellData.itemType);
+            // }
+            // case 601: {
+            //     if (!item.ItemSubData || !item.ItemSubData.includes("%")) {
+            //         return `${host}/inventory_items/${item.id}_0.png`;
+            //     }
+            //     const splitedData = item.ItemSubData.split("%");
+            //     if (splitedData.length < 2) {
+            //         return `${host}/inventory_items/${item.id}_0.png`;
+            //     }
+            //     return `${host}/inventory_items/${item.id}_${splitedData[1]}.png`;
+            // }
+        }
     }
 }

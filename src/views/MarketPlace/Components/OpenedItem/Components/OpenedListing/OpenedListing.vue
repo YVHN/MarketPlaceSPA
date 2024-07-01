@@ -15,6 +15,15 @@
         <div class="item-comment-text">
           {{ getItem.sellData.description }}
         </div>
+        <div class="item-likesviews">
+          <!-- <div class="unit" v-if="item?.likes">
+            <likes class="unit-img" />{{ item.likes }}
+          </div> -->
+          <div class="unit">
+            <img class="unit-img" src="@/views/MarketPlace/Assets/Icons/Item/views.svg" />
+            {{ getItem.views }}
+          </div>
+        </div>
       </div>
     </div>
     <div class="info">
