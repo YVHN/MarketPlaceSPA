@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { getCardItemType, formatNumber, getItemSubTitle } from '@/functions/marketplace';
+import { getCardItemType, formatNumber, getItemSubTitle, parseDate } from '@/functions/marketplace';
 export default {
     props: {
         cardItem: {
@@ -119,6 +119,14 @@ export default {
                     {
                         title: 'Тюнинг:',
                         value: this.cardItem.sellData.tuningStatus,
+                    }
+                )
+            }
+            if(this.cardItem?.endTime) {
+                info.push(
+                    {
+                        title: 'Окончание времени размещения:',
+                        value: parseDate(this.cardItem.endTime, 'default'),
                     }
                 )
             }

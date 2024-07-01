@@ -189,6 +189,7 @@ export function getCardItemType(cardItemType) {
         business: 'Бизнес',
         transportRent: 'Транспорт',
         service: 'Услуги и прочее',
+        clothes: 'Одежда и аксессуары',
     }
     return types[cardItemType] || "";
 }
@@ -196,12 +197,10 @@ export function getCardItemType(cardItemType) {
 export function getImgPath(itemCard) {
     const host = "http://146.59.126.149";
     if (itemCard.sellData?.filter) {
-        switch (itemCard.sellData.filter) {
-            case empty:
-            case auction:
-                return require(`@/views/MarketPlace/Assets/Images/Items/thunderclap.png`);
-            case transportRent:
-                return require(`@/views/MarketPlace/Assets/Images/Items/carKeys.png`);
+        if(['empty', 'auction'].includes(itemCard.sellData.filter)) {
+            return require(`@/views/MarketPlace/Assets/Images/Items/thunderclap.png`);
+        } else if (itemCard.sellData.filter === 'transportRent') {
+            return require(`@/views/MarketPlace/Assets/Images/Items/carKeys.png`);
         }
     } else if (['apart', 'house'].includes(itemCard.sellData.type)) {
         return `${host}/House/${itemCard.sellData.id}.png`;
