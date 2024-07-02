@@ -229,8 +229,13 @@ export default {
     getImgPath(itemCard) {
       return getImgPath(itemCard);
     },
-    getItemSubTitle(itemCard) {
-      return setTimeout(this.$store.getters.getLanguageText(getItemSubTitle(itemCard, this.$route.params.section)), 500);
+    async getItemSubTitle(itemCard) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          const subtitle = this.$store.getters.getLanguageText(getItemSubTitle(itemCard, this.$route.params.section));
+          resolve(subtitle);
+        }, 500);
+      });
     },
     getItemTitle(itemCard) {
       return getItemTitle(itemCard);

@@ -25,9 +25,9 @@ export default {
         },
     },
     mounted() {
-        if (this.item.sellData?.coordinates) {
-            console.log(this.item.sellData?.coordinates);
-            mp.trigger("MarketPlace:Item:GetAddress:Client", this.item.id, this.item.sellData.coordinates.x, this.item.sellData.coordinates.y, this.item.sellData.coordinates.z);
+        if (this.cardItem.sellData?.coordinates) {
+            console.log(this.cardItem.sellData?.coordinates);
+            mp.trigger("MarketPlace:Item:GetAddress:Client", this.cardItem.id, this.cardItem.sellData.coordinates.x, this.cardItem.sellData.coordinates.y, this.cardItem.sellData.coordinates.z);
         }
     },
     computed: {
