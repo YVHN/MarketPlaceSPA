@@ -9,7 +9,7 @@ const marketPlace = {
 	state: {
 		currentLanguage: 'eng',
 		pagesInSection: 0,
-		listData: sectionsData.clothes,
+		listData: sectionsData.auction,
 		favoritesIdList: [],
 		pickedItem: null,
 		openingType: 'InTablet',
@@ -215,4 +215,16 @@ events.add('MarketPlace:Exchange:EditOffer:Cef', (cardId, offerId, quantity) => 
 		}
 	}
 });
+events.add('MarketPlace:CardItem:SetAddress:Cef', (id, address) => {
+	console.log('добавление адреса');
+	if (marketPlace.state.pickedItem) {
+		if (marketPlace.state.pickedItem.id === id) {
+			marketPlace.state.pickedItem.sellData.address = address;
+		}
+	}
+	let listItem = marketPlace.state.listData.find((item) => item.id === id);
+	if (listItem) {
+		listItem.sellData.address = address;
+	}
+})
 export default marketPlace;

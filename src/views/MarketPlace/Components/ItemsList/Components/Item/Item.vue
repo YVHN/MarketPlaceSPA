@@ -47,7 +47,7 @@
         {{ getItemTitle(item) }}
       </div>
       <div class="item-category">
-        {{ $store.getters.getLanguageText(getItemSubTitle(item, $route.params.section)) }}
+        {{ getItemSubTitle(item) }}
       </div>
     </div>
     <div class="item-footer">
@@ -220,6 +220,9 @@ export default {
     onUnmounted(() => {
       this.stopTimer;
     });
+    if(this.item.sellData?.coordinates) {
+      mp.trigger("MarketPlace:Item:GetAddress:Client");
+    }
   },
   methods: {
     getImgPath(itemCard) {

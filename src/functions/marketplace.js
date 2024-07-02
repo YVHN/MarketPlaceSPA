@@ -1,16 +1,4 @@
 import store from "@/store";
-export function getAddress() {
-    const area = mp.game.ui.getLabelText(mp.game.zone.getNameOfZone(x, y, z));
-    const adress = mp.game.ui.getStreetNameFromHashKey(mp.game.pathfind.getStreetNameAtCoord(
-        x,
-        y,
-        z,
-        0,
-        0
-    ).streetName);
-    const addressHouse = area + " | " + adress;
-    return addressHouse;
-};
 
 export function getEndTime(endItemTime) {
     const currentTime = new Date();
@@ -84,9 +72,9 @@ export function getItemSubTitle(itemCard, section) {
     const item = itemCard.sellData;
     let subTitle = '';
     if (['house', 'apartment'].includes(item.type)) {
-        subTitle = isDefault ? 'Недвижимость' : 'Адрес';
+        subTitle = isDefault ? 'Недвижимость' : item?.address;
     } else if (item.type === 'business') {
-        subTitle = isDefault ? 'Бизнес' : 'Адрес';
+        subTitle = isDefault ? 'Бизнес' : item?.address;
     } else if (['transportRent', 'transport'].includes(item.type)) {
         subTitle = isDefault ? 'Транспорт' : item.dealerShip;
     } else if (item.type === 'item') {
