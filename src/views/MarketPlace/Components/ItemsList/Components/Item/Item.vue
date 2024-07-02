@@ -221,7 +221,7 @@ export default {
       this.stopTimer;
     });
     if(this.item.sellData?.coordinates) {
-      mp.trigger("MarketPlace:Item:GetAddress:Client");
+      mp.trigger("MarketPlace:Item:GetAddress:Client", this.item.id, this.item.sellData.coordinates);
     }
   },
   methods: {
