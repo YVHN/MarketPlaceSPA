@@ -222,7 +222,7 @@ export default {
     });
     if(this.item.sellData?.coordinates) {
       console.log(this.item.sellData?.coordinates);
-      mp.trigger("MarketPlace:Item:GetAddress:Client", this.item.id, this.item.sellData.coordinates);
+      mp.trigger("MarketPlace:Item:GetAddress:Client", this.item.id, this.item.sellData.coordinates.x, this.item.sellData.coordinates.y, this.item.sellData.coordinates.z);
     }
   },
   methods: {
@@ -230,7 +230,7 @@ export default {
       return getImgPath(itemCard);
     },
     getItemSubTitle(itemCard) {
-      return this.$store.getters.getLanguageText(getItemSubTitle(itemCard, this.$route.params.section));
+      return setTimeout(this.$store.getters.getLanguageText(getItemSubTitle(itemCard, this.$route.params.section)), 500);
     },
     getItemTitle(itemCard) {
       return getItemTitle(itemCard);

@@ -24,6 +24,12 @@ export default {
             required: false,
         },
     },
+    mounted() {
+        if (this.item.sellData?.coordinates) {
+            console.log(this.item.sellData?.coordinates);
+            mp.trigger("MarketPlace:Item:GetAddress:Client", this.item.id, this.item.sellData.coordinates.x, this.item.sellData.coordinates.y, this.item.sellData.coordinates.z);
+        }
+    },
     computed: {
         getItemMainInfo() {
             const info = [];
@@ -34,7 +40,7 @@ export default {
                         value: getCardItemType(this.cardItem.sellData?.type),
                     }
                 )
-            } else if(this.cardItem.sellData?.type === 'item') {
+            } else if (this.cardItem.sellData?.type === 'item') {
                 info.push(
                     {
                         title: 'Категория:',
@@ -62,7 +68,7 @@ export default {
                 info.push(
                     {
                         title: 'Улица:',
-                        value: 'Адресс',
+                        value: this.cardItem.sellData?.address || 'Нема',
                     }
                 )
             }
@@ -114,7 +120,7 @@ export default {
                     }
                 )
             }
-            if(this.cardItem.sellData?.tuningStatus) {
+            if (this.cardItem.sellData?.tuningStatus) {
                 info.push(
                     {
                         title: 'Тюнинг:',
@@ -122,7 +128,7 @@ export default {
                     }
                 )
             }
-            if(this.cardItem?.endTime) {
+            if (this.cardItem?.endTime) {
                 info.push(
                     {
                         title: 'Окончание размещения:',
@@ -164,6 +170,7 @@ export default {
         color: #fff;
     }
 }
+
 .column {
     flex-direction: column;
 }
