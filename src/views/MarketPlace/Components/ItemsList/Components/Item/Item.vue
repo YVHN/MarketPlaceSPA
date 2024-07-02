@@ -47,7 +47,7 @@
         {{ getItemTitle(item) }}
       </div>
       <div class="item-category">
-        {{ getItemSubTitle(item) }}
+        {{ item.sellData?.address ? item.sellData.address : getItemSubTitle(item) }}
       </div>
     </div>
     <div class="item-footer">
@@ -229,13 +229,8 @@ export default {
     getImgPath(itemCard) {
       return getImgPath(itemCard);
     },
-    async getItemSubTitle(itemCard) {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          const subtitle = this.$store.getters.getLanguageText(getItemSubTitle(itemCard, this.$route.params.section));
-          resolve(subtitle);
-        }, 500);
-      });
+    getItemSubTitle(itemCard) {
+      return this.$store.getters.getLanguageText(getItemSubTitle(itemCard, this.$route.params.section));
     },
     getItemTitle(itemCard) {
       return getItemTitle(itemCard);
