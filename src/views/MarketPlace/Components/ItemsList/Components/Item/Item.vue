@@ -47,7 +47,7 @@
         {{ getItemTitle(item) }}
       </div>
       <div class="item-category">
-        {{ item.sellData?.address ? item.sellData.address : getItemSubTitle(item) }}
+        {{ getItemSubTitle }}
       </div>
     </div>
     <div class="item-footer">
@@ -174,6 +174,13 @@ export default {
     endTime,
   },
   computed: {
+    getItemSubTitle() {
+      if(this.item.sellData?.address) {
+        return this.item.sellData.address;
+      } else {
+        return this.$store.getters.getLanguageText(getItemSubTitle(this.item, this.$route.params.section));
+      }
+    },
     isShowQuantityTip() {
       return this.isHas('sellData', 'quantity') && (this.$route.params.section === 'storage' || this.$route.path.includes('createListing'));
     },
@@ -228,9 +235,6 @@ export default {
   methods: {
     getImgPath(itemCard) {
       return getImgPath(itemCard);
-    },
-    getItemSubTitle(itemCard) {
-      return this.$store.getters.getLanguageText(getItemSubTitle(itemCard, this.$route.params.section));
     },
     getItemTitle(itemCard) {
       return getItemTitle(itemCard);
