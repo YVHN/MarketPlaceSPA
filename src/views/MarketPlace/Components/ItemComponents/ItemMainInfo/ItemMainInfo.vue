@@ -64,11 +64,11 @@ export default {
                     },
                 )
             }
-            if (this.item.sellData?.coordinates) {
+            if (this.cardItem.sellData?.coordinates) {
                 info.push(
                     {
                         title: 'Улица:',
-                        value: this.$store.getters.getItemAddress(this.item.sellData?.coordinates),
+                        value: this.$store.getters.getItemAddress(this.cardItem.sellData?.coordinates),
                     }
                 )
             }
