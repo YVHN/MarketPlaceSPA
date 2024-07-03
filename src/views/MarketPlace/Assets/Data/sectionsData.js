@@ -58,7 +58,7 @@ export default {
             created: '11.04.2024 13:53',
             sellData: {
                 id: 12,
-                type: 'house',
+                type: 'apart',
                 img: 'House123',
                 
                 price: 50000,

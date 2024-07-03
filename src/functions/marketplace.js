@@ -191,8 +191,10 @@ export function getImgPath(itemCard) {
         } else if (itemCard.sellData.filter === 'transportRent') {
             return require(`@/views/MarketPlace/Assets/Images/Items/carKeys.png`);
         }
-    } else if (['apart', 'house'].includes(itemCard.sellData.type)) {
+    } else if (itemCard.sellData.type === 'house') {
         return `${host}/House/${itemCard.sellData.id}.png`;
+    } else if (itemCard.sellData.type === 'apart') {
+        return require(`@/views/MarketPlace/Assets/Images/Items/apart.png`);
     } else if (['transport', 'transportRent'].includes(itemCard.sellData.type)) {
         return `${host}/vehicles/${itemCard.sellData.vehicleModel}.png`;
     } else if (itemCard.sellData.type === 'business') {
