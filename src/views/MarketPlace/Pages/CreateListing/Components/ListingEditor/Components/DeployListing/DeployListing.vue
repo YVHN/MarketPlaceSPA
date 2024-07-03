@@ -110,7 +110,7 @@ export default {
     },
     getPriceForHours() {
       let basePrice = this.pickedHours * this.$store.getters.getPricePerHour;
-      let percents = this.price * 0.1;
+      let percents = this.price * 0.03;
       return this.formatNumber(basePrice + percents);
     },
   },
