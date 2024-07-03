@@ -175,10 +175,11 @@ export default {
   },
   computed: {
     getItemSubTitle() {
-      if(this.item.sellData?.address) {
-        return this.item.sellData.address;
+      const item = this.item;
+      if(item && item.sellData?.address) {
+        return item.sellData.address;
       } else {
-        return this.$store.getters.getLanguageText(getItemSubTitle(this.item, this.$route.params.section));
+        return this.$store.getters.getLanguageText(getItemSubTitle(item, this.$route.params.section));
       }
     },
     isShowQuantityTip() {
