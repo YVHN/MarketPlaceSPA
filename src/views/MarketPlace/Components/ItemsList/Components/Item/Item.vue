@@ -174,10 +174,14 @@ export default {
     endTime,
   },
   computed: {
+    getItemAddress() {
+      return this.$store.getters.getItemAddress(this.item.sellData.coordinates);
+    },
     getItemSubTitle() {
       const item = this.item;
-      if(item && item.sellData?.address) {
-        return item.sellData.address;
+      if(item && item.sellData?.coordinates) {
+        // return item.sellData?.address || this.getItemAddress;
+        return this.getItemAddress;
       } else {
         return this.$store.getters.getLanguageText(getItemSubTitle(item, this.$route.params.section));
       }

@@ -60,7 +60,7 @@ export default {
                 id: 12,
                 type: 'house',
                 img: 'House123',
-                address: 'Хабибовна 33',
+                
                 price: 50000,
                 parkingCapacity: 4,
                 maxTenants: 1,

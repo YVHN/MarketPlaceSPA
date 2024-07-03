@@ -9,10 +9,11 @@ const marketPlace = {
 	state: {
 		currentLanguage: 'eng',
 		pagesInSection: 0,
-		listData: sectionsData.auction,
+		listData: sectionsData.estate,
 		favoritesIdList: [],
 		pickedItem: null,
 		openingType: 'InTablet',
+		addressesList: [],
 		userInfo: {
 			moneyCash: 1233,
 			moneyBank: 12,
@@ -21,6 +22,11 @@ const marketPlace = {
 		pricePerHour: 50000
 	},
 	getters: {
+		getItemAddress: (state) => (coordinates) => {
+			const location = `${coordinates?.x},${coordinates?.y},${coordinates?.z}`;
+			let locationName = state.addressesList.find(address => address.location === location)?.name || '';
+			return locationName;
+		},
 		getPricePerHour(state) {
 			return state.pricePerHour;
 		},
@@ -84,9 +90,9 @@ const marketPlace = {
 		},
 		start(state) {
 			console.log('запуск');
-			state.listData = [];
-			state.pickedItem = null;
-			state.pagesInSection = 1;
+			// state.listData = [];
+			// state.pickedItem = null;
+			// state.pagesInSection = 1;
 		},
 		pickItem(state, item) {
 			console.log(item);
@@ -224,7 +230,12 @@ events.add('MarketPlace:CardItem:SetAddress:Cef', (id, address) => {
 	}
 	let listItem = marketPlace.state.listData.find((item) => item.id === id);
 	if (listItem) {
+		const location = `${listItem.sellData.coordinates?.x},${listItem.sellData.coordinates?.y},${listItem.sellData.coordinates?.z}`;
 		listItem.sellData.address = address;
+		marketPlace.state.addressesList.push({
+			location: location,
+			name: address,
+		});
 	}
 })
 export default marketPlace;

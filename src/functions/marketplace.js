@@ -72,9 +72,9 @@ export function getItemSubTitle(itemCard, section) {
     const item = itemCard.sellData;
     let subTitle = '';
     if (['house', 'apartment'].includes(item.type)) {
-        subTitle = isDefault ? 'Недвижимость' : item?.address;
+        subTitle = isDefault ? 'Недвижимость' : 'Адрес';
     } else if (item.type === 'business') {
-        subTitle = isDefault ? 'Бизнес' : item?.address;
+        subTitle = isDefault ? 'Бизнес' : 'Адрес';
     } else if (['transportRent', 'transport'].includes(item.type)) {
         subTitle = isDefault ? 'Транспорт' : item.dealerShip;
     } else if (item.type === 'item') {
