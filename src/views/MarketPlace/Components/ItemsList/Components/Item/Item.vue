@@ -56,9 +56,7 @@
           {{ shelfTime }}
         </div>
         <div class="item-storage-button" v-if="!$route.path.includes('createListing')">
-          {{ $store.getters.getLanguageText(getOpeningType === 'InTablet' ? 'Выгрузка не доступна с планшета' :
-            'Выгрузить
-          со склада') }}
+          {{ $store.getters.getLanguageText(getOpeningType === 'InTablet' ? 'Выгрузка не доступна с планшета' : 'Выгрузить со склада') }}
         </div>
       </div>
       <div class="item-exchange" v-else-if="item?.tradeData">
