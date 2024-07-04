@@ -286,7 +286,35 @@ export default {
         },
     ],
     userListings: [],
-    history: [],
+    history: [
+        {
+            id: 11,
+            sellData: {
+                itemName: 'Хранилище данных - 16 TB',
+                img: 'DataStorage16TB',
+                state: 'Отличное',
+                type: 'item',
+                itemType: 4,
+                quantity: 15,
+                weight: 12,
+                price: 3000,
+            },
+        },
+        {
+            id: 0,
+            sellData: {
+                type: "transportRent",
+                img: null,
+                description: "1",
+                dealerShip: 'Это аренда',
+                id: 923471,
+                vehicleName: "Ferari Daytona",
+                vehicleModel: "daytona",
+                rentPrice: 100000,
+                rentTime: 60
+            },
+        }
+    ],
     createListing: [
         {
             id: 12,

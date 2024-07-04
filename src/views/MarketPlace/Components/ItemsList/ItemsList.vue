@@ -83,9 +83,8 @@ export default {
   methods: {
     handleItemClick(item) {
       // Если айтем на продаже, то вызов фулл даты
-      if (this.checkPath('viewing') && !item?.storageData) {
+      if (this.checkPath('viewing') && !item?.storageData && !this.checkPath('history')) {
         this.viewingAction(item);
-        // Если айтем создания обьявления 
       } else if (this.checkPath('createListing')) {
         this.createListingAction(item);
       } else if (item?.storageData) {

@@ -86,7 +86,7 @@
           <div class="unit" v-if="item?.likes">
             <likes class="unit-img" />{{ item.likes }}
           </div>
-          <div class="unit">
+          <div class="unit" v-if="item?.views" >
             <img class="unit-img" src="@/views/MarketPlace/Assets/Icons/Item/views.svg" />
             {{ item.views }}
           </div>
@@ -116,7 +116,7 @@
           <div class="unit" v-if="item?.likes">
             <likes class="unit-img" />{{ item.likes }}
           </div>
-          <div class="unit">
+          <div class="unit" v-if="item?.views">
             <img class="unit-img" src="@/views/MarketPlace/Assets/Icons/Item/views.svg" />
             {{ item.views }}
           </div>
