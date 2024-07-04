@@ -185,7 +185,7 @@ export default {
       }
     },
     isShowQuantityTip() {
-      return this.isHas('sellData', 'quantity') && (this.$route.params.section === 'storage' || this.$route.path.includes('createListing'));
+      return this.isHas('sellData', 'quantity') && (['storage', 'history'].includes(this.$route.params.section) || this.$route.path.includes('createListing'));
     },
     isShowWeightTip() {
       return this.isHas('sellData', 'weight') && (this.$route.params.section === 'storage' || this.$route.path.includes('createListing'));
@@ -193,7 +193,7 @@ export default {
     isHideFavorite() {
       const isStorage = this.item?.storageData;
       const isCreateListing = this.item?.status;
-      return isStorage || isCreateListing;
+      return isStorage || isCreateListing || this.$route.params.section === 'history';
     },
     getIsImgFull() {
       return ['business', 'house', 'apartment'].includes(this.sellData.type);

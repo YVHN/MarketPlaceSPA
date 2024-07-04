@@ -90,9 +90,9 @@ const marketPlace = {
 		},
 		start(state) {
 			console.log('запуск');
-			// state.listData = [];
-			// state.pickedItem = null;
-			// state.pagesInSection = 1;
+			state.listData = [];
+			state.pickedItem = null;
+			state.pagesInSection = 1;
 		},
 		pickItem(state, item) {
 			console.log(item);
