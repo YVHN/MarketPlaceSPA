@@ -58,9 +58,9 @@ export default {
             created: '11.04.2024 13:53',
             sellData: {
                 id: 12,
-                type: 'apart',
+                type: 'apartment',
                 img: 'House123',
-                
+
                 price: 50000,
                 parkingCapacity: 4,
                 maxTenants: 1,

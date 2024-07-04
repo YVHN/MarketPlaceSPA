@@ -67,7 +67,7 @@ export default {
             if (this.cardItem.sellData?.coordinates) {
                 info.push(
                     {
-                        title: 'Улица:',
+                        title: 'Адрес:',
                         value: this.$store.getters.getItemAddress(this.cardItem.sellData?.coordinates),
                     }
                 )

@@ -22,7 +22,7 @@
               <tenants class="unit-icon" />
               {{ formatNumber(sellData.maxTenants) }}
             </div>
-            <div class="unit" v-if="isShowQuantityTip" >
+            <div class="unit" v-if="isShowQuantityTip">
               <quantity class="unit-icon" />
               {{
                 `${sellData.quantity} ${$store.getters.getLanguageText('шт.')}`
@@ -38,8 +38,7 @@
             </div>
           </template>
         </div>
-        <Img class="item-header-img" :card-item="item" :size="'s'"
-          :isSmall="sellData?.filter ? true : false" />
+        <Img class="item-header-img" :card-item="item" :size="'s'" :isSmall="sellData?.filter ? true : false" />
         <FavoriteIndicator class="item-favorite" :itemId="item.id" :size="'small'"
           :is-favorite="item?.isFavorite ? item.isFavorite : false" v-if="!isHideFavorite" />
       </div>
@@ -56,9 +55,10 @@
           <span>{{ $store.getters.getLanguageText('Время хранения:') }} </span>
           {{ shelfTime }}
         </div>
-        <div class="item-storage-button"
-          v-if="!$route.path.includes('createListing')">
-          {{ $store.getters.getLanguageText(getOpeningType === 'InTablet' ? 'Выгрузка не доступна с планшета' : 'Выгрузить со склада') }}
+        <div class="item-storage-button" v-if="!$route.path.includes('createListing')">
+          {{ $store.getters.getLanguageText(getOpeningType === 'InTablet' ? 'Выгрузка не доступна с планшета' :
+            'Выгрузить
+          со склада') }}
         </div>
       </div>
       <div class="item-exchange" v-else-if="item?.tradeData">
@@ -179,7 +179,7 @@ export default {
     },
     getItemSubTitle() {
       const item = this.item;
-      if(item && item.sellData?.coordinates) {
+      if (item && item.sellData?.coordinates) {
         // return item.sellData?.address || this.getItemAddress;
         return this.getItemAddress;
       } else {
@@ -232,7 +232,7 @@ export default {
     onUnmounted(() => {
       this.stopTimer;
     });
-    if(this.item.sellData?.coordinates) {
+    if (this.item.sellData?.coordinates) {
       console.log(this.item.sellData?.coordinates);
       mp.trigger("MarketPlace:Item:GetAddress:Client", this.item.id, this.item.sellData.coordinates.x, this.item.sellData.coordinates.y, this.item.sellData.coordinates.z);
     }

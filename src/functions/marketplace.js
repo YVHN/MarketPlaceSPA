@@ -186,14 +186,14 @@ export function getCardItemType(cardItemType) {
 export function getImgPath(itemCard) {
     const host = "http://146.59.126.149";
     if (itemCard.sellData?.filter) {
-        if(['empty', 'auction'].includes(itemCard.sellData.filter)) {
+        if (['empty', 'auction'].includes(itemCard.sellData.filter)) {
             return require(`@/views/MarketPlace/Assets/Images/Items/thunderclap.png`);
         } else if (itemCard.sellData.filter === 'transportRent') {
             return require(`@/views/MarketPlace/Assets/Images/Items/carKeys.png`);
         }
     } else if (itemCard.sellData.type === 'house') {
         return `${host}/House/${itemCard.sellData.id}.png`;
-    } else if (itemCard.sellData.type === 'apart') {
+    } else if (itemCard.sellData.type === 'apartment') {
         return require(`@/views/MarketPlace/Assets/Images/Items/apart.png`);
     } else if (['transport', 'transportRent'].includes(itemCard.sellData.type)) {
         return `${host}/vehicles/${itemCard.sellData.vehicleModel}.png`;
