@@ -65,7 +65,7 @@
         </div>
       </div>
       <div class="info-actions">
-        <div class="info-actions-makeDeal" @click="makeDeal" v-if="getItem.sellData?.price !== undefined">
+        <div class="info-actions-makeDeal" @click="makeDeal" v-if="getItem.sellData?.price !== undefined || getItem.sellData?.rentPrice !== undefined">
           {{ $store.getters.getLanguageText('Начать сделку') }}
         </div>
         <template v-if="getItem?.listingData?.seller?.phone">
