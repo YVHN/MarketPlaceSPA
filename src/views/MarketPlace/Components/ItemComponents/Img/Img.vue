@@ -48,6 +48,7 @@ export default {
   align-items: center;
   & > img {
     height: 100%;
+    max-width: 100%;
   }
 }
 .big {
