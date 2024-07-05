@@ -10,7 +10,7 @@ const marketPlace = {
 		currentLanguage: 'eng',
 		pagesInSection: 0,
 		listData: sectionsData.history,
-		currentSection,
+		currentSection: null,
 		favoritesIdList: [],
 		pickedItem: null,
 		openingType: 'InTablet',
