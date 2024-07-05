@@ -93,11 +93,13 @@ export default {
       return getImgPath(itemCard);
     },
     resetSellItem() {
-      this.haveItem = null;
-      events.callServer(
-        'MarketPlace:Exchange:IsCanSell:Server',
-        this.getPickedItem.sellData.itemType,
-      );
+      setTimeout(() => {
+        this.haveItem = null;
+        events.callServer(
+          'MarketPlace:Exchange:IsCanSell:Server',
+          this.getPickedItem.sellData.itemType,
+        );
+      }, 1500);
     },
     formatNumber(num) {
       return `$${num.toLocaleString('ru-RU')}`;
