@@ -169,30 +169,35 @@ events.add('MarketPlace:List:SetListData:Cef', (json) => {
 });
 // Изменяет свойство
 events.add('Marketplace:Action:ChangePropertyValue', (id, property, value, onlyGoods) => {
+	const updateItem = (item) => {
+		if (item && item.id === id) {
+			setFieldValue(item, property, value);
+		}
+	};
 	if (onlyGoods) {
-		if (marketPlace.state.currentSection && marketPlace.state.currentSection == "createListing") {
-			let listItem = marketPlace.state.listData.find((item) => item.id === id);
-			if (listItem) {
-				setFieldValue(listItem, property, value);
-			}
+		if (marketPlace.state.currentSection === "createListing") {
+			const listItem = marketPlace.state.listData.find(item => item.id === id);
+			updateItem(listItem);
 		}
 	} else {
-		if (marketPlace.state.pickedItem) {
-			if (marketPlace.state.pickedItem.id === id) {
-				setFieldValue(marketPlace.state.pickedItem, property, value);
-			}
-		}
-		let listItem = marketPlace.state.listData.find((item) => item.id === id);
-		if (listItem) {
-			setFieldValue(listItem, property, value);
-		}
+		updateItem(marketPlace.state.pickedItem);
+		const listItem = marketPlace.state.listData.find(item => item.id === id);
+		updateItem(listItem);
 	}
 });
-events.add('MarketPlace:List:ItemDelete:Cef', (id) => {
-	const filtered = marketPlace.state.listData.filter((item) => item.id !== id);
-	marketPlace.state.listData = filtered;
-	if (id === marketPlace.state.pickedItem?.id) {
-		marketPlace.state.pickedItem = null;
+events.add('MarketPlace:List:ItemDelete:Cef', (id, onlyGoods) => {
+	const updateListData = () => {
+		marketPlace.state.listData = marketPlace.state.listData.filter(item => item.id !== id);
+		if (id === marketPlace.state.pickedItem?.id) {
+			marketPlace.state.pickedItem = null;
+		}
+	};
+	if (onlyGoods) {
+		if (marketPlace.state.currentSection === "createListing") {
+			updateListData();
+		}
+	} else {
+		updateListData();
 	}
 });
 events.add('MarketPlace:List:ItemAdd:Cef', (item) => {
