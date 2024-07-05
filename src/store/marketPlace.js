@@ -10,6 +10,7 @@ const marketPlace = {
 		currentLanguage: 'eng',
 		pagesInSection: 0,
 		listData: sectionsData.history,
+		currentSection,
 		favoritesIdList: [],
 		pickedItem: null,
 		openingType: 'InTablet',
@@ -91,6 +92,7 @@ const marketPlace = {
 		start(state) {
 			console.log('запуск');
 			state.listData = [];
+			state.currentSection = null;
 			state.pickedItem = null;
 			state.pagesInSection = 1;
 		},
@@ -117,6 +119,7 @@ const marketPlace = {
 		resetListData(state) {
 			console.log('Список предметов очищен');
 			state.listData = [];
+			state.currentSection = null;
 		},
 		resetPickedItem(state) {
 			if (state.pickedItem) {
@@ -160,19 +163,29 @@ events.add('MarketPlace:List:SetListData:Cef', (json) => {
 	const parsedJson = JSON.parse(json);
 	const itemsInPage = parsedJson.section === 'createListing' ? 12 : 15;
 	marketPlace.state.listData = parsedJson.data;
+	marketPlace.state.currentSection = parsedJson.section;
 	console.log(parsedJson.data);
 	marketPlace.state.pagesInSection = Math.ceil(parsedJson.totalCount / itemsInPage);
 });
 // Изменяет свойство
-events.add('Marketplace:Action:ChangePropertyValue', (id, property, value) => {
-	if (marketPlace.state.pickedItem) {
-		if (marketPlace.state.pickedItem.id === id) {
-			setFieldValue(marketPlace.state.pickedItem, property, value);
+events.add('Marketplace:Action:ChangePropertyValue', (id, property, value, onlyGoods) => {
+	if (onlyGoods) {
+		if (marketPlace.state.currentSection && marketPlace.state.currentSection == "createListing") {
+			let listItem = marketPlace.state.listData.find((item) => item.id === id);
+			if (listItem) {
+				setFieldValue(listItem, property, value);
+			}
 		}
-	}
-	let listItem = marketPlace.state.listData.find((item) => item.id === id);
-	if (listItem) {
-		setFieldValue(listItem, property, value);
+	} else {
+		if (marketPlace.state.pickedItem) {
+			if (marketPlace.state.pickedItem.id === id) {
+				setFieldValue(marketPlace.state.pickedItem, property, value);
+			}
+		}
+		let listItem = marketPlace.state.listData.find((item) => item.id === id);
+		if (listItem) {
+			setFieldValue(listItem, property, value);
+		}
 	}
 });
 events.add('MarketPlace:List:ItemDelete:Cef', (id) => {
