@@ -9,7 +9,7 @@ const marketPlace = {
 	state: {
 		currentLanguage: 'eng',
 		pagesInSection: 0,
-		listData: [],
+		listData: sectionsData.history,
 		favoritesIdList: [],
 		pickedItem: null,
 		openingType: 'InStorage',
@@ -91,6 +91,7 @@ const marketPlace = {
 		start(state) {
 			console.log('запуск');
 			state.listData = [];
+			state.currentSection = null;
 			state.pickedItem = null;
 			state.pagesInSection = 1;
 		},
@@ -117,6 +118,7 @@ const marketPlace = {
 		resetListData(state) {
 			console.log('Список предметов очищен');
 			state.listData = [];
+			state.currentSection = null;
 		},
 		resetPickedItem(state) {
 			if (state.pickedItem) {
@@ -160,26 +162,41 @@ events.add('MarketPlace:List:SetListData:Cef', (json) => {
 	const parsedJson = JSON.parse(json);
 	const itemsInPage = parsedJson.section === 'createListing' ? 12 : 15;
 	marketPlace.state.listData = parsedJson.data;
+	marketPlace.state.currentSection = parsedJson.section;
 	console.log(parsedJson.data);
 	marketPlace.state.pagesInSection = Math.ceil(parsedJson.totalCount / itemsInPage);
 });
 // Изменяет свойство
-events.add('Marketplace:Action:ChangePropertyValue', (id, property, value) => {
-	if (marketPlace.state.pickedItem) {
-		if (marketPlace.state.pickedItem.id === id) {
-			setFieldValue(marketPlace.state.pickedItem, property, value);
+events.add('Marketplace:Action:ChangePropertyValue', (id, property, value, onlyGoods) => {
+	const updateItem = (item) => {
+		if (item && item.id === id) {
+			setFieldValue(item, property, value);
 		}
-	}
-	let listItem = marketPlace.state.listData.find((item) => item.id === id);
-	if (listItem) {
-		setFieldValue(listItem, property, value);
+	};
+	if (onlyGoods) {
+		if (marketPlace.state.currentSection === "createListing") {
+			const listItem = marketPlace.state.listData.find(item => item.id === id);
+			updateItem(listItem);
+		}
+	} else {
+		updateItem(marketPlace.state.pickedItem);
+		const listItem = marketPlace.state.listData.find(item => item.id === id);
+		updateItem(listItem);
 	}
 });
-events.add('MarketPlace:List:ItemDelete:Cef', (id) => {
-	const filtered = marketPlace.state.listData.filter((item) => item.id !== id);
-	marketPlace.state.listData = filtered;
-	if (id === marketPlace.state.pickedItem?.id) {
-		marketPlace.state.pickedItem = null;
+events.add('MarketPlace:List:ItemDelete:Cef', (id, onlyGoods) => {
+	const updateListData = () => {
+		marketPlace.state.listData = marketPlace.state.listData.filter(item => item.id !== id);
+		if (id === marketPlace.state.pickedItem?.id) {
+			marketPlace.state.pickedItem = null;
+		}
+	};
+	if (onlyGoods) {
+		if (marketPlace.state.currentSection === "createListing") {
+			updateListData();
+		}
+	} else {
+		updateListData();
 	}
 });
 events.add('MarketPlace:List:ItemAdd:Cef', (item) => {
