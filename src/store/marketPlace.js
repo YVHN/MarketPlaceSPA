@@ -8,6 +8,7 @@ import sectionsData from '@/views/MarketPlace/Assets/Data/sectionsData';
 const marketPlace = {
 	state: {
 		currentLanguage: 'eng',
+		currentSection: null,
 		pagesInSection: 0,
 		listData: sectionsData.history,
 		favoritesIdList: [],
