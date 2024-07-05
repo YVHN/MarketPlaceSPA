@@ -93,8 +93,8 @@ export default {
       return getImgPath(itemCard);
     },
     resetSellItem() {
+      this.haveItem = null;
       setTimeout(() => {
-        this.haveItem = null;
         events.callServer(
           'MarketPlace:Exchange:IsCanSell:Server',
           this.getPickedItem.sellData.itemType,
