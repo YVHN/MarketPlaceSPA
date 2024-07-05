@@ -96,8 +96,8 @@ export default {
       events.callServer('MarketPlace:Storage:Unload:Server', item.id);
     },
     viewingAction(item) {
-      // this.$store.commit('pickItem', itemsFullData.estate[0]);
-      // this.$router.push('/market-place/viewing/services/opened')
+      // this.$store.commit('pickItem', itemsFullData.items[0]);
+      // this.$router.push('/market-place/viewing/services/opened');
       events.callServer('MarketPlace:Item:GetFullData:Server', item.id);
     },
     createListingAction(item) {

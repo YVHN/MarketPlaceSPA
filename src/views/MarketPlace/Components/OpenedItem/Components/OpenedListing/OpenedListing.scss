@@ -36,9 +36,27 @@
         font-size: 1.6vmin;
         margin: 1.852vmin 0 1.389vmin;
       }
-
+      
       &-text {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 1vmin;
+        padding: 1vmin;
         font-size: 1.389vmin;
+        height: 25vmin;
+        padding-right: 1vmin;
+        overflow-y: auto;
+        overflow-x: hidden;
+        width: 100%;
+        &::-webkit-scrollbar {
+          width: 0.37vmin;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: white;
+          border-radius: 1vmin;
+        }
+        &::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.02);
+        }
       }
     }
     &-likesviews {
@@ -135,13 +153,14 @@
     &-actions {
       display: flex;
       gap: 1.2vmin;
+      align-items: center;
 
       &-makeDeal {
         border-radius: 0.185vmin;
         background: #5f9adf;
-        padding: 1.667vmin 7.5vmin;
+        padding: 3vmin 9vmin;
         font-weight: 700;
-        font-size: 1.111vmin;
+        font-size: 1.4vmin;
         color: #fff;
         width: fit-content;
         transition: transform 0.3s ease;
@@ -153,6 +172,7 @@
       }
 
       .action {
+        height: fit-content;
         background: rgba(255, 255, 255, 0.08);
         padding: 1.204vmin;
         cursor: pointer;

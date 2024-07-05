@@ -16,7 +16,9 @@
             </div>
             <div class="listingEditor-cover-images-item-img">
               <img :class="getItem.sellData?.type"
-                :src="getImgPath(getItem)" />
+                :src="getImgPath(getItem)" v-if="getImgPath(getItem)"/>
+              <img :class="getItem.sellData?.type"
+                :src="require('@/views/MarketPlace/Assets/Images/Items/default.png')" />
             </div>
           </div>
           <div class="listingEditor-cover-images-custom">

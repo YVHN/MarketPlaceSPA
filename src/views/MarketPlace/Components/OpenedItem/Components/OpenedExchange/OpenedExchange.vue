@@ -11,7 +11,7 @@
             <div class="item-info-title">
               {{ getPickedItem.sellData.title }}
             </div>
-            <ItemMainInfo :card-item="getPickedItem" />
+            <ItemMainInfo :card-item="getPickedItem" :type="'column'" />
           </div>
         </div>
         <div class="item-addLot">
@@ -113,7 +113,7 @@ export default {
       const data = {
         cardItemId: this.getPickedItem.id,
         offerId: offerData.id,
-        name: this.getPickedItem.sellData.title,
+        name: this.getPickedItem.sellData.itemName,
         playerData: offerData.playerData,
         state: offerData.state,
         quantity: offerData.quantity,

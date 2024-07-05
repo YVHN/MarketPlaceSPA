@@ -133,13 +133,6 @@
 
   &-body {
     width: 100%;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 25vmin 1fr;
-    grid-template-rows: 6.296vmin 1fr;
-    grid-column-gap: 2.963vmin;
-    grid-row-gap: 2.407vmin;
-    width: 100%;
     height: 100%;
     color: white;
 
@@ -151,7 +144,6 @@
       margin-bottom: 2.407vmin;
 
       &-title {
-        padding-top: 0.741vmin;
         font-weight: 700;
         font-size: 2.222vmin;
         text-shadow: 0 0.37vmin 2.963vmin rgba(95, 216, 223, 0.25);
@@ -160,7 +152,7 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-transform: uppercase;
-        margin-bottom: 0.741vmin;
+        margin-bottom: 0.2vmin;
 
         &>span {
           -webkit-text-fill-color: $main-color1;
@@ -171,7 +163,6 @@
         font-weight: 300;
         font-size: 1.111vmin;
         color: rgba(255, 255, 255, 0.44);
-        letter-spacing: 0.213vmin;
       }
 
       * {
@@ -181,15 +172,34 @@
   }
 }
 
+.inTablet {
+  .marketPlace-body {
+    display: grid;
+    grid-template-columns: 25vmin 1fr;
+    grid-template-rows: 6.296vmin 1fr;
+    grid-column-gap: 2.963vmin;
+    grid-row-gap: 2.407vmin;
+  }
+}
+
 .inStorage {
   .marketPlace-background-triangles {
     opacity: 0;
     pointer-events: none;
   }
 
-  .logo {
-    opacity: 0;
-    pointer-events: none;
+  .marketPlace-body {
+    display: flex;
+    flex-direction: column;
+    .logo {
+      display: none;
+    }
+    .aside {
+      display: none;
+    }
+    .header {
+      height: 6.296vmin;
+    }
   }
 }
 

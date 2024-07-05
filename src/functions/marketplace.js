@@ -244,6 +244,6 @@ export function getImgPath(itemCard) {
             // }
         }
     } else {
-        return 'пути нет';
+        return '';
     }
 }

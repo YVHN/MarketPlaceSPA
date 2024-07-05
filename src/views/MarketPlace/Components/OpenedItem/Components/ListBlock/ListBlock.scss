@@ -28,7 +28,7 @@
 
     &-offers {
       display: flex;
-      flex-direction: column-reverse;
+      flex-direction: column;
       gap: 1.389vmin;
       overflow-y: auto;
       height: calc(100vh - 62vmin);

@@ -13,6 +13,16 @@
     &:focus {
       box-shadow: 0 0 0.741vmin #5f9adf;
     }
+    &::-webkit-scrollbar {
+      width: 0.37vmin;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: white;
+      border-radius: 1vmin;
+    }
+    &::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.02);
+    }
   }
 
   &-info {

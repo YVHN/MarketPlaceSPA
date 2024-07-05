@@ -21,11 +21,11 @@
           </div>
         </div>
         <div class="info-wrapper">
-          <div class="buyItem-body-info-unit">
+          <div class="buyItem-body-info-unit" v-if="offer.playerData?.state">
             <div class="buyItem-body-info-unit-title">
               {{ $store.getters.getLanguageText('Состояние') }}
             </div>
-            <div class="buyItem-body-info-unit-value">{{ offer.state }}</div>
+            <div class="buyItem-body-info-unit-value">{{ `${offer.state}%` }}</div>
           </div>
           <div class="buyItem-body-info-unit">
             <div class="buyItem-body-info-unit-title">

@@ -112,11 +112,11 @@ export default {
                     }
                 )
             }
-            if (this.cardItem.sellData?.gender) {
+            if (this.cardItem.sellData?.gender !== undefined) {
                 info.push(
                     {
                         title: 'Пол:',
-                        value: this.cardItem.sellData.gender,
+                        value: this.$store.getters.getLanguageText(this.cardItem.sellData.gender ? 'Мужской' : 'Женский'),
                     }
                 )
             }

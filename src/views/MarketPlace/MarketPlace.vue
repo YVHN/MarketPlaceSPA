@@ -1,12 +1,12 @@
 <template>
   <div class="reset">
-    <div class="marketPlace" :class="{ inStorage: isInStorage }">
+    <div class="marketPlace" :class="{ inStorage: isInStorage, inTablet: !isInStorage }">
       <img class="marketPlace-background-triangles" src="@/views/MarketPlace/Assets/Images/backgroundTriangles.svg" />
       <div class="marketPlace-body">
         <div class="logo">
           <div class="logo-title">Market <span>place</span></div>
           <div class="logo-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Уникальная платформа, где вы можете обменять своё имущество на товары других игроков и многое другое!
           </div>
         </div>
         <div class="header">

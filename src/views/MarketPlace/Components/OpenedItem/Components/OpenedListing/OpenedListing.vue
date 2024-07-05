@@ -38,13 +38,13 @@
           <div class="info-header-statePrice" v-if="getItem.sellData?.statePrice">
             {{ $store.getters.getLanguageText('Гос. цена:') }}
             <span class="info-header-statePrice-value">{{
-              `${formatNumber(getItem.sellData.statePrice)} $`
-              }}</span>
+              `${formatPhoneNumber(getItem.sellData.statePrice)} $`
+            }}</span>
           </div>
         </div>
       </div>
       <CardItemTips :card-item="getItem" class="info-tips" />
-      <ItemMainInfo :card-item="getItem" :type="'column'" class="info-properties"/>
+      <ItemMainInfo :card-item="getItem" :type="'column'" class="info-properties" />
       <div class="info-seller" v-if="getItem?.listingData?.seller">
         <div class="info-seller-unit">
           <div class="info-seller-unit-title">
@@ -60,12 +60,13 @@
             {{ $store.getters.getLanguageText('Телефон') }}
           </div>
           <div class="info-seller-unit-value">
-            {{ getItem.listingData.seller.phone }}
+            {{ formatPhoneNumber(getItem.listingData.seller.phone) }}
           </div>
         </div>
       </div>
       <div class="info-actions">
-        <div class="info-actions-makeDeal" @click="makeDeal" v-if="getItem.sellData?.price !== undefined || getItem.sellData?.rentPrice !== undefined">
+        <div class="info-actions-makeDeal" @click="makeDeal"
+          v-if="getItem.sellData?.price !== undefined || getItem.sellData?.rentPrice !== undefined">
           {{ $store.getters.getLanguageText('Начать сделку') }}
         </div>
         <template v-if="getItem?.listingData?.seller?.phone">
@@ -146,6 +147,9 @@ export default {
         );
       }
     },
+    formatPhoneNumber(number) {
+      return String(number).replace(/(\d{3})(\d{3})(\d{3})/, '$1-$2-$3');
+    }
   },
   computed: {
     getItem() {

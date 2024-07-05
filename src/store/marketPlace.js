@@ -9,10 +9,10 @@ const marketPlace = {
 	state: {
 		currentLanguage: 'eng',
 		pagesInSection: 0,
-		listData: sectionsData.history,
+		listData: [],
 		favoritesIdList: [],
 		pickedItem: null,
-		openingType: 'InTablet',
+		openingType: 'InStorage',
 		addressesList: [],
 		userInfo: {
 			moneyCash: 1233,
@@ -202,7 +202,7 @@ events.add('MarketPlace:Exchange:AddOffer:Cef', (id, offer) => {
 	const parsedOffer = JSON.parse(offer);
 	console.log(parsedOffer);
 	if (id === marketPlace.state.pickedItem.id && parsedOffer) {
-		marketPlace.state.pickedItem.tradeData.offers.push(parsedOffer);
+		marketPlace.state.pickedItem.tradeData.offers.unshift(parsedOffer);
 		console.log('Предложение добавлено');
 	}
 });
