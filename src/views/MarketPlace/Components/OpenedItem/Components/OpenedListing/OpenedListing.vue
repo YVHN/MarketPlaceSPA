@@ -79,7 +79,7 @@
         </template>
       </div>
       <Specifications :specifications="getItem.sellData.specifications" v-if="getItem.sellData?.specifications" />
-      <IncomeGraph :graph-data="getItem.sellData.graphData" />
+      <IncomeGraph :graph-data="getItem.sellData.graphData" v-if="getItem.sellData.type === 'business'" />
     </div>
     <RentModal v-if="isRent" :item="getItem" @toggleRentStatus="toggleRentStatus" />
   </div>

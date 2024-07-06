@@ -183,6 +183,7 @@ export function getCardItemType(cardItemType) {
         transportRent: 'Транспорт',
         service: 'Услуги и прочее',
         clothes: 'Одежда и аксессуары',
+        weapon: 'Оружие',
     }
     return types[cardItemType] || "";
 }
