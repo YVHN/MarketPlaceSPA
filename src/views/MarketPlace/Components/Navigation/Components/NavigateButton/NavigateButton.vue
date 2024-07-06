@@ -21,6 +21,7 @@ import favorites from '@/views/MarketPlace/Assets/Icons/PersonalSections/favorit
 import history from '@/views/MarketPlace/Assets/Icons/PersonalSections/history.vue';
 import listings from '@/views/MarketPlace/Assets/Icons/PersonalSections/listings.vue';
 import storage from '@/views/MarketPlace/Assets/Icons/PersonalSections/storage.vue';
+import ammunition from '@/views/MarketPlace/Assets/Icons/MarketSections/ammunition.vue';
 
 import events from '@/modules/events';
 
@@ -45,6 +46,7 @@ export default {
     history,
     listings,
     storage,
+    ammunition
   },
   methods: {
     // Смена секции: переход и очистка

@@ -48,6 +48,9 @@ export default {
     };
   },
   computed: {
+    getCurrentPage() {
+      return this.$store.getters.getCurrentPage;
+    },
     getPagesInSection() {
       return this.$store.getters.getPagesInSection;
     },
@@ -96,8 +99,8 @@ export default {
       events.callServer('MarketPlace:Storage:Unload:Server', item.id);
     },
     viewingAction(item) {
-      // this.$store.commit('pickItem', itemsFullData.items[0]);
-      // this.$router.push('/market-place/viewing/services/opened');
+      this.$store.commit('pickItem', itemsFullData.items[0]);
+      this.$router.push('/market-place/viewing/services/opened');
       events.callServer('MarketPlace:Item:GetFullData:Server', item.id);
     },
     createListingAction(item) {
@@ -113,6 +116,11 @@ export default {
           this.$router.push('/market-place/createListing/all/empty');
         } else {
           this.$router.push(`/market-place/createListing/${item.sellData.filter}`);
+          events.callServer(
+                'MarketPlace:List:GetListData:Server',
+                `createListing/${item.sellData.filter}`,
+                this.getCurrentPage
+            );
         }
       } else if (item.sellData.type !== 'service') {
         if (this.$route.params.filter) {

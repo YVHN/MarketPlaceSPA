@@ -36,6 +36,12 @@
                 )} ${$store.getters.getLanguageText('кг.')}`
               }}
             </div>
+            <div class="unit" v-if="isShowStateTip" :class="{'good-state': sellData.state >= 70, 'medium-state': sellData.state >= 40 && sellData.state < 70, 'bad-state': sellData.state < 40}">
+              <state class="unit-icon" />
+              {{
+                `${sellData.state}%`
+              }}
+            </div>
           </template>
         </div>
         <Img class="item-header-img" :card-item="item" :size="'s'" :isSmall="sellData?.filter ? true : false" />
@@ -137,6 +143,7 @@ import tenants from '@/views/MarketPlace/Assets/Icons/Item/tenants.vue';
 import likes from '@/views/MarketPlace/Assets/Icons/Item/likes.vue';
 import weight from '@/views/MarketPlace/Assets/Icons/Item/weight.vue';
 import endTime from '@/views/MarketPlace/Assets/Icons/Item/time.vue';
+import state from '@/views/MarketPlace/Assets/Icons/Item/state.vue';
 
 import events from '@/modules/events';
 import { onUnmounted } from 'vue';
@@ -170,6 +177,7 @@ export default {
     weight,
     Img,
     endTime,
+    state,
   },
   computed: {
     getItemAddress() {
@@ -189,6 +197,9 @@ export default {
     },
     isShowWeightTip() {
       return this.isHas('sellData', 'weight') && (this.$route.params.section === 'storage' || this.$route.path.includes('createListing'));
+    },
+    isShowStateTip() {
+      return this.isHas('sellData', 'state') && (this.$route.params.section === 'storage' || this.$route.path.includes('createListing'));
     },
     isHideFavorite() {
       const isStorage = this.item?.storageData;

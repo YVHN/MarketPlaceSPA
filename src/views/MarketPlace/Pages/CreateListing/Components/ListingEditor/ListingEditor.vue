@@ -15,10 +15,10 @@
               {{ $store.getters.getLanguageText('Стандартная обложка') }}
             </div>
             <div class="listingEditor-cover-images-item-img">
-              <img :class="getItem.sellData?.type"
-                :src="getImgPath(getItem)" v-if="getImgPath(getItem)"/>
-              <img :class="getItem.sellData?.type"
-                :src="require('@/views/MarketPlace/Assets/Images/Items/default.png')" />
+              <img
+                :src="getImgPath(getItem)" v-if="getImgPath(getItem)" :class="{full: getIsImgFull}"/>
+              <img v-else
+                :src="require('@/views/MarketPlace/Assets/Images/Items/default.png')" :class="{full: getIsImgFull}"/>
             </div>
           </div>
           <div class="listingEditor-cover-images-custom">
@@ -205,6 +205,9 @@ export default {
     }
   },
   computed: {
+    getIsImgFull() {
+      return ['business', 'house', 'apartment', 'transport'].includes(this.getItem.sellData.type);
+    },
     getListingType() {
       const path = this.$route.path;
       if (path.includes('auction')) return 'auction';

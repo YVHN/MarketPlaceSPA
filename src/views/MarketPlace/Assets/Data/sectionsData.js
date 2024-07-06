@@ -329,6 +329,21 @@ export default {
             status: 'owned',
         },
         {
+            "id": 88,
+            "sellData": {
+                "type": "weapon",
+                "img": null,
+                "description": null,
+                "weight": 4.0,
+                "serial": "GUNSHOP-AJ397D-335969151",
+                "state": 60,
+                "itemType": 111,
+                "itemName": "Double Action",
+                "price": 0
+            },
+            "status": "owned"
+        },
+        {
             "id": 14,
             "sellData": {
                 "type": "transport",
@@ -387,4 +402,21 @@ export default {
             status: 'storage'
         }
     ],
+    ammunition: [
+        {
+            "id": 14,
+            "sellData": {
+                "type": "weapon",
+                "img": null,
+                "description": null,
+                "weight": 4.0,
+                "serial": "GUNSHOP-AJ397D-335969151",
+                "state": 100,
+                "itemType": 111,
+                "itemName": "Double Action",
+                "price": 0
+            },
+            "status": "owned"
+        },
+    ]
 };

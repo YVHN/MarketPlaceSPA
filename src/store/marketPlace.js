@@ -9,11 +9,12 @@ const marketPlace = {
 	state: {
 		currentLanguage: 'eng',
 		currentSection: null,
-		pagesInSection: 0,
+		currentPage: null,
+		pagesInSection: 7,
 		listData: sectionsData.history,
 		favoritesIdList: [],
 		pickedItem: null,
-		openingType: 'InStorage',
+		openingType: 'InTablet',
 		addressesList: [],
 		userInfo: {
 			moneyCash: 1233,
@@ -23,6 +24,9 @@ const marketPlace = {
 		pricePerHour: 50000
 	},
 	getters: {
+		getCurrentPage(state) {
+			return state.currentPage;
+		},
 		getItemAddress: (state) => (coordinates) => {
 			const location = `${coordinates?.x},${coordinates?.y},${coordinates?.z}`;
 			let locationName = state.addressesList.find(address => address.location === location)?.name || 'Адрес не загружен';
@@ -88,6 +92,9 @@ const marketPlace = {
 				console.log('меняю кол-во');
 				cardItem.sellData.quantity = quantity;
 			}
+		},
+		selectPage(state, page) {
+			state.currentPage = page;
 		},
 		start(state) {
 			console.log('запуск');

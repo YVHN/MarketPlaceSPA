@@ -64,18 +64,16 @@ export default {
     };
   },
   computed: {
+    getCurrentPage() {
+      return this.$store.getters.getCurrentPage;
+    },
     getListData() {
       const storage = this.$store.getters.getList || [];
-      let filter = this.$route.params.filter;
-      if (filter === 'transportRent') filter = 'transport';
       const defaultListings = this.defaultListings;
-      if (filter === 'auction') {
-        return storage.filter((item) => item.sellData.type !== 'item');
-      } else if (filter === 'transport') {
-        return storage.filter((item) => item.sellData.type === 'transport');
-      } else {
-        return [...defaultListings, ...storage];
-      }
+      return this.isShowActions ? [...defaultListings, ...storage] : storage;
+    },
+    isShowActions() {
+      return this.getCurrentPage === 1 && this.$route.params.filter === 'all';
     },
     getSelectedItem() {
       return this.$store.getters.getPickedItem;
@@ -99,9 +97,6 @@ export default {
       },
       deep: true,
       immediate: true,
-    },
-    isCanRent(newValue) {
-      console.log('Rent : ' + newValue);
     },
   },
 

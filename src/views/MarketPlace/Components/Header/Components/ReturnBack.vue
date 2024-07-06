@@ -7,6 +7,7 @@
 
 <script>
 import returnBack from '@/views/MarketPlace/Assets/Icons/returnBack.vue';
+import events from '@/modules/events';
 export default {
   name: 'ReturnBack',
   components: {
@@ -17,6 +18,11 @@ export default {
       if(this.$route.path.includes('createListing')) {
         if(this.$route.params?.type || this.$route.params.filter !== 'all') {
           this.$router.push('/market-place/createListing/all');
+          events.callServer(
+                'MarketPlace:List:GetListData:Server',
+                'createListing',
+                1
+            );
         } else {
           this.$router.push('/market-place/viewing/auction');
         }

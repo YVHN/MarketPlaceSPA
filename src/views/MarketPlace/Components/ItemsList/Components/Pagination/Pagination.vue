@@ -2,7 +2,7 @@
     <div class="pagination">
         <TransitionGroup class="pagination-transition" tag="div" name="pagination">
             <div class="pagination-page" v-for="page in pagesQuantity" :key="page" @click="selectPage(page)"
-                :class="{ active: selectedPage === page }">
+                :class="{ active: getCurrentPage === page }">
                 {{ page }}
             </div>
         </TransitionGroup>
@@ -19,36 +19,42 @@ export default {
             required: true,
         }
     },
-    data() {
-        return {
-            selectedPage: 1,
-        }
-    },
     mounted() {
-        this.selectedPage = 1;
+        this.$store.commit('selectPage', 1);
         onUnmounted(() => {
-            this.selectedPage = 1;
+            this.$store.commit('selectPage', 1);
         })
     },
     watch: {
         getCurrentSection: {
             handler(newValue, oldValue) {
-                this.selectedPage = 1;
+                this.$store.commit('selectPage', 1);
             },
             immediate: true,
         }
     },
     methods: {
         selectPage(page) {
-            this.selectedPage = page;
+            this.$store.commit('selectPage', page);
+            let requestSectionPath = '';
+            if (this.isCreateListing && this.$route.params?.filter !== 'all' ) {
+                requestSectionPath = `createListing/${this.$route.params.filter}`;
+            } else if (this.isCreateListing) {
+                requestSectionPath = 'createLIsting';
+            } else {
+                requestSectionPath = this.$route.params.section;
+            }
             events.callServer(
                 'MarketPlace:List:GetListData:Server',
-                this.isCreateListing ? 'createListing' : this.$route.params.section,
-                this.selectedPage
+                requestSectionPath,
+                this.getCurrentPage
             );
         },
     },
     computed: {
+        getCurrentPage() {
+            return this.$store.getters.getCurrentPage;
+        },
         getCurrentSection() {
             if (this.$route.params?.section) {
                 return this.$route.params.section;
@@ -71,6 +77,7 @@ export default {
 
     &-transition {
         display: flex;
+        gap: 1vmin;
     }
 
     &-page {
@@ -79,7 +86,7 @@ export default {
         font-size: 1.019vmin;
         text-align: center;
         border-radius: 0.278vmin;
-        background: rgba(98, 98, 98, 0.03);
+        background: rgba(255, 255, 255, 0.03);
         transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         cursor: pointer;
         user-select: none;

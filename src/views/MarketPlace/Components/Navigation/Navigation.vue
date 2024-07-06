@@ -53,6 +53,11 @@ export default {
           path: 'items',
         },
         {
+          title: 'Амуниция',
+          img: 'ammunition',
+          path: 'ammunition',
+        },
+        {
           title: 'Аренда транспорта',
           img: 'rent',
           path: 'transportRent',

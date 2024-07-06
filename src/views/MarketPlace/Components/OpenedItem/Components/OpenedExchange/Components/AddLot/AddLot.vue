@@ -11,11 +11,11 @@
           </div>
           <div class="addLot-body-info-unit-value">{{ data.sellData.itemName }}</div>
         </div>
-        <div class="addLot-body-info-unit">
+        <div class="addLot-body-info-unit" v-if="data.sellData?.state">
           <div class="addLot-body-info-unit-title">
             {{ $store.getters.getLanguageText('Состояние') }}
           </div>
-          <div class="addLot-body-info-unit-value">{{ data.sellData.state }}</div>
+          <div class="addLot-body-info-unit-value">{{ `${data.sellData.state}%` }}</div>
         </div>
         <div class="addLot-body-info-unit">
           <div class="addLot-body-info-unit-title">

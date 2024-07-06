@@ -80,6 +80,18 @@ export default {
                     },
                 )
             }
+            if(this.cardItem.sellData?.serial) {
+                info.push({
+                    title: 'Сер. номер:',
+                    valie: this.cardItem.sellData.serial,
+                })
+            }
+            if(this.cardItem.sellData?.state) {
+                info.push({
+                    title: 'Состояние:',
+                    valie: `${this.cardItem.sellData.state}%`,
+                })
+            }
             if (this.cardItem.sellData?.weight) {
                 info.push(
                     {
