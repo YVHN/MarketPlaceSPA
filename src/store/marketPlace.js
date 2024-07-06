@@ -168,7 +168,10 @@ const marketPlace = {
 // Получение списка и перезаписывание
 events.add('MarketPlace:List:SetListData:Cef', (json) => {
 	const parsedJson = JSON.parse(json);
-	const itemsInPage = parsedJson.section === 'createListing' ? 12 : 15;
+	let itemsInPage = 15;
+	if (parsedJson.section === 'createListing' && parsedJson.page === 1) {
+		itemsInPage = 12;
+	}
 	marketPlace.state.listData = parsedJson.data;
 	marketPlace.state.currentSection = parsedJson.section;
 	console.log(parsedJson.data);
