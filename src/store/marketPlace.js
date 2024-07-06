@@ -11,7 +11,7 @@ const marketPlace = {
 		currentSection: null,
 		currentPage: null,
 		pagesInSection: 7,
-		listData: sectionsData.history,
+		listData: sectionsData.business,
 		favoritesIdList: [],
 		pickedItem: null,
 		openingType: 'InTablet',
