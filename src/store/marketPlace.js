@@ -170,12 +170,12 @@ events.add('MarketPlace:List:SetListData:Cef', (json) => {
 	const parsedJson = JSON.parse(json);
 	let itemsInPage = 15;
 	let count = parsedJson.totalCount;
-	if (parsedJson.section === 'createListing' && marketPlace.state.currentPage === 1) {
-		itemsInPage = 12;
-	} else if (parsedJson.section === 'createListing') {
-		itemsInPage = 15;
-		count -= 3;
-	}
+	// if (parsedJson.section === 'createListing' && marketPlace.state.currentPage === 1) {
+	// 	itemsInPage = 12;
+	// } else if (parsedJson.section === 'createListing') {
+	// 	itemsInPage = 15;
+	// 	count -= 3;
+	// }
 	marketPlace.state.listData = parsedJson.data;
 	marketPlace.state.currentSection = parsedJson.section;
 	console.log(parsedJson.data);
