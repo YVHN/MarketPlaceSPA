@@ -78,13 +78,13 @@ export function getItemSubTitle(itemCard, section) {
     } else if (['transportRent', 'transport'].includes(item.type)) {
         subTitle = isDefault ? 'Транспорт' : item.dealerShip;
     } else if (item.type === 'item') {
-        subTitle = 'Разное';
-    } else if (item.type === 'weapon') {
         if([200,201,202,203,204].includes(item.itemType)) {
             subTitle = 'Боеприпасы';
         } else {
-            subTitle = 'Оружие';
+            subTitle = 'Разное';
         }
+    } else if (item.type === 'weapon') {
+        subTitle = 'Оружие';
     } else if (item.type === 'service') {
         subTitle = 'Услуги и прочее';
     } else if (item.type === 'clothes') {
