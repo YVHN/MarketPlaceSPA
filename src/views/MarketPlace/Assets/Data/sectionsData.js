@@ -178,7 +178,30 @@ export default {
             "endTime": "2024-06-30T21:31:50.4238053+03:00"
         }
     ],
-    business: [],
+    business: [
+        {
+            "id": 96,
+            "sellData": {
+              "type": "business",
+              "img": null,
+              "description": "123",
+              "id": 465,
+              "businessType": 1,
+              "price": 123123123123,
+              "statePrice": 0,
+              "coordinates": {
+                "x": 496.329,
+                "y": 2179.589,
+                "z": 80.45463
+              },
+              "address": ""
+            },
+            "views": 3,
+            "isFavorite": false,
+            "listingData": {},
+            "endTime": "2024-07-12T01:03:21.9226212+03:00"
+          }
+    ],
     storage: [
         {
             id: 11,

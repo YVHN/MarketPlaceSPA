@@ -67,7 +67,7 @@
       <div class="info-actions">
         <div class="info-actions-makeDeal" @click="makeDeal"
           v-if="getItem.sellData?.price !== undefined || getItem.sellData?.rentPrice !== undefined">
-          {{ $store.getters.getLanguageText('Начать сделку') }}
+          {{ $store.getters.getLanguageText(getActionBtnTitle) }}
         </div>
         <template v-if="getItem?.listingData?.seller?.phone">
           <div class="action">
@@ -79,6 +79,7 @@
         </template>
       </div>
       <Specifications :specifications="getItem.sellData.specifications" v-if="getItem.sellData?.specifications" />
+      <IncomeGraph :graph-data="getItem.sellData.graphData" />
     </div>
     <RentModal v-if="isRent" :item="getItem" @toggleRentStatus="toggleRentStatus" />
   </div>
@@ -91,6 +92,7 @@ import Img from '../../../ItemComponents/Img/Img.vue';
 import Specifications from '../../../ItemComponents/Specifications/Specifications.vue';
 import FavoriteIndicator from '@/views/MarketPlace/Components/ItemComponents/FavoriteIndicator/FavoriteIndicator.vue';
 import ItemMainInfo from '../../../ItemComponents/ItemMainInfo/ItemMainInfo.vue';
+import IncomeGraph from '@/views/MarketPlace/Components/ItemComponents/IncomeGraph/IncomeGraph.vue'
 import call from '@/views/MarketPlace/Assets/Icons/Item/call.vue';
 import message from '@/views/MarketPlace/Assets/Icons/Item/message.vue';
 import CardItemTips from '../../../CardItemTips/CardItemTips.vue';
@@ -107,6 +109,7 @@ export default {
     FavoriteIndicator,
     ItemMainInfo,
     CardItemTips,
+    IncomeGraph,
   },
   data() {
     return {
@@ -138,7 +141,7 @@ export default {
       this.isRent = !this.isRent;
     },
     makeDeal() {
-      if (this.getItem?.sellData.rentPrice) {
+      if (this.getItem.sellData?.rentPrice) {
         this.toggleRentStatus();
       } else {
         events.callServer(
@@ -152,6 +155,9 @@ export default {
     }
   },
   computed: {
+    getActionBtnTitle() {
+      return this.getItem.sellData?.rentPrice ? 'Арендовать' : 'Купить';
+    },
     getItem() {
       return this.$store.getters.getPickedItem;
     },
