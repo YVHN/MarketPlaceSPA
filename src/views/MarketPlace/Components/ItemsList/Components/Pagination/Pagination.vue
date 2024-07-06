@@ -40,7 +40,7 @@ export default {
             if (this.isCreateListing && this.$route.params?.filter !== 'all' ) {
                 requestSectionPath = `createListing/${this.$route.params.filter}`;
             } else if (this.isCreateListing) {
-                requestSectionPath = 'createLIsting';
+                requestSectionPath = 'createListing';
             } else {
                 requestSectionPath = this.$route.params.section;
             }
