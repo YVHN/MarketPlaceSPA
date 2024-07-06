@@ -169,13 +169,17 @@ const marketPlace = {
 events.add('MarketPlace:List:SetListData:Cef', (json) => {
 	const parsedJson = JSON.parse(json);
 	let itemsInPage = 15;
-	// if (parsedJson.section === 'createListing' && marketPlace.state.currentPage === 1) {
-	// 	itemsInPage = 12;
-	// }
+	let count = parsedJson.totalCount;
+	if (parsedJson.section === 'createListing' && marketPlace.state.currentPage === 1) {
+		itemsInPage = 12;
+	} else if (parsedJson.section === 'createListing') {
+		itemsInPage = 15;
+		count -= 3;
+	}
 	marketPlace.state.listData = parsedJson.data;
 	marketPlace.state.currentSection = parsedJson.section;
 	console.log(parsedJson.data);
-	marketPlace.state.pagesInSection = Math.ceil(parsedJson.totalCount / itemsInPage);
+	marketPlace.state.pagesInSection = Math.ceil(count / itemsInPage);
 });
 // Изменяет свойство
 events.add('Marketplace:Action:ChangePropertyValue', (id, property, value, onlyGoods) => {
