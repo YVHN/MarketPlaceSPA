@@ -87,6 +87,8 @@ export function getItemSubTitle(itemCard, section) {
         subTitle =  'Амуниция';
     } else if (item.type === 'weapon') {
         subTitle = 'Оружие';
+    } else if (item.type === 'armor') {
+        subTitle = 'Бронезащита';
     } else if (item.type === 'service') {
         subTitle = 'Услуги и прочее';
     } else if (item.type === 'clothes') {
@@ -186,6 +188,7 @@ export function getCardItemType(cardItemType) {
         service: 'Услуги и прочее',
         clothes: 'Одежда и аксессуары',
         weapon: 'Оружие',
+        armor: 'Бронезащита'
     }
     return types[cardItemType] || "";
 }
