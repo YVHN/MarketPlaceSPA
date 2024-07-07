@@ -206,7 +206,7 @@ export function getImgPath(itemCard) {
         return `${host}/vehicles/${itemCard.sellData.vehicleModel}.png`;
     } else if (itemCard.sellData.type === 'business') {
         return `${host}/bussines/${itemCard.sellData.businessType}.png`;
-    } else if (['item', 'weapon', 'itemWithData'].includes(itemCard.sellData.type)) {
+    } else if (['item', 'weapon', 'itemWithData', 'armor'].includes(itemCard.sellData.type)) {
         return `${host}/inventory_items/${itemCard.sellData.itemType}.png`;
     } else if (['weaponComponent'].includes(itemCard.sellData.type)) {
         let key = itemCard.sellData.componentKey;
