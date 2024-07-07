@@ -239,13 +239,6 @@ export function getImgPath(itemCard) {
             case -12: {
                 return `${host}/inventory/clothes/${gender}/props/${propsPackageName[itemCard.sellData.itemType]}/${itemCard.sellData.variation}/${itemCard.sellData.texture}.png`;
             }
-            case 740: {
-                let key = itemCard.sellData.componentKey;
-                if (itemCard.sellData.componentChildKey) {
-                    key = itemCard.sellData.componentChildKey;
-                }
-                return require(`../views/Inventory/assets/weaponComponents/${key}_have.png`)
-            }
         }
     } else {
         return '';
