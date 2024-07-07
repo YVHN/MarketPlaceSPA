@@ -33,14 +33,14 @@ export default {
     computed: {
         getItemMainInfo() {
             const info = [];
-            if (this.cardItem.sellData?.type !== 'item') {
+            if (!['item', 'itemWithData'].includes(this.cardItem.sellData?.type)) {
                 info.push(
                     {
                         title: 'Тип имущества:',
-                        value: getCardItemType(this.cardItem.sellData?.type),
+                        value: getCardItemType(this.cardItem.sellData.type),
                     }
                 )
-            } else if (this.cardItem.sellData?.type === 'item') {
+            } else if (['item', 'itemWithData'].includes(this.cardItem.sellData?.type)) {
                 info.push(
                     {
                         title: 'Категория:',
@@ -86,6 +86,12 @@ export default {
                     value: this.cardItem.sellData.serial,
                 })
             }
+            if(this.cardItem.sellData?.spent) {
+                info.push({
+                    title: 'Осталось использований:',
+                    value: this.cardItem.sellData.spent,
+                })
+            }
             if(this.cardItem.sellData?.state) {
                 info.push({
                     title: 'Состояние:',
@@ -96,7 +102,7 @@ export default {
                 info.push(
                     {
                         title: 'Вес товара:',
-                        value: this.cardItem.sellData?.weight,
+                        value: `${this.cardItem.sellData?.weight} ${this.$store.getters.getLanguageText('кг.')}`,
                     }
                 )
             }

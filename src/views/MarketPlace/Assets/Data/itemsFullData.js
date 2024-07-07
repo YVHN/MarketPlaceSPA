@@ -157,6 +157,32 @@ export default {
                 ],
 
             }
+        },
+        {
+            "id": 0,
+            "sellData": {
+                "type": "itemWithData",
+                "img": null,
+                "description": "123",
+                "weight": 5.0,
+                "quantity": 1,
+                "itemType": 603,
+                "itemName": "Дефибриллятор",
+                "price": 123123,
+                "serial": "Families-II648KO-335969151",
+                "spent": 15
+            },
+            "views": 1,
+            "isFavorite": false,
+            "created": "2024-07-07T15:35:21.1121881+03:00",
+            "listingData": {
+                "seller": {
+                    "username": "Cherry Waves",
+                    "static": 128683,
+                    "phone": 233197770
+                }
+            },
+            "endTime": "2024-07-13T01:35:21.1121881+03:00"
         }
     ],
     listings: [

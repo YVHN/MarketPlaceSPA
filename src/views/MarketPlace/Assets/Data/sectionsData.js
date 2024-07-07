@@ -108,6 +108,32 @@ export default {
                 "startPrice": 500,
                 "available": 55
             }
+        },
+        {
+            "id": 0,
+            "sellData": {
+                "type": "itemWithData",
+                "img": null,
+                "description": "123",
+                "weight": 5.0,
+                "quantity": 1,
+                "itemType": 603,
+                "itemName": "Дефибриллятор",
+                "price": 123123,
+                "serial": "Families-II648KO-335969151",
+                "spent": 15
+            },
+            "views": 1,
+            "isFavorite": false,
+            "created": "2024-07-07T15:35:21.1121881+03:00",
+            "listingData": {
+                "seller": {
+                    "username": "Cherry Waves",
+                    "static": 128683,
+                    "phone": 233197770
+                }
+            },
+            "endTime": "2024-07-13T01:35:21.1121881+03:00"
         }
     ],
     transportRent: [
@@ -182,25 +208,25 @@ export default {
         {
             "id": 96,
             "sellData": {
-              "type": "business",
-              "img": null,
-              "description": "123",
-              "id": 465,
-              "businessType": 1,
-              "price": 123123123123,
-              "statePrice": 0,
-              "coordinates": {
-                "x": 496.329,
-                "y": 2179.589,
-                "z": 80.45463
-              },
-              "address": ""
+                "type": "business",
+                "img": null,
+                "description": "123",
+                "id": 465,
+                "businessType": 1,
+                "price": 123123123123,
+                "statePrice": 0,
+                "coordinates": {
+                    "x": 496.329,
+                    "y": 2179.589,
+                    "z": 80.45463
+                },
+                "address": ""
             },
             "views": 3,
             "isFavorite": false,
             "listingData": {},
             "endTime": "2024-07-12T01:03:21.9226212+03:00"
-          }
+        }
     ],
     storage: [
         {

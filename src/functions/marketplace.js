@@ -77,7 +77,7 @@ export function getItemSubTitle(itemCard, section) {
         subTitle = isDefault ? 'Бизнес' : 'Адрес';
     } else if (['transportRent', 'transport'].includes(item.type)) {
         subTitle = isDefault ? 'Транспорт' : item.dealerShip;
-    } else if (item.type === 'item') {
+    } else if (['item', 'itemWithData'].includes(item.type)) {
         if([200,201,202,203,204].includes(item.itemType)) {
             subTitle = 'Боеприпасы';
         } else {
@@ -137,7 +137,7 @@ export function getItemTitle(itemCard) {
             26: 'Водный транспорт'
         }
         title = titles[item.businessType] || '';
-    } else if (['clothes', 'item', 'weapon'].includes(item.type)) {
+    } else if (['clothes', 'item', 'weapon', 'itemWithData'].includes(item.type)) {
         title = item.itemName;
     } else if (item.type === 'service') {
         title = item.title;
@@ -204,7 +204,7 @@ export function getImgPath(itemCard) {
         return `${host}/vehicles/${itemCard.sellData.vehicleModel}.png`;
     } else if (itemCard.sellData.type === 'business') {
         return `${host}/bussines/${itemCard.sellData.businessType}.png`;
-    } else if (['item', 'weapon'].includes(itemCard.sellData.type)) {
+    } else if (['item', 'weapon', 'itemWithData'].includes(itemCard.sellData.type)) {
         return `${host}/inventory_items/${itemCard.sellData.itemType}.png`;
     } else if (itemCard.sellData.type === 'clothes') {
         const gender = itemCard.sellData.gender ? "male" : "female";
