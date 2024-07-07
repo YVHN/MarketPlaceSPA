@@ -188,6 +188,7 @@ export function getCardItemType(cardItemType) {
         service: 'Услуги и прочее',
         clothes: 'Одежда и аксессуары',
         weapon: 'Оружие',
+        weaponComponent: 'Амуниция',
         armor: 'Бронезащита'
     }
     return types[cardItemType] || "";
