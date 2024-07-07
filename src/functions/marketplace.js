@@ -236,7 +236,7 @@ export function getImgPath(itemCard) {
                 if (itemCard.sellData.componentChildKey) {
                     key = itemCard.sellData.componentChildKey;
                 }
-                return require(`../views/Inventory/assets/weaponComponents/${key}_have.png`)
+                return require(`@/views/Inventory/assets/weaponComponents/${key}_have.png`)
             }
         }
     } else {
