@@ -18,7 +18,7 @@ export function getEndTime(endItemTime) {
     } else {
         return 'Время недоступно';
     }
-};
+}
 
 export function parseDate(dateString, type) {
     // Создание объекта Date из строки
@@ -60,12 +60,12 @@ export function parseDate(dateString, type) {
     } else if (type === 'day') {
         return `${day}.${month}`;
     }
-};
+}
 
 export function formatNumber(num) {
     if (!num) return 0;
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-};
+}
 
 export function getItemSubTitle(itemCard, section) {
     const isDefault = ['auction', 'favorites'].includes(section);
@@ -105,7 +105,7 @@ export function getItemSubTitle(itemCard, section) {
         subTitle = categories[item.itemType] || '';
     }
     return subTitle;
-};
+}
 
 export function getItemTitle(itemCard) {
     const item = itemCard.sellData;
@@ -146,7 +146,7 @@ export function getItemTitle(itemCard) {
         return `${store.getters.getLanguageText(title)} #${item.id}`;
     }
     return store.getters.getLanguageText(title);
-};
+}
 
 export function setFieldValue(obj, fieldName, value) {
     // Проверяем, существует ли объект
@@ -231,22 +231,13 @@ export function getImgPath(itemCard) {
             case -12: {
                 return `${host}/inventory/clothes/${gender}/props/${propsPackageName[itemCard.sellData.itemType]}/${itemCard.sellData.variation}/${itemCard.sellData.texture}.png`;
             }
-            // case 740: {
-            //     if (item.ItemData.WeaponComponentChildrenKey) {
-            //         return this.getWeaponHaveComponentImgPath(itemCard.sellData.WeaponComponentChildrenKey);
-            //     }
-            //     return this.getWeaponHaveComponentImgPath(itemCard.sellData.itemType);
-            // }
-            // case 601: {
-            //     if (!item.ItemSubData || !item.ItemSubData.includes("%")) {
-            //         return `${host}/inventory_items/${item.id}_0.png`;
-            //     }
-            //     const splitedData = item.ItemSubData.split("%");
-            //     if (splitedData.length < 2) {
-            //         return `${host}/inventory_items/${item.id}_0.png`;
-            //     }
-            //     return `${host}/inventory_items/${item.id}_${splitedData[1]}.png`;
-            // }
+            case 740: {
+                //itemCard.sellData.
+                // if (item.ItemData.WeaponComponentChildrenKey) {
+                //     return this.getWeaponHaveComponentImgPath(itemCard.sellData.WeaponComponentChildrenKey);
+                // }
+                // return this.getWeaponHaveComponentImgPath(itemCard.sellData.itemType);
+            }
         }
     } else {
         return '';
