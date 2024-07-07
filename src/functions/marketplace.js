@@ -77,12 +77,14 @@ export function getItemSubTitle(itemCard, section) {
         subTitle = isDefault ? 'Бизнес' : 'Адрес';
     } else if (['transportRent', 'transport'].includes(item.type)) {
         subTitle = isDefault ? 'Транспорт' : item.dealerShip;
-    } else if (['item', 'itemWithData'].includes(item.type)) {
-        if([200,201,202,203,204].includes(item.itemType)) {
+    } else if (['item', 'itemWithData', ].includes(item.type)) {
+        if ([200, 201, 202, 203, 204].includes(item.itemType)) {
             subTitle = 'Боеприпасы';
         } else {
             subTitle = 'Разное';
         }
+    } else if (['weaponComponent'].includes(item.type)) {
+        subTitle =  'Амуниция';
     } else if (item.type === 'weapon') {
         subTitle = 'Оружие';
     } else if (item.type === 'service') {
@@ -137,7 +139,7 @@ export function getItemTitle(itemCard) {
             26: 'Водный транспорт'
         }
         title = titles[item.businessType] || '';
-    } else if (['clothes', 'item', 'weapon', 'itemWithData'].includes(item.type)) {
+    } else if (['clothes', 'item', 'weapon', 'itemWithData', 'weaponComponent'].includes(item.type)) {
         title = item.itemName;
     } else if (item.type === 'service') {
         title = item.title;
@@ -206,6 +208,12 @@ export function getImgPath(itemCard) {
         return `${host}/bussines/${itemCard.sellData.businessType}.png`;
     } else if (['item', 'weapon', 'itemWithData'].includes(itemCard.sellData.type)) {
         return `${host}/inventory_items/${itemCard.sellData.itemType}.png`;
+    } else if (['weaponComponent'].includes(itemCard.sellData.type)) {
+        let key = itemCard.sellData.componentKey;
+        if (itemCard.sellData?.componentChildKey) {
+            key = itemCard.sellData.componentChildKey;
+        }
+        return require(`../views/Inventory/assets/weaponComponents/${key}_have.png`)
     } else if (itemCard.sellData.type === 'clothes') {
         const gender = itemCard.sellData.gender ? "male" : "female";
         const propsPackageName = {
@@ -230,13 +238,6 @@ export function getImgPath(itemCard) {
             case -13:
             case -12: {
                 return `${host}/inventory/clothes/${gender}/props/${propsPackageName[itemCard.sellData.itemType]}/${itemCard.sellData.variation}/${itemCard.sellData.texture}.png`;
-            }
-            case 740: {
-                let key = itemCard.sellData.componentKey;
-                if (itemCard.sellData.componentChildKey) {
-                    key = itemCard.sellData.componentChildKey;
-                }
-                return require(`../views/Inventory/assets/weaponComponents/${key}_have.png`)
             }
         }
     } else {

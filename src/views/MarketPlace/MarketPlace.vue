@@ -47,7 +47,7 @@ export default {
   mounted() {
     this.$store.commit('start');
     if (!['auction', 'storage'].includes(this.$route.params.section)) {
-      if (this.getOpeningType === 'inTablet') this.$router.push('/market-place/viewing/storage');
+      if (this.isInStorage) this.$router.push('/market-place/viewing/storage');
       else this.$router.push('/market-place/viewing/auction');
     }
   },

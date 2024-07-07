@@ -467,5 +467,30 @@ export default {
             },
             "status": "owned"
         },
+        {
+            "id": 4,
+            "sellData": {
+              "type": "weaponComponent",
+              "img": null,
+              "description": "1223",
+              "componentKey": "extendedclip",
+              "componentChildKey": "drummagazine",
+              "itemType": 740,
+              "itemName": "Компонент оружия",
+              "price": 32123,
+              "state": 100
+            },
+            "views": 1,
+            "isFavorite": false,
+            "created": "2024-07-07T19:35:23.3174822+03:00",
+            "listingData": {
+              "seller": {
+                "username": "Cherry Waves",
+                "static": 128683,
+                "phone": 233197770
+              }
+            },
+            "endTime": "2024-07-13T05:35:23.3174822+03:00"
+        }
     ]
 };

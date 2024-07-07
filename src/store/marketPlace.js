@@ -11,10 +11,10 @@ const marketPlace = {
 		currentSection: null,
 		currentPage: null,
 		pagesInSection: 7,
-		listData: sectionsData.business,
+		listData: sectionsData.ammunition,
 		favoritesIdList: [],
 		pickedItem: null,
-		openingType: 'InTablet',
+		openingType: 'InStorage',
 		addressesList: [],
 		userInfo: {
 			moneyCash: 1233,
