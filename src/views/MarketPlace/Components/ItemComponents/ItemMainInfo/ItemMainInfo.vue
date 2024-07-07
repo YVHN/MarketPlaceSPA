@@ -36,7 +36,7 @@ export default {
             if (!['item', 'itemWithData'].includes(this.cardItem.sellData?.type)) {
                 info.push(
                     {
-                        title: 'Тип имущества:',
+                        title: 'Тип:',
                         value: getCardItemType(this.cardItem.sellData.type),
                     }
                 )
