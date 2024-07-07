@@ -141,7 +141,7 @@ export function getItemTitle(itemCard) {
             26: 'Водный транспорт'
         }
         title = titles[item.businessType] || '';
-    } else if (['clothes', 'item', 'weapon', 'itemWithData', 'weaponComponent'].includes(item.type)) {
+    } else if (['clothes', 'item', 'weapon', 'itemWithData', 'weaponComponent', 'armor'].includes(item.type)) {
         title = item.itemName;
     } else if (item.type === 'service') {
         title = item.title;
