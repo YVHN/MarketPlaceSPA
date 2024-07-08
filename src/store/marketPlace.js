@@ -214,9 +214,12 @@ events.add('MarketPlace:List:ItemDelete:Cef', (id, onlyGoods) => {
 		updateListData();
 	}
 });
-events.add('MarketPlace:List:ItemAdd:Cef', (item) => {
-	if (!item) return;
-	marketPlace.state.listData.push(item);
+events.add('MarketPlace:List:ItemAdd:Cef', (json) => {
+	const parsed = JSON.parse(json)
+	if (!parsed) return;
+	if (marketPlace.state.currentSection.startsWith("createListing")) return;
+	if (marketPlace.state.listData.length >= 15) return;
+	marketPlace.state.listData.push(parsed);
 })
 events.add('MarketPlace:SetData:Cef', (json) => {
 	const parsed = JSON.parse(json);
