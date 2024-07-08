@@ -1,8 +1,7 @@
 <template>
     <div class="pagination">
         <TransitionGroup class="pagination-transition" tag="div" name="pagination">
-            <div class="pagination-page" v-for="page in pagesQuantity" :key="page" @click="selectPage(page)"
-                :class="{ active: getCurrentPage === page }">
+            <div class="pagination-page" v-for="page in pagesQuantity" :key="page" @click="selectPage(page)" :class="{ active: getCurrentPage === page }">
                 {{ page }}
             </div>
         </TransitionGroup>
@@ -11,45 +10,49 @@
 
 <script>
 import events from '@/modules/events';
-import { onUnmounted } from 'vue';
+import { getStore } from '@/store2';
+import { computed, onUnmounted } from 'vue';
 export default {
     props: {
         pagesQuantity: {
             type: Number,
-            required: true,
+            required: true
         }
     },
     mounted() {
         this.$store.commit('selectPage', 1);
         onUnmounted(() => {
             this.$store.commit('selectPage', 1);
-        })
+        });
+    },
+    setup() {
+        const { marketPlace } = getStore();
+        const activeSortIndex = computed(() => marketPlace.activeSortIndex);
+        return {
+            activeSortIndex
+        };
     },
     watch: {
         getCurrentSection: {
             handler(newValue, oldValue) {
                 this.$store.commit('selectPage', 1);
             },
-            immediate: true,
+            immediate: true
         }
     },
     methods: {
         selectPage(page) {
             this.$store.commit('selectPage', page);
             let requestSectionPath = '';
-            if (this.isCreateListing && this.$route.params?.filter !== 'all' ) {
+            if (this.isCreateListing && this.$route.params?.filter !== 'all') {
                 requestSectionPath = `createListing/${this.$route.params.filter}`;
             } else if (this.isCreateListing) {
                 requestSectionPath = 'createListing';
             } else {
                 requestSectionPath = this.$route.params.section;
             }
-            events.callServer(
-                'MarketPlace:List:GetListData:Server',
-                requestSectionPath,
-                this.getCurrentPage
-            );
-        },
+            events.callServer('MarketPlace:List:GetListData:Server', requestSectionPath, this.getCurrentPage, this.activeSortIndex);
+        }
     },
     computed: {
         getCurrentPage() {
@@ -58,8 +61,7 @@ export default {
         getCurrentSection() {
             if (this.$route.params?.section) {
                 return this.$route.params.section;
-            }
-            else return this.$route.params.filter;
+            } else return this.$route.params.filter;
         },
         isCreateListing() {
             return this.$route.path.includes('createListing');
@@ -102,15 +104,13 @@ export default {
 
     .active {
         border: 0.093vmin solid #5f9adf;
-        background: radial-gradient(ellipse at center,
-                rgba(95, 154, 223, 0.2) 0%,
-                rgba(229, 229, 229, 0) 100%);
+        background: radial-gradient(ellipse at center, rgba(95, 154, 223, 0.2) 0%, rgba(229, 229, 229, 0) 100%);
     }
 }
 
 .pagination-enter-active,
 .pagination-leave-active {
-    transition: opacity .3s ease;
+    transition: opacity 0.3s ease;
 }
 
 .pagination-enter,
