@@ -68,7 +68,7 @@ export default {
       return this.$store.getters.getCurrentPage;
     },
     getListData() {
-      const storage = sectionsData.createListing || [];
+      const storage = this.$store.getters.getList || [];
       const defaultListings = this.defaultListings;
       return this.isShowActions ? [...defaultListings, ...storage] : storage;
     },
