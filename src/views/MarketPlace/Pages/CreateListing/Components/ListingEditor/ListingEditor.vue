@@ -15,8 +15,7 @@
               {{ $store.getters.getLanguageText('Стандартная обложка') }}
             </div>
             <div class="listingEditor-cover-images-item-img">
-              <img
-                :src="getImgPath(getItem)" v-if="getImgPath(getItem)" :class="{full: getIsImgFull}"/>
+              <Img :card-item="getItem" v-if="getImgPath(getItem)" />
               <img v-else
                 :src="require('@/views/MarketPlace/Assets/Images/Items/default.png')" :class="{full: getIsImgFull}"/>
             </div>
@@ -113,6 +112,7 @@
   </div>
 </template>
 <script>
+import Img from '@/views/MarketPlace/Components/ItemComponents/Img/Img.vue';
 import imageIcon from '@/views/MarketPlace/Assets/Icons/Listing/image.vue';
 import DeployListing from './Components/DeployListing/DeployListing.vue';
 import CustomInput from '@/views/MarketPlace/Components/OpenedItem/Components/CustomInput/CustomInput.vue';
@@ -121,8 +121,7 @@ import CardItemTips from '@/views/MarketPlace/Components/CardItemTips/CardItemTi
 import ItemMainInfo from '@/views/MarketPlace/Components/ItemComponents/ItemMainInfo/ItemMainInfo.vue';
 import events from '@/modules/events';
 import { onUnmounted } from 'vue';
-import { getItemTitle } from '@/functions/marketplace';
-import { getImgPath } from '@/functions/marketplace';
+import { getItemTitle, getImgPath } from '@/functions/marketplace';
 export default {
   components: {
     imageIcon,
@@ -131,6 +130,7 @@ export default {
     Specifications,
     CardItemTips,
     ItemMainInfo,
+    Img,
   },
   data() {
     return {

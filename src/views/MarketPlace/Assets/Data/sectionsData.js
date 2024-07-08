@@ -134,6 +134,21 @@ export default {
                 }
             },
             "endTime": "2024-07-13T01:35:21.1121881+03:00"
+        },
+        {
+            "id": 24,
+            "sellData": {
+                "type": "armor",
+                "img": null,
+                "description": null,
+                "variation": 61,
+                "texture": 0,
+                "itemType": -35,
+                "itemName": "Бронежилет SWATPD",
+                "price": 0,
+                "state": 100
+            },
+            "status": "owned"
         }
     ],
     transportRent: [
@@ -470,27 +485,27 @@ export default {
         {
             "id": 4,
             "sellData": {
-              "type": "weaponComponent",
-              "img": null,
-              "description": "1223",
-              "componentKey": "extendedclip",
-              "componentChildKey": "drummagazine",
-              "itemType": 740,
-              "itemName": "Компонент оружия",
-              "price": 32123,
-              "state": 100
+                "type": "weaponComponent",
+                "img": null,
+                "description": "1223",
+                "componentKey": "extendedclip",
+                "componentChildKey": "drummagazine",
+                "itemType": 740,
+                "itemName": "Компонент оружия",
+                "price": 32123,
+                "state": 100
             },
             "views": 1,
             "isFavorite": false,
             "created": "2024-07-07T19:35:23.3174822+03:00",
             "listingData": {
-              "seller": {
-                "username": "Cherry Waves",
-                "static": 128683,
-                "phone": 233197770
-              }
+                "seller": {
+                    "username": "Cherry Waves",
+                    "static": 128683,
+                    "phone": 233197770
+                }
             },
             "endTime": "2024-07-13T05:35:23.3174822+03:00"
         }
-    ]
+    ],
 };

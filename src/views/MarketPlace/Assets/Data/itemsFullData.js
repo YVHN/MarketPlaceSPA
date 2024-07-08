@@ -183,6 +183,31 @@ export default {
                 }
             },
             "endTime": "2024-07-13T01:35:21.1121881+03:00"
+        },
+        {
+            "id": 3,
+            "sellData": {
+                "type": "armor",
+                "img": null,
+                "description": "123",
+                "variation": 61,
+                "texture": 0,
+                "itemType": -35,
+                "itemName": "Бронежилет SWATPD",
+                "price": 123123123,
+                "state": 100
+            },
+            "views": 2,
+            "isFavorite": false,
+            "created": "2024-07-07T21:39:55.1657838+03:00",
+            "listingData": {
+                "seller": {
+                    "username": "Cherry Waves",
+                    "static": 128683,
+                    "phone": 233197770
+                }
+            },
+            "endTime": "2024-07-13T07:39:55.1657838+03:00"
         }
     ],
     listings: [
@@ -419,64 +444,91 @@ export default {
         {
             "id": 96,
             "sellData": {
-              "type": "business",
-              "img": null,
-              "description": "123",
-              "id": 465,
-              "businessType": 1,
-              "graphData": {
-                "type": "week",
-                "data": [
-                  {
-                    "date": "2024-06-29T00:00:00",
-                    "amount": 2950180
-                  },
-                  {
-                    "date": "2024-07-01T00:00:00",
-                    "amount": 42345
-                  },
-                  {
-                    "date": "2024-07-02T00:00:00",
-                    "amount": 2345675
-                  },
-                  {
-                    "date": "2024-07-03T00:00:00",
-                    "amount": 52345656
-                  },
-                  {
-                    "date": "2024-07-04T00:00:00",
-                    "amount": 166125
-                  },
-                  {
-                    "date": "2024-07-05T00:00:00",
-                    "amount": 234324556
-                  },
-                  {
-                    "date": "2024-07-06T00:00:00",
-                    "amount": 42564575
-                  }
-                ]
-              },
-              "price": 123123123123,
-              "statePrice": 0,
-              "coordinates": {
-                "x": 496.329,
-                "y": 2179.589,
-                "z": 80.45463
-              },
-              "address": ""
+                "type": "business",
+                "img": null,
+                "description": "123",
+                "id": 465,
+                "businessType": 1,
+                "graphData": {
+                    "type": "week",
+                    "data": [
+                        {
+                            "date": "2024-06-29T00:00:00",
+                            "amount": 2950180
+                        },
+                        {
+                            "date": "2024-07-01T00:00:00",
+                            "amount": 42345
+                        },
+                        {
+                            "date": "2024-07-02T00:00:00",
+                            "amount": 2345675
+                        },
+                        {
+                            "date": "2024-07-03T00:00:00",
+                            "amount": 52345656
+                        },
+                        {
+                            "date": "2024-07-04T00:00:00",
+                            "amount": 166125
+                        },
+                        {
+                            "date": "2024-07-05T00:00:00",
+                            "amount": 234324556
+                        },
+                        {
+                            "date": "2024-07-06T00:00:00",
+                            "amount": 42564575
+                        }
+                    ]
+                },
+                "price": 123123123123,
+                "statePrice": 0,
+                "coordinates": {
+                    "x": 496.329,
+                    "y": 2179.589,
+                    "z": 80.45463
+                },
+                "address": ""
             },
             "views": 4,
             "isFavorite": false,
             "created": "2024-07-06T15:03:21.9226212+03:00",
             "listingData": {
-              "seller": {
-                "username": "Cherry Waves",
-                "static": 128683,
-                "phone": 233197770
-              }
+                "seller": {
+                    "username": "Cherry Waves",
+                    "static": 128683,
+                    "phone": 233197770
+                }
             },
             "endTime": "2024-07-12T01:03:21.9226212+03:00"
-          }
-    ]
+        }
+    ],
+    ammunition: [
+        {
+            "id": 4,
+            "sellData": {
+                "type": "weaponComponent",
+                "img": null,
+                "description": "1223",
+                "componentKey": "extendedclip",
+                "componentChildKey": "drummagazine",
+                "itemType": 740,
+                "itemName": "Компонент оружия",
+                "price": 32123,
+                "state": 100
+            },
+            "views": 1,
+            "isFavorite": false,
+            "created": "2024-07-07T19:35:23.3174822+03:00",
+            "listingData": {
+                "seller": {
+                    "username": "Cherry Waves",
+                    "static": 128683,
+                    "phone": 233197770
+                }
+            },
+            "endTime": "2024-07-13T05:35:23.3174822+03:00"
+        }
+    ],
 };

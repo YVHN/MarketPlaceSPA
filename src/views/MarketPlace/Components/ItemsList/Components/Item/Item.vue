@@ -206,9 +206,6 @@ export default {
       const isCreateListing = this.item?.status;
       return isStorage || isCreateListing || this.$route.params.section === 'history';
     },
-    getIsImgFull() {
-      return ['business', 'house', 'apartment'].includes(this.sellData.type);
-    },
     getItemStatus() {
       const statuses = {
         available: 'Доступно',

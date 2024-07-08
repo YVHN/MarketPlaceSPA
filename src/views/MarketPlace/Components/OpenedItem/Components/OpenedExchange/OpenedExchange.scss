@@ -38,10 +38,6 @@
       position: relative;
       backdrop-filter: blur(2.88vmin);
       background: rgba(255, 255, 255, 0.02);
-
-      &>img {
-        height: 100%;
-      }
     }
 
     &-button {

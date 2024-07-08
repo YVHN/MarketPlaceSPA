@@ -4,7 +4,7 @@
       <div class="item">
         <div class="item-container">
           <div class="item-img">
-            <img :src="getImgPath(getPickedItem)" />
+            <Img :cardItem="getPickedItem" :size="'big'" />
             <FavoriteIndicator :itemId="getPickedItem.id" :size="'big'" :is-favorite="getPickedItem.isFavorite" />
           </div>
           <div class="item-info">
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import Img from '@/views/MarketPlace/Components/ItemComponents/Img/Img.vue';
 import ListBlock from '../ListBlock/ListBlock.vue';
 import FavoriteIndicator from '@/views/MarketPlace/Components/ItemComponents/FavoriteIndicator/FavoriteIndicator.vue';
 import BuyItem from './Components/BuyItem/BuyItem.vue';
@@ -61,6 +62,7 @@ export default {
     BuyItem,
     AddLot,
     ItemMainInfo,
+    Img,
   },
   data() {
     return {

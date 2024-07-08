@@ -1,6 +1,6 @@
 <template>
   <div class="img-wrapper" :class="[size, getImgSize]">
-    <img :src="getImgPath(cardItem)" />
+    <img :src="getImgPath(cardItem)" :class="{ 'imgFull': getIsImgFull() }" />
   </div>
 </template>
 
@@ -19,12 +19,16 @@ export default {
     isSmall: {
       type: Boolean,
       required: false,
+      default: false,
     },
   },
   methods: {
     getImgPath(cardItem) {
       return getImgPath(cardItem);
-    }
+    },
+    getIsImgFull() {
+      return ['business', 'house', 'apartment'].includes(this.cardItem.sellData.type);
+    },
   },
   computed: {
     getImgSize() {
@@ -46,10 +50,15 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   & > img {
     height: 100%;
     max-width: 100%;
+    object-fit: contain;
   }
+}
+.imgFull {
+  object-fit: initial !important;
 }
 .big {
   padding: 0 !important;
@@ -60,13 +69,11 @@ export default {
 }
 .m {
   height: 20.37vmin;
-  padding: 1.5vmin 6vmin;
   backdrop-filter: blur(2.88vmin);
   background: rgba(255, 255, 255, 0.02);
 }
 .l {
   height: 40vmin;
-  padding: 4vmin 12vmin;
   backdrop-filter: blur(2.88vmin);
   background: rgba(255, 255, 255, 0.02);
 }
