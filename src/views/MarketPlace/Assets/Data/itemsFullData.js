@@ -323,59 +323,25 @@ export default {
     ],
     transport: [
         {
-            "id": 14,
+            "id": 23,
             "sellData": {
                 "type": "transport",
                 "img": null,
-                "description": "0",
-                "id": 923471,
-                "vehicleModel": "daytona",
-                "vehicleName": "Ferari Daytona",
-                "licensePlace": "",
+                "description": null,
+                "id": 923570,
+                "vehicleModel": "sianbp",
+                "vehicleName": "sianbp",
+                "licensePlate": "",
                 "dealerShip": null,
-                rentPrice: 23131,
                 "specifications": {
                     "engine": 0,
                     "brake": 0,
                     "suspencion": 0,
                     "turbine": 0
                 },
-                "price": 1000000,
-                "statePrice": 32131
-            },
-            "views": 4,
-            "isFavorite": false,
-            "created": "2024-06-12T20:21:25.6750976+03:00",
-            "listingData": {
-                "seller": {
-                    "username": "Cherry Waves",
-                    "static": 128683,
-                    "phone": 233197770
-                }
-            },
-            "endTime": "2024-06-12T21:21:25.6750976+03:00"
-        },
-        {
-            "id": 1,
-            "sellData": {
-                "type": "apartment",
-                "img": null,
-                "description": null,
-                "id": 1,
-                "apartmentType": "Комфорт",
-                "parkingCapacity": 6,
-                "maxTenants": 4,
-                "coordinates": {
-                    "x": 1553.0693,
-                    "y": 3689.9731,
-                    "z": 34.556717
-                },
                 "price": 0,
-                "statePrice": 90000000
+                "statePrice": 0
             },
-            "views": 4,
-            "isFavorite": false,
-            "created": "2024-06-12T20:21:25.6750976+03:00",
             "listingData": {
                 "seller": {
                     "username": "Cherry Waves",
@@ -383,8 +349,7 @@ export default {
                     "phone": 233197770
                 }
             },
-            "endTime": "2024-06-12T21:21:25.6750976+03:00"
-        },
+        }
     ],
     estate: [
         {
@@ -529,6 +494,59 @@ export default {
                 }
             },
             "endTime": "2024-07-13T05:35:23.3174822+03:00"
+        },
+        {
+            "id": 14,
+            "sellData": {
+                "type": "weapon",
+                "img": null,
+                "description": "uy6rty",
+                "state": 100,
+                "itemType": 144,
+                "itemName": "Assault Shotgun",
+                "price": 22222,
+                "serial": "GUNSHOP-EC753K-56286623",
+                "weight": 4.25
+            },
+            "views": 2,
+            "isFavorite": false,
+            "created": "2024-07-08T13:55:39.4546293+03:00",
+            "listingData": {
+                "seller": {
+                    "username": "Yulik Yulik",
+                    "static": 45983,
+                    "phone": 786325450
+                }
+            },
+            "endTime": "2024-07-11T20:55:39.4546293+03:00"
         }
     ],
+    clothes: [
+        {
+            "id": 0,
+            "sellData": {
+                "type": "clothes",
+                itemName: 'Лупа',
+                "img": null,
+                "description": "1",
+                "price": 1000,
+                "variation": 277,
+                "texture": 0,
+                "gender": false,
+                "itemType": -6,
+                gender: 0,
+            },
+            "views": 2,
+            "isFavorite": false,
+            "created": "2024-05-27T13:08:27.2905118+03:00",
+            "listingData": {
+                "seller": {
+                    "username": "Cherry_Waves",
+                    "static": 128683,
+                    "phone": 233197770
+                }
+            },
+            "endTime": "2024-05-27T14:08:27.2905118+03:00"
+        }
+    ]
 };

@@ -59,6 +59,7 @@ export default {
 }
 .imgFull {
   object-fit: initial !important;
+  padding: 0;
 }
 .big {
   padding: 0 !important;
@@ -74,6 +75,7 @@ export default {
 }
 .l {
   height: 40vmin;
+  padding: 4vmin;
   backdrop-filter: blur(2.88vmin);
   background: rgba(255, 255, 255, 0.02);
 }
