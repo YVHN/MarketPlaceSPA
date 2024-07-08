@@ -156,15 +156,19 @@
       align-items: center;
 
       &-makeDeal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border-radius: 0.185vmin;
         background: #5f9adf;
-        padding: 3vmin 9vmin;
+        padding: 0 9vmin;
         font-weight: 700;
         font-size: 1.4vmin;
         color: #fff;
         width: fit-content;
         transition: transform 0.3s ease;
         cursor: pointer;
+        height: 100%;
 
         &:hover {
           transform: scale(1.05);
