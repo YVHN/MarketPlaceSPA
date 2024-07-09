@@ -226,7 +226,7 @@ export default {
       const isStorage = this.item?.storageData;
       const isCreateListing = this.item?.status;
       const section = this.$route.params.section;
-      return isStorage || isCreateListing || section === 'history' || section === 'listings';
+      return isStorage || isCreateListing ||  ['history', 'listings'].includes(section);
     },
     getItemStatus() {
       const statuses = {
