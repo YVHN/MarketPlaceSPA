@@ -19,8 +19,7 @@ export default {
                 maxTenants: 12,
             },
             auctionData: {
-                lastBet: 666666,
-                competitors: 0,
+                
             },
         },
         {
@@ -349,7 +348,61 @@ export default {
             },
         },
     ],
-    userListings: [],
+    listings: [
+        {
+            "id": 1,
+            "sellData": {
+                "type": "weapon",
+                "img": null,
+                "description": "123",
+                "state": 100,
+                "itemType": 128,
+                "itemName": "Advanced Rifle",
+                "price": 123,
+                "serial": "GUNSHOP-LM203E-335969151",
+                "weight": 3.85
+            },
+            "isOwner": true
+        },
+        {
+            "id": 12,
+            "sellData": {
+                "type": "item",
+                "img": null,
+                "description": null,
+                "weight": 0.01,
+                "quantity": 4,
+                "itemType": 599,
+                "itemName": "Конфеты",
+            },
+            "views": 7,
+            "isFavorite": true,
+            "isOwner": true
+        },
+        {
+            id: 33,
+            views: 200,
+            likes: 100,
+            isLiked: false,
+            isFavorite: false,
+            endTime: '2024-05-24T21:06:06.9686271+03:00',
+            created: '2024-05-21T17:06:06.9686271+03:00',
+            sellData: {
+                id: 1,
+                img: 'House123',
+                type: 'house',
+                description: '...',
+                statePrice: 4300,
+                address: 'VineWood, Baker.STR 23',
+                parkingCapacity: 30,
+                maxTenants: 12,
+            },
+            auctionData: {
+                pupa: 32,
+            },
+            "isOwner": true
+        },
+    ],
     history: [
         {
             id: 11,

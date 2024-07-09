@@ -3,8 +3,7 @@
     <!-- Список предметов -->
     <div class="itemsList-list-wrapper">
       <div class="itemsList-list" v-if="listData.length">
-        <Item v-for="item in listData" @click.native="handleItemClick(item)" :item="item"
-          :key="item.id" />
+        <Item v-for="item in listData" @click.native="handleItemClick(item)" :item="item" :key="item.id" />
         <AddLot :data="itemData" v-if="isAddLot" @toggleIsAddStatus="toggleIsAddStatus" />
       </div>
       <!-- Пустая страница -->
@@ -86,21 +85,24 @@ export default {
   methods: {
     handleItemClick(item) {
       // Если айтем на продаже, то вызов фулл даты
-      if (this.checkPath('viewing') && !item?.storageData && !this.checkPath('history')) {
+      if (this.$route.params.section === 'listings' && !item?.auctionData) {
+        events.callServer('MarketPlace:Advert:Cancel:Server', item.id);
+      } else if (this.checkPath('viewing') && !item?.storageData && !this.checkPath('history') && !item.isOwner) {
         this.viewingAction(item);
       } else if (this.checkPath('createListing')) {
         this.createListingAction(item);
       } else if (item?.storageData) {
         this.storageAction(item);
       }
+
     },
     storageAction(item) {
       console.log('выгрузка');
       events.callServer('MarketPlace:Storage:Unload:Server', item.id);
     },
     viewingAction(item) {
-      // this.$store.commit('pickItem', itemsFullData.business[0]);
-      // this.$router.push('/market-place/viewing/business/opened');
+      // this.$store.commit('pickItem', itemsFullData.auction[0]);
+      // this.$router.push('/market-place/viewing/items/opened');
       events.callServer('MarketPlace:Item:GetFullData:Server', item.id);
     },
     createListingAction(item) {
@@ -117,10 +119,10 @@ export default {
         } else {
           this.$router.push(`/market-place/createListing/${item.sellData.filter}`);
           events.callServer(
-                'MarketPlace:List:GetListData:Server',
-                `createListing/${item.sellData.filter}`,
-                this.getCurrentPage
-            );
+            'MarketPlace:List:GetListData:Server',
+            `createListing/${item.sellData.filter}`,
+            this.getCurrentPage
+          );
         }
       } else if (item.sellData.type !== 'service') {
         if (this.$route.params.filter) {

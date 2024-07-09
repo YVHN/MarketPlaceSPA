@@ -235,7 +235,7 @@
   }
 }
 .deactivate {
-  pointer-events: none;
+  pointer-events: none !important;
   .item-storage-button {
     background: #5f9adf;
   }

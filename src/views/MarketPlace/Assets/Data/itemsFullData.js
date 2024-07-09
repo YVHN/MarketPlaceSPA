@@ -132,7 +132,8 @@ export default {
                             "phone": 233197770
                         },
                         "quantity": 20,
-                        "pricePerItem": 1000
+                        "pricePerItem": 1000,
+                        "isOwner": false,
                     },
                     {
                         "id": 1,
@@ -142,7 +143,8 @@ export default {
                             "phone": 233197770
                         },
                         "quantity": 20,
-                        "pricePerItem": 1000
+                        "pricePerItem": 1000,
+                        "isOwner": false,
                     },
                     {
                         "id": 2,
@@ -152,7 +154,8 @@ export default {
                             "phone": 233197770
                         },
                         "quantity": 10,
-                        "pricePerItem": 100
+                        "pricePerItem": 100,
+                        "isOwner": true,
                     }
                 ],
 

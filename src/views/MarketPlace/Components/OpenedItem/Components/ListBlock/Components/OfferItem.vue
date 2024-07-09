@@ -1,5 +1,5 @@
 <template>
-    <div class="offer">
+    <div class="offer" :class="{ 'my-offer': offerData.isOwner }">
         <div class="user">
             <img src="@/views/MarketPlace/Assets/Icons/User/avatar1.svg" class="user-icon" />
             <div class="user-userName">{{ offerData.playerData.username }}</div>
@@ -18,13 +18,15 @@
             <div class="offer-value">{{ offerData.quantity }}</div>
             <div class="offer-value">{{ `${formatNumber(offerData.pricePerItem)} $` }}</div>
             <div class="offer-value">{{ shelfTime }}</div>
-            <div class="offer-value button" @click="buyItem">Купить</div>
+            <div class="offer-value button" @click="cancelOffer" v-if="offerData.isOwner">Снять</div>
+            <div class="offer-value button" @click="buyItem" v-else>Купить</div>
         </template>
     </div>
 </template>
 
 <script>
 import { formatNumber, parseDate, getEndTime } from '@/functions/marketplace';
+import events from '@/modules/events';
 import { onUnmounted } from 'vue';
 
 export default {
@@ -45,7 +47,7 @@ export default {
         }
     },
     mounted() {
-        if(this.offerData?.endTime) {
+        if (this.offerData?.endTime) {
             this.getEndTime();
             this.startTimer();
         }
@@ -59,9 +61,12 @@ export default {
             console.log('покупка');
             this.$emit('buyItem', this.offerData)
         },
+        cancelOffer() {
+            events.callServer('MarketPlace:Exchange:CancelOffer:Server', this.getPickedItem.id, this.offerData.id);
+        },
         startTimer() {
             this.intervalId = setInterval(this.getEndTime, 1000);
-            if(!this.shelfTime) {
+            if (!this.shelfTime) {
                 clearInterval(this.getEndTime, 1000);
                 this.intervalId = null;
             }
@@ -75,7 +80,12 @@ export default {
         getEndTime() {
             this.shelfTime = getEndTime(this.offerData.endTime, 'default');
         }
-    }
+    },
+    computed: {
+        getPickedItem() {
+            return this.$store.getters.getPickedItem;
+        },
+    },
 };
 </script>
 
@@ -129,15 +139,21 @@ export default {
         color: rgba(255, 255, 255, 0.29);
     }
 }
+
 .button {
     background: rgba(255, 255, 255, 0.08);
     height: 100%;
     align-items: center;
     border-radius: 0.185vmin;
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease;
+
     &:hover {
         transform: scale(1.04);
         background: #5F9ADF;
     }
+}
+
+.my-offer {
+    box-shadow: 0 0 1vmin rgba(#5F9ADF, 0.8);
 }
 </style>

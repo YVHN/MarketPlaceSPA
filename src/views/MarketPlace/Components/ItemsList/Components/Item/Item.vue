@@ -1,5 +1,5 @@
 <template>
-  <div class="item" :class="{ deactivate: getOpeningType === 'InTablet' && item?.storageData }">
+  <div class="item" :class="{ deactivate: isDeactivated }">
     <div class="item-top">
       <div class="item-header">
         <div class="item-header-info">
@@ -63,6 +63,11 @@
         </div>
         <div class="item-storage-button" v-if="!$route.path.includes('createListing')">
           {{ $store.getters.getLanguageText(getOpeningType === 'InTablet' ? 'Выгрузка не доступна с планшета' : 'Выгрузить со склада') }}
+        </div>
+      </div>
+      <div class="item-myListing" v-else-if="item.isOwner && $route.params.section === 'listings'" :class="{'deactivate': item?.auctionData }">
+        <div class="item-storage-button">
+          {{ $store.getters.getLanguageText(getCancelAdvertTitle)}}
         </div>
       </div>
       <div class="item-exchange" v-else-if="item?.tradeData">
@@ -180,6 +185,20 @@ export default {
     state,
   },
   computed: {
+    isDeactivated() {
+      const isStorage = this.getOpeningType === 'InTablet' && this.item?.storageData;
+      const isAuction = this.item?.sellData?.isOwner && this.$route.params.section === 'listings' && this.item?.auctionData;
+      return isStorage || isAuction;
+    },
+    getCancelAdvertTitle() {
+      if(this.item.sellData.type === 'item') {
+        return 'Вернуть товар';
+      } else if (this.item?.auctionData) {
+        return 'Нельзя отменить';
+      } else {
+        return 'Удалить обьявление';
+      }
+    },
     getItemAddress() {
       return this.$store.getters.getItemAddress(this.item.sellData.coordinates);
     },
