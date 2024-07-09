@@ -28,7 +28,7 @@ import storage from '@/views/MarketPlace/Assets/Icons/PersonalSections/storage.v
 import ammunition from '@/views/MarketPlace/Assets/Icons/MarketSections/ammunition.vue';
 
 import events from '@/modules/events';
-import { getStore } from '@/store2';
+// TODO import { getStore } from '@/store2';
 import { computed } from 'vue';
 
 export default {

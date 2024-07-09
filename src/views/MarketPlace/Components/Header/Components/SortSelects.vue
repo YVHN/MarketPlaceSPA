@@ -31,7 +31,7 @@
 
 <script>
 import events from '@/modules/events';
-import { getStore } from '@/store2';
+// TODO import { getStore } from '@/store2';
 
 export default {
     name: 'SortSelects',

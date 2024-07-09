@@ -26,7 +26,7 @@ import itemsFullData from '../../Assets/Data/itemsFullData';
 
 import Pagination from './Components/Pagination/Pagination.vue';
 import sectionsData from '../../Assets/Data/sectionsData';
-import { getStore } from '@/store2';
+// TODO import { getStore } from '@/store2';
 
 export default {
     components: {

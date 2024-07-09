@@ -18,7 +18,7 @@ import OpenedAuction from './Components/OpenedAuction/OpenedAuction.vue';
 import OpenedExchange from './Components/OpenedExchange/OpenedExchange.vue';
 import OpenedListing from './Components/OpenedListing/OpenedListing.vue';
 import { computed, onUnmounted } from 'vue';
-import { getStore } from '@/store2';
+// TODO import { getStore } from '@/store2';
 
 export default {
     data() {

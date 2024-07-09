@@ -10,7 +10,7 @@
 
 <script>
 import events from '@/modules/events';
-import { getStore } from '@/store2';
+// TODO import { getStore } from '@/store2';
 import { computed, onUnmounted } from 'vue';
 export default {
     props: {
