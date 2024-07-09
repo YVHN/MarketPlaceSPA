@@ -29,7 +29,7 @@ const marketPlace = {
 		},
 		getItemAddress: (state) => (coordinates) => {
 			const location = `${coordinates?.x},${coordinates?.y},${coordinates?.z}`;
-			let locationName = state.addressesList.find(address => address.location === location)?.name || 'Адрес не загружен';
+			const locationName = state.addressesList.find(address => address.location === location)?.name || 'Адрес не загружен';
 			return locationName;
 		},
 		getPricePerHour(state) {
