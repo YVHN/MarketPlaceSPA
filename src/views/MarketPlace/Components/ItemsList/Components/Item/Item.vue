@@ -68,7 +68,7 @@
       </div>
       <div class="item-myListing" v-else-if="item.isOwner && $route.params.section === 'listings'"
         :class="{ 'deactivate': item?.auctionData }">
-        <div class="item-storage-button" @click="advertCancel">
+        <div class="item-storage-button" @click.stop="advertCancel">
           {{ $store.getters.getLanguageText(getCancelAdvertTitle) }}
         </div>
       </div>
@@ -225,7 +225,8 @@ export default {
     isHideFavorite() {
       const isStorage = this.item?.storageData;
       const isCreateListing = this.item?.status;
-      return isStorage || isCreateListing || this.$route.params.section === 'history';
+      const section = this.$route.params.section;
+      return isStorage || isCreateListing || section === 'history' || section === 'listings';
     },
     getItemStatus() {
       const statuses = {
@@ -266,7 +267,7 @@ export default {
   },
   methods: {
     advertCancel() {
-      events.callServer('MarketPlace:Advert:Cancel:Server', item.id);
+      events.callServer('MarketPlace:Advert:Cancel:Server', this.item.id);
     },
     getImgPath(itemCard) {
       return getImgPath(itemCard);
