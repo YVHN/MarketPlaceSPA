@@ -114,7 +114,7 @@ import ItemMainInfo from '@/views/MarketPlace/Components/ItemComponents/ItemMain
 import events from '@/modules/events';
 import { computed, onUnmounted } from 'vue';
 import { getItemTitle, getImgPath } from '@/functions/marketplace';
-// TODO import { getStore } from '@/store2';
+import { getStore } from '@/store2';
 export default {
     components: {
         imageIcon,

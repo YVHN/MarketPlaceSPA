@@ -95,7 +95,7 @@ import message from '@/views/MarketPlace/Assets/Icons/Item/message.vue';
 import CardItemTips from '../../../CardItemTips/CardItemTips.vue';
 import { computed, onUnmounted } from 'vue';
 import { getItemTitle, formatNumber } from '@/functions/marketplace';
-// TODO import { getStore } from '@/store2';
+import { getStore } from '@/store2';
 
 export default {
     components: {

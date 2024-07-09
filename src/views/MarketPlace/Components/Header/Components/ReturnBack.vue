@@ -8,7 +8,7 @@
 <script>
 import returnBack from '@/views/MarketPlace/Assets/Icons/returnBack.vue';
 import events from '@/modules/events';
-// TODO import { getStore } from '@/store2';
+import { getStore } from '@/store2';
 import { computed } from 'vue';
 export default {
     name: 'ReturnBack',
