@@ -10,13 +10,13 @@
           </div>
         </div>
         <div class="header">
-          <Header v-if="!isInStorage" />
+          <Header v-if="!isInStorage"/>
           <div class="header-storage" v-else>
             {{ $store.getters.getLanguageText("Склад хранения") }}
           </div>
         </div>
         <div class="aside">
-          <Navigation v-if="!isInStorage" />
+          <Navigation v-if="!isInStorage"/>
           <div class="aside-inventory" v-if="false">
             <!-- Тут инвентарь -->
             <!-- <div class="aside-inventory-empty">

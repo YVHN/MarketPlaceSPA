@@ -187,8 +187,8 @@ export default {
   computed: {
     isDeactivated() {
       const isStorage = this.getOpeningType === 'InTablet' && this.item?.storageData;
-      const isAuction = this.item?.sellData?.isOwner && this.$route.params.section === 'listings' && this.item?.auctionData;
-      return isStorage || isAuction;
+      //const isAuction = this.item?.sellData?.isOwner && this.$route.params.section === 'listings' && this.item?.auctionData;
+      return isStorage; //|| isAuction;
     },
     getCancelAdvertTitle() {
       if(this.item.sellData.type === 'item') {
