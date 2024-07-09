@@ -36,7 +36,8 @@
                 )} ${$store.getters.getLanguageText('кг.')}`
               }}
             </div>
-            <div class="unit" v-if="isShowStateTip" :class="{'good-state': sellData.state >= 70, 'medium-state': sellData.state >= 40 && sellData.state < 70, 'bad-state': sellData.state < 40}">
+            <div class="unit" v-if="isShowStateTip"
+              :class="{ 'good-state': sellData.state >= 70, 'medium-state': sellData.state >= 40 && sellData.state < 70, 'bad-state': sellData.state < 40 }">
               <state class="unit-icon" />
               {{
                 `${sellData.state}%`
@@ -62,12 +63,15 @@
           {{ shelfTime }}
         </div>
         <div class="item-storage-button" v-if="!$route.path.includes('createListing')">
-          {{ $store.getters.getLanguageText(getOpeningType === 'InTablet' ? 'Выгрузка не доступна с планшета' : 'Выгрузить со склада') }}
+          {{ $store.getters.getLanguageText(getOpeningType === 'InTablet' ? 'Выгрузка не доступна с планшета' :
+            'Выгрузить
+          со склада') }}
         </div>
       </div>
-      <div class="item-myListing" v-else-if="item.isOwner && $route.params.section === 'listings'" :class="{'deactivate': item?.auctionData }">
-        <div class="item-storage-button">
-          {{ $store.getters.getLanguageText(getCancelAdvertTitle)}}
+      <div class="item-myListing" v-else-if="item.isOwner && $route.params.section === 'listings'"
+        :class="{ 'deactivate': item?.auctionData }">
+        <div class="item-storage-button" @click="advertCancel">
+          {{ $store.getters.getLanguageText(getCancelAdvertTitle) }}
         </div>
       </div>
       <div class="item-exchange" v-else-if="item?.tradeData">
@@ -97,7 +101,7 @@
           <div class="unit" v-if="item?.likes">
             <likes class="unit-img" />{{ item.likes }}
           </div>
-          <div class="unit" v-if="item?.views" >
+          <div class="unit" v-if="item?.views">
             <img class="unit-img" src="@/views/MarketPlace/Assets/Icons/Item/views.svg" />
             {{ item.views }}
           </div>
@@ -191,7 +195,7 @@ export default {
       return isStorage; //|| isAuction;
     },
     getCancelAdvertTitle() {
-      if(this.item.sellData.type === 'item') {
+      if (this.item.sellData.type === 'item') {
         return 'Вернуть товар';
       } else if (this.item?.auctionData) {
         return 'Нельзя отменить';
@@ -263,6 +267,9 @@ export default {
     }
   },
   methods: {
+    advertCancel() {
+      events.callServer('MarketPlace:Advert:Cancel:Server', item.id);
+    },
     getImgPath(itemCard) {
       return getImgPath(itemCard);
     },

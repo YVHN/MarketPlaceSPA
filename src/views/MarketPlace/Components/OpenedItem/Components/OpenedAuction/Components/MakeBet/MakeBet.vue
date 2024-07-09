@@ -95,7 +95,7 @@ export default {
       const coefficients = [1.25, 1.5, 1.75, 2, 2.25, 2.5];
       for (let i = 0; i < 6; i++) {
         const value = this.startPrice * coefficients[i];
-        bets.push({ id: i + 1, value: value });
+        bets.push({ id: i + 1, value: Math.floor(value) });
       }
       return bets;
     },
