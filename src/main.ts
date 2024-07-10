@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import '@/views/MarketPlace/Assets/Fonts/PFDinDisplayPro/PFDinDisplayPro.scss';
+import VueRouter from 'vue-router';
 
 import './functions/multilanguage'
 // import "./functions/camera"
@@ -10,6 +11,14 @@ import './functions/multilanguage'
 // import "./functions/vehicle"
 import "jquery-ui-dist/jquery-ui.js"
 import events from '@/modules/events'
+
+declare global {
+	interface Window {
+	  eventbus: Vue;
+	  Application: Vue;
+	  router: VueRouter;
+	}
+  }
 
 window.eventbus = new Vue();
 Vue.prototype.$eventbus = window.eventbus;

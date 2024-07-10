@@ -5,7 +5,7 @@
         {{ `${$store.getters.getLanguageText('Сделайте ставку на')} ${title}` }}
       </div>
       <div class="makeBet-body-bets">
-        <div class="makeBet-body-bets-bet" :class="{ active: userBet === bet.value }" @click="() => pickBet(bet.value)"
+        <div class="makeBet-body-bets-bet" :class="{ active: userBet === bet.value }" @click="pickBet(bet.value)"
           v-for="(bet, index) in getDefaultBets" :key="index">
           {{ formatNumber(bet.value) }} <span>$</span>
         </div>
@@ -87,6 +87,7 @@ export default {
     },
     setUserBet(num) {
       this.userBet = num;
+      console.log(num);
     },
   },
   computed: {

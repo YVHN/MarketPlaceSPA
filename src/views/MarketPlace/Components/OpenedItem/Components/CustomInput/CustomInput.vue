@@ -22,6 +22,11 @@ export default {
       inputValue: this.formatInputValue(this.outsideValue),
     };
   },
+  watch: {
+    outsideValue(newValue) {
+      this.inputValue = this.formatInputValue(newValue);
+    },
+  },
   methods: {
     validateInput(event) {
       let input = event.target.value.replace(/\D/g, '');
@@ -34,6 +39,7 @@ export default {
       }
     },
     formatInputValue(value) {
+      console.log(value);
       if (!value) return '';
       const formattedValue = `$ ${Number(value).toLocaleString('ru-RU')}`;
       return formattedValue;
