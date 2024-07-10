@@ -2,7 +2,8 @@
     <div class="openedListing">
         <div class="item">
             <div class="item-img">
-                <Img :card-item="getItem" :size="'l'" />
+                <Img :card-item="getItem" :size="'l'" v-if="getItem.sellData?.img"/>
+                <img src="@/views/MarketPlace/Assets/Images/Items/default.png" v-else>
                 <FavoriteIndicator :item-id="getItem.id" :size="'big'" :is-favorite="getItem.isFavorite" />
             </div>
             <div class="item-testDrive" @click="handleTestDriveClick" v-if="getItem.sellData.type === 'transport'">
