@@ -202,6 +202,8 @@ export function getImgPath(itemCard) {
         } else if (itemCard.sellData.filter === 'transportRent') {
             return require(`@/views/MarketPlace/Assets/Images/Items/carKeys.png`);
         }
+    } else if (itemCard.sellData.type === 'service'){
+        return require(`@/views/MarketPlace/Assets/Images/Items/default.png`);
     } else if (itemCard.sellData.type === 'house') {
         return `${host}/House/${itemCard.sellData.id}.png`;
     } else if (itemCard.sellData.type === 'apartment') {
