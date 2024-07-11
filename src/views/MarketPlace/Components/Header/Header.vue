@@ -24,7 +24,7 @@
       </div>
       <div class="header-content-user">
         {{ getUserInfo.userName || '' }}
-        <img class="header-content-user-avatar" src="@/views/MarketPlace/Assets/Icons/Secondary/avatar.svg" alt="" />
+        <img class="header-content-user-avatar" src="@/views/MarketPlace/Assets/Icons/Secondary/avatar.png" alt="" />
       </div>
     </div>
   </div>

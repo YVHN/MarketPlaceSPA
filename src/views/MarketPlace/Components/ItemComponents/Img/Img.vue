@@ -52,8 +52,8 @@ export default {
   align-items: center;
   overflow: hidden;
   & > img {
-    height: 100%;
-    max-width: 100%;
+    height: 90%;
+    max-width: 90%;
     object-fit: contain;
   }
 }

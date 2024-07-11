@@ -26,12 +26,13 @@
     gap: 1.5vmin;
 
     &-create-button {
-      background: $main-color1;
+      background: #5f9adf;
       border-radius: 0.185vmin;
-      padding: 0.926vmin 2.222vmin !important;
-      font-family: 'IBM Plex Mono';
+      padding: 0.64926vmin 1.60222vmin !important;
+      font-family: "IBM Plex Mono";
       font-weight: 700;
-      font-size: 0.926vmin;
+      font-size: 1.2vmin;
+      letter-spacing: 0.035vmin;
       color: #fff;
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       cursor: pointer;

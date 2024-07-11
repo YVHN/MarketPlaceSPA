@@ -77,14 +77,14 @@ export function getItemSubTitle(itemCard, section) {
         subTitle = isDefault ? 'Бизнес' : 'Адрес';
     } else if (['transportRent', 'transport'].includes(item.type)) {
         subTitle = isDefault ? 'Транспорт' : item.dealerShip;
-    } else if (['item', 'itemWithData',].includes(item.type)) {
+    } else if (['item', 'itemWithData', ].includes(item.type)) {
         if ([200, 201, 202, 203, 204].includes(item.itemType)) {
             subTitle = 'Боеприпасы';
         } else {
             subTitle = 'Разное';
         }
     } else if (['weaponComponent'].includes(item.type)) {
-        subTitle = 'Амуниция';
+        subTitle =  'Амуниция';
     } else if (item.type === 'weapon') {
         subTitle = 'Оружие';
     } else if (item.type === 'armor') {
@@ -202,6 +202,8 @@ export function getImgPath(itemCard) {
         } else if (itemCard.sellData.filter === 'transportRent') {
             return require(`@/views/MarketPlace/Assets/Images/Items/carKeys.png`);
         }
+    } else if (itemCard.sellData.type === 'service'){
+        return require(`@/views/MarketPlace/Assets/Images/Items/default.png`);
     } else if (itemCard.sellData.type === 'house') {
         return `${host}/House/${itemCard.sellData.id}.png`;
     } else if (itemCard.sellData.type === 'apartment') {

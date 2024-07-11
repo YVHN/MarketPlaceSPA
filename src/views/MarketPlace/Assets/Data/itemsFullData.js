@@ -474,29 +474,29 @@ export default {
     ],
     ammunition: [
         {
-            "id": 4,
+            "id": 63,
             "sellData": {
-                "type": "weaponComponent",
+                "type": "weapon",
                 "img": null,
-                "description": "1223",
-                "componentKey": "extendedclip",
-                "componentChildKey": "drummagazine",
-                "itemType": 740,
-                "itemName": "Компонент оружия",
-                "price": 32123,
-                "state": 100
+                "description": "test",
+                "state": 100,
+                "itemType": 111,
+                "itemName": "Double Action",
+                "price": 2500000,
+                "serial": "0_0_100",
+                "weight": 4.0
             },
             "views": 1,
             "isFavorite": false,
-            "created": "2024-07-07T19:35:23.3174822+03:00",
+            "created": "2024-07-11T11:00:14.5612739+03:00",
             "listingData": {
                 "seller": {
-                    "username": "Cherry Waves",
-                    "static": 128683,
-                    "phone": 233197770
+                    "username": "Alice Change",
+                    "static": 134687,
+                    "phone": null
                 }
             },
-            "endTime": "2024-07-13T05:35:23.3174822+03:00"
+            "endTime": "2024-07-16T21:00:14.5612739+03:00"
         },
         {
             "id": 14,

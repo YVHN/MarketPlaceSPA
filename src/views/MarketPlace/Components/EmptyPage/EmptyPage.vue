@@ -11,7 +11,7 @@ export default {
   props: {
     msg: {
       type: String,
-      default: 'Тут пока пусто',
+      default: 'ТУТ ПОКА ПУСТО',
     },
   },
 };
