@@ -14,7 +14,7 @@ const marketPlace = {
 		listData: sectionsData.ammunition,
 		favoritesIdList: [],
 		pickedItem: null,
-		openingType: 'InTablet',
+		openingType: null,
 		addressesList: [],
 		userInfo: {
 			moneyCash: 1233,
@@ -274,5 +274,4 @@ events.add('MarketPlace:CardItem:SetAddress:Cef', (id, address) => {
 		});
 	}
 })
-
 export default marketPlace;

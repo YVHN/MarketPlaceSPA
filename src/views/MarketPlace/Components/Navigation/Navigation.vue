@@ -29,11 +29,6 @@ export default {
   components: {
     NavigateButton,
   },
-  computed: {
-    getOpeningType() {
-			return this.$store.getters.getOpeningType;
-		},
-  },
   data() {
     return {
       tradingSections: [
@@ -106,11 +101,6 @@ export default {
         },
       ],
     };
-  },
-  mounted() {
-    if (this.getOpeningType === 'InTablet' && !this.$route.path.includes('auction')) {
-      this.$router.push('/market-place/viewing/auction');
-    }
   },
   methods: {
     onClose() {

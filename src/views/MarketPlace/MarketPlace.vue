@@ -46,15 +46,14 @@ export default {
   },
   mounted() {
     this.$store.commit('start');
-  },
-  updated() {
-    this.$nextTick(function () {
+    setTimeout(() => {
       if (this.isInStorage) {
-      if(this.$route.path.includes('storage')) return;
-      else this.$router.push('/market-place/viewing/storage');
-    }
-    else if (!this.$route.path.includes('auction')) this.$router.push('/market-place/viewing/auction');
-    })
+        if (this.$route.path.includes('storage')) return;
+        else this.$router.push('/market-place/viewing/storage');
+      } else if (!this.$route.path.includes('auction')) {
+        this.$router.push('/market-place/viewing/auction');
+      }
+    }, 200);
   },
   computed: {
     getOpeningType() {
