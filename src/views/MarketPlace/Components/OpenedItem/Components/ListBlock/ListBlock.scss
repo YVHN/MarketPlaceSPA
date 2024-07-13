@@ -31,10 +31,10 @@
     &-offers {
       padding: 1.574vmin;
       display: flex;
-      flex-direction: column;
+      flex-direction: column-reverse;
       gap: 1.389vmin;
       overflow-y: auto;
-      height: calc(100vh - 62vmin);
+      max-height: calc(100vh - 62vmin);
 
       &::-webkit-scrollbar {
         width: 0.37vmin;
