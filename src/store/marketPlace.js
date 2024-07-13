@@ -102,6 +102,7 @@ const marketPlace = {
 			state.currentSection = null;
 			state.pickedItem = null;
 			state.pagesInSection = 1;
+			state.openingType = null;
 		},
 		pickItem(state, item) {
 			console.log(item);
@@ -273,4 +274,5 @@ events.add('MarketPlace:CardItem:SetAddress:Cef', (id, address) => {
 		});
 	}
 })
+
 export default marketPlace;

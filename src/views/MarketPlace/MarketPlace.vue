@@ -10,13 +10,13 @@
           </div>
         </div>
         <div class="header">
-          <Header v-if="!isInStorage"/>
+          <Header v-if="!isInStorage" />
           <div class="header-storage" v-else>
             {{ $store.getters.getLanguageText("Склад хранения") }}
           </div>
         </div>
         <div class="aside">
-          <Navigation v-if="!isInStorage"/>
+          <Navigation v-if="!isInStorage" />
           <div class="aside-inventory" v-if="false">
             <!-- Тут инвентарь -->
             <!-- <div class="aside-inventory-empty">
@@ -46,11 +46,15 @@ export default {
   },
   mounted() {
     this.$store.commit('start');
-    if (this.isInStorage) {
+  },
+  updated() {
+    this.$nextTick(function () {
+      if (this.isInStorage) {
       if(this.$route.path.includes('storage')) return;
       else this.$router.push('/market-place/viewing/storage');
     }
     else if (!this.$route.path.includes('auction')) this.$router.push('/market-place/viewing/auction');
+    })
   },
   computed: {
     getOpeningType() {
