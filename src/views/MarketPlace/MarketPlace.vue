@@ -46,10 +46,11 @@ export default {
   },
   mounted() {
     this.$store.commit('start');
-    if (!['auction', 'storage'].includes(this.$route.params.section)) {
-      if (this.isInStorage) this.$router.push('/market-place/viewing/storage');
-      else this.$router.push('/market-place/viewing/auction');
+    if (this.isInStorage) {
+      if(this.$route.path.includes('storage')) return;
+      else this.$router.push('/market-place/viewing/storage');
     }
+    else if (!this.$route.path.includes('auction')) this.$router.push('/market-place/viewing/auction');
   },
   computed: {
     getOpeningType() {
