@@ -19,7 +19,7 @@ export default {
                 maxTenants: 12,
             },
             auctionData: {
-                
+
             },
         },
         {
@@ -244,69 +244,267 @@ export default {
     ],
     storage: [
         {
-            id: 11,
-            sellData: {
-                itemName: 'Хранилище данных - 16 TB',
-                img: 'DataStorage16TB',
-                state: 'Отличное',
-                type: 'item',
-                itemType: 4,
-                quantity: 15,
-                weight: 12,
+            "id": 89,
+            "sellData": {
+                "type": "transport",
+                "description": "213",
+                "id": 923507,
+                "vehicleModel": "chrolls",
+                "vehicleName": "chrolls",
+                "licensePlate": "",
+                "dealerShip": null,
+                "specifications": {
+                    "engine": 0,
+                    "brake": 0,
+                    "suspencion": 0,
+                    "turbine": 0
+                },
+                "price": 0,
+                "statePrice": 0
             },
-            storageData: {
-                added: "2024-05-31T11:44:23.9085336+03:00",
-                endTime: '2024-05-22T21:06:06.9686271+03:00'
-            },
+            "storageData": {
+                "added": "2024-07-12T23:21:11.3511481+03:00",
+                "endTime": "2024-07-16T23:21:11.3511481+03:00"
+            }
         },
         {
-            id: 0,
-            sellData: {
-                type: "transportRent",
-                img: null,
-                description: "1",
-                dealerShip: 'Это аренда',
-                id: 923471,
-                vehicleName: "Ferari Daytona",
-                vehicleModel: "daytona",
-                rentPrice: 100000,
-                rentTime: 60
+            "id": 97,
+            "sellData": {
+                "type": "weapon",
+                "description": "123",
+                "state": 100,
+                "itemType": 144,
+                "itemName": "Assault Shotgun",
+                "price": 123,
+                "serial": "GUNSHOP-IO931F-1033365915",
+                "weight": 4.25
             },
-            storageData: {
-                added: "2024-05-31T11:44:23.9085336+03:00",
-                endTime: "2024-06-04T11:44:23.9085336+03:00"
+            "storageData": {
+                "added": "2024-07-13T14:54:25.7541607+03:00",
+                "endTime": "2024-07-17T14:54:25.7541607+03:00"
+            }
+        },
+        {
+            "id": 98,
+            "sellData": {
+                "type": "weapon",
+                "description": "123",
+                "state": 100,
+                "itemType": 119,
+                "itemName": "Combat PDW",
+                "price": 123,
+                "serial": "GUNSHOP-BB663M-1033365915",
+                "weight": 3.47
+            },
+            "storageData": {
+                "added": "2024-07-13T14:54:27.2769888+03:00",
+                "endTime": "2024-07-17T14:54:27.2769888+03:00"
+            }
+        },
+        {
+            "id": 99,
+            "sellData": {
+                "type": "weapon",
+                "description": "123",
+                "state": 100,
+                "itemType": 141,
+                "itemName": "Pump Shotgun",
+                "price": 123,
+                "serial": "GUNSHOP-DL331B-1033365915",
+                "weight": 4.0
+            },
+            "storageData": {
+                "added": "2024-07-13T14:54:28.5499161+03:00",
+                "endTime": "2024-07-17T14:54:28.5499161+03:00"
+            }
+        },
+        {
+            "id": 100,
+            "sellData": {
+                "type": "weapon",
+                "description": "123",
+                "state": 100,
+                "itemType": 143,
+                "itemName": "Bullpup Shotgun",
+                "price": 123,
+                "serial": "GUNSHOP-CF418I-1033365915",
+                "weight": 3.15
+            },
+            "storageData": {
+                "added": "2024-07-13T14:54:29.8419823+03:00",
+                "endTime": "2024-07-17T14:54:29.8419823+03:00"
+            }
+        },
+        {
+            "id": 101,
+            "sellData": {
+                "type": "weapon",
+                "description": "123",
+                "state": 100,
+                "itemType": 116,
+                "itemName": "Machine Pistol",
+                "price": 123,
+                "serial": "GUNSHOP-GE333O-1033365915",
+                "weight": 2.4
+            },
+            "storageData": {
+                "added": "2024-07-13T14:54:31.1360985+03:00",
+                "endTime": "2024-07-17T14:54:31.1360985+03:00"
+            }
+        },
+        {
+            "id": 102,
+            "sellData": {
+                "type": "weapon",
+                "description": "123",
+                "state": 100,
+                "itemType": 111,
+                "itemName": "Double Action",
+                "price": 123,
+                "serial": "GUNSHOP-KD87H-1033365915",
+                "weight": 4.0
+            },
+            "storageData": {
+                "added": "2024-07-13T14:54:32.276308+03:00",
+                "endTime": "2024-07-17T14:54:32.276308+03:00"
+            }
+        },
+        {
+            "id": 103,
+            "sellData": {
+                "type": "weaponComponent",
+                "description": "123",
+                "componentKey": "suppressor",
+                "componentChildKey": null,
+                "itemType": 740,
+                "itemName": "Компонент оружия",
+                "price": 123,
+                "state": 100
+            },
+            "storageData": {
+                "added": "2024-07-13T14:54:33.8016774+03:00",
+                "endTime": "2024-07-17T14:54:33.8016774+03:00"
+            }
+        },
+        {
+            "id": 104,
+            "sellData": {
+                "type": "weaponComponent",
+                "description": "123",
+                "componentKey": "flashlight",
+                "componentChildKey": null,
+                "itemType": 740,
+                "itemName": "Компонент оружия",
+                "price": 123,
+                "state": 100
+            },
+            "storageData": {
+                "added": "2024-07-13T14:54:35.4508647+03:00",
+                "endTime": "2024-07-17T14:54:35.4508647+03:00"
+            }
+        },
+        {
+            "id": 105,
+            "sellData": {
+                "type": "weaponComponent",
+                "description": "123",
+                "componentKey": "butt",
+                "componentChildKey": null,
+                "itemType": 740,
+                "itemName": "Компонент оружия",
+                "price": 123,
+                "state": 100
+            },
+            "storageData": {
+                "added": "2024-07-13T14:54:36.7231992+03:00",
+                "endTime": "2024-07-17T14:54:36.7231992+03:00"
+            }
+        },
+        {
+            "id": 106,
+            "sellData": {
+                "type": "weaponComponent",
+                "description": "123",
+                "componentKey": "extendedclip",
+                "componentChildKey": null,
+                "itemType": 740,
+                "itemName": "Компонент оружия",
+                "price": 123,
+                "state": 100
+            },
+            "storageData": {
+                "added": "2024-07-13T14:54:37.9557367+03:00",
+                "endTime": "2024-07-17T14:54:37.9557367+03:00"
+            }
+        },
+        {
+            "id": 107,
+            "sellData": {
+                "type": "weaponComponent",
+                "description": "123",
+                "componentKey": "extendedclip",
+                "componentChildKey": "drummagazine",
+                "itemType": 740,
+                "itemName": "Компонент оружия",
+                "price": 123,
+                "state": 100
+            },
+            "storageData": {
+                "added": "2024-07-13T14:54:39.2650509+03:00",
+                "endTime": "2024-07-17T14:54:39.2650509+03:00"
+            }
+        },
+        {
+            "id": 108,
+            "sellData": {
+                "type": "weaponComponent",
+                "description": "123",
+                "componentKey": "scope",
+                "componentChildKey": "advancedscope",
+                "itemType": 740,
+                "itemName": "Компонент оружия",
+                "price": 123,
+                "state": 100
+            },
+            "storageData": {
+                "added": "2024-07-13T14:54:40.4775724+03:00",
+                "endTime": "2024-07-17T14:54:40.4775724+03:00"
+            }
+        },
+        {
+            "id": 109,
+            "sellData": {
+                "type": "weaponComponent",
+                "description": "123",
+                "componentKey": "scope",
+                "componentChildKey": null,
+                "itemType": 740,
+                "itemName": "Компонент оружия",
+                "price": 123,
+                "state": 100
+            },
+            "storageData": {
+                "added": "2024-07-13T14:54:41.7091935+03:00",
+                "endTime": "2024-07-17T14:54:41.7091935+03:00"
+            }
+        },
+        {
+            "id": 110,
+            "sellData": {
+                "type": "weapon",
+                "description": "123",
+                "state": 100,
+                "itemType": 128,
+                "itemName": "Advanced Rifle",
+                "price": 123,
+                "serial": "GUNSHOP-GO455A-1033365915",
+                "weight": 3.85
+            },
+            "storageData": {
+                "added": "2024-07-13T14:54:42.961748+03:00",
+                "endTime": "2024-07-17T14:54:42.961748+03:00"
             }
         }
-        // {
-        //     id: 40,
-        //     sellData: {
-        //         id: 12,
-        //         img: 'W4J82Contention',
-        //         vehicleName: 'Буба лупа V8',
-        //         vehicleModel: 'W4 J82 Contention',
-        //         type: 'transport',
-        //         dealerShip: 'Ubermacht',
-        //         quantity: 3,
-        //         mileage: 100,
-        //     },
-        //     storageData: {
-        //         endTime: '15.05.2024 15:50',
-        //     },
-        // },
-        // {
-        //     id: 13,
-        //     sellData: {
-        //         id: 3,
-        //         type: 'house',
-        //         img: 'House123',
-        //         address: 'Хабибовна 33',
-        //         parkingCapacity: 6,
-        //         maxTenants: 3,
-        //     },
-        //     storageData: {
-        //         endTime: '15.05.2024 15:51',
-        //     },
-        // },
     ],
     favorites: [
         {
@@ -519,263 +717,263 @@ export default {
             status: 'storage'
         }
     ],
-    ammunition:  [
+    ammunition: [
         {
-          "id": 16,
-          "sellData": {
-            "type": "weaponComponent",
-            "img": null,
-            "description": "good component",
-            "componentKey": "flashlight",
-            "componentChildKey": null,
-            "itemType": 740,
-            "itemName": "Компонент оружия",
-            "price": 10000,
-            "state": 100
-          },
-          "views": 0,
-          "isFavorite": false,
-          "listingData": {},
-          "endTime": "2024-07-15T07:34:37.3018044+03:00"
+            "id": 16,
+            "sellData": {
+                "type": "weaponComponent",
+                "img": null,
+                "description": "good component",
+                "componentKey": "flashlight",
+                "componentChildKey": null,
+                "itemType": 740,
+                "itemName": "Компонент оружия",
+                "price": 10000,
+                "state": 100
+            },
+            "views": 0,
+            "isFavorite": false,
+            "listingData": {},
+            "endTime": "2024-07-15T07:34:37.3018044+03:00"
         },
         {
-          "id": 17,
-          "sellData": {
-            "type": "weaponComponent",
-            "img": null,
-            "description": "good component",
-            "componentKey": "butt",
-            "componentChildKey": null,
-            "itemType": 740,
-            "itemName": "Компонент оружия",
-            "price": 10000,
-            "state": 100
-          },
-          "views": 0,
-          "isFavorite": false,
-          "listingData": {},
-          "endTime": "2024-07-15T07:34:44.4161429+03:00"
+            "id": 17,
+            "sellData": {
+                "type": "weaponComponent",
+                "img": null,
+                "description": "good component",
+                "componentKey": "butt",
+                "componentChildKey": null,
+                "itemType": 740,
+                "itemName": "Компонент оружия",
+                "price": 10000,
+                "state": 100
+            },
+            "views": 0,
+            "isFavorite": false,
+            "listingData": {},
+            "endTime": "2024-07-15T07:34:44.4161429+03:00"
         },
         {
-          "id": 25,
-          "sellData": {
-            "type": "weapon",
-            "img": null,
-            "description": "good gun",
-            "state": 100,
-            "itemType": 100,
-            "itemName": "Pistol",
-            "price": 10000,
-            "serial": "GUNSHOP-EA590O-335969151",
-            "weight": 2.5
-          },
-          "views": 4,
-          "isFavorite": false,
-          "listingData": {},
-          "endTime": "2024-07-15T07:35:28.2286844+03:00"
+            "id": 25,
+            "sellData": {
+                "type": "weapon",
+                "img": null,
+                "description": "good gun",
+                "state": 100,
+                "itemType": 100,
+                "itemName": "Pistol",
+                "price": 10000,
+                "serial": "GUNSHOP-EA590O-335969151",
+                "weight": 2.5
+            },
+            "views": 4,
+            "isFavorite": false,
+            "listingData": {},
+            "endTime": "2024-07-15T07:35:28.2286844+03:00"
         },
         {
-          "id": 63,
-          "sellData": {
-            "type": "weapon",
-            "img": null,
-            "description": "test",
-            "state": 100,
-            "itemType": 111,
-            "itemName": "Double Action",
-            "price": 2500000,
-            "serial": "0_0_100",
-            "weight": 4.0
-          },
-          "views": 0,
-          "isFavorite": false,
-          "listingData": {},
-          "endTime": "2024-07-16T21:00:14.5612739+03:00"
+            "id": 63,
+            "sellData": {
+                "type": "weapon",
+                "img": null,
+                "description": "test",
+                "state": 100,
+                "itemType": 111,
+                "itemName": "Double Action",
+                "price": 2500000,
+                "serial": "0_0_100",
+                "weight": 4.0
+            },
+            "views": 0,
+            "isFavorite": false,
+            "listingData": {},
+            "endTime": "2024-07-16T21:00:14.5612739+03:00"
         },
         {
-          "id": 64,
-          "sellData": {
-            "type": "weapon",
-            "img": null,
-            "description": "test",
-            "state": 100,
-            "itemType": 130,
-            "itemName": "Bullpup Rifle",
-            "price": 2500000,
-            "serial": "0_0_100",
-            "weight": 3.87
-          },
-          "views": 0,
-          "isFavorite": false,
-          "listingData": {},
-          "endTime": "2024-07-16T21:00:22.2431566+03:00"
+            "id": 64,
+            "sellData": {
+                "type": "weapon",
+                "img": null,
+                "description": "test",
+                "state": 100,
+                "itemType": 130,
+                "itemName": "Bullpup Rifle",
+                "price": 2500000,
+                "serial": "0_0_100",
+                "weight": 3.87
+            },
+            "views": 0,
+            "isFavorite": false,
+            "listingData": {},
+            "endTime": "2024-07-16T21:00:22.2431566+03:00"
         },
         {
-          "id": 65,
-          "sellData": {
-            "type": "weapon",
-            "img": null,
-            "description": "test",
-            "state": 100,
-            "itemType": 118,
-            "itemName": "Assault SMG",
-            "price": 2500000,
-            "serial": "0_0_100",
-            "weight": 3.35
-          },
-          "views": 0,
-          "isFavorite": false,
-          "listingData": {},
-          "endTime": "2024-07-16T21:00:30.6010048+03:00"
+            "id": 65,
+            "sellData": {
+                "type": "weapon",
+                "img": null,
+                "description": "test",
+                "state": 100,
+                "itemType": 118,
+                "itemName": "Assault SMG",
+                "price": 2500000,
+                "serial": "0_0_100",
+                "weight": 3.35
+            },
+            "views": 0,
+            "isFavorite": false,
+            "listingData": {},
+            "endTime": "2024-07-16T21:00:30.6010048+03:00"
         },
         {
-          "id": 66,
-          "sellData": {
-            "type": "weapon",
-            "img": null,
-            "description": "test",
-            "state": 100,
-            "itemType": 112,
-            "itemName": "Pistol Mk2",
-            "price": 2500000,
-            "serial": "0_0_100",
-            "weight": 2.0
-          },
-          "views": 0,
-          "isFavorite": false,
-          "listingData": {},
-          "endTime": "2024-07-16T21:00:37.7437641+03:00"
+            "id": 66,
+            "sellData": {
+                "type": "weapon",
+                "img": null,
+                "description": "test",
+                "state": 100,
+                "itemType": 112,
+                "itemName": "Pistol Mk2",
+                "price": 2500000,
+                "serial": "0_0_100",
+                "weight": 2.0
+            },
+            "views": 0,
+            "isFavorite": false,
+            "listingData": {},
+            "endTime": "2024-07-16T21:00:37.7437641+03:00"
         },
         {
-          "id": 67,
-          "sellData": {
-            "type": "weapon",
-            "img": null,
-            "description": "test",
-            "state": 100,
-            "itemType": 102,
-            "itemName": "Pistol 50",
-            "price": 2500000,
-            "serial": "0_0_100",
-            "weight": 2.75
-          },
-          "views": 0,
-          "isFavorite": false,
-          "listingData": {},
-          "endTime": "2024-07-16T21:00:43.5108843+03:00"
+            "id": 67,
+            "sellData": {
+                "type": "weapon",
+                "img": null,
+                "description": "test",
+                "state": 100,
+                "itemType": 102,
+                "itemName": "Pistol 50",
+                "price": 2500000,
+                "serial": "0_0_100",
+                "weight": 2.75
+            },
+            "views": 0,
+            "isFavorite": false,
+            "listingData": {},
+            "endTime": "2024-07-16T21:00:43.5108843+03:00"
         },
         {
-          "id": 68,
-          "sellData": {
-            "type": "weapon",
-            "img": null,
-            "description": "test",
-            "state": 100,
-            "itemType": 105,
-            "itemName": "Vintage Pistol",
-            "price": 2500000,
-            "serial": "0_0_100",
-            "weight": 4.0
-          },
-          "views": 0,
-          "isFavorite": false,
-          "listingData": {},
-          "endTime": "2024-07-16T21:00:50.0597485+03:00"
+            "id": 68,
+            "sellData": {
+                "type": "weapon",
+                "img": null,
+                "description": "test",
+                "state": 100,
+                "itemType": 105,
+                "itemName": "Vintage Pistol",
+                "price": 2500000,
+                "serial": "0_0_100",
+                "weight": 4.0
+            },
+            "views": 0,
+            "isFavorite": false,
+            "listingData": {},
+            "endTime": "2024-07-16T21:00:50.0597485+03:00"
         },
         {
-          "id": 18,
-          "sellData": {
-            "type": "item",
-            "img": null,
-            "description": null,
-            "weight": 0.1,
-            "itemType": 203,
-            "itemName": ".50 BMG",
-            "price": 0,
-            "quantity": 1
-          },
-          "views": 2,
-          "isFavorite": false,
-          "tradeData": {
-            "startPrice": 999,
-            "available": 10
-          }
+            "id": 18,
+            "sellData": {
+                "type": "item",
+                "img": null,
+                "description": null,
+                "weight": 0.1,
+                "itemType": 203,
+                "itemName": ".50 BMG",
+                "price": 0,
+                "quantity": 1
+            },
+            "views": 2,
+            "isFavorite": false,
+            "tradeData": {
+                "startPrice": 999,
+                "available": 10
+            }
         },
         {
-          "id": 19,
-          "sellData": {
-            "type": "item",
-            "img": null,
-            "description": null,
-            "weight": 0.03,
-            "itemType": 204,
-            "itemName": "12ga Buckshot",
-            "price": 0,
-            "quantity": 1
-          },
-          "views": 0,
-          "isFavorite": false,
-          "tradeData": {
-            "startPrice": 99,
-            "available": 8
-          }
+            "id": 19,
+            "sellData": {
+                "type": "item",
+                "img": null,
+                "description": null,
+                "weight": 0.03,
+                "itemType": 204,
+                "itemName": "12ga Buckshot",
+                "price": 0,
+                "quantity": 1
+            },
+            "views": 0,
+            "isFavorite": false,
+            "tradeData": {
+                "startPrice": 99,
+                "available": 8
+            }
         },
         {
-          "id": 20,
-          "sellData": {
-            "type": "item",
-            "img": null,
-            "description": null,
-            "weight": 0.05,
-            "itemType": 202,
-            "itemName": "7.62mm",
-            "price": 0,
-            "quantity": 1
-          },
-          "views": 0,
-          "isFavorite": false,
-          "tradeData": {
-            "startPrice": 999,
-            "available": 30
-          }
+            "id": 20,
+            "sellData": {
+                "type": "item",
+                "img": null,
+                "description": null,
+                "weight": 0.05,
+                "itemType": 202,
+                "itemName": "7.62mm",
+                "price": 0,
+                "quantity": 1
+            },
+            "views": 0,
+            "isFavorite": false,
+            "tradeData": {
+                "startPrice": 999,
+                "available": 30
+            }
         },
         {
-          "id": 21,
-          "sellData": {
-            "type": "item",
-            "img": null,
-            "description": null,
-            "weight": 0.035,
-            "itemType": 201,
-            "itemName": "5x56mm",
-            "price": 0,
-            "quantity": 1
-          },
-          "views": 0,
-          "isFavorite": false,
-          "tradeData": {
-            "startPrice": 999,
-            "available": 30
-          }
+            "id": 21,
+            "sellData": {
+                "type": "item",
+                "img": null,
+                "description": null,
+                "weight": 0.035,
+                "itemType": 201,
+                "itemName": "5x56mm",
+                "price": 0,
+                "quantity": 1
+            },
+            "views": 0,
+            "isFavorite": false,
+            "tradeData": {
+                "startPrice": 999,
+                "available": 30
+            }
         },
         {
-          "id": 22,
-          "sellData": {
-            "type": "item",
-            "img": null,
-            "description": null,
-            "weight": 0.025,
-            "itemType": 200,
-            "itemName": "9x19mm",
-            "price": 0,
-            "quantity": 1
-          },
-          "views": 1,
-          "isFavorite": false,
-          "tradeData": {
-            "startPrice": 999,
-            "available": 12
-          }
+            "id": 22,
+            "sellData": {
+                "type": "item",
+                "img": null,
+                "description": null,
+                "weight": 0.025,
+                "itemType": 200,
+                "itemName": "9x19mm",
+                "price": 0,
+                "quantity": 1
+            },
+            "views": 1,
+            "isFavorite": false,
+            "tradeData": {
+                "startPrice": 999,
+                "available": 12
+            }
         }
-      ]
+    ]
 };

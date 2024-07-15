@@ -1,203 +1,247 @@
 .openedListing {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  gap: 6vmin;
-
-  .item {
-    width: 70vmin;
-
-    &-img {
-      position: relative;
-    }
-
-    &-testDrive {
-      margin-top: 2vmin;
-      font-weight: 700;
-      font-size: 1.111vmin;
-      color: #fff;
-      padding: 1.667vmin 5.833vmin;
-      background: #56b77d;
-      border-radius: 0.463vmin;
-      width: fit-content;
-      cursor: pointer;
-      transition: background 0.3s ease;
-
-      &:hover {
-        background: #5f9adf;
-      }
-    }
-
-    &-comment {
-      position: relative;
-      &-title {
-        color: white;
-        font-weight: 700;
-        font-size: 1.6vmin;
-        margin: 1.852vmin 0 1.389vmin;
-      }
-      
-      &-text {
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 1vmin;
-        padding: 1vmin;
-        font-size: 1.389vmin;
-        height: 25vmin;
-        padding-right: 1vmin;
-        overflow-y: auto;
-        overflow-x: hidden;
-        width: 100%;
-        &::-webkit-scrollbar {
-          width: 0.37vmin;
-        }
-        &::-webkit-scrollbar-thumb {
-          background: white;
-          border-radius: 1vmin;
-        }
-        &::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.02);
-        }
-      }
-    }
-    &-likesviews {
-      position: absolute;
-      top: 0;
-      right: 0;
-      display: flex;
-      align-items: center;
-      gap: 0.926vmin;
-      .unit {
-        display: flex;
-        align-items: center;
-        font-size: 1.296vmin;
-        &-img {
-          height: 1.296vmin;
-          width: 1.296vmin;
-          margin-right: 0.463vmin;
-        }
-      }
-    }
-  }
-
-  .info {
-    flex-grow: 1;
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
+    gap: 6vmin;
 
-    &-header {
-      display: flex;
-      justify-content: space-between;
+    .item {
+        width: 70vmin;
 
-      &-title {
-        font-weight: 700;
-        font-size: 2.963vmin;
-        color: #fff;
-      }
+        &-img {
+            position: relative;
+            backdrop-filter: blur(2.88vmin);
+            background: rgba(255, 255, 255, 0.02);
 
-      &-price {
-        font-weight: 700;
-        font-size: 2.963vmin;
-        color: #8eff35;
-      }
+            .leafImages {
+                position: absolute;
+                top: 0vmin;
+                left: 0vmin;
+                display: flex;
+                justify-content: space-between;
 
-      &-container {
+                width: 100%;
+                height: 100%;
+
+                .arrow {
+                    display: flex;
+                    align-items: center;
+                    padding: 1.8519vmin;
+
+                    transition: background 0.3s ease;
+                    &.flip {
+                        transform: rotate(180deg);
+                    }
+
+                    img {
+                        width: 1.2963vmin;
+                        opacity: 0.75;
+                        transition: opacity 0.3s ease;
+                    }
+
+                    &:hover img {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .imgBlock {
+                display: flex;
+                justify-content: center;
+                height: 100%;
+                img {
+                    max-width: 100%;
+                    max-height: 40vmin;
+                    min-height: 20vmin;
+                }
+            }
+        }
+
+        &-testDrive {
+            margin-top: 2vmin;
+            font-weight: 700;
+            font-size: 1.111vmin;
+            color: #fff;
+            padding: 1.667vmin 5.833vmin;
+            background: #56b77d;
+            border-radius: 0.463vmin;
+            width: fit-content;
+            cursor: pointer;
+            transition: background 0.3s ease;
+
+            &:hover {
+                background: #5f9adf;
+            }
+        }
+
+        &-comment {
+            position: relative;
+            &-title {
+                color: white;
+                font-weight: 700;
+                font-size: 1.6vmin;
+                margin: 1.852vmin 0 1.389vmin;
+            }
+
+            &-text {
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 1vmin;
+                padding: 1vmin;
+                font-size: 1.389vmin;
+                height: 25vmin;
+                padding-right: 1vmin;
+                overflow-y: auto;
+                overflow-x: hidden;
+                width: 100%;
+                &::-webkit-scrollbar {
+                    width: 0.37vmin;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background: white;
+                    border-radius: 1vmin;
+                }
+                &::-webkit-scrollbar-track {
+                    background: rgba(255, 255, 255, 0.02);
+                }
+            }
+        }
+        &-likesviews {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.926vmin;
+            .unit {
+                display: flex;
+                align-items: center;
+                font-size: 1.296vmin;
+                &-img {
+                    height: 1.296vmin;
+                    width: 1.296vmin;
+                    margin-right: 0.463vmin;
+                }
+            }
+        }
+    }
+
+    .info {
+        flex-grow: 1;
         display: flex;
         flex-direction: column;
-        align-items: end;
-        gap: 1vmin;
-      }
 
-      &-statePrice {
-        font-weight: 400;
-        font-size: 1.9vmin;
-        color: rgba(255, 255, 255, 0.17);
-        &-value {
-          color: white;
+        &-header {
+            display: flex;
+            justify-content: space-between;
+
+            &-title {
+                font-weight: 700;
+                font-size: 2.963vmin;
+                color: #fff;
+            }
+
+            &-price {
+                font-weight: 700;
+                font-size: 2.963vmin;
+                color: #8eff35;
+            }
+
+            &-container {
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+                gap: 1vmin;
+            }
+
+            &-statePrice {
+                font-weight: 400;
+                font-size: 1.9vmin;
+                color: rgba(255, 255, 255, 0.17);
+                &-value {
+                    color: white;
+                }
+            }
         }
-      }
+        &-tips {
+            margin: 1.389vmin 0;
+        }
+        &-properties {
+            margin: 1.389vmin 0;
+        }
+
+        &-seller {
+            margin: 0 0 2vmin 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1vmin;
+
+            &-unit {
+                &-title {
+                    font-weight: 400;
+                    font-size: 1.296vmin;
+                    color: rgba(255, 255, 255, 0.55);
+                    margin-bottom: 0.8vmin;
+                }
+
+                &-value {
+                    font-weight: 600;
+                    font-size: 1.481vmin;
+                    color: #fff;
+
+                    & > span {
+                        font-weight: 400;
+                        color: rgba(255, 255, 255, 0.36);
+                    }
+                }
+            }
+        }
+
+        &-actions {
+            display: flex;
+            gap: 1.2vmin;
+            align-items: center;
+
+            &-makeDeal {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 0.185vmin;
+                background: #5f9adf;
+                padding: 0 9vmin;
+                font-weight: 700;
+                font-size: 1.4vmin;
+                color: #fff;
+                width: fit-content;
+                transition: transform 0.3s ease;
+                cursor: pointer;
+                height: 5vmin;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
+
+            .action {
+                height: fit-content;
+                background: rgba(255, 255, 255, 0.08);
+                padding: 1.204vmin;
+                cursor: pointer;
+                border-radius: 0.185vmin;
+                transition: transform 0.3s ease;
+
+                &:hover {
+                    transform: scale(1.05);
+
+                    .action-img {
+                        fill: #5f9adf;
+                    }
+                }
+
+                &-img {
+                    width: 2.222vmin;
+                    height: 2.222vmin;
+                    transition: fill 0.3s ease;
+                }
+            }
+        }
     }
-    &-tips {
-      margin: 1.389vmin 0;
-    }
-    &-properties {
-      margin: 1.389vmin 0;
-    }
-
-    &-seller {
-      margin: 0 0 2vmin 0;
-      display: flex;
-      flex-direction: column;
-      gap: 1vmin;
-
-      &-unit {
-        &-title {
-          font-weight: 400;
-          font-size: 1.296vmin;
-          color: rgba(255, 255, 255, 0.55);
-          margin-bottom: 0.8vmin;
-        }
-
-        &-value {
-          font-weight: 600;
-          font-size: 1.481vmin;
-          color: #fff;
-
-          &>span {
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.36);
-          }
-        }
-      }
-    }
-
-    &-actions {
-      display: flex;
-      gap: 1.2vmin;
-      align-items: center;
-
-      &-makeDeal {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 0.185vmin;
-        background: #5f9adf;
-        padding: 0 9vmin;
-        font-weight: 700;
-        font-size: 1.4vmin;
-        color: #fff;
-        width: fit-content;
-        transition: transform 0.3s ease;
-        cursor: pointer;
-        height: 5vmin;
-
-        &:hover {
-          transform: scale(1.05);
-        }
-      }
-
-      .action {
-        height: fit-content;
-        background: rgba(255, 255, 255, 0.08);
-        padding: 1.204vmin;
-        cursor: pointer;
-        border-radius: 0.185vmin;
-        transition: transform .3s ease;
-
-        &:hover {
-          transform: scale(1.05);
-
-          .action-img {
-            fill: #5f9adf;
-          }
-        }
-
-        &-img {
-          width: 2.222vmin;
-          height: 2.222vmin;
-          transition: fill 0.3s ease;
-        }
-      }
-    }
-
-  }
 }

@@ -20,25 +20,56 @@
                             {{ $store.getters.getLanguageText('Собственная обложка') }}
                         </div>
                         <div class="listingEditor-cover-images-custom-img">
-                            <div class="add-img-notice">
+                            <div class="add-img-notice" v-if="!mainImage">
                                 <imageIcon class="add-img-notice-img" />
                                 <div class="add-img-notice-text">
                                     {{ $store.getters.getLanguageText('Кликните в область чтобы загрузить обложку') }}
                                 </div>
                             </div>
+                            <div class="trashBlock" v-if="mainImage" @click="deleteImage('main')">
+                                <img src="./imgs/trash.svg">
+                            </div>
+                            <img v-if="mainImage" class="loadedImage" ref="loadedImage" :src="mainImage" />
+                            <input class="fileInput" @input="onInput($event, 'main')" type="file" accept="image/*" />
                         </div>
                     </div>
-                    <div class="listingEditor-cover-images-notice">
-                        <div class="listingEditor-cover-images-notice-title">
-                            {{ $store.getters.getLanguageText('Прикрепите фотографии') }}
+                    <div class="listingEditor-cover-images-notice"></div>
+                    <div class="listingEditor-cover-images-notice"></div>
+                    <div class="listingEditor-cover-images-custom">
+                        <div class="listingEditor-cover-images-custom-title">
+                            {{ $store.getters.getLanguageText('Фото №1') }}
                         </div>
-                        <div class="listingEditor-cover-images-notice-warning">
-                            {{ $store.getters.getLanguageText('Отсуствуют фотографии') }}
+                        <div class="listingEditor-cover-images-custom-img">
+                            <div class="add-img-notice" v-if="!firstImage">
+                                <imageIcon class="add-img-notice-img" />
+                                <div class="add-img-notice-text">
+                                    {{ $store.getters.getLanguageText('Кликните в область чтобы загрузить фото') }}
+                                </div>
+                            </div>
+                            <div class="trashBlock" v-if="firstImage" @click="deleteImage('first')">
+                                <img src="./imgs/trash.svg">
+                            </div>
+                            <img v-if="firstImage" class="loadedImage" ref="loadedImage" :src="firstImage" />
+                            <input class="fileInput" @input="onInput($event, 'first')" type="file" accept="image/*" />
                         </div>
                     </div>
-                    <div class="listingEditor-cover-images-button">
-                        <img src="@/views/MarketPlace/Assets/Icons/Listing/download.svg" />
-                        {{ $store.getters.getLanguageText('Загрузить фото') }}
+                    <div class="listingEditor-cover-images-custom">
+                        <div class="listingEditor-cover-images-custom-title">
+                            {{ $store.getters.getLanguageText('Фото №2') }}
+                        </div>
+                        <div class="listingEditor-cover-images-custom-img">
+                            <div class="add-img-notice" v-if="!secondImage">
+                                <imageIcon class="add-img-notice-img" />
+                                <div class="add-img-notice-text">
+                                    {{ $store.getters.getLanguageText('Кликните в область чтобы загрузить фото') }}
+                                </div>
+                            </div>
+                            <div class="trashBlock" v-if="secondImage" @click="deleteImage('second')">
+                                <img src="./imgs/trash.svg">
+                            </div>
+                            <img v-if="secondImage" class="loadedImage" ref="loadedImage" :src="secondImage" />
+                            <input class="fileInput" @input="onInput($event, 'second')" type="file" accept="image/*" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -115,6 +146,7 @@ import events from '@/modules/events';
 import { computed, onUnmounted } from 'vue';
 import { getItemTitle, getImgPath } from '@/functions/marketplace';
 import { getStore } from '@/store2';
+import { convertImageToType } from '@/assets/utils';
 export default {
     components: {
         imageIcon,
@@ -131,7 +163,10 @@ export default {
             payTime: null,
             salePrice: null,
             descriptionInput: '',
-            titleInput: ''
+            titleInput: '',
+            mainImage: null,
+            firstImage: null,
+            secondImage: null
         };
     },
     setup() {
@@ -142,8 +177,10 @@ export default {
         };
     },
     mounted() {
+        events.add('MarketPlace:CreateListing:PublishAccept:LoadImagesToHost', this.loadImages) 
         onUnmounted(() => {
             events.remove('MarketPlace:CreateListing:PublishAccept:Cef');
+            events.remove('MarketPlace:CreateListing:PublishAccept:LoadImagesToHost');
         });
         events.add('MarketPlace:CreateListing:PublishAccept:Cef', () => {
             this.$store.commit('resetListData');
@@ -154,6 +191,9 @@ export default {
         });
     },
     methods: {
+        deleteImage(type) {
+            this[type + 'Image'] = null;
+        },
         getImgPath(itemCard) {
             return getImgPath(itemCard);
         },
@@ -198,6 +238,40 @@ export default {
         },
         getItemTitle(itemCard) {
             return getItemTitle(itemCard);
+        },
+        onInput(e, type) {
+            let file = e.target.files[0];
+            const size = Number((file.size / 1_048_576).toFixed(2) - 0.01);
+            if (size > 5) {
+                events.callLocal('HUD.notify.push', 1, this.$getLanguageText('Максимальный размер файла - 5 МБ!'), 3000);
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = (evt) => {
+                convertImageToType(evt.target.result, 'png', (result) => {
+                    this[type + 'Image'] = result;
+                });
+            };
+            reader.readAsDataURL(file);
+        },
+        loadImages(data) {
+            if(!this.mainImage && !this.firstImage && !this.secondImage) return;
+            const json = {
+                mainImage: this.mainImage ? this.mainImage.replace(/^data:image\/[a-z]+;base64,/, "") : null,
+                firstImage: this.firstImage ? this.firstImage.replace(/^data:image\/[a-z]+;base64,/, "") : null,
+                secondImage: this.secondImage ? this.secondImage.replace(/^data:image\/[a-z]+;base64,/, "") : null,
+                data
+            };
+
+            const options = {
+                method: 'POST',
+                body: JSON.stringify(json),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+
+            fetch('http://146.59.126.149:3001/upload', options);
         }
     },
     computed: {

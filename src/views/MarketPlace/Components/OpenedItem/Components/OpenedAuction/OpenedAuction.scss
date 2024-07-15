@@ -1,142 +1,180 @@
 .auction {
-  .top {
-    display: flex;
-    gap: 4.907vmin;
-    height: 46vmin;
-    margin-bottom: 3.2vmin;
-  }
-
-  .item {
-    width: 50vmin;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    &-img {
-      width: 100%;
-      height: 20.37vmin;
-      margin-bottom: 1.204vmin;
-      position: relative;
-
-      & > img {
-        height: 100%;
-        width: 100%;
-      }
-    }
-
-    &-title {
-      font-weight: 700;
-      font-size: 1.574vmin;
-      color: #fff;
-    }
-
-    &-likesviews {
-      display: flex;
-      gap: 0.926vmin;
-
-      &-unit {
-        font-weight: 400;
-        font-size: 1.296vmin;
+    .top {
         display: flex;
-        align-items: center;
+        gap: 4.907vmin;
+        height: 46vmin;
+        margin-bottom: 3.2vmin;
+    }
+
+    .item {
+        width: 50vmin;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
         &-img {
-          width: 1.111vmin;
-          height: 1.111vmin;
-          margin-left: 0.463vmin;
+            width: 100%;
+            height: 20.37vmin;
+            margin-bottom: 1.204vmin;
+            position: relative;
+
+            position: relative;
+            backdrop-filter: blur(2.88vmin);
+            background: rgba(255, 255, 255, 0.02);
+
+            .leafImages {
+                position: absolute;
+                top: 0vmin;
+                left: 0vmin;
+                display: flex;
+                justify-content: space-between;
+
+                width: 100%;
+                height: 100%;
+
+                .arrow {
+                    display: flex;
+                    align-items: center;
+                    padding: 1.8519vmin;
+
+                    transition: background 0.3s ease;
+                    &.flip {
+                        transform: rotate(180deg);
+                    }
+
+                    img {
+                        width: 1.2963vmin;
+                        opacity: 0.75;
+                        transition: opacity 0.3s ease;
+                    }
+
+                    &:hover img {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .imgBlock {
+                display: flex;
+                justify-content: center;
+                height: 100%;
+                img {
+                    max-width: 100%;
+                    max-height: 40vmin;
+                    min-height: 20vmin;
+                }
+            }
         }
-      }
-    }
 
-    &-button {
-      width: 100%;
-      border-radius: 0.185vmin;
-      background: rgba(255, 255, 255, 0.08);
-      font-weight: 700;
-      font-size: 1.204vmin;
-      padding: 1.944vmin;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition:
-        transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-        background 0.3s ease;
-
-      &:hover {
-        transform: scale(1.02);
-      }
-
-      &:active {
-        transform: scale(1.05);
-      }
-    }
-
-    &-buttons {
-      display: flex;
-      gap: 1.296vmin;
-    }
-
-    .bet-button {
-      &:hover {
-        background: #5f9adf;
-      }
-    }
-
-    .liked {
-      box-shadow: 0 0 0.37vmin 0.185vmin rgba(95, 154, 223, 0.4);
-
-      .like-button-img {
-        fill: #5f9adf;
-      }
-    }
-
-    .like-button {
-      width: fit-content;
-      padding: 1.667vmin 3.333vmin;
-      transition:
-        box-shadow 0.3s ease,
-        transform 0.3s ease;
-
-      &-img {
-        fill: rgba(255, 255, 255, 0.18);
-        width: 2.037vmin;
-        height: 2.037vmin;
-        transition: fill 0.3s ease;
-      }
-
-      &:hover {
-        .like-button-img {
-          fill: #5f9adf;
+        &-title {
+            font-weight: 700;
+            font-size: 1.574vmin;
+            color: #fff;
         }
-      }
-    }
-  }
-  .item-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    &-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.2vmin;
-    }
-    &-mainInfo {
-      margin-bottom: 1.852vmin;
-    }
-  }
-  &-graph {
-    height: 100%;
-    padding: 1.852vmin 0 2.315vmin;
 
-    &-title {
-      font-weight: 700;
-      font-size: 1.667vmin;
-      padding: 0 1.852vmin;
-    }
+        &-likesviews {
+            display: flex;
+            gap: 0.926vmin;
 
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 0.741vmin;
-  }
+            &-unit {
+                font-weight: 400;
+                font-size: 1.296vmin;
+                display: flex;
+                align-items: center;
+
+                &-img {
+                    width: 1.111vmin;
+                    height: 1.111vmin;
+                    margin-left: 0.463vmin;
+                }
+            }
+        }
+
+        &-button {
+            width: 100%;
+            border-radius: 0.185vmin;
+            background: rgba(255, 255, 255, 0.08);
+            font-weight: 700;
+            font-size: 1.204vmin;
+            padding: 1.944vmin;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease;
+
+            &:hover {
+                transform: scale(1.02);
+            }
+
+            &:active {
+                transform: scale(1.05);
+            }
+        }
+
+        &-buttons {
+            display: flex;
+            gap: 1.296vmin;
+        }
+
+        .bet-button {
+            &:hover {
+                background: #5f9adf;
+            }
+        }
+
+        .liked {
+            box-shadow: 0 0 0.37vmin 0.185vmin rgba(95, 154, 223, 0.4);
+
+            .like-button-img {
+                fill: #5f9adf;
+            }
+        }
+
+        .like-button {
+            width: fit-content;
+            padding: 1.667vmin 3.333vmin;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+            &-img {
+                fill: rgba(255, 255, 255, 0.18);
+                width: 2.037vmin;
+                height: 2.037vmin;
+                transition: fill 0.3s ease;
+            }
+
+            &:hover {
+                .like-button-img {
+                    fill: #5f9adf;
+                }
+            }
+        }
+    }
+    .item-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.2vmin;
+        }
+        &-mainInfo {
+            margin-bottom: 1.852vmin;
+        }
+    }
+    &-graph {
+        height: 100%;
+        padding: 1.852vmin 0 2.315vmin;
+
+        &-title {
+            font-weight: 700;
+            font-size: 1.667vmin;
+            padding: 0 1.852vmin;
+        }
+
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 0.741vmin;
+    }
 }

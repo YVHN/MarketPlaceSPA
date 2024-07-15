@@ -2,8 +2,19 @@
     <div class="openedListing">
         <div class="item">
             <div class="item-img">
-                <Img :card-item="getItem" :size="'l'" />
+                <Img v-if="!images[0]" :card-item="getItem" :size="'itemImage'" />
+                <div class="imgBlock" v-else>
+                    <img :src="images[selectedImage]" :alt="images[selectedImage]" />
+                </div>
                 <FavoriteIndicator :item-id="getItem.id" :size="'big'" :is-favorite="getItem.isFavorite" />
+                <div class="leafImages" v-if="images.length > 1">
+                    <div class="arrow flip" @click="changeImage(false)">
+                        <img src="./imgs/arrow.svg" alt="" />
+                    </div>
+                    <div class="arrow" @click="changeImage(true)">
+                        <img src="./imgs/arrow.svg" alt="" />
+                    </div>
+                </div>
             </div>
             <div class="item-testDrive" @click="handleTestDriveClick" v-if="getItem.sellData.type === 'transport'">
                 {{ $store.getters.getLanguageText('Тест драйв') }}
@@ -37,7 +48,10 @@
                     </div>
                     <div class="info-header-statePrice" v-if="getItem.sellData?.statePrice">
                         {{ $store.getters.getLanguageText('Гос. цена:') }}
-                        <span class="info-header-statePrice-value">{{ `${formatPhoneNumber(getItem.sellData.statePrice)} $` }}</span>
+                        <span class="info-header-statePrice-value">{{
+                            `${formatPhoneNumber(getItem.sellData.statePrice)}
+                            $`
+                        }}</span>
                     </div>
                 </div>
             </div>
@@ -74,6 +88,9 @@
                         <message class="action-img" />
                     </div>
                 </template>
+                <div class="action" v-if="getIsAdmin" @click="deleteItem">
+                    <trash class="action-img" />
+                </div>
             </div>
             <Specifications :specifications="getItem.sellData.specifications" v-if="getItem.sellData?.specifications" />
             <IncomeGraph :graph-data="getItem.sellData.graphData" v-if="getItem.sellData.type === 'business'" />
@@ -92,6 +109,7 @@ import ItemMainInfo from '../../../ItemComponents/ItemMainInfo/ItemMainInfo.vue'
 import IncomeGraph from '@/views/MarketPlace/Components/ItemComponents/IncomeGraph/IncomeGraph.vue';
 import call from '@/views/MarketPlace/Assets/Icons/Item/call.vue';
 import message from '@/views/MarketPlace/Assets/Icons/Item/message.vue';
+import trash from '@/views/MarketPlace/Assets/Icons/Item/trash.vue';
 import CardItemTips from '../../../CardItemTips/CardItemTips.vue';
 import { computed, onUnmounted } from 'vue';
 import { getItemTitle, formatNumber } from '@/functions/marketplace';
@@ -101,6 +119,7 @@ export default {
     components: {
         call,
         message,
+        trash,
         RentModal,
         Img,
         Specifications,
@@ -111,7 +130,9 @@ export default {
     },
     data() {
         return {
-            isRent: false
+            isRent: false,
+            images: [],
+            selectedImage: 0
         };
     },
     setup() {
@@ -122,6 +143,7 @@ export default {
         };
     },
     mounted() {
+        this.loadImages();
         onUnmounted(() => {
             events.remove('MarketPlace:Listing:AcceptDeal:Cef');
         });
@@ -133,6 +155,40 @@ export default {
         });
     },
     methods: {
+        deleteItem() {
+            const id = this.getItem.id;
+            events.callServer('MarketPlace:Admin:RemoveElement:Server', id);
+        },
+        changeImage(isNext) {
+            switch (isNext) {
+                case true:
+                    if (!this.images[this.selectedImage + 1]) {
+                        this.selectedImage = 0;
+                        return;
+                    }
+                    this.selectedImage++;
+                    break;
+                case false:
+                    if (this.selectedImage === 0) {
+                        this.selectedImage = this.images.length - 1;
+                        return;
+                    }
+                    this.selectedImage--;
+                    break;
+            }
+        },
+        async loadImages() {
+            const id = this.getItem.id;
+            for (let i = 0; i < 3; i++) {
+                const url = `http://146.59.126.149:3001/images/${id}_${i + 1}.png`;
+                const response = await fetch(url, { method: 'HEAD' });
+                if (response.ok) {
+                    new Image().src = url;
+                    this.images[i] = url;
+                    this.$forceUpdate();
+                }
+            }
+        },
         handleTestDriveClick() {
             events.callServer('Marketplace:VehicleTestDrive:Server', this.getItem.id);
         },
@@ -146,7 +202,9 @@ export default {
             this.isRent = !this.isRent;
         },
         makeDeal() {
-            if (this.getItem.sellData?.rentPrice) {
+            if(this.isOwner){
+                events.callServer('MarketPlace:Advert:Cancel:Server', this.getItem.id);
+            } else if (this.getItem.sellData?.rentPrice) {
                 this.toggleRentStatus();
             } else {
                 events.callServer('MarketPlace:Listing:MakeDeal:Server', this.getItem.id);
@@ -157,8 +215,17 @@ export default {
         }
     },
     computed: {
+        getIsAdmin() {
+            return this.$store.getters.getIsAdmin;
+        },
         getActionBtnTitle() {
+            if(this.isOwner){
+                return 'Снять с продажи';
+            }
             return this.getItem.sellData?.rentPrice ? 'Арендовать' : 'Купить';
+        },
+        isOwner() {
+            return this.getItem.isOwner;
         },
         getItem() {
             return this.$store.getters.getPickedItem;

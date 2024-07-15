@@ -52,9 +52,10 @@ export default {
   align-items: center;
   overflow: hidden;
   & > img {
-    height: 90%;
-    max-width: 90%;
     object-fit: contain;
+    max-height: 85%;
+    max-width: 90%;
+    margin-top: 3vmin;
   }
 }
 .imgFull {
@@ -78,5 +79,18 @@ export default {
   padding: 4vmin;
   backdrop-filter: blur(2.88vmin);
   background: rgba(255, 255, 255, 0.02);
+}
+.itemImage {
+  max-height: 40vmin;
+  min-height: 20vmin;
+  padding: 4vmin;
+  backdrop-filter: blur(2.88vmin);
+  background: rgba(255, 255, 255, 0.02);
+
+  img{
+    max-height: 40vmin;
+    min-height: 20vmin;
+    max-width: 100%;
+  }
 }
 </style>

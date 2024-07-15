@@ -216,10 +216,10 @@ export default {
       return this.isHas('sellData', 'quantity') && (['storage', 'history'].includes(this.$route.params.section) || this.$route.path.includes('createListing'));
     },
     isShowWeightTip() {
-      return this.isHas('sellData', 'weight') && (this.$route.params.section === 'storage' || this.$route.path.includes('createListing'));
+      return this.isHas('sellData', 'weight');
     },
     isShowStateTip() {
-      return this.isHas('sellData', 'state') && (this.$route.params.section === 'storage' || this.$route.path.includes('createListing'));
+      return this.isHas('sellData', 'state');
     },
     isHideFavorite() {
       const isStorage = this.item?.storageData;

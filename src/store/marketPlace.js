@@ -11,7 +11,7 @@ const marketPlace = {
 		currentSection: null,
 		currentPage: null,
 		pagesInSection: 7,
-		listData: sectionsData.ammunition,
+		listData: sectionsData.storage,
 		favoritesIdList: [],
 		pickedItem: null,
 		openingType: null,
@@ -21,9 +21,13 @@ const marketPlace = {
 			moneyBank: 12,
 			userName: 'Maneskin Ben',
 		},
-		pricePerHour: 50000
+		pricePerHour: 50000,
+		isAdmin: false,
 	},
 	getters: {
+		getIsAdmin(state) {
+			return state.isAdmin;
+		},
 		getCurrentPage(state) {
 			return state.currentPage;
 		},
@@ -103,6 +107,7 @@ const marketPlace = {
 			state.pickedItem = null;
 			state.pagesInSection = 1;
 			state.openingType = null;
+			//state.openingType = 'InStorage';
 		},
 		pickItem(state, item) {
 			console.log(item);
@@ -169,18 +174,21 @@ const marketPlace = {
 // Получение списка и перезаписывание
 events.add('MarketPlace:List:SetListData:Cef', (json) => {
 	const parsedJson = JSON.parse(json);
-	let itemsInPage = 15;
-	let count = parsedJson.totalCount;
-	// if (parsedJson.section === 'createListing' && marketPlace.state.currentPage === 1) {
-	// 	itemsInPage = 12;
-	// } else if (parsedJson.section === 'createListing') {
-	// 	itemsInPage = 15;
-	// 	count -= 3;
-	// }
-	marketPlace.state.listData = parsedJson.data;
-	marketPlace.state.currentSection = parsedJson.section;
+    const itemsInFirstPage = 12;
+    const itemsInPage = 15;
+    const count = parsedJson.totalCount;
+    marketPlace.state.listData = parsedJson.data;
+    marketPlace.state.currentSection = parsedJson.section;
+    if (parsedJson.section === 'createListing') {
+        if (count <= itemsInFirstPage) {
+            marketPlace.state.pagesInSection = 1;
+        } else {
+            marketPlace.state.pagesInSection = 1 + Math.ceil((count - itemsInFirstPage) / itemsInPage);
+        }
+    } else {
+        marketPlace.state.pagesInSection = Math.ceil(count / itemsInPage);
+    }
 	console.log(parsedJson.data);
-	marketPlace.state.pagesInSection = Math.ceil(count / itemsInPage);
 });
 // Изменяет свойство
 events.add('Marketplace:Action:ChangePropertyValue', (id, property, value, onlyGoods) => {
@@ -227,6 +235,7 @@ events.add('MarketPlace:SetData:Cef', (json) => {
 	marketPlace.state.openingType = parsed.openingType;
 	marketPlace.state.userInfo = parsed.userInfo;
 	marketPlace.state.pricePerHour = parsed.pricePerHour;
+	marketPlace.state.isAdmin = parsed.isAdmin;
 });
 events.add('MarketPlace:User:UpdateMoneyCash:Cef', (num) => {
 	marketPlace.state.userInfo.moneyCash = num;

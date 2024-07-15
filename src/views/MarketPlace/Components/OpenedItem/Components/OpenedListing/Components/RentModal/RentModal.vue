@@ -67,7 +67,7 @@
       <ProgressBar
         @pickQuantity="pickQuantity"
         :progress="1"
-        :max-progress="120"
+        :max-progress="130"
         :min-progress="1"
       />
       <div class="rentModal-body-payMethod">
@@ -121,7 +121,12 @@ export default {
   },
   computed: {
     calculatePrice() {
-      return this.item.sellData.rentPrice * this.pickedQuantity;
+      let currentPrice = this.item.sellData.rentPrice;
+      const additionalPrice = 350_000;
+      for (let i = 1; i < this.pickedQuantity; i++) {
+        currentPrice += this.item.sellData.rentPrice + additionalPrice;
+      }
+      return currentPrice;
     },
   },
   methods: {

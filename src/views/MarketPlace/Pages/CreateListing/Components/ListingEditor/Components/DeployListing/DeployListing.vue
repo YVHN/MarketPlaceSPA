@@ -109,9 +109,12 @@ export default {
       return `${this.progress}%`;
     },
     getPriceForHours() {
-      let basePrice = this.pickedHours * this.$store.getters.getPricePerHour;
-      //let percents = this.price * 0.03;
-      return this.formatNumber(basePrice);
+      let currentPrice = this.$store.getters.getPricePerHour;
+      const additionalPrice = 350_000;
+      for (let i = 1; i < this.pickedHours; i++) {
+        currentPrice += this.$store.getters.getPricePerHour + additionalPrice;
+      }
+      return this.formatNumber(currentPrice);
     },
   },
   methods: {
